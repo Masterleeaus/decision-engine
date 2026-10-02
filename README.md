@@ -1,118 +1,182 @@
 <p align="center">
-  <img src="assets/decision-engine-banner.jpg" alt="Titan Decision Engine — evidence moves through a transparent decision pipeline" width="100%" />
+  <img src="assets/decision-engine-banner.jpg" alt="Titan Decision Engine — evidence-led, transparent decision support" width="100%" />
 </p>
 
 <h1 align="center">Titan Decision Engine</h1>
 
-<p align="center"><strong>Decision intelligence that can explain its recommendation, show its uncertainty, preserve its history, and learn from verified outcomes.</strong></p>
+<p align="center"><strong>Decision intelligence you can inspect, challenge, and govern.</strong></p>
 
 <p align="center">
-  <a href="#the-architecture">Architecture</a> ·
-  <a href="#what-makes-it-different">What makes it different</a> ·
-  <a href="#engine-capabilities">Capabilities</a> ·
-  <a href="#project-status">Project status</a>
+  A domain-neutral architecture for turning evidence into constraint-aware recommendations—with uncertainty, provenance, and authority boundaries made explicit.
+</p>
+
+<p align="center">
+  <a href="#architecture">Architecture</a> ·
+  <a href="#capabilities">Capabilities</a> ·
+  <a href="#trust-boundaries">Trust boundaries</a> ·
+  <a href="#implementation-status">Implementation status</a>
 </p>
 
 ---
 
-## From raw signals to accountable decisions
+## Make the path to a decision visible
 
-Most decision software jumps from data to a score. Titan breaks that jump into explicit, inspectable stages: it observes, establishes evidence, resolves entities, enriches context, discovers alternatives, defines what “better” means, applies hard constraints, compares outcomes, ranks eligible choices, and explains its recommendation.
+A single score can hide missing evidence, policy limits, competing objectives, or fragile assumptions. Titan separates those concerns into explicit stages so a reviewer can see what is known, what remains uncertain, which options are eligible, why one leads, and what approval is still required.
 
-The result is a domain-neutral decision-intelligence architecture for business, workforce, environmental, financial, operational, procurement, scheduling, and other decision problems. The engine modules pair available TypeScript runtimes with contracts, schemas, validators, tests, acceptance artifacts, and examples where provided.
+**Titan Decision Engine** is a modular decision-support layer for AI-assisted and human-reviewed systems. It is designed for business, operational, workforce, environmental, financial, procurement, scheduling, and other decision domains.
 
-**Its defining boundary is simple:** the engine can reason and recommend; it does not grant permission or execute the recommendation. Authority stays in a separate governed system.
+> **Decision model:** subject + objectives + options + evidence + constraints + preferences → predicted outcomes and trade-offs → ranking → recommendation + confidence + authority requirements.
 
-## The architecture
+The engine can analyze and recommend. It does not authorize or execute the recommendation.
+
+## Architecture
 
 <p align="center">
-  <img src="assets/decision-engine-architecture.svg" alt="Titan Decision Engine architecture from observed reality and evidence through options, constraints, comparison, recommendation, explanation, and verified learning" width="100%" />
+  <img src="assets/decision-engine-architecture.svg" alt="Titan Decision Engine stages from observation and evidence to options, constraints, comparison, recommendation, explanation, and verified learning" width="100%" />
 </p>
 
-The repository contains a cumulative 25-step research and implementation lineage. The current public source tree presents the canonical decision model and packet contract, plus the TypeScript engine chain from Step 10 through Step 25.
+The repository preserves a 25-step research lineage. Its current public source tree contains the canonical decision model and packet contract, plus TypeScript reference engines for Steps 10–25.
 
-| Stage | Engine steps | What it contributes |
+| Decision stage | Steps | Responsibility |
 |---|---:|---|
-| **Observe and establish facts** | 10–13 | Observation, evidence extraction, entity normalization, and context enrichment with provenance, freshness, confidence, and conflicts retained. |
-| **Define the decision space** | 14–17 | Domain-neutral option discovery, explicit objectives, hard and soft constraints, and scoped actor or company preferences. |
-| **Evaluate alternatives** | 18–20 | Multi-dimensional comparison, outcome prediction, and transparent ranking of feasible options. |
-| **Recommend and communicate** | 21–23 | Best-action selection or abstention, evidence-linked explanations, and a separate confidence profile. |
-| **Preserve and improve** | 24–25 | Append-only decision history and learning revisions derived only from verified outcomes. |
+| **Observe and ground** | 10–13 | Capture system or browser context, establish evidence, normalize entity references, and gather contextual facts with source and freshness metadata. |
+| **Frame the choice** | 14–17 | Discover alternatives, state what success means, evaluate constraints, and apply scoped preferences. |
+| **Compare and rank** | 18–20 | Compare unlike options, preserve missing data and trade-offs, attach provider-supplied forecasts, and calculate transparent rankings with sensitivity scenarios. |
+| **Recommend and explain** | 21–23 | Recommend or abstain against configured thresholds, explain the result from explicit inputs, and apply observed-outcome confidence calibration. |
+| **Preserve and learn** | 24–25 | Create hash-bound decision-history revisions and derive future calibration updates from verified outcomes. |
 
-## What makes it different
+Steps 08 and 09 define the shared meaning and transport format for the pipeline:
 
-### It defines “better” before it ranks
+- The **Canonical Decision Model** describes the subject, objectives, options, evidence, constraints, preferences, predictions, trade-offs, ranking, recommendation, confidence, and authority prerequisites.
+- The versioned **DecisionPacket** carries those concepts between systems. Domain-specific fields belong in `extension_data`; they cannot redefine the canonical company boundary or authority rules.
 
-Objectives are first-class data: their scope, metric, direction, priority, weight, hard or soft status, time horizon, thresholds, conflicts, provenance, and authority requirements are explicit. Hard objectives remain eligibility gates; soft trade-offs cannot average away a hard failure.
+## What makes the architecture different
 
-### It keeps discovery, evaluation, and recommendation separate
+### Hard requirements stay hard
 
-Finding options does not rank them. Comparing options does not recommend one. Ranking does not authorize action. Each stage has a focused responsibility and a machine-readable contract, making the decision path easier to inspect, test, and evolve.
+Eligibility is decided before soft preferences and weighted scores. A hard constraint failure cannot be compensated for by a strong score elsewhere. Unknown hard requirements block eligibility by default, while soft violations remain visible as penalties.
 
-### It treats evidence and uncertainty as part of the result
+### “Do nothing” and “not enough information” are valid outcomes
 
-Source identity, timestamps, provenance, freshness, confidence, assumptions, and conflicts can travel with the decision. Missing or unresolved information can remain explicitly unknown instead of being silently filled in.
+The canonical model can represent investigation, deferral, escalation, approval requests, and other non-action choices. The Best-Action Engine can abstain when there is no eligible candidate or configured confidence, coverage, or leader-margin thresholds are not met.
 
-### It can abstain
+### Evidence and uncertainty travel with the result
 
-When evidence, feasibility, or confidence is insufficient, the best-action stage can return an abstention instead of manufacturing certainty. Explanations are rendered from explicit evidence, factors, assumptions, exclusions, and sensitivity scenarios; they do not expose or persist hidden chain-of-thought.
+Source references, timestamps, freshness, confidence, assumptions, missing measurements, and conflicts can remain explicit. A low-coverage comparison does not silently become complete, and forecast records carry their model, horizon, assumptions, and evidence references.
 
-### It learns without rewriting history
+### A reviewer can see why the ranking changed
 
-Step 24 records new decision revisions append-only. Step 25 accepts verified outcomes and emits inspectable, reversible calibration revisions for forecasts, assumptions, recommendations, and confidence. Past evidence, forecasts, rankings, recommendations, and decisions remain unchanged.
+Rankings expose dimension-level contributions and support objective- and dimension-weight sensitivity scenarios. The explanation stage can show why an alternative leads, why others scored lower, which evidence mattered, what is uncertain, and what changes could move the result.
 
-### It does not confuse learning with authority
+### Learning produces revisions; it does not rewrite the past
 
-Learning may change future confidence or scoring assumptions. It cannot create permission, entitlement, approval, or execution rights. The canonical company boundary is `company_id`; decision-intelligence stages do not cross company scopes.
+Decision history uses snapshots, hashes, and supersession links. The learning loop requires a verified outcome and verification references, then emits new forecast, assumption, recommendation, and confidence calibration statistics. Historical snapshots remain unchanged.
 
-## Engine capabilities
+### Recommendation is separate from authority
 
-| Capability | Practical value |
+The engine can describe prerequisites for action, but it does not create identity, permission, entitlement, ownership, approval, financial authority, or execution authority. A host system must apply its own governance before acting.
+
+## Capabilities
+
+| Step | Engine | Capability |
+|---:|---|---|
+| **10** | Observation | Accepts browser or system context, emits rule-based observations and candidate signals, and labels browser content as untrusted input. |
+| **11** | Evidence extraction | Represents raw or derived evidence with source, timestamp, confidence, freshness, and optional derivation metadata. |
+| **12** | Entity normalization | Groups source records within one `company_id` using strong identifiers and retains source-record references and evidence links. |
+| **13** | Context enrichment | Collects facts from pluggable providers with source class, confidence, freshness, and per-provider receipts. |
+| **14** | Option discovery | Collects and deduplicates candidate actions, resources, suppliers, assignments, interventions, schedules, strategies, tools, and resolutions while preserving provenance and feasibility state. |
+| **15** | Objective model | Makes objective scope, direction, priority, weights, hardness, time horizon, thresholds, provenance, and conflicts explicit. |
+| **16** | Constraint engine | Evaluates permission, budget, deadline, availability, jurisdiction, policy, environment, safety, privacy, capability, entitlement, and company-boundary constraints. |
+| **17** | Preference model | Applies time-scoped company or actor preferences to trade-offs while rejecting authority-like preferences. |
+| **18** | Comparison | Compares options across cost, time, quality, risk, benefit, sustainability, reversibility, confidence, reliability, and strategic value; reports coverage, pairwise trade-offs, and a descriptive Pareto frontier. |
+| **19** | Outcome prediction | Validates and packages provider-supplied forecasts with horizons, bounds, confidence, assumptions, and evidence references. |
+| **20** | Ranking | Produces decomposable scores, factor contributions, exclusions, confidence adjustments, and weight-sensitivity scenarios. |
+| **21** | Best action | Selects a recommendation candidate or abstains based on candidate availability and configurable confidence, coverage, and margin thresholds. |
+| **22** | Explanation | Produces structured evidence-linked reasons, lower-ranked alternatives, uncertainties, and sensitivity context; it does not include hidden chain-of-thought. |
+| **23** | Confidence | Applies scoped calibration profiles based on observed-outcome bins, with raw confidence retained separately. |
+| **24** | Decision history | Creates snapshot-hashed revisions and verifies supersession chains without editing earlier snapshots. |
+| **25** | Learning loop | Uses verified outcomes to calculate forecast error, assumption reliability, recommendation performance, and confidence calibration updates. |
+
+## Domain-neutral by design
+
+The DecisionPacket contract includes profiles and examples for:
+
+- Operations
+- Finance
+- Workforce
+- Environment
+- CRM
+- Assets
+- Procurement
+- Marketing
+- Scheduling
+- Other domains
+
+A domain supplies its own entities, evidence, objectives, alternatives, and constraints. The shared packet keeps cross-domain semantics consistent while `extension_data` carries typed domain-specific detail.
+
+## Trust boundaries
+
+- **One company scope:** `company_id` is the canonical company boundary. The decision model does not create parallel tenant authority fields.
+- **No authority transfer:** observations, evidence, provider facts, preferences, predictions, rankings, and learning updates carry no execution authority.
+- **Fail closed on unknown hard constraints:** unresolved hard requirements remain visible and block eligibility by default.
+- **Untrusted browser inputs:** page content can contribute evidence, but it cannot become policy or permission.
+- **No hidden reasoning transcript:** explanations are generated from structured factors, evidence references, assumptions, uncertainty, and sensitivity data.
+- **Governed execution stays external:** the calling product remains responsible for identity, authorization, approvals, risk, cost, privacy, receipts, and audit.
+
+These are decision-support boundaries. They do not replace authentication, authorization, policy enforcement, or a governed execution service in the integrating application.
+
+## Integration pattern
+
+Compose the modules from a host application:
+
+1. Adapt source systems into observations, evidence, canonical entities, and context.
+2. Supply domain-specific providers for options and forecasts.
+3. Build objectives, constraints, and scoped preferences for the decision subject.
+4. Compare and rank eligible alternatives, then generate a recommendation or abstention and its explanation.
+5. Pass the resulting DecisionPacket to the host product, where its existing governance determines whether an action may proceed.
+
+The TypeScript modules are independent reference stages; this repository does not currently include a single end-to-end orchestrator or production provider connectors.
+
+## Implementation status
+
+This repository is a **research-backed architecture package with modular TypeScript reference implementations**. It is not yet a turnkey deployed service or a single installable SDK.
+
+**Included**
+
+- Canonical Decision Model and versioned DecisionPacket contract
+- JSON Schema Draft 2020-12 definitions
+- TypeScript runtime modules for Steps 10–25
+- Per-stage contracts, validators, tests, examples, and acceptance artifacts where provided
+- Architecture assets and the original cumulative Step 25 research bundle
+
+**Host-application work still required**
+
+- A root package manifest and supported public SDK/export surface
+- End-to-end orchestration and durable storage
+- Production adapters for business systems and forecasting providers
+- Authentication, authorization, approval, and governed execution integrations
+
+The checked-in acceptance and test-output files record staged development history. Some early step documents and logs refer to the pre-convergence Python implementation; `README-TYPESCRIPT-CONVERGENCE.md` describes the current TypeScript direction. Treat those records as historical artifacts and verify the current source and integration in the target application before relying on them as a release gate.
+
+## Repository guide
+
+| Path | What to find |
 |---|---|
-| **Observation and evidence** | Turn source records into traceable observations and evidence, keeping raw acquisition distinct from derived claims. |
-| **Entity resolution** | Recognize records that refer to the same real-world entity while preserving source identities and match evidence. |
-| **Context enrichment** | Combine multiple source classes with freshness, confidence, provenance, provider receipts, and unresolved conflicts. |
-| **Option discovery** | Surface actions, resources, suppliers, assignments, interventions, schedules, strategies, tools, and resolutions without prematurely ranking them. |
-| **Objective and constraint models** | Make trade-offs explicit while retaining non-negotiable eligibility rules. |
-| **Comparison and prediction** | Compare unlike alternatives across cost, time, quality, risk, benefit, sustainability, reversibility, reliability, and strategic value. |
-| **Ranking and best action** | Produce transparent ordering and a recommendation candidate—or abstain—without taking authority. |
-| **Explanation and confidence** | Give users evidence-linked reasons, uncertainty, exclusions, and sensitivity context. |
-| **Decision history and learning** | Preserve immutable history and use only verified outcomes to calibrate future decisions. |
+| [`docs/specification/08-canonical-decision-model/`](docs/specification/08-canonical-decision-model/) | Shared decision semantics, schema, example, and field matrix |
+| [`docs/specification/09-decisionpacket-contract/`](docs/specification/09-decisionpacket-contract/) | Versioned packet contract, JSON Schema, domain profiles, and ten example packets |
+| [`engines/10-observation-engine/`](engines/10-observation-engine/) – [`engines/25-learning-loop/`](engines/25-learning-loop/) | TypeScript reference stages, contracts, schemas, examples, tests, and validation material |
+| [`README-TYPESCRIPT-CONVERGENCE.md`](README-TYPESCRIPT-CONVERGENCE.md) | Current runtime-language and convergence notes |
+| [`archive/Titan Decision Engine Master Step 25.zip`](archive/Titan%20Decision%20Engine%20Master%20Step%2025.zip) | Original cumulative research and implementation bundle |
+| [`docs/DEEP-SCAN-PROMPT.md`](docs/DEEP-SCAN-PROMPT.md) | Reusable repository-audit prompt |
 
-## Where it can be applied
-
-The architecture is deliberately not hard-coded to one industry. Included decision-packet examples cover assets, CRM, environment, finance, marketing, operations, procurement, scheduling, and workforce use cases. The same staged model can be adapted to other domains by supplying their entities, evidence, objectives, options, and constraints.
-
-## Repository map
-
-```text
-engines/                       TypeScript engine modules, contracts, tests, examples
-docs/specification/            Canonical decision model and DecisionPacket contract
-assets/                         Original project banner and architecture graphic
-archive/                         Original Step 25 research bundle
-docs/DEEP-SCAN-PROMPT.md        Reusable repository-audit prompt
-```
-
-Each `engines/<step>-<name>/` folder keeps the implementation alongside its contract, schemas, examples, validator, tests, and acceptance artifacts where provided. `README-TYPESCRIPT-CONVERGENCE.md` explains why the active Steps 10–25 runtime chain is TypeScript-first.
-
-## Project status
-
-This is a **research-backed, modular TypeScript reference implementation and architecture package**. The archive’s Step 25 acceptance record reports 11 tests passed, rejects cross-company and unverified outcomes, and confirms historical decisions and evidence remain unchanged. The broader package also contains per-step tests and validation records.
-
-Those records describe the supplied research snapshot; they are not a claim that this repository is a single production-ready npm package or that every module has been independently re-run in this checkout. The modules are presented as a coherent architecture with explicit integration and authority boundaries.
-
-## Source bundle
-
-The original cumulative Step 25 source and research package is preserved in [`archive/Titan Decision Engine Master Step 25.zip`](archive/Titan%20Decision%20Engine%20Master%20Step%2025.zip). The extracted public tree focuses on the canonical model and the TypeScript decision pipeline; donor runtime code and assets are not copied into the public engine modules.
-
-## Further reading
+## Explore the model
 
 - [Canonical Decision Model](docs/specification/08-canonical-decision-model/README-STEP-08-CANONICAL-DECISION-MODEL.md)
 - [DecisionPacket contract](docs/specification/09-decisionpacket-contract/README-STEP-09-DECISIONPACKET-CONTRACT.md)
+- [DecisionPacket examples](docs/specification/09-decisionpacket-contract/examples/)
 - [TypeScript convergence notes](README-TYPESCRIPT-CONVERGENCE.md)
 - [Step 25 Learning Loop](engines/25-learning-loop/README-STEP-25.md)
-- [Reusable deep-scan prompt](docs/DEEP-SCAN-PROMPT.md)
 
 ---
 
-**Titan Decision Engine is part of the Titan Zero system architecture.** It turns evidence into inspectable decision support while keeping authority, approval, and execution governed outside the reasoning pipeline.
+**Titan Decision Engine is the decision-intelligence layer of the Titan architecture:** it makes reasoning inspectable and recommendations explainable while leaving real-world authority with the systems designed to govern action.
