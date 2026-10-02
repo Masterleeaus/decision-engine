@@ -78,6 +78,53 @@ export interface DecisionWatchEvaluation {
   authority_effect: "none";
 }
 
+export interface DecisionWatchStoredRecord {
+  watch: DecisionWatch;
+  revision: number;
+}
+
+export interface DecisionWatchSnapshotPair {
+  current: DecisionWatchSnapshot;
+  previous?: DecisionWatchSnapshot;
+}
+
+export interface DecisionWatchCommit {
+  company_id: string;
+  watch_id: string;
+  expected_revision: number;
+  evaluation: DecisionWatchEvaluation;
+  outbox_trigger?: DecisionWatchEvaluation["trigger_request"];
+}
+
+export type DecisionWatchCommitStatus = "stored" | "duplicate" | "conflict";
+
+export interface DecisionWatchCycleStore {
+  loadWatch(
+    company_id: string,
+    watch_id: string,
+  ): DecisionWatchStoredRecord | Promise<DecisionWatchStoredRecord>;
+  loadSnapshots(
+    watch: DecisionWatch,
+  ): DecisionWatchSnapshotPair | Promise<DecisionWatchSnapshotPair>;
+  commitEvaluation(
+    input: DecisionWatchCommit,
+  ): DecisionWatchCommitStatus | Promise<DecisionWatchCommitStatus>;
+}
+
+export interface DecisionWatchCycleRequest {
+  company_id: string;
+  watch_id: string;
+  trigger: "event" | "scheduled";
+  now?: string;
+}
+
+export interface DecisionWatchCycleResult {
+  evaluation: DecisionWatchEvaluation;
+  commit_status: DecisionWatchCommitStatus;
+  rerun_request_committed: boolean;
+  authority_effect: "none";
+}
+
 export class DecisionWatchError extends Error {
   readonly code: string;
 
@@ -417,4 +464,47 @@ export function evaluateDecisionWatch(
     authority_effect: "none" as const,
   };
   return result(watch, now, "trigger_requested", undefined, update, triggerRequest);
+}
+
+export async function runDecisionWatchCycle(
+  request: DecisionWatchCycleRequest,
+  store: DecisionWatchCycleStore,
+): Promise<DecisionWatchCycleResult> {
+  if (!request.company_id) throw new DecisionWatchError("company_id_required");
+  if (!request.watch_id) throw new DecisionWatchError("watch_id_required");
+
+  const stored = await store.loadWatch(request.company_id, request.watch_id);
+  if (
+    stored.watch.company_id !== request.company_id ||
+    stored.watch.watch_id !== request.watch_id
+  ) {
+    throw new DecisionWatchError("watch_store_scope_mismatch");
+  }
+  if (!Number.isInteger(stored.revision) || stored.revision < 0) {
+    throw new DecisionWatchError("invalid_watch_revision");
+  }
+
+  const snapshots = await store.loadSnapshots(stored.watch);
+  const evaluation = evaluateDecisionWatch(stored.watch, snapshots.current, {
+    trigger: request.trigger,
+    previous: snapshots.previous,
+    now: request.now,
+  });
+  const commitStatus = await store.commitEvaluation({
+    company_id: request.company_id,
+    watch_id: request.watch_id,
+    expected_revision: stored.revision,
+    evaluation,
+    outbox_trigger: evaluation.trigger_request,
+  });
+  if (!["stored", "duplicate", "conflict"].includes(commitStatus)) {
+    throw new DecisionWatchError("invalid_watch_commit_status");
+  }
+  return {
+    evaluation,
+    commit_status: commitStatus,
+    rerun_request_committed:
+      evaluation.trigger_request !== undefined && commitStatus !== "conflict",
+    authority_effect: "none",
+  };
 }

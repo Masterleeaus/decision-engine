@@ -8,6 +8,7 @@
   "company_id_scope_checked_across_artifacts": true,
   "watch_requires_fresh_evidence": true,
   "watch_trigger_is_rerun_request_only": true,
+  "watch_state_and_rerun_outbox_commit_are_atomic_adapter_contract": true,
   "verified_outcome_gate_before_learning": true,
   "history_and_learning_are_append_only_adapters": true,
   "authority_effect": "none",

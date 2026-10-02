@@ -6,7 +6,10 @@ import {
   recordVerifiedOutcome,
   runDecisionWorkflow,
 } from "../runtime/decisionWorkflow.ts";
-import { evaluateDecisionWatch } from "../runtime/decisionWatch.ts";
+import {
+  evaluateDecisionWatch,
+  runDecisionWatchCycle,
+} from "../runtime/decisionWatch.ts";
 
 const companyId = "company-a";
 const subjectId = "subject-1";
@@ -173,6 +176,58 @@ test("stale watch evidence returns unknown without a trigger", () => {
   assert.equal(result.state, "unknown");
   assert.equal(result.reason_code, "fresh_evidence_required");
   assert.equal(result.trigger_request, undefined);
+});
+
+test("watch cycle commits the watch update and rerun request through one outbox adapter", async () => {
+  const watch = {
+    watch_id: "watch-1",
+    company_id: companyId,
+    decision_subject_id: subjectId,
+    status: "active",
+    condition: { field: "price", operator: "lte", expected: 100 },
+    created_at: fixedTime,
+  };
+  const current = {
+    company_id: companyId,
+    decision_subject_id: subjectId,
+    snapshot_id: "snapshot-2",
+    values: { price: 95 },
+    evidence: [
+      {
+        evidence_id: "evidence-2",
+        company_id: companyId,
+        field: "price",
+        freshness_state: "fresh",
+        observed_at: fixedTime,
+      },
+    ],
+  };
+  let committed;
+  const result = await runDecisionWatchCycle(
+    {
+      company_id: companyId,
+      watch_id: "watch-1",
+      trigger: "event",
+      now: fixedTime,
+    },
+    {
+      loadWatch: async () => ({ watch, revision: 4 }),
+      loadSnapshots: async () => ({ current }),
+      commitEvaluation: async (input) => {
+        committed = input;
+        return "stored";
+      },
+    },
+  );
+
+  assert.equal(result.evaluation.state, "trigger_requested");
+  assert.equal(result.commit_status, "stored");
+  assert.equal(result.rerun_request_committed, true);
+  assert.equal(committed.expected_revision, 4);
+  assert.equal(
+    committed.outbox_trigger.trigger_id,
+    result.evaluation.trigger_request.trigger_id,
+  );
 });
 
 test("learning requires external verification and references before it is appended", async () => {

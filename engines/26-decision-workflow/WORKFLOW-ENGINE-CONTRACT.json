@@ -60,7 +60,8 @@
       "Watch evaluation is pure and does not dispatch work.",
       "The host scheduler, event source, store, and notification service remain external.",
       "Stale, expired, missing, or unknown evidence produces an unknown state."
-    ]
+    ],
+    "persistence_contract": "commitEvaluation atomically stores the watch update and inserts the stable rerun request into an idempotent outbox; revision conflicts are returned for retry."
   },
   "learning": {
     "verification_required": true,
@@ -76,7 +77,8 @@
     "Workflow events summarize stage transitions and hash outputs without copying raw stage payloads.",
     "A watch can request a decision rerun but cannot execute a recommended action.",
     "Recommendations, watch triggers, and learning updates have authority_effect none.",
-    "History and learning persistence are provided by explicit host adapters."
+    "History and learning persistence are provided by explicit host adapters.",
+    "A watch update and its rerun request must be committed atomically by the host store adapter."
   ],
   "non_goals": [
     "Production provider integrations",
