@@ -1,0 +1,16 @@
+{
+  "step": 26,
+  "name": "Decision Workflow and Monitoring",
+  "status": "implemented",
+  "language": "TypeScript",
+  "ordered_reference_workflow": true,
+  "constraint_gate_fails_closed": true,
+  "company_id_scope_checked_across_artifacts": true,
+  "watch_requires_fresh_evidence": true,
+  "watch_trigger_is_rerun_request_only": true,
+  "verified_outcome_gate_before_learning": true,
+  "history_and_learning_are_append_only_adapters": true,
+  "authority_effect": "none",
+  "tests": "tests/workflow.test.mjs",
+  "host_storage_scheduler_and_providers_required": true
+}

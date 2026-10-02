@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0.0",
+  "step": 26,
+  "title": "Decision Workflow and Monitoring",
+  "purpose": "Compose the Step 10-25 reference engines into an ordered, company-scoped decision lifecycle and translate evidence-backed watch conditions into requests for a new decision run.",
+  "pipeline": [
+    "observation",
+    "evidence",
+    "entity_normalization",
+    "context_enrichment",
+    "option_discovery",
+    "objectives",
+    "constraints",
+    "preferences",
+    "comparison",
+    "prediction",
+    "ranking",
+    "best_action",
+    "explanation",
+    "confidence",
+    "history"
+  ],
+  "workflow_triggers": [
+    "manual",
+    "event",
+    "scheduled",
+    "watch"
+  ],
+  "constraint_gate": {
+    "required_output": "workflow_gate",
+    "states": [
+      "ready",
+      "abstain",
+      "review_required"
+    ],
+    "rules": [
+      "A missing or malformed gate is review_required.",
+      "ready requires at least one eligible_option_id.",
+      "Only ready proceeds to preference application, comparison, prediction, ranking, and best-action selection.",
+      "Hard-constraint uncertainty must never be converted into an eligible option."
+    ]
+  },
+  "watch_conditions": {
+    "operators": [
+      "changed",
+      "eq",
+      "neq",
+      "gt",
+      "gte",
+      "lt",
+      "lte",
+      "contains",
+      "not_contains",
+      "exists",
+      "not_exists"
+    ],
+    "fresh_evidence_required": true,
+    "resulting_action": "rerun_decision",
+    "limits": [
+      "Watch evaluation is pure and does not dispatch work.",
+      "The host scheduler, event source, store, and notification service remain external.",
+      "Stale, expired, missing, or unknown evidence produces an unknown state."
+    ]
+  },
+  "learning": {
+    "verification_required": true,
+    "verification_references_required": true,
+    "persistence": "append_learning_revision",
+    "historical_decisions_mutated": false
+  },
+  "invariants": [
+    "company_id is the only company boundary.",
+    "Every workflow request requires decision, run, and idempotency identifiers.",
+    "Every artifact with company_id must match the request company_id.",
+    "Legacy tenant_id and tenant_company_id fields are rejected.",
+    "Workflow events summarize stage transitions and hash outputs without copying raw stage payloads.",
+    "A watch can request a decision rerun but cannot execute a recommended action.",
+    "Recommendations, watch triggers, and learning updates have authority_effect none.",
+    "History and learning persistence are provided by explicit host adapters."
+  ],
+  "non_goals": [
+    "Production provider integrations",
+    "Durable scheduling or storage implementation",
+    "Notification delivery",
+    "Approval, permission, or governed execution",
+    "Domain-specific browser, shopping, coupon, affiliate, or order-tracking behavior"
+  ]
+}

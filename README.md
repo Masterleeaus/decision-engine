@@ -35,7 +35,7 @@ The engine can analyze and recommend. It does not authorize or execute the recom
   <img src="assets/decision-engine-architecture.svg" alt="Titan Decision Engine stages from observation and evidence to options, constraints, comparison, recommendation, explanation, and verified learning" width="100%" />
 </p>
 
-The repository preserves a 25-step research lineage. Its current public source tree contains the canonical decision model and packet contract, plus TypeScript reference engines for Steps 10–25.
+The repository preserves a 25-step research bundle and extends its TypeScript reference engines through Step 26. The public source tree contains the canonical decision model and packet contract, Steps 10–25, and a workflow coordinator that composes those engines.
 
 | Decision stage | Steps | Responsibility |
 |---|---:|---|
@@ -44,6 +44,7 @@ The repository preserves a 25-step research lineage. Its current public source t
 | **Compare and rank** | 18–20 | Compare unlike options, preserve missing data and trade-offs, attach provider-supplied forecasts, and calculate transparent rankings with sensitivity scenarios. |
 | **Recommend and explain** | 21–23 | Recommend or abstain against configured thresholds, explain the result from explicit inputs, and apply observed-outcome confidence calibration. |
 | **Preserve and learn** | 24–25 | Create hash-bound decision-history revisions and derive future calibration updates from verified outcomes. |
+| **Orchestrate and monitor** | 26 | Run the stages in order, stop when constraints are unresolved, and request evidence-backed re-evaluation from event or scheduled watches. |
 
 Steps 08 and 09 define the shared meaning and transport format for the pipeline:
 
@@ -96,6 +97,7 @@ The engine can describe prerequisites for action, but it does not create identit
 | **23** | Confidence | Applies scoped calibration profiles based on observed-outcome bins, with raw confidence retained separately. |
 | **24** | Decision history | Creates snapshot-hashed revisions and verifies supersession chains without editing earlier snapshots. |
 | **25** | Learning loop | Uses verified outcomes to calculate forecast error, assumption reliability, recommendation performance, and confidence calibration updates. |
+| **26** | Decision workflow | Composes Steps 10–25, emits hash-linked stage events, checks company scope, applies a fail-closed constraint gate, evaluates watches, and accepts learning updates only after external outcome verification. |
 
 ## Domain-neutral by design
 
@@ -127,36 +129,38 @@ These are decision-support boundaries. They do not replace authentication, autho
 
 ## Integration pattern
 
-Compose the modules from a host application:
+Step 26 provides the reference coordinator for a host application:
 
 1. Adapt source systems into observations, evidence, canonical entities, and context.
 2. Supply domain-specific providers for options and forecasts.
-3. Build objectives, constraints, and scoped preferences for the decision subject.
-4. Compare and rank eligible alternatives, then generate a recommendation or abstention and its explanation.
-5. Pass the resulting DecisionPacket to the host product, where its existing governance determines whether an action may proceed.
+3. Provide objectives, constraints, and scoped preferences for the decision subject.
+4. Run the ordered workflow; its constraint gate stops on missing, unknown, or ineligible hard requirements before scoring.
+5. Use event or scheduled watch checks to request a new run when fresh evidence meets a condition.
+6. Pass the resulting DecisionPacket to the host product, where its governance decides whether a recommended action may proceed.
 
-The TypeScript modules are independent reference stages; this repository does not currently include a single end-to-end orchestrator or production provider connectors.
+The coordinator sequences injected stage adapters. Durable storage, cross-run idempotency, providers, scheduling, notifications, and governed execution remain host responsibilities.
 
 ## Implementation status
 
-This repository is a **research-backed architecture package with modular TypeScript reference implementations**. It is not yet a turnkey deployed service or a single installable SDK.
+This repository is a **research-backed architecture package with modular TypeScript reference engines and a reference workflow coordinator**. It is not yet a turnkey deployed service or a single installable SDK.
 
 **Included**
 
 - Canonical Decision Model and versioned DecisionPacket contract
 - JSON Schema Draft 2020-12 definitions
 - TypeScript runtime modules for Steps 10–25
+- Step 26 workflow coordination, evidence-backed watch evaluation, and verified-outcome gating
 - Per-stage contracts, validators, tests, examples, and acceptance artifacts where provided
 - Architecture assets and the original cumulative Step 25 research bundle
 
 **Host-application work still required**
 
 - A root package manifest and supported public SDK/export surface
-- End-to-end orchestration and durable storage
+- Durable history, learning, and watch storage; cross-run idempotency; and a production scheduler
 - Production adapters for business systems and forecasting providers
 - Authentication, authorization, approval, and governed execution integrations
 
-The checked-in acceptance and test-output files record staged development history. Some early step documents and logs refer to the pre-convergence Python implementation; `README-TYPESCRIPT-CONVERGENCE.md` describes the current TypeScript direction. Treat those records as historical artifacts and verify the current source and integration in the target application before relying on them as a release gate.
+The Step 26 workflow boundary is a reference composition layer; it does not provide production connectors, a durable store, a scheduler, or action execution. The checked-in acceptance and test-output files record staged development history. Some early step documents and logs refer to the pre-convergence Python implementation; `README-TYPESCRIPT-CONVERGENCE.md` describes the current TypeScript direction. Treat those records as historical artifacts and verify the current source and integration in the target application before relying on them as a release gate.
 
 ## Repository guide
 
@@ -164,7 +168,7 @@ The checked-in acceptance and test-output files record staged development histor
 |---|---|
 | [`docs/specification/08-canonical-decision-model/`](docs/specification/08-canonical-decision-model/) | Shared decision semantics, schema, example, and field matrix |
 | [`docs/specification/09-decisionpacket-contract/`](docs/specification/09-decisionpacket-contract/) | Versioned packet contract, JSON Schema, domain profiles, and ten example packets |
-| [`engines/10-observation-engine/`](engines/10-observation-engine/) – [`engines/25-learning-loop/`](engines/25-learning-loop/) | TypeScript reference stages, contracts, schemas, examples, tests, and validation material |
+| [`engines/10-observation-engine/`](engines/10-observation-engine/) – [`engines/26-decision-workflow/`](engines/26-decision-workflow/) | TypeScript reference engines, workflow coordination, contracts, schemas, tests, and validation material |
 | [`README-TYPESCRIPT-CONVERGENCE.md`](README-TYPESCRIPT-CONVERGENCE.md) | Current runtime-language and convergence notes |
 | [`archive/Titan Decision Engine Master Step 25.zip`](archive/Titan%20Decision%20Engine%20Master%20Step%2025.zip) | Original cumulative research and implementation bundle |
 | [`docs/DEEP-SCAN-PROMPT.md`](docs/DEEP-SCAN-PROMPT.md) | Reusable repository-audit prompt |
