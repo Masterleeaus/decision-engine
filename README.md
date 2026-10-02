@@ -103,7 +103,7 @@ Those records describe the supplied research snapshot; they are not a claim that
 
 ## Source bundle
 
-The original cumulative Step 25 source and research package is preserved in [`archive/Titan Decision Engine Master Step 25.zip`](archive/Titan%20Decision%20Engine%20Master%20Step%2025.zip). The extracted public tree focuses on the canonical model and the TypeScript decision pipeline; donor-specific research material is not copied into the public engine modules.
+The original cumulative Step 25 source and research package is preserved in [`archive/Titan Decision Engine Master Step 25.zip`](archive/Titan%20Decision%20Engine%20Master%20Step%2025.zip). The extracted public tree focuses on the canonical model and the TypeScript decision pipeline; donor runtime code and assets are not copied into the public engine modules.
 
 ## Further reading
 
