@@ -19,7 +19,7 @@
 
 Most decision software jumps from data to a score. Titan breaks that jump into explicit, inspectable stages: it observes, establishes evidence, resolves entities, enriches context, discovers alternatives, defines what “better” means, applies hard constraints, compares outcomes, ranks eligible choices, and explains its recommendation.
 
-The result is a domain-neutral decision-intelligence architecture for business, workforce, environmental, financial, operational, procurement, scheduling, and other decision problems. Each stage has its own contract, schemas, TypeScript runtime, tests, and examples in the relevant engine folders.
+The result is a domain-neutral decision-intelligence architecture for business, workforce, environmental, financial, operational, procurement, scheduling, and other decision problems. The engine modules pair available TypeScript runtimes with contracts, schemas, validators, tests, acceptance artifacts, and examples where provided.
 
 **Its defining boundary is simple:** the engine can reason and recommend; it does not grant permission or execute the recommendation. Authority stays in a separate governed system.
 
