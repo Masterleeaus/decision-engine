@@ -1,0 +1,14 @@
+{
+  "company_id": "company-demo",
+  "source_kind": "system",
+  "source_id": "ops-core",
+  "record_type": "job",
+  "record_id": "job-7",
+  "domain": "operations",
+  "fields": {
+    "name": "Site inspection",
+    "status": "open",
+    "days_overdue": 3,
+    "requires_decision": true
+  }
+}

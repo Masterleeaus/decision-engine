@@ -1,0 +1,39 @@
+{
+  "library_scan_at": "2026-09-03T02:01:00+10:00",
+  "sources_considered": [
+    {
+      "name": "Titan-Zero-CODEE-Step01-Company-Boundary-Enforcement-FINAL.zip",
+      "sha256": "3a081d7c69715092e26e9bdf8f7205bcd55e7bcfda9184e76ea85fe8104e6602",
+      "size_bytes": 404529
+    },
+    {
+      "name": "Titan-BOS-v0.1.51-Convergence-Intelligence-Step13-DELTA.zip",
+      "sha256": "c48d04e989c4ed3c7c87b626e279e72508bf6994cc06e20797c990850ccc7b5c",
+      "size_bytes": 51898
+    }
+  ],
+  "adopted_patterns": [
+    {
+      "pattern": "company_id sole canonical boundary; missing/untrusted company context fails closed",
+      "source": "Titan-Zero company-boundary enforcement"
+    },
+    {
+      "pattern": "governed execution ordering keeps permission and entitlement separate from recommendation",
+      "source": "Titan-Zero company-boundary enforcement"
+    },
+    {
+      "pattern": "policy/capability discovery is not execution authority",
+      "source": "Titan-Zero company-boundary enforcement"
+    },
+    {
+      "pattern": "cross-engine convergence uses provenance/evidence and keeps authority boundaries explicit",
+      "source": "Titan BOS convergence delta"
+    }
+  ],
+  "not_imported": [
+    "unrelated BOS runtime code",
+    "documentation-only provider implementations",
+    "legacy tenant authority semantics"
+  ],
+  "decision": "Use newer platform rules as constraint invariants; do not merge unrelated runtime trees into Decision Engine research package."
+}

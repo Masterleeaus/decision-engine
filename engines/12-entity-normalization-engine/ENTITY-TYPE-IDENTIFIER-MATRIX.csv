@@ -1,0 +1,10 @@
+entity_type,strong_identifier_examples,corroborating_fields,safety_rule
+person,"email, phone, employee_id, provider_user_id","name, organisation, role",Do not merge same-name people without stronger corroboration
+item,"sku, gtin, manufacturer_part_number, provider_item_id","name, brand, model",Provider IDs are scoped by provider/source
+asset,"serial_number, asset_tag, vin, provider_asset_id","make, model, location",Serial/VIN conflicts block automatic merge
+supplier,"abn/acn or jurisdictional registration, supplier_id, domain","legal/trading name, address",Company-scoped supplier records remain tenant-local
+job,"job_id, work_order_id, external_job_id","customer, site, scheduled time",Never infer same job from description/time alone
+company,"registration_number, provider_company_id, verified_domain","legal name, address","Titan company tenancy remains company_id; represented companies are entities, not tenant boundaries"
+opportunity,"opportunity_id, crm_external_id","customer, title, stage",Similarity alone is not identity
+intervention,"intervention_id, project_action_id","site, measure, objective",Keep alternative interventions distinct
+resource,"resource_id, provider_resource_id","name, type, location",Do not collapse fungible resources unless source semantics say identity is shared

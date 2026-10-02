@@ -1,0 +1,87 @@
+{
+  "evidence_id": "evd_db10d13c1629ba0256176740",
+  "contract_version": "1.0.0",
+  "company_id": "company-demo",
+  "subject": {
+    "subject_type": "energy_meter",
+    "subject_key": "meter-9",
+    "label": null
+  },
+  "evidence_class": "derived",
+  "claim": {
+    "field": "energy_variance_pct",
+    "claim_type": "estimate",
+    "unit": "%"
+  },
+  "value": 40.0,
+  "source": {
+    "source_kind": "derived",
+    "source_id": "variance-percent",
+    "locator": null,
+    "observed_at": "2026-09-03T00:00:00Z",
+    "retrieved_at": "2026-09-02T15:32:37.762057Z",
+    "trust_class": "derived",
+    "source_revision": "1.0.0"
+  },
+  "acquisition": {
+    "method": "transform",
+    "adapter": "titan-evidence-engine",
+    "rule_or_parser": "variance-percent",
+    "raw_capture_preserved": true,
+    "capture_ref": null
+  },
+  "confidence": {
+    "score": 0.87,
+    "level": "high",
+    "basis": [
+      "derived from governed parent evidence",
+      "transform:variance-percent"
+    ],
+    "limitations": [
+      "derived evidence is not a raw source fact"
+    ]
+  },
+  "freshness": {
+    "state": "fresh",
+    "as_of": "2026-09-02T15:32:37.762057Z",
+    "max_age_seconds": 900,
+    "age_seconds": 0,
+    "expires_at": "2026-09-03T00:45:00Z"
+  },
+  "derivation": {
+    "transform_id": "variance-percent",
+    "transform_version": "1.0.0",
+    "parent_evidence_ids": [
+      "ev_bab1363861c6baad98451164",
+      "ev_7180fa2a2b2e4683e8bdad07"
+    ],
+    "assumptions": [
+      "baseline is comparable"
+    ],
+    "formula_or_method": "(current-baseline)/baseline*100"
+  },
+  "integrity": {
+    "content_sha256": "4d4f77a45fb3b94f1a290d6dd2160e94e285df43d28488ff2fde87e82413e8c0",
+    "canonicalization": "titan-evidence-v1"
+  },
+  "governance": {
+    "authority_bearing": false,
+    "sensitivity": "internal",
+    "allowed_purposes": [
+      "understanding",
+      "comparison",
+      "prediction",
+      "ranking",
+      "recommendation",
+      "monitoring",
+      "audit"
+    ],
+    "retention_class": "evidence_record"
+  },
+  "created_at": "2026-09-02T15:32:37.762057Z",
+  "tags": [
+    "evidence:derived",
+    "transform:variance-percent"
+  ],
+  "extension_data": {}
+}

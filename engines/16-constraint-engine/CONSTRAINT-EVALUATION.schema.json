@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titan.local/contracts/constraint-evaluation/1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "evaluation_id",
+    "company_id",
+    "decision_subject_id",
+    "constraint_set_id",
+    "overall_status",
+    "hard_gate",
+    "results",
+    "created_at"
+  ],
+  "properties": {
+    "evaluation_id": {
+      "type": "string"
+    },
+    "company_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "decision_subject_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "constraint_set_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "overall_status": {
+      "enum": [
+        "eligible",
+        "ineligible",
+        "needs_resolution"
+      ]
+    },
+    "hard_gate": {
+      "enum": [
+        "pass",
+        "fail",
+        "unknown"
+      ]
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "constraint_id",
+          "category",
+          "hardness",
+          "status",
+          "reason_code",
+          "actual",
+          "expected",
+          "penalty"
+        ],
+        "properties": {
+          "constraint_id": {
+            "type": "string"
+          },
+          "category": {
+            "enum": [
+              "permission",
+              "budget",
+              "deadline",
+              "availability",
+              "jurisdiction",
+              "policy",
+              "environmental",
+              "safety",
+              "privacy",
+              "capability",
+              "entitlement",
+              "company_boundary"
+            ]
+          },
+          "hardness": {
+            "enum": [
+              "hard",
+              "soft"
+            ]
+          },
+          "status": {
+            "enum": [
+              "satisfied",
+              "violated",
+              "unknown",
+              "not_applicable"
+            ]
+          },
+          "reason_code": {
+            "type": "string"
+          },
+          "actual": {},
+          "expected": {},
+          "penalty": {
+            "type": "number",
+            "minimum": 0
+          },
+          "details": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

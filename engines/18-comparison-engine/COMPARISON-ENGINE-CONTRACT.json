@@ -1,0 +1,37 @@
+{
+  "contract": "TitanComparisonEngine",
+  "version": "1.0.0",
+  "canonical_boundary": "company_id",
+  "purpose": "Compare unlike alternatives across a domain-neutral, evidence-bearing dimension model without choosing or executing a winner.",
+  "dimensions": [
+    "cost",
+    "time",
+    "quality",
+    "risk",
+    "benefit",
+    "sustainability",
+    "reversibility",
+    "confidence",
+    "reliability",
+    "strategic_value"
+  ],
+  "invariants": [
+    "Raw values, units, assumptions, evidence references and confidence are preserved.",
+    "Normalization never rewrites source evidence.",
+    "Hard-ineligible options remain visible but are marked ineligible and cannot be made eligible by weights or preferences.",
+    "Missing data reduces coverage/confidence and is never silently imputed unless the dimension explicitly declares a missing policy.",
+    "Weights express comparison emphasis, not authority.",
+    "Preferences may tune weights only through allowed advisory preference keys.",
+    "Comparison does not rank, recommend, select best action, approve or execute.",
+    "Pareto dominance is descriptive, not a recommendation.",
+    "company_id must match across comparison request, options and all incorporated constraint/preference context."
+  ],
+  "outputs": [
+    "normalized per-dimension profiles",
+    "coverage",
+    "comparison confidence",
+    "pairwise tradeoffs",
+    "descriptive Pareto frontier",
+    "dominance relationships"
+  ]
+}

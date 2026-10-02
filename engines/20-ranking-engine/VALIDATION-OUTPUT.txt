@@ -1,0 +1,4 @@
+JSON OK 20-ranking-engine/RANKING-RESULT.schema.json
+JSON OK 20-ranking-engine/RANKING-ENGINE-CONTRACT.json
+JSON OK 20-ranking-engine/examples/ranking-result-water-optimization.json
+Ranking example invariants OK

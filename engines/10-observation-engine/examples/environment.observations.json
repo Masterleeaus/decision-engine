@@ -1,0 +1,336 @@
+[
+  {
+    "observation_id": "obs_5df4f95e56f72d5a0b56",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "entity",
+    "domain": "environment",
+    "subject": {
+      "subject_type": "energy_use",
+      "subject_key": "meter-9",
+      "label": "energy_use: meter-9",
+      "external_ref": "meter-9"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "env-meter",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.468256Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_cf32eee23ffab708c8bd",
+        "evidence_type": "raw",
+        "field": "energy_kwh",
+        "value": 1400,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "env-meter",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_76ca49ddddcce7c57962",
+        "evidence_type": "raw",
+        "field": "state",
+        "value": "elevated",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "env-meter",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_8756fc8389a038f5aebc",
+        "evidence_type": "raw",
+        "field": "decision_needed",
+        "value": true,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "env-meter",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_1fe9c0a980c62ee58c42",
+        "evidence_type": "derived",
+        "field": "entity_type",
+        "value": "energy_use",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "env-meter",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_62a55a7bdc40966e0512",
+        "evidence_type": "derived",
+        "field": "entity_id",
+        "value": "meter-9",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "env-meter",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "energy_kwh": 1400,
+      "state": "elevated",
+      "decision_needed": true,
+      "entity_type": "energy_use",
+      "entity_id": "meter-9"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.86,
+      "level": "high",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": false,
+      "question": null,
+      "urgency": "none",
+      "candidate_dimensions": []
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_a6061d34d0179bde9edf",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "signal",
+    "domain": "environment",
+    "subject": {
+      "subject_type": "energy_use",
+      "subject_key": "meter-9",
+      "label": "High energy-use signal for meter-9",
+      "external_ref": "meter-9"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "env-meter",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.468302Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_cf32eee23ffab708c8bd",
+        "evidence_type": "raw",
+        "field": "energy_kwh",
+        "value": 1400,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "env-meter",
+          "rule_id": "threshold.high_energy"
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "energy_kwh": 1400,
+      "state": "elevated",
+      "decision_needed": true,
+      "entity_type": "energy_use",
+      "entity_id": "meter-9"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.75,
+      "level": "medium",
+      "basis": [
+        "source context",
+        "rule match"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": false,
+      "question": "Should energy use be investigated or reduced?",
+      "urgency": "medium",
+      "candidate_dimensions": [
+        "energy",
+        "cost",
+        "environmental_impact"
+      ]
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_8e93c48f33a8b5326ebd",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "state",
+    "domain": "environment",
+    "subject": {
+      "subject_type": "energy_use",
+      "subject_key": "meter-9",
+      "label": "energy_use state: elevated",
+      "external_ref": "meter-9"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "env-meter",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.468318Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_76ca49ddddcce7c57962",
+        "evidence_type": "raw",
+        "field": "state",
+        "value": "elevated",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "env-meter",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "state": "elevated"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.9,
+      "level": "high",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": false,
+      "question": null,
+      "urgency": "none",
+      "candidate_dimensions": []
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_2decdd5734406dd3f37b",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "decision_subject",
+    "domain": "environment",
+    "subject": {
+      "subject_type": "energy_use",
+      "subject_key": "meter-9",
+      "label": "Decision required for energy_use",
+      "external_ref": "meter-9"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "env-meter",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.468332Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_8756fc8389a038f5aebc",
+        "evidence_type": "raw",
+        "field": "decision_needed",
+        "value": true,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "env-meter",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "decision_needed": true
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.85,
+      "level": "high",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": true,
+      "question": "What is the best action for energy_use meter-9?",
+      "urgency": "medium",
+      "candidate_dimensions": [
+        "cost",
+        "time",
+        "risk",
+        "quality",
+        "impact"
+      ]
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  }
+]

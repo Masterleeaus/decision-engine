@@ -1,0 +1,9 @@
+{
+  "overall_status": "eligible",
+  "hard_gate": "pass",
+  "violations": [
+    "environment_water"
+  ],
+  "unknown": [],
+  "soft_penalty": 0.8
+}

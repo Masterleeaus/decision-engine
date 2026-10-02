@@ -1,0 +1,59 @@
+{
+  "contract_id": "titan.decision.packet",
+  "contract_version": "1.0.0",
+  "status": "canonical-research-contract",
+  "compatibility": {
+    "major": "breaking semantics/required-field changes",
+    "minor": "backward-compatible optional fields/domain additions",
+    "patch": "clarification/non-semantic corrections"
+  },
+  "tenant_boundary": {
+    "canonical_field": "company_id",
+    "rule": "company_id is the sole canonical tenant/company boundary; legacy tenant identifiers MUST be normalized before packet construction and MUST NOT appear as independent authority boundaries."
+  },
+  "domains": [
+    "operations",
+    "finance",
+    "workforce",
+    "environment",
+    "crm",
+    "assets",
+    "procurement",
+    "marketing",
+    "scheduling",
+    "other"
+  ],
+  "authority_rule": "DecisionPacket represents analysis and recommendation. It MUST NOT grant permission, entitlement, identity, ownership, approval, financial authority, policy authority, or execution authority.",
+  "required_top_level": [
+    "packet_id",
+    "contract_version",
+    "company_id",
+    "domain",
+    "subject",
+    "objectives",
+    "options",
+    "evidence",
+    "constraints",
+    "preferences",
+    "predicted_outcomes",
+    "trade_offs",
+    "ranking",
+    "recommendation",
+    "confidence",
+    "authority_requirements",
+    "provenance",
+    "lifecycle"
+  ],
+  "cross_domain_rule": "Domain-specific data belongs in typed extension_data and references canonical packet entities by stable IDs; it must not redefine company_id, authority semantics, evidence provenance, ranking semantics, or recommendation authority.",
+  "invariants": [
+    "packet_id is globally stable for one packet revision lineage.",
+    "Every packet has exactly one company_id.",
+    "domain classifies context; it does not confer authority.",
+    "All references to options/evidence/objectives resolve within the packet or through explicit external_refs.",
+    "Recommendation references an option or an explicit non-action recommendation type.",
+    "Authority requirements describe prerequisites only; governed execution owns authorization and execution.",
+    "Evidence provenance is preserved independently of conclusions.",
+    "Packet revisions are append-only/superseding; historical packet content is not silently rewritten.",
+    "Unknown domain-specific fields are isolated under extension_data."
+  ]
+}

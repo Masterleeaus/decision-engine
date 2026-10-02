@@ -1,0 +1,15 @@
+flowchart LR
+  B[Browser context] --> A[Browser adapter]
+  S[System context] --> X[System adapter]
+  A --> I[Ingest + boundary validation]
+  X --> I
+  I --> F[Extract raw facts]
+  F --> E[Recognize + normalize entities]
+  E --> ST[Derive states]
+  ST --> SG[Detect signals]
+  SG --> OP[Identify opportunity/problem candidates]
+  OP --> DS[Identify decision subjects]
+  DS --> C[Confidence + provenance]
+  C --> O[(Titan Observation)]
+  O --> D[Downstream decision stages]
+  D -. governed separately .-> G[Governed execution]

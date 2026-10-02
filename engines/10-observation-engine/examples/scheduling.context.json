@@ -1,0 +1,13 @@
+{
+  "company_id": "company-demo",
+  "source_kind": "system",
+  "source_id": "bookings",
+  "record_type": "appointment",
+  "record_id": "appt-8",
+  "domain": "scheduling",
+  "fields": {
+    "state": "conflict",
+    "problem": "double-booking",
+    "requires_decision": true
+  }
+}

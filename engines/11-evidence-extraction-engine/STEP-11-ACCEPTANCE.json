@@ -1,0 +1,22 @@
+{
+  "step": "11",
+  "name": "Evidence Extraction Engine",
+  "codee_step": "3f8fffac-07d9-413f-b0b2-100f7d0fa1d5|run-1788359991344-80b410c98cb94|step-11|s11-mtk7d4q8-5sdbx3de",
+  "status": "PASS",
+  "prior_files_verified": 208,
+  "prior_hash_mismatches": [],
+  "schema_validation": "PASS",
+  "runtime_tests": "PASS",
+  "invariants": {
+    "company_id_only_boundary": true,
+    "raw_derived_separation": true,
+    "provenance_required": true,
+    "timestamps_required": true,
+    "confidence_required": true,
+    "freshness_required": true,
+    "derived_lineage_required": true,
+    "evidence_never_authority": true,
+    "browser_untrusted": true
+  },
+  "generated_at": "2026-09-02T15:32:40.000535Z"
+}

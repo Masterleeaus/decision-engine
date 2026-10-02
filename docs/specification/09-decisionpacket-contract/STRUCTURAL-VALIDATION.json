@@ -1,0 +1,52 @@
+[
+  {
+    "file": "assets.decisionpacket.json",
+    "pass": true,
+    "errors": []
+  },
+  {
+    "file": "crm.decisionpacket.json",
+    "pass": true,
+    "errors": []
+  },
+  {
+    "file": "environment.decisionpacket.json",
+    "pass": true,
+    "errors": []
+  },
+  {
+    "file": "finance.decisionpacket.json",
+    "pass": true,
+    "errors": []
+  },
+  {
+    "file": "marketing.decisionpacket.json",
+    "pass": true,
+    "errors": []
+  },
+  {
+    "file": "operations.decisionpacket.json",
+    "pass": true,
+    "errors": []
+  },
+  {
+    "file": "other.decisionpacket.json",
+    "pass": true,
+    "errors": []
+  },
+  {
+    "file": "procurement.decisionpacket.json",
+    "pass": true,
+    "errors": []
+  },
+  {
+    "file": "scheduling.decisionpacket.json",
+    "pass": true,
+    "errors": []
+  },
+  {
+    "file": "workforce.decisionpacket.json",
+    "pass": true,
+    "errors": []
+  }
+]

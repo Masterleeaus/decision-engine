@@ -1,0 +1,21 @@
+flowchart LR
+  S[Decision Subject] --> R[Discovery Request]
+  C[Context Envelope] --> R
+  O[Objective + Constraints] --> R
+  R --> G[company_id Guard]
+  G --> P[Provider Fan-out]
+  P --> A[Actions]
+  P --> RS[Resources]
+  P --> SP[Suppliers]
+  P --> AS[Assignments]
+  P --> I[Interventions]
+  P --> SC[Schedules]
+  P --> ST[Strategies]
+  P --> T[Tools]
+  P --> RR[Resolutions]
+  A & RS & SP & AS & I & SC & ST & T & RR --> N[Normalize Candidates]
+  N --> F[Feasibility + Constraints]
+  F --> D[Consolidate Duplicates / Preserve Provenance]
+  D --> OS[OptionSet]
+  OS --> X[Later Comparison / Prediction / Ranking]
+  OS -. no recommendation or execution authority .-> GOV[Governed execution boundary]

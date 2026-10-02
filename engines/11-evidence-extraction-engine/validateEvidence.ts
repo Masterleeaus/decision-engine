@@ -1,0 +1,1 @@
+import {EvidenceExtractionEngine} from "./runtime/evidenceEngine.js"; const x=new EvidenceExtractionEngine().extract({company_id:"validation",value:true}); if(!x.evidence_id) throw new Error("validation failed"); console.log("Evidence validation passed");

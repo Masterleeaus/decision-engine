@@ -1,0 +1,10 @@
+kind,outcome,examples,typical_sources
+action,change what is done,investigate anomaly; defer maintenance; escalate issue,"generated, policy, historical"
+resource,use a different available resource,"alternate vehicle, room, machine, data source","internal catalog, system context"
+supplier,source from another provider,alternate vendor or service provider,"provider, internal catalog"
+assignment,change who/what performs work,assign qualified worker or AI worker,"system context, internal catalog"
+intervention,apply a corrective/improvement measure,"energy retrofit, waste reduction, remediation","knowledge, provider"
+schedule,change timing/sequence,"move job, batch work, alternate route window","system context, generated"
+strategy,choose an approach,repair vs replace; retain vs outsource,"knowledge, generated, historical"
+tool,select enabling capability,"different software, device, method, model","internal catalog, provider"
+resolution,resolve a problem/state,"refund, rework, contact customer, close as no-action","policy, knowledge, generated"

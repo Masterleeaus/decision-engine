@@ -1,0 +1,31 @@
+{
+  "contract": "TitanObjectiveModel",
+  "version": "1.0.0",
+  "purpose": "Make better explicit by representing heterogeneous objectives before comparison, prediction, ranking or recommendation.",
+  "scopes": [
+    "user",
+    "company",
+    "task",
+    "environmental",
+    "operational",
+    "financial",
+    "regulatory",
+    "strategic"
+  ],
+  "rules": [
+    "company_id is the sole canonical tenant boundary",
+    "hard objectives are constraints on acceptable outcomes, not weights to trade away",
+    "soft objectives may be weighted and traded off explicitly",
+    "regulatory objectives may require authority references and must never be silently overridden",
+    "preferences do not create execution authority",
+    "objective provenance must be retained",
+    "conflicts must be explicit rather than hidden by averaging"
+  ],
+  "downstream": [
+    "comparison",
+    "prediction",
+    "ranking",
+    "recommendation",
+    "scenario analysis"
+  ]
+}

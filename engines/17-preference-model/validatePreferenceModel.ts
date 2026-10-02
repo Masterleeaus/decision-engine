@@ -1,0 +1,1 @@
+import {buildPreferenceSet} from "./runtime/preferenceModel.js"; buildPreferenceSet("validation",null,[{key:"comparison.cost.weight",value:1}]); console.log("Preference validation passed");

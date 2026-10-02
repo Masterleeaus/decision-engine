@@ -1,0 +1,26 @@
+{
+  "contract": "TitanPreferenceModel",
+  "version": "1.0.0",
+  "canonical_boundary": "company_id",
+  "purpose": "Durable advisory company and actor preferences for decision interpretation and scoring.",
+  "invariants": [
+    "Preferences are advisory and never an authority source.",
+    "company_id is the sole company boundary.",
+    "Actor preferences are always company-scoped and cannot leak across companies.",
+    "Preference keys that attempt to mutate identity, company boundary, roles, permissions, entitlement, policy, approval, autonomy or execution authority are rejected.",
+    "Hard constraints always dominate preferences.",
+    "Expired preferences are retained historically but excluded from effective projections.",
+    "Explicit preferences outrank inferred preferences at equal scope and key.",
+    "Actor preferences may specialize company defaults only for allowed advisory keys."
+  ],
+  "precedence": [
+    "actor explicit",
+    "actor inferred",
+    "company explicit",
+    "company inferred",
+    "default"
+  ],
+  "non_authority_fields": [
+    "authority_effect=none"
+  ]
+}

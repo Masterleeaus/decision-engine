@@ -1,0 +1,6 @@
+EXPLANATION-ENGINE-CONTRACT.json: JSON parse PASS
+EXPLANATION-RESULT.schema.json: JSON parse PASS
+company_id sole canonical boundary: PASS
+authority_effect none: PASS
+hidden_reasoning_included false: PASS
+structured evidence/assumption/sensitivity basis: PASS

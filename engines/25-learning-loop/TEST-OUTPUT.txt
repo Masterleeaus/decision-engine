@@ -1,0 +1,8 @@
+TypeScript compile: PASS
+learning-loop tests passed: 11
+Cross-company learning rejected: PASS
+Unverified outcome rejected: PASS
+Missing verification evidence rejected: PASS
+Historical evidence rewrite flag remains false: PASS
+Historical decision rewrite flag remains false: PASS
+Future confidence calibration from observed outcomes: PASS

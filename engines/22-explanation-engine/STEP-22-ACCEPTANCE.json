@@ -1,0 +1,1 @@
+{"step":22,"name":"Explanation Engine","status":"passed","language":"TypeScript","tests_passed":9,"company_id_only_boundary":true,"explains_highest":true,"explains_lower_alternatives":true,"evidence_linked":true,"uncertainty_exposed":true,"sensitivity_exposed":true,"hidden_reasoning_included":false,"authority_effect":"none"}

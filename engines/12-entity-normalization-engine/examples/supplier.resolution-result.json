@@ -1,0 +1,81 @@
+{
+  "resolution_id": "res_3cfa1835303adc3718269d00",
+  "company_id": "company-demo",
+  "input_record": {
+    "company_id": "company-demo",
+    "entity_type": "supplier",
+    "label": "ACME Industrial",
+    "source_kind": "provider",
+    "source_id": "procurement-provider",
+    "record_id": "vendor-448",
+    "observed_at": "2026-09-03T00:05:00Z",
+    "identifiers": [
+      {
+        "scheme": "abn",
+        "value": "12345678901",
+        "normalized_value": "12345678901",
+        "strength": "strong",
+        "source_id": "procurement-provider"
+      },
+      {
+        "scheme": "supplier_id",
+        "value": "vendor-448",
+        "normalized_value": "vendor-448",
+        "strength": "medium",
+        "source_id": "procurement-provider"
+      }
+    ],
+    "aliases": [
+      {
+        "alias": "Acme Industrial Pty Limited",
+        "normalized_alias": "acme industrial pty limited",
+        "source_id": "procurement-provider"
+      },
+      {
+        "alias": "ACME Industrial",
+        "normalized_alias": "acme industrial",
+        "source_id": "procurement-provider"
+      }
+    ],
+    "attributes": {
+      "address": {
+        "raw": "10 Example Road, Melbourne",
+        "normalized": "10 example road melbourne"
+      }
+    }
+  },
+  "created_at": "2026-09-02T15:38:30.884006Z",
+  "status": "created",
+  "candidates": [
+    {
+      "entity_id": "ent_87c59f5852e180594f85da57",
+      "score": 0.218519,
+      "signals": [
+        {
+          "kind": "alias_similarity",
+          "score": 1.0,
+          "weight": 0.18
+        },
+        {
+          "kind": "attribute_similarity",
+          "fields": [
+            "address"
+          ],
+          "score": 0.9583,
+          "weight": 0.12
+        }
+      ],
+      "conflicts": [
+        {
+          "kind": "strong_identifier_conflict",
+          "scheme": "abn",
+          "incoming": "12345678901",
+          "existing": [
+            "12 345 678 901"
+          ]
+        }
+      ]
+    }
+  ],
+  "selected_entity_id": "ent_5f5564d303c49c2bbfb12e63"
+}

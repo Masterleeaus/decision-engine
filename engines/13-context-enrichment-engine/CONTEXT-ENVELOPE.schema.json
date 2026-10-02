@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titan.local/schemas/context-envelope-1.0.0.json",
+  "title": "Titan ContextEnvelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "context_id",
+    "contract_version",
+    "company_id",
+    "entity_id",
+    "facts",
+    "resolved_view",
+    "conflicts",
+    "provider_receipts",
+    "generated_at"
+  ],
+  "properties": {
+    "context_id": {
+      "type": "string"
+    },
+    "contract_version": {
+      "const": "1.0.0"
+    },
+    "company_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "entity_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "facts": {
+      "type": "array",
+      "items": {
+        "$ref": "ENRICHMENT-FACT.schema.json"
+      }
+    },
+    "resolved_view": {
+      "type": "object"
+    },
+    "conflicts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "namespace",
+          "key",
+          "fact_ids",
+          "reason"
+        ],
+        "properties": {
+          "namespace": {
+            "type": "string"
+          },
+          "key": {
+            "type": "string"
+          },
+          "fact_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "reason": {
+            "type": "string"
+          },
+          "resolution": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "provider_receipts": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "extension_data": {
+      "type": "object"
+    }
+  }
+}

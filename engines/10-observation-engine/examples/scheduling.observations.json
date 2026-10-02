@@ -1,0 +1,409 @@
+[
+  {
+    "observation_id": "obs_04252b0ac92d57245fbf",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "entity",
+    "domain": "scheduling",
+    "subject": {
+      "subject_type": "appointment",
+      "subject_key": "appt-8",
+      "label": "appointment: appt-8",
+      "external_ref": "appt-8"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "bookings",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.469255Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_2d78fa514c9ed808e147",
+        "evidence_type": "raw",
+        "field": "state",
+        "value": "conflict",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "bookings",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_65b95a7315288f24b90d",
+        "evidence_type": "raw",
+        "field": "problem",
+        "value": "double-booking",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "bookings",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_d9503eb5a90415cb2043",
+        "evidence_type": "raw",
+        "field": "requires_decision",
+        "value": true,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "bookings",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_04decf355b3d8bd75f46",
+        "evidence_type": "derived",
+        "field": "entity_type",
+        "value": "appointment",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "bookings",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_4de4ec7b2ad75cde627b",
+        "evidence_type": "derived",
+        "field": "entity_id",
+        "value": "appt-8",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "bookings",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "state": "conflict",
+      "problem": "double-booking",
+      "requires_decision": true,
+      "entity_type": "appointment",
+      "entity_id": "appt-8"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.86,
+      "level": "high",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": false,
+      "question": null,
+      "urgency": "none",
+      "candidate_dimensions": []
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_bcb1b35d09479a24e42a",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "decision_subject",
+    "domain": "scheduling",
+    "subject": {
+      "subject_type": "decision_subject",
+      "subject_key": "appt-8",
+      "label": "Decision subject appt-8",
+      "external_ref": "appt-8"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "bookings",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.469289Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_d9503eb5a90415cb2043",
+        "evidence_type": "raw",
+        "field": "requires_decision",
+        "value": true,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "bookings",
+          "rule_id": "decision.explicit"
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "state": "conflict",
+      "problem": "double-booking",
+      "requires_decision": true,
+      "entity_type": "appointment",
+      "entity_id": "appt-8"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.95,
+      "level": "high",
+      "basis": [
+        "source context",
+        "rule match"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": true,
+      "question": "What is the best action?",
+      "urgency": "medium",
+      "candidate_dimensions": [
+        "cost",
+        "time",
+        "risk",
+        "quality",
+        "impact"
+      ]
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_068ba838d9f37d8e11c0",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "state",
+    "domain": "scheduling",
+    "subject": {
+      "subject_type": "appointment",
+      "subject_key": "appt-8",
+      "label": "appointment state: conflict",
+      "external_ref": "appt-8"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "bookings",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.469300Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_2d78fa514c9ed808e147",
+        "evidence_type": "raw",
+        "field": "state",
+        "value": "conflict",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "bookings",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "state": "conflict"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.9,
+      "level": "high",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": false,
+      "question": null,
+      "urgency": "none",
+      "candidate_dimensions": []
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_760740e8e73efe751e10",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "problem",
+    "domain": "scheduling",
+    "subject": {
+      "subject_type": "appointment",
+      "subject_key": "appt-8",
+      "label": "Problem candidate for appointment",
+      "external_ref": "appt-8"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "bookings",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.469312Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_65b95a7315288f24b90d",
+        "evidence_type": "raw",
+        "field": "problem",
+        "value": "double-booking",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "bookings",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "problem": "double-booking"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.75,
+      "level": "medium",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": true,
+      "question": "What is the best response to this problem?",
+      "urgency": "medium",
+      "candidate_dimensions": [
+        "risk",
+        "cost",
+        "time",
+        "impact"
+      ]
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_cdd3bc37f9f88a3793ac",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "decision_subject",
+    "domain": "scheduling",
+    "subject": {
+      "subject_type": "appointment",
+      "subject_key": "appt-8",
+      "label": "Decision required for appointment",
+      "external_ref": "appt-8"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "bookings",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.469323Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_dae822def4a6418f849b",
+        "evidence_type": "derived",
+        "field": "decision_needed",
+        "value": true,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "bookings",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "decision_needed": true
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.85,
+      "level": "high",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": true,
+      "question": "What is the best action for appointment appt-8?",
+      "urgency": "medium",
+      "candidate_dimensions": [
+        "cost",
+        "time",
+        "risk",
+        "quality",
+        "impact"
+      ]
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  }
+]

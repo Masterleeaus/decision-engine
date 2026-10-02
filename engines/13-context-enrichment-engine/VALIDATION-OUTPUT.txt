@@ -1,0 +1,6 @@
+PASS schema validation
+facts 8
+source_classes 8
+conflicts 0
+/mnt/data/Titan-Decision-Engine-Research-Step13-Context-Enrichment-Engine/13-context-enrichment-engine/validate_context.py:3: DeprecationWarning: jsonschema.RefResolver is deprecated as of v4.18.0, in favor of the https://github.com/python-jsonschema/referencing library, which provides more compliant referencing behavior as well as more flexible APIs for customization. A future release will remove RefResolver. Please file a feature request (on referencing) if you are missing an API for the kind of customization you need.
+  from jsonschema import Draft202012Validator, RefResolver

@@ -1,0 +1,441 @@
+{
+  "context_id": "ctx_9879d1fa7f4a80cf7b7ea9ea",
+  "contract_version": "1.0.0",
+  "company_id": "company_demo",
+  "entity_id": "ent_example_facility",
+  "facts": [
+    {
+      "fact_id": "fact_965767f8579a946a8d9356a6",
+      "contract_version": "1.0.0",
+      "company_id": "company_demo",
+      "entity_id": "ent_example_facility",
+      "source_class": "internal",
+      "namespace": "operations",
+      "key": "service_status",
+      "value": "active",
+      "raw_value": "active",
+      "value_kind": "asserted",
+      "provenance": {
+        "source_id": "internal_system",
+        "source_record_id": "rec_1",
+        "observed_at": "2026-09-03T00:00:00Z",
+        "retrieved_at": "2026-09-03T00:05:00Z",
+        "evidence_ids": [
+          "evidence_1"
+        ],
+        "provider_id": "internal_provider",
+        "source_uri": null,
+        "provider_revision": null
+      },
+      "confidence": 0.9,
+      "freshness": {
+        "state": "fresh",
+        "evaluated_at": "2026-09-03T00:10:00Z",
+        "age_seconds": 600.0,
+        "ttl_seconds": 86400
+      },
+      "priority": 0,
+      "authoritativeness": 0.9,
+      "supersedes_fact_ids": [],
+      "tags": [],
+      "created_at": "2026-09-03T00:10:00Z",
+      "extension_data": {}
+    },
+    {
+      "fact_id": "fact_5cd153813712c0b6b959813b",
+      "contract_version": "1.0.0",
+      "company_id": "company_demo",
+      "entity_id": "ent_example_facility",
+      "source_class": "external",
+      "namespace": "supplier",
+      "key": "market_risk",
+      "value": "moderate",
+      "raw_value": "moderate",
+      "value_kind": "asserted",
+      "provenance": {
+        "source_id": "external_system",
+        "source_record_id": "rec_2",
+        "observed_at": "2026-09-03T00:00:00Z",
+        "retrieved_at": "2026-09-03T00:05:00Z",
+        "evidence_ids": [
+          "evidence_2"
+        ],
+        "provider_id": "external_provider",
+        "source_uri": null,
+        "provider_revision": null
+      },
+      "confidence": 0.8,
+      "freshness": {
+        "state": "fresh",
+        "evaluated_at": "2026-09-03T00:10:00Z",
+        "age_seconds": 600.0,
+        "ttl_seconds": 86400
+      },
+      "priority": 0,
+      "authoritativeness": 0.7,
+      "supersedes_fact_ids": [],
+      "tags": [],
+      "created_at": "2026-09-03T00:10:00Z",
+      "extension_data": {}
+    },
+    {
+      "fact_id": "fact_1705da89ecd5261c797ce036",
+      "contract_version": "1.0.0",
+      "company_id": "company_demo",
+      "entity_id": "ent_example_facility",
+      "source_class": "historical",
+      "namespace": "operations",
+      "key": "mean_completion_minutes",
+      "value": 82,
+      "raw_value": 82,
+      "value_kind": "asserted",
+      "provenance": {
+        "source_id": "historical_system",
+        "source_record_id": "rec_3",
+        "observed_at": "2026-09-03T00:00:00Z",
+        "retrieved_at": "2026-09-03T00:05:00Z",
+        "evidence_ids": [
+          "evidence_3"
+        ],
+        "provider_id": "historical_provider",
+        "source_uri": null,
+        "provider_revision": null
+      },
+      "confidence": 0.8,
+      "freshness": {
+        "state": "fresh",
+        "evaluated_at": "2026-09-03T00:10:00Z",
+        "age_seconds": 600.0,
+        "ttl_seconds": 86400
+      },
+      "priority": 0,
+      "authoritativeness": 0.7,
+      "supersedes_fact_ids": [],
+      "tags": [],
+      "created_at": "2026-09-03T00:10:00Z",
+      "extension_data": {}
+    },
+    {
+      "fact_id": "fact_a3c10a441371eacf83d1c4b8",
+      "contract_version": "1.0.0",
+      "company_id": "company_demo",
+      "entity_id": "ent_example_facility",
+      "source_class": "current_state",
+      "namespace": "operations",
+      "key": "queue_depth",
+      "value": 14,
+      "raw_value": 14,
+      "value_kind": "asserted",
+      "provenance": {
+        "source_id": "current_state_system",
+        "source_record_id": "rec_4",
+        "observed_at": "2026-09-03T00:00:00Z",
+        "retrieved_at": "2026-09-03T00:05:00Z",
+        "evidence_ids": [
+          "evidence_4"
+        ],
+        "provider_id": "current_state_provider",
+        "source_uri": null,
+        "provider_revision": null
+      },
+      "confidence": 0.8,
+      "freshness": {
+        "state": "fresh",
+        "evaluated_at": "2026-09-03T00:10:00Z",
+        "age_seconds": 600.0,
+        "ttl_seconds": 3600
+      },
+      "priority": 0,
+      "authoritativeness": 0.7,
+      "supersedes_fact_ids": [],
+      "tags": [],
+      "created_at": "2026-09-03T00:10:00Z",
+      "extension_data": {}
+    },
+    {
+      "fact_id": "fact_2e5d1a3b312a6ae652f3db56",
+      "contract_version": "1.0.0",
+      "company_id": "company_demo",
+      "entity_id": "ent_example_facility",
+      "source_class": "environmental",
+      "namespace": "environment",
+      "key": "water_use_litres_day",
+      "value": 9200,
+      "raw_value": 9200,
+      "value_kind": "asserted",
+      "provenance": {
+        "source_id": "environmental_system",
+        "source_record_id": "rec_5",
+        "observed_at": "2026-09-03T00:00:00Z",
+        "retrieved_at": "2026-09-03T00:05:00Z",
+        "evidence_ids": [
+          "evidence_5"
+        ],
+        "provider_id": "environmental_provider",
+        "source_uri": null,
+        "provider_revision": null
+      },
+      "confidence": 0.8,
+      "freshness": {
+        "state": "fresh",
+        "evaluated_at": "2026-09-03T00:10:00Z",
+        "age_seconds": 600.0,
+        "ttl_seconds": 3600
+      },
+      "priority": 0,
+      "authoritativeness": 0.7,
+      "supersedes_fact_ids": [],
+      "tags": [],
+      "created_at": "2026-09-03T00:10:00Z",
+      "extension_data": {}
+    },
+    {
+      "fact_id": "fact_f31fd691605ed320b0726d01",
+      "contract_version": "1.0.0",
+      "company_id": "company_demo",
+      "entity_id": "ent_example_facility",
+      "source_class": "operational",
+      "namespace": "operations",
+      "key": "available_capacity_hours",
+      "value": 6.5,
+      "raw_value": 6.5,
+      "value_kind": "asserted",
+      "provenance": {
+        "source_id": "operational_system",
+        "source_record_id": "rec_6",
+        "observed_at": "2026-09-03T00:00:00Z",
+        "retrieved_at": "2026-09-03T00:05:00Z",
+        "evidence_ids": [
+          "evidence_6"
+        ],
+        "provider_id": "operational_provider",
+        "source_uri": null,
+        "provider_revision": null
+      },
+      "confidence": 0.8,
+      "freshness": {
+        "state": "fresh",
+        "evaluated_at": "2026-09-03T00:10:00Z",
+        "age_seconds": 600.0,
+        "ttl_seconds": 3600
+      },
+      "priority": 0,
+      "authoritativeness": 0.7,
+      "supersedes_fact_ids": [],
+      "tags": [],
+      "created_at": "2026-09-03T00:10:00Z",
+      "extension_data": {}
+    },
+    {
+      "fact_id": "fact_e6fbbd18892d6d859395cd50",
+      "contract_version": "1.0.0",
+      "company_id": "company_demo",
+      "entity_id": "ent_example_facility",
+      "source_class": "financial",
+      "namespace": "finance",
+      "key": "gross_margin_pct",
+      "value": 31.4,
+      "raw_value": 31.4,
+      "value_kind": "asserted",
+      "provenance": {
+        "source_id": "financial_system",
+        "source_record_id": "rec_7",
+        "observed_at": "2026-09-03T00:00:00Z",
+        "retrieved_at": "2026-09-03T00:05:00Z",
+        "evidence_ids": [
+          "evidence_7"
+        ],
+        "provider_id": "financial_provider",
+        "source_uri": null,
+        "provider_revision": null
+      },
+      "confidence": 0.8,
+      "freshness": {
+        "state": "fresh",
+        "evaluated_at": "2026-09-03T00:10:00Z",
+        "age_seconds": 600.0,
+        "ttl_seconds": 86400
+      },
+      "priority": 0,
+      "authoritativeness": 0.7,
+      "supersedes_fact_ids": [],
+      "tags": [],
+      "created_at": "2026-09-03T00:10:00Z",
+      "extension_data": {}
+    },
+    {
+      "fact_id": "fact_ef00bb2cdf729a2b66637846",
+      "contract_version": "1.0.0",
+      "company_id": "company_demo",
+      "entity_id": "ent_example_facility",
+      "source_class": "knowledge_authority",
+      "namespace": "policy",
+      "key": "required_approval_level",
+      "value": "manager",
+      "raw_value": "manager",
+      "value_kind": "policy",
+      "provenance": {
+        "source_id": "knowledge_authority_system",
+        "source_record_id": "rec_8",
+        "observed_at": "2026-09-03T00:00:00Z",
+        "retrieved_at": "2026-09-03T00:05:00Z",
+        "evidence_ids": [
+          "evidence_8"
+        ],
+        "provider_id": "knowledge_authority_provider",
+        "source_uri": null,
+        "provider_revision": null
+      },
+      "confidence": 0.9,
+      "freshness": {
+        "state": "fresh",
+        "evaluated_at": "2026-09-03T00:10:00Z",
+        "age_seconds": 600.0,
+        "ttl_seconds": 86400
+      },
+      "priority": 0,
+      "authoritativeness": 0.9,
+      "supersedes_fact_ids": [],
+      "tags": [],
+      "created_at": "2026-09-03T00:10:00Z",
+      "extension_data": {}
+    }
+  ],
+  "resolved_view": {
+    "operations": {
+      "service_status": {
+        "value": "active",
+        "fact_id": "fact_965767f8579a946a8d9356a6",
+        "source_class": "internal",
+        "confidence": 0.9,
+        "freshness": "fresh"
+      },
+      "mean_completion_minutes": {
+        "value": 82,
+        "fact_id": "fact_1705da89ecd5261c797ce036",
+        "source_class": "historical",
+        "confidence": 0.8,
+        "freshness": "fresh"
+      },
+      "queue_depth": {
+        "value": 14,
+        "fact_id": "fact_a3c10a441371eacf83d1c4b8",
+        "source_class": "current_state",
+        "confidence": 0.8,
+        "freshness": "fresh"
+      },
+      "available_capacity_hours": {
+        "value": 6.5,
+        "fact_id": "fact_f31fd691605ed320b0726d01",
+        "source_class": "operational",
+        "confidence": 0.8,
+        "freshness": "fresh"
+      }
+    },
+    "supplier": {
+      "market_risk": {
+        "value": "moderate",
+        "fact_id": "fact_5cd153813712c0b6b959813b",
+        "source_class": "external",
+        "confidence": 0.8,
+        "freshness": "fresh"
+      }
+    },
+    "environment": {
+      "water_use_litres_day": {
+        "value": 9200,
+        "fact_id": "fact_2e5d1a3b312a6ae652f3db56",
+        "source_class": "environmental",
+        "confidence": 0.8,
+        "freshness": "fresh"
+      }
+    },
+    "finance": {
+      "gross_margin_pct": {
+        "value": 31.4,
+        "fact_id": "fact_e6fbbd18892d6d859395cd50",
+        "source_class": "financial",
+        "confidence": 0.8,
+        "freshness": "fresh"
+      }
+    },
+    "policy": {
+      "required_approval_level": {
+        "value": "manager",
+        "fact_id": "fact_ef00bb2cdf729a2b66637846",
+        "source_class": "knowledge_authority",
+        "confidence": 0.9,
+        "freshness": "fresh"
+      }
+    }
+  },
+  "conflicts": [],
+  "provider_receipts": [
+    {
+      "provider_id": "internal_provider",
+      "source_class": "internal",
+      "started_at": "2026-09-02T15:44:51.215679Z",
+      "completed_at": "2026-09-02T15:44:51.215799Z",
+      "fact_count": 1,
+      "errors": []
+    },
+    {
+      "provider_id": "external_provider",
+      "source_class": "external",
+      "started_at": "2026-09-02T15:44:51.215804Z",
+      "completed_at": "2026-09-02T15:44:51.215830Z",
+      "fact_count": 1,
+      "errors": []
+    },
+    {
+      "provider_id": "historical_provider",
+      "source_class": "historical",
+      "started_at": "2026-09-02T15:44:51.215832Z",
+      "completed_at": "2026-09-02T15:44:51.215873Z",
+      "fact_count": 1,
+      "errors": []
+    },
+    {
+      "provider_id": "current_state_provider",
+      "source_class": "current_state",
+      "started_at": "2026-09-02T15:44:51.215876Z",
+      "completed_at": "2026-09-02T15:44:51.215889Z",
+      "fact_count": 1,
+      "errors": []
+    },
+    {
+      "provider_id": "environmental_provider",
+      "source_class": "environmental",
+      "started_at": "2026-09-02T15:44:51.215891Z",
+      "completed_at": "2026-09-02T15:44:51.215903Z",
+      "fact_count": 1,
+      "errors": []
+    },
+    {
+      "provider_id": "operational_provider",
+      "source_class": "operational",
+      "started_at": "2026-09-02T15:44:51.215905Z",
+      "completed_at": "2026-09-02T15:44:51.215918Z",
+      "fact_count": 1,
+      "errors": []
+    },
+    {
+      "provider_id": "financial_provider",
+      "source_class": "financial",
+      "started_at": "2026-09-02T15:44:51.215921Z",
+      "completed_at": "2026-09-02T15:44:51.215933Z",
+      "fact_count": 1,
+      "errors": []
+    },
+    {
+      "provider_id": "knowledge_authority_provider",
+      "source_class": "knowledge_authority",
+      "started_at": "2026-09-02T15:44:51.215935Z",
+      "completed_at": "2026-09-02T15:44:51.215960Z",
+      "fact_count": 1,
+      "errors": []
+    }
+  ],
+  "generated_at": "2026-09-03T00:10:00Z",
+  "extension_data": {}
+}

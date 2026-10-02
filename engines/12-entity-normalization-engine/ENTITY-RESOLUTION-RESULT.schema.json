@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "titan://decision/entity-resolution-result/1.0.0",
+  "title": "Titan Entity Resolution Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "resolution_id",
+    "company_id",
+    "input_record",
+    "status",
+    "candidates",
+    "selected_entity_id",
+    "created_at"
+  ],
+  "properties": {
+    "resolution_id": {
+      "type": "string",
+      "pattern": "^res_[0-9a-f]{24}$"
+    },
+    "company_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "input_record": {
+      "type": "object"
+    },
+    "status": {
+      "enum": [
+        "created",
+        "matched",
+        "ambiguous",
+        "conflicted",
+        "rejected"
+      ]
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "entity_id",
+          "score",
+          "signals"
+        ],
+        "properties": {
+          "entity_id": {
+            "type": "string"
+          },
+          "score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "signals": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "selected_entity_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

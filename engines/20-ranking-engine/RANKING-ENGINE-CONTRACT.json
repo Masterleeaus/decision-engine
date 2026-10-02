@@ -1,0 +1,16 @@
+{
+  "company_boundary": "company_id",
+  "contract": "TitanRankingEngine",
+  "purpose": "Transparent multi-factor ranking of constraint-eligible alternatives using inspectable dimensions, weights, confidence, assumptions and sensitivity scenarios.",
+  "rules": [
+    "Hard-constraint-ineligible options are excluded from winner ranking but retained in excluded_alternatives.",
+    "Every score contribution is inspectable by dimension.",
+    "Objective weights and dimension overrides are explicit inputs.",
+    "Prediction confidence can reduce evidentiary confidence but cannot create authority.",
+    "Sensitivity scenarios disclose whether modest changes alter the leader/order.",
+    "Ties are preserved deterministically.",
+    "Ranking is advisory and grants no execution, permission, entitlement or approval authority."
+  ],
+  "score_model": "sum(normalized_score * effective_weight * combined_confidence) / sum(effective_weight)",
+  "version": "1.0.0"
+}

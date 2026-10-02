@@ -1,0 +1,9 @@
+{
+  "authority_effect": "none",
+  "company_id_only": true,
+  "hard_constraints_preserved": true,
+  "sensitivity_analysis": true,
+  "status": "passed",
+  "tests": 8,
+  "transparent_factor_scoring": true
+}

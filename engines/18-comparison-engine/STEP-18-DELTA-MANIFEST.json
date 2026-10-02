@@ -1,0 +1,148 @@
+{
+  "step": 18,
+  "includes_prerequisite_step17": true,
+  "base_required": "Titan-Decision-Engine-Research-Step16-Constraint-Engine-FINAL.zip",
+  "base_file_count": 317,
+  "added_file_count": 35,
+  "modified_baseline_files": [],
+  "files": [
+    {
+      "path": "17-preference-model/PREFERENCE-MODEL-CONTRACT.json",
+      "sha256": "4526afce1a9a760ff79d33dbc800edf12077ba31b098ae276da9b5e10a51887f"
+    },
+    {
+      "path": "17-preference-model/PREFERENCE-SET.schema.json",
+      "sha256": "9849c83409744041a50e2e208f14286f6a7581e0355f48cadda6f3b22faee255"
+    },
+    {
+      "path": "17-preference-model/README-STEP-17-PREFERENCE-MODEL.md",
+      "sha256": "abd7da53e4b2029d251ac006cc9f695bf786b5f1f4d1364099932a3bc1e2e4b4"
+    },
+    {
+      "path": "17-preference-model/STEP-17-ACCEPTANCE.json",
+      "sha256": "9731ef3a08cfe4a260b84f8149a192578e1be6759516153176eb458659edaf13"
+    },
+    {
+      "path": "17-preference-model/TEST-OUTPUT.txt",
+      "sha256": "19ea25f70076845a615cf6b1e679359cf04012583bc0bf7acdbb32a470765107"
+    },
+    {
+      "path": "17-preference-model/VALIDATION-OUTPUT.txt",
+      "sha256": "59789ebc702ce9a3d9875c7cff5af9a53ee9d1b013b4950d4d78764d1ac862d2"
+    },
+    {
+      "path": "17-preference-model/examples/actor-preference-set.json",
+      "sha256": "b73a65be718db0a937624d2227d8cf5c2290fb06a89692795dca83a22562dc14"
+    },
+    {
+      "path": "17-preference-model/examples/company-preference-set.json",
+      "sha256": "17be2f3d6a88a066727d22fc5b7d65ea83e4959b2a2f85565395a2bac5138052"
+    },
+    {
+      "path": "17-preference-model/runtime/__init__.py",
+      "sha256": "0c6915a1975bbb31cddf0df7d53f1a97ff1155477ce74297173c5ecaaf30f34b"
+    },
+    {
+      "path": "17-preference-model/runtime/__pycache__/__init__.cpython-313.pyc",
+      "sha256": "af4063b46a58e90c15bc537c284958155d94ca016c8eee3f76b37742b49f3b82"
+    },
+    {
+      "path": "17-preference-model/runtime/__pycache__/preference_model.cpython-313.pyc",
+      "sha256": "5efcbc24a0cfa91b152a5cecae309372650052cca8ce42af30f685de9c97f95e"
+    },
+    {
+      "path": "17-preference-model/runtime/preference_model.py",
+      "sha256": "ab868d585bfe8743ca42574b2887235b6f8bcc6d198eb17fca9a2ead817a0bb9"
+    },
+    {
+      "path": "17-preference-model/tests/test_preference_model.py",
+      "sha256": "99d3e844967b43b5c5e4a9575c483799d8a0b21dfecb3ccc8b4334424a58851c"
+    },
+    {
+      "path": "17-preference-model/validate_preference_model.py",
+      "sha256": "ac3883c91a6e62be90d0937811fbdfb4308b4fa2b8e8beb50cf1589f6c4dd718"
+    },
+    {
+      "path": "18-comparison-engine/COMPARISON-DIMENSION-MATRIX.csv",
+      "sha256": "27f06faa9291fb1a6064a36faab5b6700892f5d10bc8e223773e636e4233c8a7"
+    },
+    {
+      "path": "18-comparison-engine/COMPARISON-ENGINE-CONTRACT.json",
+      "sha256": "330345bbab6bb859b9a29ce0d9c9500e3caa84abf0eb9ae6a3565572e1d8e662"
+    },
+    {
+      "path": "18-comparison-engine/COMPARISON-PIPELINE.mmd",
+      "sha256": "af8bc55aa4aa4c0ac1dd452d1f8a681daf58fce9f2448244b712dc0bee9c48ab"
+    },
+    {
+      "path": "18-comparison-engine/COMPARISON-RESULT.schema.json",
+      "sha256": "3d261d9af24a11bc8041bc9d96105f067b8493f9a5718d1fed51df13fea5bd58"
+    },
+    {
+      "path": "18-comparison-engine/LIBRARY-CONVERGENCE-STEP18.json",
+      "sha256": "8daddb995ecb3ce74f9ee38535fda19a65454dd6529254fbf998353e971a043f"
+    },
+    {
+      "path": "18-comparison-engine/README-STEP-18-COMPARISON-ENGINE.md",
+      "sha256": "ae97a0aea46150e840e195b83ccd24a883e8f8a2f83628fb8205c473d89b5e07"
+    },
+    {
+      "path": "18-comparison-engine/STEP-18-ACCEPTANCE.json",
+      "sha256": "f9813649c83945206f9176774a6eb3fc29016f2f12000e2950918e00d2eb56c4"
+    },
+    {
+      "path": "18-comparison-engine/TEST-OUTPUT.txt",
+      "sha256": "a63ba823336465f9e63537e22161a4db889db6f4e5badfe6e034ab9bfe80e023"
+    },
+    {
+      "path": "18-comparison-engine/VALIDATION-OUTPUT.txt",
+      "sha256": "693a22c437f68fabcfd1f48da94d3e2848200b2b444b7d350166dc28232023af"
+    },
+    {
+      "path": "18-comparison-engine/examples/comparison-input.json",
+      "sha256": "35cc7de16187f5b388f4656c453b6e0632a865e8c964a3ca88d460fd8bb19db3"
+    },
+    {
+      "path": "18-comparison-engine/examples/comparison-result-water-optimization.json",
+      "sha256": "402dfbc981be4c2c12101235da98baf92836569bc5aba9e68c5ab740eb4b1c2a"
+    },
+    {
+      "path": "18-comparison-engine/runtime/__init__.py",
+      "sha256": "1273b2a9b2525cc09bec9c4d8697388cfd581d1ea27d26d3042192b1fe05ea72"
+    },
+    {
+      "path": "18-comparison-engine/runtime/__pycache__/__init__.cpython-313.pyc",
+      "sha256": "205bcdc3cfe11336bf29941eb2e34a466339b1df2097a2f0ed2ef91b7d2658d5"
+    },
+    {
+      "path": "18-comparison-engine/runtime/__pycache__/comparison_engine.cpython-313.pyc",
+      "sha256": "f0c29c7603fcaa673882fe220e8712c8c77c5689151d08ab711cc9dd06b2730e"
+    },
+    {
+      "path": "18-comparison-engine/runtime/comparison_engine.py",
+      "sha256": "fc10ad1b9f11f083827b905a52cf26b68deb3f9402712677d6c27e070d2d0ee1"
+    },
+    {
+      "path": "18-comparison-engine/tests/test_comparison_engine.py",
+      "sha256": "327410fea73bb37a63c5d26c4bc5f8f8d0c8dc922dbd4615568639a5bab86103"
+    },
+    {
+      "path": "18-comparison-engine/validate_comparison_engine.py",
+      "sha256": "0d28552716492746bf6c51eb55913544173257f068066b8c117bea2ffb2cb344"
+    },
+    {
+      "path": "99-research-metadata/STEP-18-PRESERVATION-VERIFICATION.json",
+      "sha256": "1936d2a98dfd6cf9f11ed38dbe9413b6d1908965e3c26b49771dd8522739862c"
+    },
+    {
+      "path": "README-STEP-17.md",
+      "sha256": "95aadb810e0208ecd929046db96474fee76bffd30f25027f7c75c090e5d630db"
+    },
+    {
+      "path": "README-STEP-18.md",
+      "sha256": "84a70a82632b16564c63f4efc086bbdcb37c111749967299d05de2c9e7e60c7e"
+    }
+  ],
+  "apply": "Extract this DELTA over an unmodified Step16 FINAL tree. No baseline files are replaced; all files are additive. Then run Step17 and Step18 test/validation scripts.",
+  "verification": "Compare each file SHA-256 to this manifest; baseline Step16 hashes must remain unchanged."
+}

@@ -1,0 +1,11 @@
+test_authority_keys_rejected (__main__.T.test_authority_keys_rejected) ... ok
+test_company_and_actor_scoped (__main__.T.test_company_and_actor_scoped) ... ok
+test_cross_company_blocked (__main__.T.test_cross_company_blocked) ... ok
+test_expired_excluded (__main__.T.test_expired_excluded) ... ok
+test_explicit_beats_inferred (__main__.T.test_explicit_beats_inferred) ... ok
+test_non_authority_marker (__main__.T.test_non_authority_marker) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+OK

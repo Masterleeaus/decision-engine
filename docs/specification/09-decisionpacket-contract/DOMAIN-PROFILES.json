@@ -1,0 +1,173 @@
+{
+  "operations": {
+    "domain": "operations",
+    "example_subject_types": [
+      "job",
+      "process",
+      "incident",
+      "workflow",
+      "service_delivery"
+    ],
+    "typical_dimensions": [
+      "time",
+      "cost",
+      "quality",
+      "risk",
+      "reliability"
+    ],
+    "typical_authority_notes": "Execution remains external to DecisionPacket."
+  },
+  "finance": {
+    "domain": "finance",
+    "example_subject_types": [
+      "invoice",
+      "cash_position",
+      "expense",
+      "investment",
+      "revenue_action"
+    ],
+    "typical_dimensions": [
+      "cash_flow",
+      "cost",
+      "revenue",
+      "margin",
+      "risk"
+    ],
+    "typical_authority_notes": "Execution remains external to DecisionPacket."
+  },
+  "workforce": {
+    "domain": "workforce",
+    "example_subject_types": [
+      "assignment",
+      "shift",
+      "candidate",
+      "training_need",
+      "capacity"
+    ],
+    "typical_dimensions": [
+      "skills",
+      "availability",
+      "safety",
+      "human_effort",
+      "quality"
+    ],
+    "typical_authority_notes": "Execution remains external to DecisionPacket."
+  },
+  "environment": {
+    "domain": "environment",
+    "example_subject_types": [
+      "energy_use",
+      "water_use",
+      "waste_stream",
+      "emission_source",
+      "environmental_intervention"
+    ],
+    "typical_dimensions": [
+      "environmental_impact",
+      "cost",
+      "compliance",
+      "risk",
+      "strategic_value"
+    ],
+    "typical_authority_notes": "Execution remains external to DecisionPacket."
+  },
+  "crm": {
+    "domain": "crm",
+    "example_subject_types": [
+      "lead",
+      "customer",
+      "opportunity",
+      "retention_case",
+      "service_issue"
+    ],
+    "typical_dimensions": [
+      "customer_impact",
+      "revenue",
+      "time",
+      "risk",
+      "strategic_value"
+    ],
+    "typical_authority_notes": "Execution remains external to DecisionPacket."
+  },
+  "assets": {
+    "domain": "assets",
+    "example_subject_types": [
+      "asset",
+      "maintenance_case",
+      "replacement_decision",
+      "utilization_issue"
+    ],
+    "typical_dimensions": [
+      "lifecycle_cost",
+      "reliability",
+      "risk",
+      "reversibility",
+      "environmental_impact"
+    ],
+    "typical_authority_notes": "Execution remains external to DecisionPacket."
+  },
+  "procurement": {
+    "domain": "procurement",
+    "example_subject_types": [
+      "supplier",
+      "purchase_need",
+      "contract",
+      "material",
+      "service"
+    ],
+    "typical_dimensions": [
+      "cost",
+      "quality",
+      "reliability",
+      "risk",
+      "environmental_impact"
+    ],
+    "typical_authority_notes": "Execution remains external to DecisionPacket."
+  },
+  "marketing": {
+    "domain": "marketing",
+    "example_subject_types": [
+      "campaign",
+      "audience",
+      "channel",
+      "content",
+      "budget_allocation"
+    ],
+    "typical_dimensions": [
+      "revenue",
+      "cost",
+      "customer_impact",
+      "time",
+      "strategic_value"
+    ],
+    "typical_authority_notes": "Execution remains external to DecisionPacket."
+  },
+  "scheduling": {
+    "domain": "scheduling",
+    "example_subject_types": [
+      "appointment",
+      "route",
+      "resource_slot",
+      "job_sequence",
+      "deadline"
+    ],
+    "typical_dimensions": [
+      "time",
+      "availability",
+      "cost",
+      "customer_impact",
+      "risk"
+    ],
+    "typical_authority_notes": "Execution remains external to DecisionPacket."
+  },
+  "other": {
+    "domain": "other",
+    "example_subject_types": [
+      "domain_defined"
+    ],
+    "typical_dimensions": [
+      "domain_defined"
+    ],
+    "typical_authority_notes": "Execution remains external to DecisionPacket."
+  }
+}

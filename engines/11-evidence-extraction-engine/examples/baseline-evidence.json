@@ -1,0 +1,74 @@
+{
+  "evidence_id": "ev_7180fa2a2b2e4683e8bdad07",
+  "contract_version": "1.0.0",
+  "company_id": "company-demo",
+  "subject": {
+    "subject_type": "energy_meter",
+    "subject_key": "meter-9",
+    "label": null
+  },
+  "evidence_class": "raw",
+  "claim": {
+    "field": "baseline_energy_kwh",
+    "claim_type": "measurement",
+    "unit": "kWh"
+  },
+  "value": 1000,
+  "source": {
+    "source_kind": "system",
+    "source_id": "env-meter-history",
+    "locator": null,
+    "observed_at": "2026-09-03T00:00:00Z",
+    "retrieved_at": "2026-09-03T00:02:00Z",
+    "trust_class": "authenticated",
+    "source_revision": null
+  },
+  "acquisition": {
+    "method": "system_read",
+    "adapter": "system-evidence-adapter",
+    "rule_or_parser": null,
+    "raw_capture_preserved": false,
+    "capture_ref": null
+  },
+  "confidence": {
+    "score": 0.92,
+    "level": "high",
+    "basis": [
+      "direct acquisition",
+      "source:system"
+    ],
+    "limitations": []
+  },
+  "freshness": {
+    "state": "fresh",
+    "as_of": "2026-09-03T00:02:00Z",
+    "max_age_seconds": 86400,
+    "age_seconds": 120,
+    "expires_at": "2026-09-06T00:00:00Z"
+  },
+  "derivation": null,
+  "integrity": {
+    "content_sha256": "d5c843f2cccce92afe5907d69afc5e53eb42b58bdb7b384b6e20be69c119b951",
+    "canonicalization": "titan-evidence-v1"
+  },
+  "governance": {
+    "authority_bearing": false,
+    "sensitivity": "internal",
+    "allowed_purposes": [
+      "understanding",
+      "comparison",
+      "prediction",
+      "ranking",
+      "recommendation",
+      "monitoring",
+      "audit"
+    ],
+    "retention_class": "evidence_record"
+  },
+  "created_at": "2026-09-03T00:02:00Z",
+  "tags": [
+    "evidence:raw",
+    "source:system"
+  ],
+  "extension_data": {}
+}

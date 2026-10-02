@@ -1,0 +1,9 @@
+scope,meaning,typical_examples
+user,user objectives,"effort, preference, disruption"
+company,company objectives,"service quality, policy, margin"
+task,task objectives,"deadline, completeness, task outcome"
+environmental,environmental objectives,"water, energy, emissions, waste, biodiversity"
+operational,operational objectives,"capacity, reliability, throughput"
+financial,financial objectives,"cost, revenue, cash, ROI"
+regulatory,regulatory objectives,"compliance, legal thresholds, required controls"
+strategic,strategic objectives,"resilience, growth, positioning, long-term value"

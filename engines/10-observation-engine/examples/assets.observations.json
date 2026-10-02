@@ -1,0 +1,333 @@
+[
+  {
+    "observation_id": "obs_fc6c6331bb65a88fb2fa",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "entity",
+    "domain": "assets",
+    "subject": {
+      "subject_type": "asset",
+      "subject_key": "asset-4",
+      "label": "asset: asset-4",
+      "external_ref": "asset-4"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "asset-register",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.468650Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_46fecd6c771a771ce934",
+        "evidence_type": "raw",
+        "field": "condition",
+        "value": "degraded",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "asset-register",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_510c18443d45b201779e",
+        "evidence_type": "raw",
+        "field": "risk_flag",
+        "value": "bearing vibration",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "asset-register",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_180c886520953e2f6d9e",
+        "evidence_type": "raw",
+        "field": "decision_needed",
+        "value": true,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "asset-register",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_8201bf2ba39e64e1091c",
+        "evidence_type": "derived",
+        "field": "entity_type",
+        "value": "asset",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "asset-register",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_ade0f948ef7b46d6846d",
+        "evidence_type": "derived",
+        "field": "entity_id",
+        "value": "asset-4",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "asset-register",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "condition": "degraded",
+      "risk_flag": "bearing vibration",
+      "decision_needed": true,
+      "entity_type": "asset",
+      "entity_id": "asset-4"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.86,
+      "level": "high",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": false,
+      "question": null,
+      "urgency": "none",
+      "candidate_dimensions": []
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_1c55785c1ad22b8cf92a",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "state",
+    "domain": "assets",
+    "subject": {
+      "subject_type": "asset",
+      "subject_key": "asset-4",
+      "label": "asset condition: degraded",
+      "external_ref": "asset-4"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "asset-register",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.468685Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_46fecd6c771a771ce934",
+        "evidence_type": "raw",
+        "field": "condition",
+        "value": "degraded",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "asset-register",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "condition": "degraded"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.9,
+      "level": "high",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": false,
+      "question": null,
+      "urgency": "none",
+      "candidate_dimensions": []
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_ac8d2f952dbf26c78219",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "problem",
+    "domain": "assets",
+    "subject": {
+      "subject_type": "asset",
+      "subject_key": "asset-4",
+      "label": "Problem candidate for asset",
+      "external_ref": "asset-4"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "asset-register",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.468698Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_510c18443d45b201779e",
+        "evidence_type": "raw",
+        "field": "risk_flag",
+        "value": "bearing vibration",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "asset-register",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "risk_flag": "bearing vibration"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.75,
+      "level": "medium",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": true,
+      "question": "What is the best response to this problem?",
+      "urgency": "medium",
+      "candidate_dimensions": [
+        "risk",
+        "cost",
+        "time",
+        "impact"
+      ]
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_40fad13fb2f60f736574",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "decision_subject",
+    "domain": "assets",
+    "subject": {
+      "subject_type": "asset",
+      "subject_key": "asset-4",
+      "label": "Decision required for asset",
+      "external_ref": "asset-4"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "asset-register",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.468710Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_180c886520953e2f6d9e",
+        "evidence_type": "raw",
+        "field": "decision_needed",
+        "value": true,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "asset-register",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "decision_needed": true
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.85,
+      "level": "high",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": true,
+      "question": "What is the best action for asset asset-4?",
+      "urgency": "medium",
+      "candidate_dimensions": [
+        "cost",
+        "time",
+        "risk",
+        "quality",
+        "impact"
+      ]
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  }
+]

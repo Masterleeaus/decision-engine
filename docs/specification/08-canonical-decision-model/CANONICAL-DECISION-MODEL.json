@@ -1,0 +1,326 @@
+{
+  "schema_id": "titan.decision.canonical.v1",
+  "schema_version": "1.0.0",
+  "status": "canonical-research-definition",
+  "tenant_boundary": {
+    "canonical_field": "company_id",
+    "rule": "company_id is the sole canonical tenant/company boundary. Legacy tenant identifiers are compatibility inputs only and must normalize to company_id before authorization, data access, projection, or execution."
+  },
+  "authority_principle": {
+    "decision_engine": "May observe, model, compare, predict, rank, recommend, explain, monitor, and prepare execution requests.",
+    "must_not": "Manufacture identity, ownership, permission, entitlement, policy authority, financial authority, or execution authority.",
+    "execution_boundary": "All real execution is delegated through Titan governed execution with actor, company_id, capability, permission, entitlement, autonomy, risk, cost, privacy, receipt, and audit checks."
+  },
+  "decision": {
+    "decision_id": {
+      "type": "uuid/string",
+      "required": true,
+      "purpose": "Stable immutable decision-instance identifier."
+    },
+    "company_id": {
+      "type": "string",
+      "required": true,
+      "purpose": "Sole canonical company boundary."
+    },
+    "subject": {
+      "required": true,
+      "fields": [
+        "subject_id",
+        "subject_type",
+        "subject_ref",
+        "title",
+        "description",
+        "current_state",
+        "observed_at",
+        "source_refs[]"
+      ],
+      "purpose": "The entity, situation, opportunity, problem, or choice being evaluated."
+    },
+    "objective": {
+      "required": true,
+      "cardinality": "1..n",
+      "fields": [
+        "objective_id",
+        "name",
+        "description",
+        "priority",
+        "target_metric",
+        "target_direction",
+        "target_value",
+        "time_horizon",
+        "hard_or_soft",
+        "source",
+        "confidence"
+      ],
+      "purpose": "What success means for this decision."
+    },
+    "options": {
+      "required": true,
+      "cardinality": "0..n",
+      "fields": [
+        "option_id",
+        "label",
+        "description",
+        "option_type",
+        "source",
+        "feasibility",
+        "preconditions[]",
+        "dependencies[]",
+        "estimated_start",
+        "estimated_duration",
+        "reversibility",
+        "status"
+      ],
+      "special_options": [
+        "do_nothing",
+        "investigate_further",
+        "defer",
+        "escalate",
+        "request_approval"
+      ],
+      "purpose": "Mutually distinguishable candidate actions or choices."
+    },
+    "evidence": {
+      "required": false,
+      "cardinality": "0..n",
+      "fields": [
+        "evidence_id",
+        "kind",
+        "claim",
+        "value",
+        "unit",
+        "source_type",
+        "source_ref",
+        "observed_at",
+        "valid_from",
+        "valid_until",
+        "freshness",
+        "provenance",
+        "integrity_hash",
+        "confidence",
+        "conflicts_with[]",
+        "supports[]",
+        "opposes[]"
+      ],
+      "purpose": "Traceable factual or inferred support used by the decision."
+    },
+    "constraints": {
+      "required": false,
+      "cardinality": "0..n",
+      "fields": [
+        "constraint_id",
+        "kind",
+        "description",
+        "severity",
+        "hard_or_soft",
+        "applies_to[]",
+        "source",
+        "jurisdiction",
+        "policy_ref",
+        "threshold",
+        "satisfied",
+        "violation_effect"
+      ],
+      "kinds": [
+        "permission",
+        "budget",
+        "deadline",
+        "availability",
+        "jurisdiction",
+        "policy",
+        "environmental",
+        "safety",
+        "privacy",
+        "capability",
+        "entitlement",
+        "company_boundary",
+        "technical",
+        "contractual",
+        "resource"
+      ],
+      "purpose": "Boundaries that eliminate, penalize, or condition options."
+    },
+    "preferences": {
+      "required": false,
+      "cardinality": "0..n",
+      "fields": [
+        "preference_id",
+        "owner_type",
+        "owner_id",
+        "dimension",
+        "weight",
+        "direction",
+        "scope",
+        "source",
+        "explicit",
+        "last_confirmed_at",
+        "expires_at"
+      ],
+      "rule": "Preferences influence evaluation but never create authority.",
+      "purpose": "Durable or situational priorities used to tune trade-offs."
+    },
+    "predicted_outcomes": {
+      "required": false,
+      "cardinality": "0..n per option",
+      "fields": [
+        "outcome_id",
+        "option_id",
+        "dimension",
+        "prediction",
+        "unit",
+        "time_horizon",
+        "best_case",
+        "expected_case",
+        "worst_case",
+        "probability",
+        "confidence",
+        "model_ref",
+        "assumptions[]",
+        "evidence_refs[]",
+        "side_effects[]"
+      ],
+      "dimensions": [
+        "cost",
+        "time",
+        "revenue",
+        "margin",
+        "cash_flow",
+        "risk",
+        "quality",
+        "reliability",
+        "environmental_impact",
+        "safety",
+        "customer_impact",
+        "human_effort",
+        "compliance",
+        "reversibility",
+        "strategic_value"
+      ],
+      "purpose": "Expected consequences of each option, including uncertainty."
+    },
+    "trade_offs": {
+      "required": false,
+      "cardinality": "0..n",
+      "fields": [
+        "tradeoff_id",
+        "option_id",
+        "benefit_dimension",
+        "cost_dimension",
+        "description",
+        "magnitude",
+        "confidence",
+        "evidence_refs[]"
+      ],
+      "purpose": "Explicit gains, losses, conflicts, and sacrifices between objectives/dimensions."
+    },
+    "ranking": {
+      "required": false,
+      "fields": [
+        "ranking_id",
+        "method",
+        "model_version",
+        "scoring_dimensions[]",
+        "weights[]",
+        "normalization",
+        "option_scores[]",
+        "rank_order[]",
+        "sensitivity[]",
+        "dominance_notes[]",
+        "excluded_options[]",
+        "generated_at"
+      ],
+      "purpose": "Transparent ordering of viable options with inspectable scoring and sensitivity."
+    },
+    "recommendation": {
+      "required": false,
+      "fields": [
+        "recommendation_id",
+        "recommended_option_id",
+        "recommendation_type",
+        "summary",
+        "rationale",
+        "why_not_others[]",
+        "expected_effects[]",
+        "conditions[]",
+        "valid_until",
+        "generated_at"
+      ],
+      "types": [
+        "best_action",
+        "investigate",
+        "defer",
+        "escalate",
+        "request_approval",
+        "no_safe_action",
+        "insufficient_evidence"
+      ],
+      "purpose": "The engine\u2019s proposed next-best action, not an execution command."
+    },
+    "confidence": {
+      "required": true,
+      "fields": [
+        "overall",
+        "evidence_quality",
+        "evidence_coverage",
+        "model_confidence",
+        "conflict_level",
+        "freshness",
+        "uncertainty_reasons[]",
+        "missing_information[]",
+        "confidence_band"
+      ],
+      "purpose": "An explicit measure of how much the recommendation should be trusted and why."
+    },
+    "authority_requirements": {
+      "required": true,
+      "fields": [
+        "required",
+        "authority_class",
+        "actor_requirements[]",
+        "permission_requirements[]",
+        "entitlement_requirements[]",
+        "approval_requirements[]",
+        "capability_required",
+        "risk_class",
+        "cost_class",
+        "privacy_class",
+        "policy_checks[]",
+        "execution_owner",
+        "governed_execution_required"
+      ],
+      "rule": "Authority requirements describe what must be true before execution; they do not grant authority.",
+      "purpose": "Separates recommendation from permission and execution."
+    }
+  },
+  "lifecycle": [
+    "observed",
+    "framed",
+    "options_discovered",
+    "evidence_enriched",
+    "constrained",
+    "predicted",
+    "compared",
+    "ranked",
+    "recommended",
+    "awaiting_authority",
+    "approved",
+    "rejected",
+    "modified",
+    "executed_external",
+    "outcome_observed",
+    "superseded",
+    "expired"
+  ],
+  "invariants": [
+    "Every decision belongs to exactly one company_id.",
+    "No recommendation implies permission to execute.",
+    "Evidence must retain provenance and confidence independently of recommendation state.",
+    "Historical rankings and recommendations are append-only records; later learning may supersede but not rewrite history.",
+    "Do-nothing, investigate, defer, and escalate are valid options where appropriate.",
+    "Hard constraints eliminate or block options; soft constraints may affect scoring but cannot silently override hard constraints.",
+    "Preference weights cannot override permissions, policy, safety, privacy, entitlement, or company isolation.",
+    "Ranking must be reproducible from recorded inputs, model/scoring version, assumptions, and evidence.",
+    "Predictions must identify uncertainty and assumptions.",
+    "Execution receipts belong to the governed execution system and are referenced by decision history rather than created as decision authority."
+  ]
+}

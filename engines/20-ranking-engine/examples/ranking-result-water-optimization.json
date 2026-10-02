@@ -1,0 +1,405 @@
+{
+  "assumptions": [
+    "installed price holds",
+    "civil works limited"
+  ],
+  "authority_effect": "none",
+  "company_id": "company-demo",
+  "comparison_id": "cmp_water",
+  "contract_version": "1.0.0",
+  "created_at": "2026-09-03T00:00:00Z",
+  "decision_subject_id": "water-optimization",
+  "dimension_weight_overrides": {},
+  "excluded_alternatives": [],
+  "leader_margin": 0.07375,
+  "leader_option_id": "efficient-unit",
+  "metadata": {},
+  "objective_weights": {
+    "obj_cost": 1,
+    "obj_quality": 1,
+    "obj_water": 2
+  },
+  "ranked_alternatives": [
+    {
+      "assumptions": [
+        "installed price holds"
+      ],
+      "comparison_coverage": 1,
+      "dense_rank": 1,
+      "factors": [
+        {
+          "assumptions": [
+            "installed price holds"
+          ],
+          "base_weight": 1.0,
+          "combined_confidence": 0.9,
+          "dimension": "cost",
+          "dimension_id": "dim_cost",
+          "effective_weight": 1.0,
+          "evidence_refs": [
+            "quote-1"
+          ],
+          "measurement_confidence": 0.9,
+          "normalized_score": 0.55,
+          "objective_multiplier": 1.0,
+          "prediction_confidence_multiplier": 1.0,
+          "prediction_refs": [],
+          "raw_value": 3200,
+          "unit": "AUD",
+          "weighted_contribution": 0.49500000000000005
+        },
+        {
+          "assumptions": [],
+          "base_weight": 1.0,
+          "combined_confidence": 0.8,
+          "dimension": "sustainability",
+          "dimension_id": "dim_sustainability",
+          "effective_weight": 2.0,
+          "evidence_refs": [
+            "water-audit"
+          ],
+          "measurement_confidence": 0.8,
+          "normalized_score": 0.8,
+          "objective_multiplier": 2.0,
+          "prediction_confidence_multiplier": 1.0,
+          "prediction_refs": [],
+          "raw_value": 0.8,
+          "unit": null,
+          "weighted_contribution": 1.2800000000000002
+        },
+        {
+          "assumptions": [],
+          "base_weight": 1.0,
+          "combined_confidence": 0.85,
+          "dimension": "quality",
+          "dimension_id": "dim_quality",
+          "effective_weight": 1.0,
+          "evidence_refs": [
+            "trial"
+          ],
+          "measurement_confidence": 0.85,
+          "normalized_score": 0.9,
+          "objective_multiplier": 1.0,
+          "prediction_confidence_multiplier": 1.0,
+          "prediction_refs": [],
+          "raw_value": 0.9,
+          "unit": null,
+          "weighted_contribution": 0.765
+        }
+      ],
+      "option_id": "efficient-unit",
+      "rank_confidence": 0.8375,
+      "rank_position": 1,
+      "score": 0.635,
+      "title": "High-efficiency rinse unit"
+    },
+    {
+      "assumptions": [
+        "civil works limited"
+      ],
+      "comparison_coverage": 1,
+      "dense_rank": 2,
+      "factors": [
+        {
+          "assumptions": [
+            "civil works limited"
+          ],
+          "base_weight": 1.0,
+          "combined_confidence": 0.7,
+          "dimension": "cost",
+          "dimension_id": "dim_cost",
+          "effective_weight": 1.0,
+          "evidence_refs": [
+            "estimate-2"
+          ],
+          "measurement_confidence": 0.7,
+          "normalized_score": 0.2,
+          "objective_multiplier": 1.0,
+          "prediction_confidence_multiplier": 1.0,
+          "prediction_refs": [],
+          "raw_value": 7000,
+          "unit": "AUD",
+          "weighted_contribution": 0.13999999999999999
+        },
+        {
+          "assumptions": [],
+          "base_weight": 1.0,
+          "combined_confidence": 0.75,
+          "dimension": "sustainability",
+          "dimension_id": "dim_sustainability",
+          "effective_weight": 2.0,
+          "evidence_refs": [
+            "engineering-note"
+          ],
+          "measurement_confidence": 0.75,
+          "normalized_score": 0.95,
+          "objective_multiplier": 2.0,
+          "prediction_confidence_multiplier": 1.0,
+          "prediction_refs": [],
+          "raw_value": 0.95,
+          "unit": null,
+          "weighted_contribution": 1.4249999999999998
+        },
+        {
+          "assumptions": [],
+          "base_weight": 1.0,
+          "combined_confidence": 0.8,
+          "dimension": "quality",
+          "dimension_id": "dim_quality",
+          "effective_weight": 1.0,
+          "evidence_refs": [
+            "engineering-note"
+          ],
+          "measurement_confidence": 0.8,
+          "normalized_score": 0.85,
+          "objective_multiplier": 1.0,
+          "prediction_confidence_multiplier": 1.0,
+          "prediction_refs": [],
+          "raw_value": 0.85,
+          "unit": null,
+          "weighted_contribution": 0.68
+        }
+      ],
+      "option_id": "recirculation",
+      "rank_confidence": 0.75,
+      "rank_position": 2,
+      "score": 0.56125,
+      "title": "Install recirculation stage"
+    }
+  ],
+  "ranking_id": "rank_6836dffdb54afab9ef47",
+  "sensitivity": {
+    "fraction": 0.25,
+    "leader_is_sensitive": false,
+    "scenarios": [
+      {
+        "baseline_weight": 1.0,
+        "change": "decrease",
+        "dimension": "cost",
+        "order": [
+          "efficient-unit",
+          "recirculation"
+        ],
+        "order_changed": false,
+        "scenario_id": "sens_902d1f837a3d0d332467",
+        "scenario_weight": 0.75,
+        "scores": {
+          "efficient-unit": 0.644333333,
+          "recirculation": 0.589333333
+        },
+        "top_changed": false,
+        "top_option_id": "efficient-unit",
+        "type": "dimension_weight"
+      },
+      {
+        "baseline_weight": 1.0,
+        "change": "increase",
+        "dimension": "cost",
+        "order": [
+          "efficient-unit",
+          "recirculation"
+        ],
+        "order_changed": false,
+        "scenario_id": "sens_ca9077919e1f63dc8110",
+        "scenario_weight": 1.25,
+        "scores": {
+          "efficient-unit": 0.626764706,
+          "recirculation": 0.536470588
+        },
+        "top_changed": false,
+        "top_option_id": "efficient-unit",
+        "type": "dimension_weight"
+      },
+      {
+        "baseline_weight": 1.0,
+        "change": "decrease",
+        "dimension": "sustainability",
+        "order": [
+          "efficient-unit",
+          "recirculation"
+        ],
+        "order_changed": false,
+        "scenario_id": "sens_895fd20aa24623609a52",
+        "scenario_weight": 0.75,
+        "scores": {
+          "efficient-unit": 0.634285714,
+          "recirculation": 0.539642857
+        },
+        "top_changed": false,
+        "top_option_id": "efficient-unit",
+        "type": "dimension_weight"
+      },
+      {
+        "baseline_weight": 1.0,
+        "change": "increase",
+        "dimension": "sustainability",
+        "order": [
+          "efficient-unit",
+          "recirculation"
+        ],
+        "order_changed": false,
+        "scenario_id": "sens_3177c16b128b9843c8a4",
+        "scenario_weight": 1.25,
+        "scores": {
+          "efficient-unit": 0.635555556,
+          "recirculation": 0.578055556
+        },
+        "top_changed": false,
+        "top_option_id": "efficient-unit",
+        "type": "dimension_weight"
+      },
+      {
+        "baseline_weight": 1.0,
+        "change": "decrease",
+        "dimension": "quality",
+        "order": [
+          "efficient-unit",
+          "recirculation"
+        ],
+        "order_changed": false,
+        "scenario_id": "sens_8f02752e6eafe7967bd1",
+        "scenario_weight": 0.75,
+        "scores": {
+          "efficient-unit": 0.626333333,
+          "recirculation": 0.553333333
+        },
+        "top_changed": false,
+        "top_option_id": "efficient-unit",
+        "type": "dimension_weight"
+      },
+      {
+        "baseline_weight": 1.0,
+        "change": "increase",
+        "dimension": "quality",
+        "order": [
+          "efficient-unit",
+          "recirculation"
+        ],
+        "order_changed": false,
+        "scenario_id": "sens_8f33b8096b5e9fbf4dcc",
+        "scenario_weight": 1.25,
+        "scores": {
+          "efficient-unit": 0.642647059,
+          "recirculation": 0.568235294
+        },
+        "top_changed": false,
+        "top_option_id": "efficient-unit",
+        "type": "dimension_weight"
+      },
+      {
+        "baseline_weight": 1.0,
+        "change": "decrease",
+        "objective_id": "obj_cost",
+        "order": [
+          "efficient-unit",
+          "recirculation"
+        ],
+        "order_changed": false,
+        "scenario_id": "sensobj_7d2ad7627c186273e076",
+        "scenario_weight": 0.75,
+        "scores": {
+          "efficient-unit": 0.644333333,
+          "recirculation": 0.589333333
+        },
+        "top_changed": false,
+        "top_option_id": "efficient-unit",
+        "type": "objective_weight"
+      },
+      {
+        "baseline_weight": 1.0,
+        "change": "increase",
+        "objective_id": "obj_cost",
+        "order": [
+          "efficient-unit",
+          "recirculation"
+        ],
+        "order_changed": false,
+        "scenario_id": "sensobj_0a5452703ab3d4124735",
+        "scenario_weight": 1.25,
+        "scores": {
+          "efficient-unit": 0.626764706,
+          "recirculation": 0.536470588
+        },
+        "top_changed": false,
+        "top_option_id": "efficient-unit",
+        "type": "objective_weight"
+      },
+      {
+        "baseline_weight": 1.0,
+        "change": "decrease",
+        "objective_id": "obj_quality",
+        "order": [
+          "efficient-unit",
+          "recirculation"
+        ],
+        "order_changed": false,
+        "scenario_id": "sensobj_c67273da970ec8f79928",
+        "scenario_weight": 0.75,
+        "scores": {
+          "efficient-unit": 0.626333333,
+          "recirculation": 0.553333333
+        },
+        "top_changed": false,
+        "top_option_id": "efficient-unit",
+        "type": "objective_weight"
+      },
+      {
+        "baseline_weight": 1.0,
+        "change": "increase",
+        "objective_id": "obj_quality",
+        "order": [
+          "efficient-unit",
+          "recirculation"
+        ],
+        "order_changed": false,
+        "scenario_id": "sensobj_1c25e100f6bc13be1584",
+        "scenario_weight": 1.25,
+        "scores": {
+          "efficient-unit": 0.642647059,
+          "recirculation": 0.568235294
+        },
+        "top_changed": false,
+        "top_option_id": "efficient-unit",
+        "type": "objective_weight"
+      },
+      {
+        "baseline_weight": 2.0,
+        "change": "decrease",
+        "objective_id": "obj_water",
+        "order": [
+          "efficient-unit",
+          "recirculation"
+        ],
+        "order_changed": false,
+        "scenario_id": "sensobj_9f0a145eefe386a58a55",
+        "scenario_weight": 1.5,
+        "scores": {
+          "efficient-unit": 0.634285714,
+          "recirculation": 0.539642857
+        },
+        "top_changed": false,
+        "top_option_id": "efficient-unit",
+        "type": "objective_weight"
+      },
+      {
+        "baseline_weight": 2.0,
+        "change": "increase",
+        "objective_id": "obj_water",
+        "order": [
+          "efficient-unit",
+          "recirculation"
+        ],
+        "order_changed": false,
+        "scenario_id": "sensobj_8efb6e462b40a7d5dde3",
+        "scenario_weight": 2.5,
+        "scores": {
+          "efficient-unit": 0.635555556,
+          "recirculation": 0.578055556
+        },
+        "top_changed": false,
+        "top_option_id": "efficient-unit",
+        "type": "objective_weight"
+      }
+    ]
+  }
+}

@@ -1,0 +1,5 @@
+PASS schema validation
+options 4
+eligible 3
+unknown 1
+kinds action,intervention,resource,schedule

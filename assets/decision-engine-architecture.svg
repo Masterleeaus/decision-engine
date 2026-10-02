@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="740" viewBox="0 0 1500 740" role="img" aria-labelledby="title desc">
+  <title id="title">Titan Decision Engine architecture</title>
+  <desc id="desc">Evidence moves through discovery, evaluation, recommendation and learning. Governance remains separate from decision intelligence.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#081323"/><stop offset="1" stop-color="#10243A"/></linearGradient>
+    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#43E0D2"/><stop offset="1" stop-color="#4BA8FF"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <style>
+      .title{font:700 28px Arial,sans-serif;fill:#F4F8FC}.sub{font:400 15px Arial,sans-serif;fill:#9EB3C9}
+      .group{font:700 12px Arial,sans-serif;letter-spacing:2px;fill:#6D8AA6}
+      .node{fill:#11283F;stroke:#2A4965;stroke-width:1.5}.ntext{font:600 15px Arial,sans-serif;fill:#EAF4FC}.small{font:400 12px Arial,sans-serif;fill:#A7BCD0}
+      .line{stroke:#4A789A;stroke-width:2;fill:none}.accent{stroke:url(#cyan);stroke-width:3;fill:none;filter:url(#glow)}
+    </style>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="#50C9D6"/></marker>
+  </defs>
+  <rect width="1500" height="740" rx="28" fill="url(#bg)"/>
+  <circle cx="1280" cy="95" r="190" fill="#15304A" opacity=".35"/><circle cx="140" cy="650" r="230" fill="#102943" opacity=".4"/>
+  <text x="64" y="65" class="group">TITAN DECISION ENGINE · 25-STEP LINEAGE</text>
+  <text x="64" y="112" class="title">A decision pipeline with evidence, boundaries and memory</text>
+  <text x="64" y="140" class="sub">Each stage has a defined responsibility. Reasoning can inform a choice; governed authority controls action.</text>
+
+  <text x="66" y="194" class="group">OBSERVE &amp; DEFINE</text>
+  <text x="430" y="194" class="group">EVALUATE</text>
+  <text x="925" y="194" class="group">RECOMMEND &amp; LEARN</text>
+  <g>
+    <rect x="64" y="220" width="170" height="92" rx="14" class="node"/><text x="84" y="258" class="ntext">Observation</text><text x="84" y="284" class="small">signals · scope</text>
+    <rect x="260" y="220" width="170" height="92" rx="14" class="node"/><text x="280" y="258" class="ntext">Evidence</text><text x="280" y="284" class="small">sources · freshness</text>
+    <rect x="456" y="220" width="170" height="92" rx="14" class="node"/><text x="476" y="258" class="ntext">Context</text><text x="476" y="284" class="small">entities · provenance</text>
+    <rect x="652" y="220" width="170" height="92" rx="14" class="node"/><text x="672" y="258" class="ntext">Options</text><text x="672" y="284" class="small">alternatives · feasibility</text>
+    <rect x="848" y="220" width="170" height="92" rx="14" class="node"/><text x="868" y="258" class="ntext">Objectives</text><text x="868" y="284" class="small">what “better” means</text>
+    <rect x="1044" y="220" width="170" height="92" rx="14" class="node"/><text x="1064" y="258" class="ntext">Constraints</text><text x="1064" y="284" class="small">hard gates · preferences</text>
+  </g>
+  <path d="M234 266H254M430 266H450M626 266H646M822 266H842M1018 266H1038" class="accent" marker-end="url(#arrow)"/>
+  <path d="M1129 312V366H832" class="line" marker-end="url(#arrow)"/>
+
+  <rect x="146" y="390" width="218" height="106" rx="16" class="node"/><text x="168" y="432" class="ntext">Compare &amp; predict</text><text x="168" y="460" class="small">trade-offs · outcomes</text>
+  <rect x="430" y="390" width="218" height="106" rx="16" class="node"/><text x="452" y="432" class="ntext">Rank eligible options</text><text x="452" y="460" class="small">transparent factors</text>
+  <rect x="714" y="390" width="218" height="106" rx="16" class="node"/><text x="736" y="432" class="ntext">Recommend or abstain</text><text x="736" y="460" class="small">confidence · explanation</text>
+  <rect x="998" y="390" width="218" height="106" rx="16" class="node"/><text x="1020" y="432" class="ntext">Record &amp; learn</text><text x="1020" y="460" class="small">append-only · verified outcomes</text>
+  <path d="M364 443H424M648 443H708M932 443H992" class="accent" marker-end="url(#arrow)"/>
+
+  <rect x="64" y="566" width="650" height="112" rx="18" fill="#10263C" stroke="#2A4965"/>
+  <text x="92" y="603" class="group">DECISION INTELLIGENCE</text>
+  <text x="92" y="635" class="ntext">Observe · evaluate · explain · learn</text>
+  <text x="92" y="659" class="small">Company-scoped by company_id · uncertainty remains visible</text>
+  <rect x="786" y="566" width="650" height="112" rx="18" fill="#231F1A" stroke="#8B6330"/>
+  <text x="814" y="603" class="group" style="fill:#D9A85E">GOVERNED AUTHORITY · SEPARATE BOUNDARY</text>
+  <text x="814" y="635" class="ntext">Permission · approval · execution</text>
+  <text x="814" y="659" class="small">A recommendation or learned score cannot grant authority</text>
+  <path d="M932 496V532H1110V560" stroke="#D9A85E" stroke-width="2" stroke-dasharray="7 7" fill="none" marker-end="url(#arrow)"/>
+</svg>

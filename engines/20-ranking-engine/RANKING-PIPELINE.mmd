@@ -1,0 +1,9 @@
+flowchart LR
+ C[Step18 Comparison] --> F[Factor extraction]
+ P[Step19 Predictions] --> F
+ O[Objectives / explicit weights] --> W[Effective weights]
+ F --> W
+ W --> S[Confidence-adjusted contributions]
+ S --> R[Transparent rank positions]
+ R --> X[Sensitivity scenarios]
+ X --> A[Advisory ranking result; no authority]

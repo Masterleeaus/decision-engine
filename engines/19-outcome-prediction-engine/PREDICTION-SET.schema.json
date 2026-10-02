@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "authority_effect": {
+      "const": "none"
+    },
+    "company_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "decision_subject_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "errors": {
+      "type": "array"
+    },
+    "prediction_set_id": {
+      "type": "string"
+    },
+    "predictions": {
+      "items": {
+        "additionalProperties": true,
+        "properties": {
+          "assumptions": {
+            "type": "array"
+          },
+          "authority_effect": {
+            "const": "none"
+          },
+          "company_id": {
+            "type": "string"
+          },
+          "confidence": {
+            "maximum": 1,
+            "minimum": 0,
+            "type": "number"
+          },
+          "decision_subject_id": {
+            "type": "string"
+          },
+          "evidence_refs": {
+            "type": "array"
+          },
+          "horizon": {
+            "enum": [
+              "immediate",
+              "near_term",
+              "operational",
+              "strategic",
+              "tactical"
+            ]
+          },
+          "option_id": {
+            "type": "string"
+          },
+          "outcome_key": {
+            "type": "string"
+          },
+          "prediction_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "prediction_id",
+          "company_id",
+          "decision_subject_id",
+          "option_id",
+          "outcome_key",
+          "horizon",
+          "confidence",
+          "assumptions",
+          "evidence_refs",
+          "authority_effect"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "prediction_set_id",
+    "company_id",
+    "decision_subject_id",
+    "predictions",
+    "authority_effect"
+  ],
+  "title": "Titan Outcome Prediction Set",
+  "type": "object"
+}

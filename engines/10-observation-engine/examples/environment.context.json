@@ -1,0 +1,13 @@
+{
+  "company_id": "company-demo",
+  "source_kind": "system",
+  "source_id": "env-meter",
+  "record_type": "energy_use",
+  "record_id": "meter-9",
+  "domain": "environment",
+  "fields": {
+    "energy_kwh": 1400,
+    "state": "elevated",
+    "decision_needed": true
+  }
+}

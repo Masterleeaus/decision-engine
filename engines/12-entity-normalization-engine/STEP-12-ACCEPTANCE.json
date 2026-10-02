@@ -1,0 +1,24 @@
+{
+  "step": "12",
+  "title": "Entity Normalization Engine",
+  "status": "passed",
+  "contract_version": "1.0.0",
+  "tests": {
+    "validation_returncode": 0,
+    "unittest_returncode": 0
+  },
+  "preservation": {
+    "baseline": "Step11",
+    "baseline_files": 228,
+    "unchanged_files": 228,
+    "mismatches": 0
+  },
+  "constitutional_checks": {
+    "company_id_sole_boundary": true,
+    "cross_company_matching_prohibited": true,
+    "weak_similarity_not_auto_merge": true,
+    "conflict_and_ambiguity_explicit": true,
+    "merge_split_lineage_preserved": true,
+    "authority_not_created": true
+  }
+}

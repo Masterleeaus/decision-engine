@@ -1,0 +1,13 @@
+{
+  "company_id": "company-demo",
+  "source_kind": "system",
+  "source_id": "asset-register",
+  "record_type": "asset",
+  "record_id": "asset-4",
+  "domain": "assets",
+  "fields": {
+    "condition": "degraded",
+    "risk_flag": "bearing vibration",
+    "decision_needed": true
+  }
+}

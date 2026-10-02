@@ -1,0 +1,17 @@
+{
+  "step": 18,
+  "status": "implemented",
+  "requirements": [
+    "10 canonical dimensions",
+    "unlike option kinds comparable",
+    "raw values/evidence retained",
+    "minimize/maximize direction aware normalization",
+    "missing data explicit",
+    "coverage and comparison confidence",
+    "pairwise tradeoffs",
+    "Pareto frontier",
+    "constraint eligibility preserved",
+    "preference weights advisory only",
+    "no ranking/recommendation/execution authority"
+  ]
+}

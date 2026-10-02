@@ -1,0 +1,21 @@
+{
+  "company_id": "company-demo",
+  "entity_type": "supplier",
+  "label": "Acme Industrial Pty Ltd",
+  "source_kind": "system",
+  "source_id": "crm",
+  "record_id": "sup-17",
+  "observed_at": "2026-09-03T00:00:00Z",
+  "identifiers": [
+    {
+      "scheme": "abn",
+      "value": "12 345 678 901"
+    }
+  ],
+  "aliases": [
+    "Acme Industrial"
+  ],
+  "attributes": {
+    "address": "10 Example Rd Melbourne"
+  }
+}

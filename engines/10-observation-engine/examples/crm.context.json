@@ -1,0 +1,13 @@
+{
+  "company_id": "company-demo",
+  "source_kind": "system",
+  "source_id": "crm",
+  "record_type": "opportunity",
+  "record_id": "opp-1",
+  "domain": "crm",
+  "fields": {
+    "stage": "proposal",
+    "opportunity": "high-intent follow-up",
+    "requires_decision": true
+  }
+}

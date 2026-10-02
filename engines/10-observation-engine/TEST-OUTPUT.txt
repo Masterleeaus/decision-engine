@@ -1,0 +1,13 @@
+test_browser_is_untrusted (test_observation_engine.TestObservationEngine.test_browser_is_untrusted) ... ok
+test_company_required (test_observation_engine.TestObservationEngine.test_company_required) ... ok
+test_fixture_schema_and_semantics (test_observation_engine.TestObservationEngine.test_fixture_schema_and_semantics) ... ok
+test_ids_stable_for_same_facts (test_observation_engine.TestObservationEngine.test_ids_stable_for_same_facts) ... ok
+test_legacy_boundary_rejected (test_observation_engine.TestObservationEngine.test_legacy_boundary_rejected) ... ok
+test_observation_never_contains_execution_command (test_observation_engine.TestObservationEngine.test_observation_never_contains_execution_command) ... ok
+test_rule_can_be_domain_neutral (test_observation_engine.TestObservationEngine.test_rule_can_be_domain_neutral) ... ok
+test_system_state_and_problem (test_observation_engine.TestObservationEngine.test_system_state_and_problem) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.749s
+
+OK

@@ -1,0 +1,1 @@
+import {EntityNormalizationEngine} from "./runtime/entityNormalizationEngine.js"; const x=new EntityNormalizationEngine().normalize([{company_id:"validation",entity_type:"x",source_id:"s"}]); if(!x.length) throw new Error("validation failed"); console.log("Entity validation passed");

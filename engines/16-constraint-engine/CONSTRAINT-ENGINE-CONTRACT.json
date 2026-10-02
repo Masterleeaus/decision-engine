@@ -1,0 +1,39 @@
+{
+  "contract": "Titan Constraint Engine",
+  "version": "1.0.0",
+  "purpose": "Represent and evaluate hard and soft constraints before prediction, ranking, recommendation, or execution preparation.",
+  "categories": [
+    "permission",
+    "budget",
+    "deadline",
+    "availability",
+    "jurisdiction",
+    "policy",
+    "environmental",
+    "safety",
+    "privacy",
+    "capability",
+    "entitlement",
+    "company_boundary"
+  ],
+  "invariants": [
+    "company_id is the sole canonical tenant/company boundary.",
+    "company_boundary is always hard, critical, non-relaxable, and non-overridable.",
+    "Hard constraints cannot be compensated for by soft utility or objective weights.",
+    "Unknown hard permission, jurisdiction, policy, safety, privacy, capability, entitlement, or company-boundary constraints fail closed or escalate according to policy.",
+    "Constraints describe eligibility and trade-off restrictions; they do not create permission, entitlement, approval, or execution authority.",
+    "Caller-supplied legacy tenant identifiers are not authority and must normalize to trusted company_id before evaluation.",
+    "Constraint provenance, temporal validity, and authority requirements are retained."
+  ],
+  "evaluation_statuses": [
+    "satisfied",
+    "violated",
+    "unknown",
+    "not_applicable"
+  ],
+  "overall_statuses": [
+    "eligible",
+    "ineligible",
+    "needs_resolution"
+  ]
+}

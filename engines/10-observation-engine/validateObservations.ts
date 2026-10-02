@@ -1,0 +1,1 @@
+import {defaultEngine} from "./runtime/observationEngine.js"; const out=defaultEngine().observeSystem("validation","sys","record","1",{status:"ok"}); if(!out.length) throw new Error("validation failed"); console.log("Observation validation passed",out.length);

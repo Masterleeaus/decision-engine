@@ -1,0 +1,273 @@
+{
+  "company_id": "company_demo",
+  "decision_subject_id": "subject_water_optimization",
+  "objectives": [
+    {
+      "objective_id": "obj_user",
+      "scope": "user",
+      "name": "Minimize disruption",
+      "description": "Minimize disruption",
+      "metric": "disruption",
+      "direction": "minimize",
+      "target": null,
+      "unit": null,
+      "priority": 60,
+      "weight": 0.7,
+      "hardness": "soft",
+      "time_horizon": {
+        "kind": "ongoing",
+        "deadline": null
+      },
+      "thresholds": {},
+      "conflicts_with": [
+        "obj_financial"
+      ],
+      "provenance": [
+        {
+          "source_type": "user",
+          "source_ref": "user_source",
+          "captured_at": "2026-09-03T00:00:00Z"
+        }
+      ],
+      "authority": {
+        "can_define": true,
+        "can_override": false,
+        "required_authority_refs": []
+      },
+      "metadata": {}
+    },
+    {
+      "objective_id": "obj_company",
+      "scope": "company",
+      "name": "Protect service quality",
+      "description": "Protect service quality",
+      "metric": "service_quality",
+      "direction": "maintain",
+      "target": null,
+      "unit": null,
+      "priority": 90,
+      "weight": 1,
+      "hardness": "hard",
+      "time_horizon": {
+        "kind": "ongoing",
+        "deadline": null
+      },
+      "thresholds": {},
+      "conflicts_with": [],
+      "provenance": [
+        {
+          "source_type": "company_policy",
+          "source_ref": "company_source",
+          "captured_at": "2026-09-03T00:00:00Z"
+        }
+      ],
+      "authority": {
+        "can_define": true,
+        "can_override": false,
+        "required_authority_refs": []
+      },
+      "metadata": {}
+    },
+    {
+      "objective_id": "obj_task",
+      "scope": "task",
+      "name": "Complete work on time",
+      "description": "Complete work on time",
+      "metric": "completion_time",
+      "direction": "minimize",
+      "target": null,
+      "unit": null,
+      "priority": 60,
+      "weight": 0.8,
+      "hardness": "soft",
+      "time_horizon": {
+        "kind": "ongoing",
+        "deadline": null
+      },
+      "thresholds": {},
+      "conflicts_with": [],
+      "provenance": [
+        {
+          "source_type": "company_policy",
+          "source_ref": "task_source",
+          "captured_at": "2026-09-03T00:00:00Z"
+        }
+      ],
+      "authority": {
+        "can_define": true,
+        "can_override": false,
+        "required_authority_refs": []
+      },
+      "metadata": {}
+    },
+    {
+      "objective_id": "obj_environmental",
+      "scope": "environmental",
+      "name": "Reduce water use",
+      "description": "Reduce water use",
+      "metric": "water_litres",
+      "direction": "minimize",
+      "target": null,
+      "unit": null,
+      "priority": 60,
+      "weight": 1.0,
+      "hardness": "soft",
+      "time_horizon": {
+        "kind": "ongoing",
+        "deadline": null
+      },
+      "thresholds": {},
+      "conflicts_with": [],
+      "provenance": [
+        {
+          "source_type": "company_policy",
+          "source_ref": "environmental_source",
+          "captured_at": "2026-09-03T00:00:00Z"
+        }
+      ],
+      "authority": {
+        "can_define": true,
+        "can_override": false,
+        "required_authority_refs": []
+      },
+      "metadata": {}
+    },
+    {
+      "objective_id": "obj_operational",
+      "scope": "operational",
+      "name": "Maintain capacity",
+      "description": "Maintain capacity",
+      "metric": "capacity",
+      "direction": "maintain",
+      "target": null,
+      "unit": null,
+      "priority": 90,
+      "weight": 1,
+      "hardness": "hard",
+      "time_horizon": {
+        "kind": "ongoing",
+        "deadline": null
+      },
+      "thresholds": {},
+      "conflicts_with": [],
+      "provenance": [
+        {
+          "source_type": "company_policy",
+          "source_ref": "operational_source",
+          "captured_at": "2026-09-03T00:00:00Z"
+        }
+      ],
+      "authority": {
+        "can_define": true,
+        "can_override": false,
+        "required_authority_refs": []
+      },
+      "metadata": {}
+    },
+    {
+      "objective_id": "obj_financial",
+      "scope": "financial",
+      "name": "Reduce lifecycle cost",
+      "description": "Reduce lifecycle cost",
+      "metric": "lifecycle_cost",
+      "direction": "minimize",
+      "target": null,
+      "unit": null,
+      "priority": 60,
+      "weight": 1.0,
+      "hardness": "soft",
+      "time_horizon": {
+        "kind": "ongoing",
+        "deadline": null
+      },
+      "thresholds": {},
+      "conflicts_with": [
+        "obj_user"
+      ],
+      "provenance": [
+        {
+          "source_type": "company_policy",
+          "source_ref": "financial_source",
+          "captured_at": "2026-09-03T00:00:00Z"
+        }
+      ],
+      "authority": {
+        "can_define": true,
+        "can_override": false,
+        "required_authority_refs": []
+      },
+      "metadata": {}
+    },
+    {
+      "objective_id": "obj_regulatory",
+      "scope": "regulatory",
+      "name": "Satisfy water restrictions",
+      "description": "Satisfy water restrictions",
+      "metric": "regulatory_compliance",
+      "direction": "satisfy",
+      "target": null,
+      "unit": null,
+      "priority": 90,
+      "weight": 1,
+      "hardness": "hard",
+      "time_horizon": {
+        "kind": "ongoing",
+        "deadline": null
+      },
+      "thresholds": {},
+      "conflicts_with": [],
+      "provenance": [
+        {
+          "source_type": "regulation",
+          "source_ref": "regulatory_source",
+          "captured_at": "2026-09-03T00:00:00Z"
+        }
+      ],
+      "authority": {
+        "can_define": false,
+        "can_override": false,
+        "required_authority_refs": [
+          "regulator"
+        ]
+      },
+      "metadata": {}
+    },
+    {
+      "objective_id": "obj_strategic",
+      "scope": "strategic",
+      "name": "Improve resilience",
+      "description": "Improve resilience",
+      "metric": "resilience_score",
+      "direction": "maximize",
+      "target": null,
+      "unit": null,
+      "priority": 60,
+      "weight": 0.6,
+      "hardness": "soft",
+      "time_horizon": {
+        "kind": "ongoing",
+        "deadline": null
+      },
+      "thresholds": {},
+      "conflicts_with": [],
+      "provenance": [
+        {
+          "source_type": "company_policy",
+          "source_ref": "strategic_source",
+          "captured_at": "2026-09-03T00:00:00Z"
+        }
+      ],
+      "authority": {
+        "can_define": true,
+        "can_override": false,
+        "required_authority_refs": []
+      },
+      "metadata": {}
+    }
+  ],
+  "resolution_policy": {
+    "hard_objectives_must_hold": true,
+    "weight_normalization": "normalize",
+    "conflict_strategy": "explicit_tradeoff"
+  }
+}

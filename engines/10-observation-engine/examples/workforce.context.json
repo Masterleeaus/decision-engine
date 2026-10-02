@@ -1,0 +1,13 @@
+{
+  "company_id": "company-demo",
+  "source_kind": "system",
+  "source_id": "workforce",
+  "record_type": "shift",
+  "record_id": "shift-3",
+  "domain": "workforce",
+  "fields": {
+    "status": "unfilled",
+    "problem": "skills coverage gap",
+    "requires_decision": true
+  }
+}

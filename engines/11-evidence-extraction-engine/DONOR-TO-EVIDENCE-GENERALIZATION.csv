@@ -1,0 +1,9 @@
+donor_pattern,titan_generalization,boundary
+Donor specialized scrape configuration,Configurable acquisition adapter/rule registry,Reimplement pattern only; no donor selectors/services as Titan dependency
+DOM/page extraction,Browser evidence acquisition,Page data is untrusted; preserve locator and retrieval time
+Cart/checkout/confirmation detectors,State/event evidence extraction,Generalize to domain state/event detectors
+Seller/brand/product enrichment,Provider/system evidence enrichment,Generalize to entity evidence enrichment
+Price/availability/deal fields,Measurement/state evidence,Generalize to arbitrary typed facts and measurements
+Similarity/search responses,Alternative/evidence provider results,Preserve provider provenance and freshness
+Resale/price-range calculations,Derived evidence,Must retain parent evidence IDs + transform metadata
+Tracking/telemetry,Excluded as donor infrastructure,"Titan audit is governed first-party evidence lineage, not donor telemetry"

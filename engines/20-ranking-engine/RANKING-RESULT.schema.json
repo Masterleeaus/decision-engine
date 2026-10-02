@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "authority_effect": {
+      "const": "none"
+    },
+    "company_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "decision_subject_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "excluded_alternatives": {
+      "type": "array"
+    },
+    "leader_option_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ranked_alternatives": {
+      "items": {
+        "additionalProperties": true,
+        "properties": {
+          "factors": {
+            "type": "array"
+          },
+          "option_id": {
+            "type": "string"
+          },
+          "rank_confidence": {
+            "maximum": 1,
+            "minimum": 0,
+            "type": "number"
+          },
+          "rank_position": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "score": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "option_id",
+          "score",
+          "rank_position",
+          "rank_confidence",
+          "factors"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "ranking_id": {
+      "type": "string"
+    },
+    "sensitivity": {
+      "additionalProperties": true,
+      "properties": {
+        "fraction": {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        },
+        "leader_is_sensitive": {
+          "type": "boolean"
+        },
+        "scenarios": {
+          "type": "array"
+        }
+      },
+      "required": [
+        "fraction",
+        "leader_is_sensitive",
+        "scenarios"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "ranking_id",
+    "company_id",
+    "decision_subject_id",
+    "ranked_alternatives",
+    "excluded_alternatives",
+    "sensitivity",
+    "authority_effect"
+  ],
+  "title": "Titan Ranking Result",
+  "type": "object"
+}

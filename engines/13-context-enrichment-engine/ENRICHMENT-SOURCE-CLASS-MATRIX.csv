@@ -1,0 +1,9 @@
+source_class,example_inputs,outcome,confidence_basis,boundary
+internal,CRM/ERP/ledger/workforce records,current canonical internal facts,high where source owns field,provider adapter; never cross company
+external,licensed/public/provider data,outside context/enrichment,provider-dependent,cannot silently override stronger current internal state
+historical,prior observations/events/snapshots,trend/history context,time/lineage dependent,preserve original timestamps
+current_state,live system/device/browser state,what is true now,freshness critical,highest default temporal precedence
+environmental,energy/water/emissions/weather/site/ecology signals,environmental context,evidence dependent,"first-class decision dimension, not authority"
+operational,jobs/capacity/service/quality/throughput,operational situation,system dependent,may conflict with planned state
+financial,cost/revenue/margin/cashflow/price/budget,financial context,ledger/provider dependent,no payment/spend authority
+knowledge_authority,policies/procedures/rules/canonical knowledge,interpretive constraints and authoritative knowledge,authority-source dependent,knowledge authority != execution authority

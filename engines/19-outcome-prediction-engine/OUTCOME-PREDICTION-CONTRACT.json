@@ -1,0 +1,13 @@
+{
+  "company_boundary": "company_id",
+  "contract": "TitanOutcomePrediction",
+  "invariants": [
+    "Predictions are estimates, not facts or permission.",
+    "Every prediction is scoped by company_id, decision subject and option.",
+    "Assumptions, confidence, evidence, model/version and horizon remain inspectable.",
+    "Prediction confidence never becomes autonomy authority.",
+    "Unknown or unsupported forecasts remain unknown rather than fabricated."
+  ],
+  "purpose": "Represent explicit predicted consequences of alternatives without granting authority or making recommendations.",
+  "version": "1.0.0"
+}

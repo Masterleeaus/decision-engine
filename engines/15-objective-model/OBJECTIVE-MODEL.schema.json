@@ -1,0 +1,243 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titan.local/contracts/objective-model/1.0.0",
+  "title": "Titan Objective Model",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "objective_set_id",
+    "company_id",
+    "decision_subject_id",
+    "objectives",
+    "resolution_policy",
+    "created_at",
+    "contract_version"
+  ],
+  "properties": {
+    "objective_set_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "company_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "decision_subject_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "contract_version": {
+      "const": "1.0.0"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "objectives": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/objective"
+      }
+    },
+    "resolution_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "hard_objectives_must_hold",
+        "weight_normalization",
+        "conflict_strategy"
+      ],
+      "properties": {
+        "hard_objectives_must_hold": {
+          "type": "boolean"
+        },
+        "weight_normalization": {
+          "enum": [
+            "normalize",
+            "preserve"
+          ]
+        },
+        "conflict_strategy": {
+          "enum": [
+            "explicit_tradeoff",
+            "hard_wins",
+            "authority_required"
+          ]
+        }
+      }
+    }
+  },
+  "$defs": {
+    "objective": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "objective_id",
+        "scope",
+        "name",
+        "metric",
+        "direction",
+        "priority",
+        "weight",
+        "hardness",
+        "time_horizon",
+        "provenance",
+        "authority"
+      ],
+      "properties": {
+        "objective_id": {
+          "type": "string"
+        },
+        "scope": {
+          "enum": [
+            "user",
+            "company",
+            "task",
+            "environmental",
+            "operational",
+            "financial",
+            "regulatory",
+            "strategic"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "metric": {
+          "type": "string"
+        },
+        "direction": {
+          "enum": [
+            "maximize",
+            "minimize",
+            "target",
+            "maintain",
+            "satisfy",
+            "avoid"
+          ]
+        },
+        "target": {},
+        "unit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "priority": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        },
+        "weight": {
+          "type": "number",
+          "minimum": 0
+        },
+        "hardness": {
+          "enum": [
+            "hard",
+            "soft"
+          ]
+        },
+        "time_horizon": {
+          "type": "object",
+          "required": [
+            "kind"
+          ],
+          "properties": {
+            "kind": {
+              "enum": [
+                "immediate",
+                "short_term",
+                "medium_term",
+                "long_term",
+                "deadline",
+                "ongoing"
+              ]
+            },
+            "deadline": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "thresholds": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "conflicts_with": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "provenance": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "source_type",
+              "source_ref"
+            ],
+            "properties": {
+              "source_type": {
+                "enum": [
+                  "user",
+                  "company_policy",
+                  "task",
+                  "knowledge_authority",
+                  "regulation",
+                  "system",
+                  "derived"
+                ]
+              },
+              "source_ref": {
+                "type": "string"
+              },
+              "captured_at": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "authority": {
+          "type": "object",
+          "required": [
+            "can_define",
+            "can_override"
+          ],
+          "properties": {
+            "can_define": {
+              "type": "boolean"
+            },
+            "can_override": {
+              "type": "boolean"
+            },
+            "required_authority_refs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    }
+  }
+}

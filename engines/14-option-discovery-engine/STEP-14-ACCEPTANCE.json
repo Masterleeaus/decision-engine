@@ -1,0 +1,25 @@
+{
+  "step": "14",
+  "title": "Option Discovery Engine",
+  "status": "passed",
+  "contract_version": "1.0.0",
+  "tests": {
+    "validation_returncode": 0,
+    "unittest_returncode": 0
+  },
+  "preservation": {
+    "baseline": "Step13",
+    "baseline_files": 273,
+    "unchanged_files": 273,
+    "mismatches": 0
+  },
+  "constitutional_checks": {
+    "company_id_sole_boundary": true,
+    "all_nine_option_kinds_supported": true,
+    "no_ranking_recommendation_or_execution_authority": true,
+    "provenance_preserved_on_deduplication": true,
+    "hard_constraints_exclude_eligibility": true,
+    "unknown_feasibility_explicit": true,
+    "canonical_identity_not_rewritten": true
+  }
+}

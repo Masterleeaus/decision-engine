@@ -1,0 +1,13 @@
+{
+  "company_id": "company-demo",
+  "source_kind": "system",
+  "source_id": "ledger",
+  "record_type": "invoice",
+  "record_id": "inv-2",
+  "domain": "finance",
+  "fields": {
+    "status": "overdue",
+    "days_overdue": 10,
+    "requires_decision": true
+  }
+}

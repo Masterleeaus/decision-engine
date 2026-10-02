@@ -1,0 +1,65 @@
+{
+  "contract_id": "titan.observation",
+  "contract_version": "1.0.0",
+  "status": "canonical-research-contract",
+  "purpose": "Domain-neutral perception layer that converts browser and system context into provenance-preserving observations for downstream decision analysis.",
+  "tenant_boundary": {
+    "canonical_field": "company_id",
+    "rule": "company_id is the sole canonical tenant/company boundary. Legacy tenant identifiers must be normalized before observation construction and never act as independent boundaries."
+  },
+  "observation_kinds": [
+    "entity",
+    "state",
+    "signal",
+    "opportunity",
+    "problem",
+    "decision_subject"
+  ],
+  "source_kinds": [
+    "browser",
+    "system",
+    "provider",
+    "user",
+    "sensor",
+    "derived"
+  ],
+  "authority_rule": "Observation Engine may observe, normalize, classify and derive evidence-bearing signals. It MUST NOT grant authority, execute actions, or produce a DecisionPacket recommendation.",
+  "required_fields": [
+    "observation_id",
+    "contract_version",
+    "company_id",
+    "kind",
+    "subject",
+    "source",
+    "observed_at",
+    "evidence",
+    "confidence",
+    "lifecycle"
+  ],
+  "invariants": [
+    "Every observation has exactly one company_id.",
+    "Raw source facts remain distinguishable from normalized and derived values.",
+    "Every derived claim references its supporting evidence or source fields.",
+    "Confidence expresses perception quality, not permission or recommendation strength.",
+    "Decision-subject observations identify a question requiring evaluation; they do not answer it.",
+    "Opportunities and problems are candidates for downstream evaluation, not automatic recommendations.",
+    "Observation IDs are immutable; corrections/supersession create new revisions.",
+    "Browser-origin observations record page/frame context without treating page content as trusted authority.",
+    "System-origin observations record provider/system identity and stable external references where available.",
+    "No execution command may be embedded in an observation."
+  ],
+  "pipeline": [
+    "ingest_context",
+    "sanitize_boundary",
+    "extract_facts",
+    "recognize_entities",
+    "normalize_entities",
+    "derive_states",
+    "detect_signals",
+    "detect_opportunities_and_problems",
+    "identify_decision_subjects",
+    "score_confidence",
+    "emit_observations"
+  ],
+  "downstream_relationship": "Observation outputs may be transformed into DecisionPacket evidence/subjects/options by later decision stages, subject to provenance and authority rules."
+}

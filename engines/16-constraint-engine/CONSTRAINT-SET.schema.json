@@ -1,0 +1,279 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titan.local/contracts/constraint-set/1.0.0",
+  "title": "Titan Constraint Set",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "constraint_set_id",
+    "contract_version",
+    "company_id",
+    "decision_subject_id",
+    "constraints",
+    "evaluation_policy",
+    "created_at"
+  ],
+  "properties": {
+    "constraint_set_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "contract_version": {
+      "const": "1.0.0"
+    },
+    "company_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "decision_subject_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/constraint"
+      }
+    },
+    "evaluation_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "hard_constraints_must_hold",
+        "unknown_hard_constraint",
+        "soft_constraint_treatment",
+        "fail_closed_categories"
+      ],
+      "properties": {
+        "hard_constraints_must_hold": {
+          "const": true
+        },
+        "unknown_hard_constraint": {
+          "enum": [
+            "block",
+            "escalate"
+          ]
+        },
+        "soft_constraint_treatment": {
+          "enum": [
+            "penalty",
+            "preference",
+            "informational"
+          ]
+        },
+        "fail_closed_categories": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "permission",
+              "jurisdiction",
+              "policy",
+              "safety",
+              "privacy",
+              "capability",
+              "entitlement",
+              "company_boundary"
+            ]
+          }
+        }
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  },
+  "$defs": {
+    "constraint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "constraint_id",
+        "category",
+        "name",
+        "hardness",
+        "operator",
+        "subject_path",
+        "expected",
+        "severity",
+        "provenance",
+        "authority",
+        "enabled"
+      ],
+      "properties": {
+        "constraint_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "category": {
+          "enum": [
+            "permission",
+            "budget",
+            "deadline",
+            "availability",
+            "jurisdiction",
+            "policy",
+            "environmental",
+            "safety",
+            "privacy",
+            "capability",
+            "entitlement",
+            "company_boundary"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string"
+        },
+        "hardness": {
+          "enum": [
+            "hard",
+            "soft"
+          ]
+        },
+        "operator": {
+          "enum": [
+            "eq",
+            "neq",
+            "lt",
+            "lte",
+            "gt",
+            "gte",
+            "in",
+            "not_in",
+            "contains",
+            "not_contains",
+            "exists",
+            "not_exists",
+            "before",
+            "after",
+            "within",
+            "matches"
+          ]
+        },
+        "subject_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expected": {},
+        "unit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "severity": {
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "critical"
+          ]
+        },
+        "weight": {
+          "type": "number",
+          "minimum": 0
+        },
+        "valid_from": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "valid_until": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "jurisdiction": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_policy_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "provenance": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "source_type",
+              "source_ref"
+            ],
+            "properties": {
+              "source_type": {
+                "type": "string",
+                "minLength": 1
+              },
+              "source_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "captured_at": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time"
+              },
+              "confidence": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "minimum": 0,
+                "maximum": 1
+              }
+            }
+          }
+        },
+        "authority": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "can_relax",
+            "can_override",
+            "required_authority_refs"
+          ],
+          "properties": {
+            "can_relax": {
+              "type": "boolean"
+            },
+            "can_override": {
+              "type": "boolean"
+            },
+            "required_authority_refs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "metadata": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

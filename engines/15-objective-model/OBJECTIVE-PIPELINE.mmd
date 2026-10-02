@@ -1,0 +1,14 @@
+flowchart LR
+ U[User] --> O[Objective Set]
+ C[Company] --> O
+ T[Task] --> O
+ E[Environment] --> O
+ OP[Operations] --> O
+ F[Finance] --> O
+ R[Regulation] --> O
+ S[Strategy] --> O
+ O --> H[Hard objectives / acceptance]
+ O --> W[Soft objectives / weights]
+ O --> X[Explicit conflicts]
+ H & W & X --> CMP[Later comparison / prediction / ranking]
+ CMP -. no authority created .-> G[Governed execution boundary]

@@ -1,0 +1,194 @@
+[
+  {
+    "provider_id": "internal_provider",
+    "source_class": "internal",
+    "record": {
+      "company_id": "company_demo",
+      "entity_id": "ent_example_facility",
+      "namespace": "operations",
+      "key": "service_status",
+      "value": "active",
+      "value_kind": "asserted",
+      "confidence": 0.9,
+      "authoritativeness": 0.9,
+      "ttl_seconds": 86400,
+      "provenance": {
+        "source_id": "internal_system",
+        "source_record_id": "rec_1",
+        "observed_at": "2026-09-03T00:00:00Z",
+        "retrieved_at": "2026-09-03T00:05:00Z",
+        "evidence_ids": [
+          "evidence_1"
+        ]
+      }
+    }
+  },
+  {
+    "provider_id": "external_provider",
+    "source_class": "external",
+    "record": {
+      "company_id": "company_demo",
+      "entity_id": "ent_example_facility",
+      "namespace": "supplier",
+      "key": "market_risk",
+      "value": "moderate",
+      "value_kind": "asserted",
+      "confidence": 0.8,
+      "authoritativeness": 0.7,
+      "ttl_seconds": 86400,
+      "provenance": {
+        "source_id": "external_system",
+        "source_record_id": "rec_2",
+        "observed_at": "2026-09-03T00:00:00Z",
+        "retrieved_at": "2026-09-03T00:05:00Z",
+        "evidence_ids": [
+          "evidence_2"
+        ]
+      }
+    }
+  },
+  {
+    "provider_id": "historical_provider",
+    "source_class": "historical",
+    "record": {
+      "company_id": "company_demo",
+      "entity_id": "ent_example_facility",
+      "namespace": "operations",
+      "key": "mean_completion_minutes",
+      "value": 82,
+      "value_kind": "asserted",
+      "confidence": 0.8,
+      "authoritativeness": 0.7,
+      "ttl_seconds": 86400,
+      "provenance": {
+        "source_id": "historical_system",
+        "source_record_id": "rec_3",
+        "observed_at": "2026-09-03T00:00:00Z",
+        "retrieved_at": "2026-09-03T00:05:00Z",
+        "evidence_ids": [
+          "evidence_3"
+        ]
+      }
+    }
+  },
+  {
+    "provider_id": "current_state_provider",
+    "source_class": "current_state",
+    "record": {
+      "company_id": "company_demo",
+      "entity_id": "ent_example_facility",
+      "namespace": "operations",
+      "key": "queue_depth",
+      "value": 14,
+      "value_kind": "asserted",
+      "confidence": 0.8,
+      "authoritativeness": 0.7,
+      "ttl_seconds": 3600,
+      "provenance": {
+        "source_id": "current_state_system",
+        "source_record_id": "rec_4",
+        "observed_at": "2026-09-03T00:00:00Z",
+        "retrieved_at": "2026-09-03T00:05:00Z",
+        "evidence_ids": [
+          "evidence_4"
+        ]
+      }
+    }
+  },
+  {
+    "provider_id": "environmental_provider",
+    "source_class": "environmental",
+    "record": {
+      "company_id": "company_demo",
+      "entity_id": "ent_example_facility",
+      "namespace": "environment",
+      "key": "water_use_litres_day",
+      "value": 9200,
+      "value_kind": "asserted",
+      "confidence": 0.8,
+      "authoritativeness": 0.7,
+      "ttl_seconds": 3600,
+      "provenance": {
+        "source_id": "environmental_system",
+        "source_record_id": "rec_5",
+        "observed_at": "2026-09-03T00:00:00Z",
+        "retrieved_at": "2026-09-03T00:05:00Z",
+        "evidence_ids": [
+          "evidence_5"
+        ]
+      }
+    }
+  },
+  {
+    "provider_id": "operational_provider",
+    "source_class": "operational",
+    "record": {
+      "company_id": "company_demo",
+      "entity_id": "ent_example_facility",
+      "namespace": "operations",
+      "key": "available_capacity_hours",
+      "value": 6.5,
+      "value_kind": "asserted",
+      "confidence": 0.8,
+      "authoritativeness": 0.7,
+      "ttl_seconds": 3600,
+      "provenance": {
+        "source_id": "operational_system",
+        "source_record_id": "rec_6",
+        "observed_at": "2026-09-03T00:00:00Z",
+        "retrieved_at": "2026-09-03T00:05:00Z",
+        "evidence_ids": [
+          "evidence_6"
+        ]
+      }
+    }
+  },
+  {
+    "provider_id": "financial_provider",
+    "source_class": "financial",
+    "record": {
+      "company_id": "company_demo",
+      "entity_id": "ent_example_facility",
+      "namespace": "finance",
+      "key": "gross_margin_pct",
+      "value": 31.4,
+      "value_kind": "asserted",
+      "confidence": 0.8,
+      "authoritativeness": 0.7,
+      "ttl_seconds": 86400,
+      "provenance": {
+        "source_id": "financial_system",
+        "source_record_id": "rec_7",
+        "observed_at": "2026-09-03T00:00:00Z",
+        "retrieved_at": "2026-09-03T00:05:00Z",
+        "evidence_ids": [
+          "evidence_7"
+        ]
+      }
+    }
+  },
+  {
+    "provider_id": "knowledge_authority_provider",
+    "source_class": "knowledge_authority",
+    "record": {
+      "company_id": "company_demo",
+      "entity_id": "ent_example_facility",
+      "namespace": "policy",
+      "key": "required_approval_level",
+      "value": "manager",
+      "value_kind": "policy",
+      "confidence": 0.9,
+      "authoritativeness": 0.9,
+      "ttl_seconds": 86400,
+      "provenance": {
+        "source_id": "knowledge_authority_system",
+        "source_record_id": "rec_8",
+        "observed_at": "2026-09-03T00:00:00Z",
+        "retrieved_at": "2026-09-03T00:05:00Z",
+        "evidence_ids": [
+          "evidence_8"
+        ]
+      }
+    }
+  }
+]

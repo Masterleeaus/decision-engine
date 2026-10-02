@@ -1,0 +1,2 @@
+JSON OK 19-outcome-prediction-engine/PREDICTION-SET.schema.json
+JSON OK 19-outcome-prediction-engine/OUTCOME-PREDICTION-CONTRACT.json

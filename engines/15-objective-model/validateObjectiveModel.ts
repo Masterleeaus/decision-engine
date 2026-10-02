@@ -1,0 +1,1 @@
+import {buildObjectiveSet} from "./runtime/objectiveModel.js"; buildObjectiveSet("validation","d",[{objective_id:"o",scope:"task",direction:"maximize"}]); console.log("Objective validation passed");

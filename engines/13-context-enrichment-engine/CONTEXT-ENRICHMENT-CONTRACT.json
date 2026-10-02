@@ -1,0 +1,44 @@
+{
+  "contract": "TitanContextEnrichment",
+  "version": "1.0.0",
+  "company_boundary": "company_id",
+  "identity_boundary": "CanonicalEntity.entity_id",
+  "authority_semantics": "context_only_no_execution_authority",
+  "source_classes": [
+    "internal",
+    "external",
+    "historical",
+    "current_state",
+    "environmental",
+    "operational",
+    "financial",
+    "knowledge_authority"
+  ],
+  "guarantees": [
+    "company_id is required and enrichment never crosses company boundaries",
+    "canonical entity identity is referenced, never rewritten by enrichment",
+    "each enrichment fact has source provenance, observed/retrieved timestamps, confidence and freshness",
+    "raw source values and normalized/derived values remain distinguishable",
+    "conflicting facts are retained and surfaced rather than silently overwritten",
+    "provider precedence is explicit and field-scoped; authority is not inferred from source class alone",
+    "knowledge authority contributes policies, constraints and interpretations but does not manufacture execution authority",
+    "financial and environmental context remain evidence/context until a governed decision consumes them",
+    "stale context remains traceable and can be excluded by policy without deletion"
+  ],
+  "default_precedence": [
+    "current_state",
+    "internal",
+    "knowledge_authority",
+    "operational",
+    "financial",
+    "environmental",
+    "historical",
+    "external"
+  ],
+  "outputs": [
+    "EnrichmentFact",
+    "ContextEnvelope",
+    "ContextConflict",
+    "EnrichmentReceipt"
+  ]
+}

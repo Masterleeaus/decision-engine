@@ -1,0 +1,14 @@
+{
+  "company_id": "company-demo",
+  "source_kind": "browser",
+  "source_id": "https://example.invalid/item/42",
+  "url": "https://example.invalid/item/42",
+  "title": "Service item",
+  "text": "This item is unavailable and awaiting approval.",
+  "structured": {
+    "entity_type": "service_item",
+    "id": "42",
+    "name": "Service item",
+    "availability": "unavailable"
+  }
+}

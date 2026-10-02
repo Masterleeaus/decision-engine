@@ -1,0 +1,105 @@
+{
+  "delta": "Step16 Constraint Engine",
+  "base_required": "Titan-Decision-Engine-Research-Step15-Objective-Model-FINAL.zip",
+  "apply_mode": "overlay",
+  "files": [
+    {
+      "path": "16-constraint-engine/CONSTRAINT-CATEGORY-MATRIX.csv",
+      "sha256": "0e16b30a21ca9d906126aa11f21cc7840728bf74989694330bb46baecaca67c7",
+      "size_bytes": 1477
+    },
+    {
+      "path": "16-constraint-engine/CONSTRAINT-ENGINE-CONTRACT.json",
+      "sha256": "7e5c33f9ebeb5403caf507279aa8304d1fceecd2097e107f63c9b94b3a212284",
+      "size_bytes": 1420
+    },
+    {
+      "path": "16-constraint-engine/CONSTRAINT-EVALUATION.schema.json",
+      "sha256": "df1750f7b00c5a00eee0ae815e8f686977091f03caa9a6e349558c01d0c8dbe1",
+      "size_bytes": 2408
+    },
+    {
+      "path": "16-constraint-engine/CONSTRAINT-PIPELINE.mmd",
+      "sha256": "bc44033f06ff5070421fe868e58be4500ff5794f39f1b031257a34766b79659c",
+      "size_bytes": 429
+    },
+    {
+      "path": "16-constraint-engine/CONSTRAINT-SET.schema.json",
+      "sha256": "95e6dfffbd4ee1390bf4d6447895c10f734582b6ad0b4fa6e3d3c5c0ba118334",
+      "size_bytes": 6094
+    },
+    {
+      "path": "16-constraint-engine/LIBRARY-CONVERGENCE-STEP16.json",
+      "sha256": "a594a858a11b5625da44952559aaefc1ee89e5ef2103a0d89e59082b56dfa8fa",
+      "size_bytes": 1479
+    },
+    {
+      "path": "16-constraint-engine/README-STEP-16-CONSTRAINT-ENGINE.md",
+      "sha256": "809eb9314b28f0d502b893bec07fce5f5f6b1a944c09a4543653d374fbfbba22",
+      "size_bytes": 1596
+    },
+    {
+      "path": "16-constraint-engine/STEP-16-ACCEPTANCE.json",
+      "sha256": "84c1605f08aba0e37a954fbb8c262310ef254bd8b52be9daa58dccb88b73d40d",
+      "size_bytes": 2594
+    },
+    {
+      "path": "16-constraint-engine/TEST-OUTPUT.txt",
+      "sha256": "42654bfb8ab3a5a2a136ec80d606a59133195919009407b4d7a54e1134d8dc26",
+      "size_bytes": 1397
+    },
+    {
+      "path": "16-constraint-engine/VALIDATION-OUTPUT.txt",
+      "sha256": "f8cc2a4395db72f1f74aa3f3bb3c88b9f6a73a1507b7239863a91183d06a8acf",
+      "size_bytes": 35
+    },
+    {
+      "path": "16-constraint-engine/examples/constraint-evaluation.json",
+      "sha256": "966e2e108ddefa9bf0277601ddfd5555615ef91c909066412bcd1ace7f60cf67",
+      "size_bytes": 6277
+    },
+    {
+      "path": "16-constraint-engine/examples/constraint-set.json",
+      "sha256": "7ff36d1f8786ff7cd2849f8a190cae175f3ad671d93d2c66d41feccf4dfcf3c6",
+      "size_bytes": 11187
+    },
+    {
+      "path": "16-constraint-engine/examples/constraint-summary.json",
+      "sha256": "fdf752aa4783fe3bad3cae0f55b31651fdf0023de1480f32ff09b624d38129a0",
+      "size_bytes": 145
+    },
+    {
+      "path": "16-constraint-engine/runtime/__init__.py",
+      "sha256": "086113c668cce1b9c135451f74d515506d177e4f0fd6f2ea903f75897c616d6c",
+      "size_bytes": 33
+    },
+    {
+      "path": "16-constraint-engine/runtime/constraint_engine.py",
+      "sha256": "a3ff1fe3b4c737523fab2e2e3278eb0613bba5dfaabdad049e4fb3e5665a7c39",
+      "size_bytes": 8504
+    },
+    {
+      "path": "16-constraint-engine/tests/test_constraint_engine.py",
+      "sha256": "e614b1571c580013b9a903dab9a0d80753bb37f1f349f98ec57e476bcf9727f1",
+      "size_bytes": 3837
+    },
+    {
+      "path": "16-constraint-engine/validate_constraint_engine.py",
+      "sha256": "3339f8faa9f9d9821354d459273df67a63f6cbb960b7df5cd91272fac7c07e44",
+      "size_bytes": 562
+    },
+    {
+      "path": "README-STEP-16.md",
+      "sha256": "e54d195199435a5403f277321ab8f2988411bccb25416e547f0d1249e64f58a4",
+      "size_bytes": 119
+    }
+  ],
+  "manifest_path": "16-constraint-engine/STEP-16-DELTA-MANIFEST.json",
+  "verification": {
+    "all_base_files_must_remain_hash_identical": true,
+    "run": [
+      "python 16-constraint-engine/validate_constraint_engine.py",
+      "python -m unittest discover -s 16-constraint-engine/tests -v"
+    ]
+  }
+}

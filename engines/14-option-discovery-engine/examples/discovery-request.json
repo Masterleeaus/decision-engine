@@ -1,0 +1,12 @@
+{
+  "company_id": "company_demo",
+  "decision_subject_id": "subject_reduce_water_cost",
+  "objective": {
+    "intent": "reduce_water_use_and_cost",
+    "description": "Reduce water use without service-quality loss"
+  },
+  "constraints": [
+    "constraint_budget",
+    "constraint_service_quality"
+  ]
+}

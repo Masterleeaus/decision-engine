@@ -1,0 +1,20 @@
+field,requirement,purpose,domain_scope
+packet_id,required,stable identity,all
+contract_version,required,schema compatibility,all
+company_id,required,sole tenant boundary,all
+domain,required,context classification,all
+subject,required,decision subject,all
+objectives,required,success criteria,all
+options,required,candidate actions,all
+evidence,required array,traceable support,all
+constraints,required array,hard/soft boundaries,all
+preferences,required array,non-authoritative weighting,all
+predicted_outcomes,required array,option consequences,all
+trade_offs,required array,explicit sacrifices,all
+ranking,required nullable,transparent ordering,all
+recommendation,required,proposed next action,all
+confidence,required,trust/uncertainty,all
+authority_requirements,required,execution prerequisites only,all
+provenance,required,lineage/reproducibility,all
+lifecycle,required,revision/state,all
+extension_data,optional,domain-specific non-constitutional extensions,all

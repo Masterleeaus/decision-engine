@@ -1,0 +1,14 @@
+{
+  "step": 25,
+  "name": "Learning Loop",
+  "status": "passed",
+  "language": "TypeScript",
+  "company_id_only_boundary": true,
+  "verified_outcomes_only": true,
+  "historical_evidence_rewritten": false,
+  "historical_decisions_rewritten": false,
+  "authority_effect": "none",
+  "tests_passed": 11,
+  "baseline_files_preserved": 409,
+  "baseline_mismatches": 0
+}

@@ -1,0 +1,27 @@
+{
+  "step": "15",
+  "title": "Objective Model",
+  "status": "passed",
+  "contract_version": "1.0.0",
+  "tests": {
+    "validation_returncode": 0,
+    "unittest_returncode": 0
+  },
+  "preservation": {
+    "baseline": "Step14",
+    "baseline_files": 296,
+    "unchanged_files": 296,
+    "mismatches": 0
+  },
+  "constitutional_checks": {
+    "company_id_sole_boundary": true,
+    "all_eight_objective_scopes_supported": true,
+    "hard_vs_soft_objectives_explicit": true,
+    "weights_and_priority_explicit": true,
+    "time_horizon_and_thresholds_supported": true,
+    "conflicts_explicit": true,
+    "provenance_retained": true,
+    "regulatory_authority_not_silently_overridden": true,
+    "objectives_do_not_create_execution_authority": true
+  }
+}

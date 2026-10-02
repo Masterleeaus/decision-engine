@@ -1,0 +1,1 @@
+import {OptionDiscoveryEngine} from "./runtime/optionDiscoveryEngine.js"; const x=new OptionDiscoveryEngine().discover({company_id:"validation",decision_subject_id:"d"}); if(!x.option_set_id) throw new Error("validation failed"); console.log("Option validation passed");

@@ -1,0 +1,13 @@
+{
+  "company_id": "company-demo",
+  "source_kind": "system",
+  "source_id": "inventory",
+  "record_type": "inventory_item",
+  "record_id": "part-3",
+  "domain": "procurement",
+  "fields": {
+    "stock_ratio": 0.1,
+    "availability": "low",
+    "requires_decision": true
+  }
+}

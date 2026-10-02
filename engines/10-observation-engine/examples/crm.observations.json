@@ -1,0 +1,409 @@
+[
+  {
+    "observation_id": "obs_96802c8dcf65a2756e65",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "entity",
+    "domain": "crm",
+    "subject": {
+      "subject_type": "opportunity",
+      "subject_key": "opp-1",
+      "label": "opportunity: opp-1",
+      "external_ref": "opp-1"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "crm",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.468451Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_b54c37b61453d0143a83",
+        "evidence_type": "raw",
+        "field": "stage",
+        "value": "proposal",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "crm",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_92af2ae2eca1263c6aa6",
+        "evidence_type": "raw",
+        "field": "opportunity",
+        "value": "high-intent follow-up",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "crm",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_24978de57a8abffb64b8",
+        "evidence_type": "raw",
+        "field": "requires_decision",
+        "value": true,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "crm",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_629e1e50824bf50246fb",
+        "evidence_type": "derived",
+        "field": "entity_type",
+        "value": "opportunity",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "crm",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_293a981a4004141b8b08",
+        "evidence_type": "derived",
+        "field": "entity_id",
+        "value": "opp-1",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "crm",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "stage": "proposal",
+      "opportunity": "high-intent follow-up",
+      "requires_decision": true,
+      "entity_type": "opportunity",
+      "entity_id": "opp-1"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.86,
+      "level": "high",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": false,
+      "question": null,
+      "urgency": "none",
+      "candidate_dimensions": []
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_ba231e283182fe6d60b5",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "decision_subject",
+    "domain": "crm",
+    "subject": {
+      "subject_type": "decision_subject",
+      "subject_key": "opp-1",
+      "label": "Decision subject opp-1",
+      "external_ref": "opp-1"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "crm",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.468487Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_24978de57a8abffb64b8",
+        "evidence_type": "raw",
+        "field": "requires_decision",
+        "value": true,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "crm",
+          "rule_id": "decision.explicit"
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "stage": "proposal",
+      "opportunity": "high-intent follow-up",
+      "requires_decision": true,
+      "entity_type": "opportunity",
+      "entity_id": "opp-1"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.95,
+      "level": "high",
+      "basis": [
+        "source context",
+        "rule match"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": true,
+      "question": "What is the best action?",
+      "urgency": "medium",
+      "candidate_dimensions": [
+        "cost",
+        "time",
+        "risk",
+        "quality",
+        "impact"
+      ]
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_9aee03792ae61b9b5117",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "state",
+    "domain": "crm",
+    "subject": {
+      "subject_type": "opportunity",
+      "subject_key": "opp-1",
+      "label": "opportunity stage: proposal",
+      "external_ref": "opp-1"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "crm",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.468500Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_b54c37b61453d0143a83",
+        "evidence_type": "raw",
+        "field": "stage",
+        "value": "proposal",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "crm",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "stage": "proposal"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.9,
+      "level": "high",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": false,
+      "question": null,
+      "urgency": "none",
+      "candidate_dimensions": []
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_4ed3146a685fb59ad992",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "opportunity",
+    "domain": "crm",
+    "subject": {
+      "subject_type": "opportunity",
+      "subject_key": "opp-1",
+      "label": "Opportunity candidate for opportunity",
+      "external_ref": "opp-1"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "crm",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.468522Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_92af2ae2eca1263c6aa6",
+        "evidence_type": "raw",
+        "field": "opportunity",
+        "value": "high-intent follow-up",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "crm",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "opportunity": "high-intent follow-up"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.75,
+      "level": "medium",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": true,
+      "question": "What is the best response to this opportunity?",
+      "urgency": "medium",
+      "candidate_dimensions": [
+        "risk",
+        "cost",
+        "time",
+        "impact"
+      ]
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_d10b9cb4c2db67c5972a",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "decision_subject",
+    "domain": "crm",
+    "subject": {
+      "subject_type": "opportunity",
+      "subject_key": "opp-1",
+      "label": "Decision required for opportunity",
+      "external_ref": "opp-1"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "crm",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.468534Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_d15d4c3c88fd0fc570b3",
+        "evidence_type": "derived",
+        "field": "decision_needed",
+        "value": true,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "crm",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "decision_needed": true
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.85,
+      "level": "high",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": true,
+      "question": "What is the best action for opportunity opp-1?",
+      "urgency": "medium",
+      "candidate_dimensions": [
+        "cost",
+        "time",
+        "risk",
+        "quality",
+        "impact"
+      ]
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  }
+]

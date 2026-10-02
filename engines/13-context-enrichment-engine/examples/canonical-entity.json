@@ -1,0 +1,7 @@
+{
+  "entity_id": "ent_example_facility",
+  "contract_version": "1.0.0",
+  "company_id": "company_demo",
+  "entity_type": "resource",
+  "canonical_label": "North Facility"
+}

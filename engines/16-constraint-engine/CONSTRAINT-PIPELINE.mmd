@@ -1,0 +1,11 @@
+flowchart LR
+ O[Objective Model] --> C[Constraint Engine]
+ P[Option Discovery] --> C
+ X[Context + Evidence] --> C
+ C --> H{Hard constraints}
+ H -->|violated| B[Ineligible]
+ H -->|unknown fail-closed| U[Blocked / needs resolution]
+ H -->|satisfied| S[Soft constraint penalties]
+ S --> E[Eligible option + explicit penalties]
+ E --> R[Later prediction / comparison / ranking]
+ R -. cannot bypass .-> G[Governed execution boundary]

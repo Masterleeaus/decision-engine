@@ -1,0 +1,24 @@
+{
+  "step": "08",
+  "title": "Canonical Decision Model",
+  "codee_step": "3f8fffac-07d9-413f-b0b2-100f7d0fa1d5|run-1788359991344-80b410c98cb94|step-08|s8-mtk7d4q8-dhmq5t3w",
+  "acceptance": {
+    "subject_defined": true,
+    "objective_defined": true,
+    "options_defined": true,
+    "evidence_defined": true,
+    "constraints_defined": true,
+    "preferences_defined": true,
+    "predicted_outcomes_defined": true,
+    "tradeoffs_defined": true,
+    "ranking_defined": true,
+    "recommendation_defined": true,
+    "confidence_defined": true,
+    "authority_requirements_defined": true,
+    "company_id_sole_boundary": true,
+    "authority_separated_from_recommendation": true,
+    "domain_neutral": true,
+    "donor_dependencies_introduced": false
+  },
+  "preservation": "All Step 07 contents copied forward unchanged before Step 08 additions."
+}

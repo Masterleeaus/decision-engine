@@ -1,0 +1,13 @@
+{
+  "company_id": "company-demo",
+  "source_kind": "system",
+  "source_id": "campaigns",
+  "record_type": "campaign",
+  "record_id": "camp-5",
+  "domain": "marketing",
+  "fields": {
+    "status": "underperforming",
+    "improvement_opportunity": "reallocate spend",
+    "requires_decision": true
+  }
+}

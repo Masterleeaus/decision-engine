@@ -1,0 +1,32 @@
+{
+  "step": "10",
+  "codee_step": "3f8fffac-07d9-413f-b0b2-100f7d0fa1d5|run-1788359991344-80b410c98cb94|step-10|s10-mtk7d4q8-ly4rhjnh",
+  "contract_version": "1.0.0",
+  "implementation": "runtime/observation_engine.py",
+  "browser_adapter": true,
+  "system_adapter": true,
+  "company_id_only_boundary": true,
+  "legacy_tenant_boundary_rejected": true,
+  "authority_separation": true,
+  "recommendation_generation": false,
+  "execution_authority": false,
+  "fixture_contexts": 10,
+  "generated_observations": 47,
+  "observation_kind_counts": {
+    "entity": 10,
+    "state": 10,
+    "problem": 5,
+    "decision_subject": 16,
+    "opportunity": 3,
+    "signal": 3
+  },
+  "source_kind_counts": {
+    "system": 43,
+    "browser": 4
+  },
+  "schema_validation_pass": true,
+  "unit_tests": 8,
+  "unit_tests_pass": true,
+  "step09_preserved": true,
+  "step09_preserved_file_count": 166
+}

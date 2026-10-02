@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titan.local/schemas/option-set-1.0.0.json",
+  "title": "Titan OptionSet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "option_set_id",
+    "contract_version",
+    "company_id",
+    "decision_subject_id",
+    "objective",
+    "options",
+    "eligible_option_ids",
+    "ineligible_option_ids",
+    "unknown_option_ids",
+    "discovery_receipts",
+    "generated_at"
+  ],
+  "properties": {
+    "option_set_id": {
+      "type": "string"
+    },
+    "contract_version": {
+      "const": "1.0.0"
+    },
+    "company_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "decision_subject_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "objective": {
+      "type": "object"
+    },
+    "options": {
+      "type": "array",
+      "items": {
+        "$ref": "OPTION-CANDIDATE.schema.json"
+      }
+    },
+    "eligible_option_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "ineligible_option_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unknown_option_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "discovery_receipts": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "extension_data": {
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+test_all_source_classes (test_context_enrichment_engine.Tests.test_all_source_classes) ... ok
+test_cross_company_blocked (test_context_enrichment_engine.Tests.test_cross_company_blocked) ... ok
+test_cross_entity_rejected (test_context_enrichment_engine.Tests.test_cross_entity_rejected) ... ok
+test_current_state_beats_external_and_conflict_retained (test_context_enrichment_engine.Tests.test_current_state_beats_external_and_conflict_retained) ... ok
+test_entity_identity_not_rewritten (test_context_enrichment_engine.Tests.test_entity_identity_not_rewritten) ... ok
+test_provider_failure_is_receipted (test_context_enrichment_engine.Tests.test_provider_failure_is_receipted) ... ok
+test_stale_fact_preserved (test_context_enrichment_engine.Tests.test_stale_fact_preserved) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.001s
+
+OK

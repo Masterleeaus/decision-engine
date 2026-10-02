@@ -1,0 +1,203 @@
+{
+  "packet_id": "dp-marketing-001",
+  "contract_version": "1.0.0",
+  "company_id": "company-example-001",
+  "domain": "marketing",
+  "domain_extension": null,
+  "subject": {
+    "subject_id": "marketing-subject-001",
+    "subject_type": "campaign",
+    "subject_ref": null,
+    "title": "Allocate campaign effort",
+    "description": null,
+    "current_state": {},
+    "observed_at": "2026-09-02T15:30:00+10:00",
+    "source_refs": [
+      "example:fixture"
+    ]
+  },
+  "objectives": [
+    {
+      "objective_id": "obj1",
+      "name": "Choose best overall action",
+      "description": null,
+      "priority": 1.0,
+      "target_metric": null,
+      "target_direction": null,
+      "target_value": null,
+      "time_horizon": "near_term",
+      "hard_or_soft": "soft",
+      "source": "example",
+      "confidence": 1.0
+    }
+  ],
+  "options": [
+    {
+      "option_id": "o1",
+      "label": "Increase channel A",
+      "description": null,
+      "option_type": "action",
+      "source": "example",
+      "feasibility": 0.9,
+      "preconditions": [],
+      "dependencies": [],
+      "estimated_start": null,
+      "estimated_duration": null,
+      "reversibility": "medium",
+      "status": "viable"
+    },
+    {
+      "option_id": "o2",
+      "label": "Shift to channel B",
+      "description": null,
+      "option_type": "action",
+      "source": "example",
+      "feasibility": 0.9,
+      "preconditions": [],
+      "dependencies": [],
+      "estimated_start": null,
+      "estimated_duration": null,
+      "reversibility": "medium",
+      "status": "viable"
+    },
+    {
+      "option_id": "o3",
+      "label": "Pause",
+      "description": null,
+      "option_type": "action",
+      "source": "example",
+      "feasibility": 0.9,
+      "preconditions": [],
+      "dependencies": [],
+      "estimated_start": null,
+      "estimated_duration": null,
+      "reversibility": "medium",
+      "status": "viable"
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "e1",
+      "kind": "fixture",
+      "claim": "Illustrative evidence for contract validation",
+      "value": true,
+      "unit": null,
+      "source_type": "test_fixture",
+      "source_ref": "example:fixture",
+      "observed_at": "2026-09-02T15:30:00+10:00",
+      "valid_from": null,
+      "valid_until": null,
+      "freshness": "current",
+      "provenance": {
+        "kind": "synthetic"
+      },
+      "integrity_hash": null,
+      "confidence": 1.0,
+      "conflicts_with": [],
+      "supports": [
+        "o1"
+      ],
+      "opposes": []
+    }
+  ],
+  "constraints": [],
+  "preferences": [],
+  "predicted_outcomes": [],
+  "trade_offs": [],
+  "ranking": {
+    "ranking_id": "rank1",
+    "method": "illustrative",
+    "model_version": "fixture",
+    "scoring_dimensions": [],
+    "weights": [],
+    "normalization": null,
+    "option_scores": [
+      {
+        "option_id": "o1",
+        "score": 1.0
+      },
+      {
+        "option_id": "o2",
+        "score": 0.9
+      },
+      {
+        "option_id": "o3",
+        "score": 0.8
+      }
+    ],
+    "rank_order": [
+      "o1",
+      "o2",
+      "o3"
+    ],
+    "sensitivity": [],
+    "dominance_notes": [],
+    "excluded_options": [],
+    "generated_at": "2026-09-02T15:30:00+10:00"
+  },
+  "recommendation": {
+    "recommendation_id": "rec1",
+    "recommended_option_id": "o1",
+    "recommendation_type": "best_action",
+    "summary": "Recommend o1",
+    "rationale": "Illustrative cross-domain contract fixture.",
+    "why_not_others": [],
+    "expected_effects": [],
+    "conditions": [],
+    "valid_until": null,
+    "generated_at": "2026-09-02T15:30:00+10:00"
+  },
+  "confidence": {
+    "overall": 0.8,
+    "evidence_quality": 0.8,
+    "evidence_coverage": 0.7,
+    "model_confidence": 0.8,
+    "conflict_level": 0.0,
+    "freshness": 1.0,
+    "uncertainty_reasons": [],
+    "missing_information": [],
+    "confidence_band": "high"
+  },
+  "authority_requirements": {
+    "required": true,
+    "authority_class": "domain_owner_approval",
+    "actor_requirements": [],
+    "permission_requirements": [],
+    "entitlement_requirements": [],
+    "approval_requirements": [
+      "approval"
+    ],
+    "capability_required": "marketing.execute",
+    "risk_class": "medium",
+    "cost_class": null,
+    "privacy_class": "standard",
+    "policy_checks": [],
+    "execution_owner": "governed_execution",
+    "governed_execution_required": true
+  },
+  "provenance": {
+    "created_at": "2026-09-02T15:30:00+10:00",
+    "producer": "Titan Decision Engine research fixture",
+    "producer_version": "step09",
+    "input_refs": [
+      "example:fixture"
+    ],
+    "model_refs": [],
+    "policy_refs": [],
+    "parent_packet_id": null,
+    "supersedes_packet_id": null,
+    "integrity_hash": null
+  },
+  "lifecycle": {
+    "state": "recommended",
+    "revision": 1,
+    "generated_at": "2026-09-02T15:30:00+10:00",
+    "expires_at": null,
+    "superseded_by": null
+  },
+  "extension_data": {},
+  "external_refs": [],
+  "tags": [
+    "contract-fixture"
+  ]
+}

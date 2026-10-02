@@ -1,0 +1,409 @@
+[
+  {
+    "observation_id": "obs_8c8593400d84ac0c5ca1",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "entity",
+    "domain": "marketing",
+    "subject": {
+      "subject_type": "campaign",
+      "subject_key": "camp-5",
+      "label": "campaign: camp-5",
+      "external_ref": "camp-5"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "campaigns",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.469428Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_f77f6679713ed0af73af",
+        "evidence_type": "raw",
+        "field": "status",
+        "value": "underperforming",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "campaigns",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_efb859aab04c4b74b086",
+        "evidence_type": "raw",
+        "field": "improvement_opportunity",
+        "value": "reallocate spend",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "campaigns",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_d8d8d6bdd8dd042e5fea",
+        "evidence_type": "raw",
+        "field": "requires_decision",
+        "value": true,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "campaigns",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_4dc900e0dc3cf2f05099",
+        "evidence_type": "derived",
+        "field": "entity_type",
+        "value": "campaign",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "campaigns",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_5ac19c1f097e74026de0",
+        "evidence_type": "derived",
+        "field": "entity_id",
+        "value": "camp-5",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "campaigns",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "status": "underperforming",
+      "improvement_opportunity": "reallocate spend",
+      "requires_decision": true,
+      "entity_type": "campaign",
+      "entity_id": "camp-5"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.86,
+      "level": "high",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": false,
+      "question": null,
+      "urgency": "none",
+      "candidate_dimensions": []
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_dbf8ab809d1195fe3150",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "decision_subject",
+    "domain": "marketing",
+    "subject": {
+      "subject_type": "decision_subject",
+      "subject_key": "camp-5",
+      "label": "Decision subject camp-5",
+      "external_ref": "camp-5"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "campaigns",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.469460Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_d8d8d6bdd8dd042e5fea",
+        "evidence_type": "raw",
+        "field": "requires_decision",
+        "value": true,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "campaigns",
+          "rule_id": "decision.explicit"
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "status": "underperforming",
+      "improvement_opportunity": "reallocate spend",
+      "requires_decision": true,
+      "entity_type": "campaign",
+      "entity_id": "camp-5"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.95,
+      "level": "high",
+      "basis": [
+        "source context",
+        "rule match"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": true,
+      "question": "What is the best action?",
+      "urgency": "medium",
+      "candidate_dimensions": [
+        "cost",
+        "time",
+        "risk",
+        "quality",
+        "impact"
+      ]
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_8a99208368ca2dc8832f",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "state",
+    "domain": "marketing",
+    "subject": {
+      "subject_type": "campaign",
+      "subject_key": "camp-5",
+      "label": "campaign status: underperforming",
+      "external_ref": "camp-5"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "campaigns",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.469471Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_f77f6679713ed0af73af",
+        "evidence_type": "raw",
+        "field": "status",
+        "value": "underperforming",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "campaigns",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "status": "underperforming"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.9,
+      "level": "high",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": false,
+      "question": null,
+      "urgency": "none",
+      "candidate_dimensions": []
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_11a93024c8b520fbbf63",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "opportunity",
+    "domain": "marketing",
+    "subject": {
+      "subject_type": "campaign",
+      "subject_key": "camp-5",
+      "label": "Opportunity candidate for campaign",
+      "external_ref": "camp-5"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "campaigns",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.469484Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_efb859aab04c4b74b086",
+        "evidence_type": "raw",
+        "field": "improvement_opportunity",
+        "value": "reallocate spend",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "campaigns",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "improvement_opportunity": "reallocate spend"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.75,
+      "level": "medium",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": true,
+      "question": "What is the best response to this opportunity?",
+      "urgency": "medium",
+      "candidate_dimensions": [
+        "risk",
+        "cost",
+        "time",
+        "impact"
+      ]
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_17fc30f106d19cb01194",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "decision_subject",
+    "domain": "marketing",
+    "subject": {
+      "subject_type": "campaign",
+      "subject_key": "camp-5",
+      "label": "Decision required for campaign",
+      "external_ref": "camp-5"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "campaigns",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.469494Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_2bd74598f6247a89fb63",
+        "evidence_type": "derived",
+        "field": "decision_needed",
+        "value": true,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "campaigns",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "decision_needed": true
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.85,
+      "level": "high",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": true,
+      "question": "What is the best action for campaign camp-5?",
+      "urgency": "medium",
+      "candidate_dimensions": [
+        "cost",
+        "time",
+        "risk",
+        "quality",
+        "impact"
+      ]
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  }
+]

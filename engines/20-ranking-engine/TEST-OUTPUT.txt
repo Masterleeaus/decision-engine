@@ -1,0 +1,13 @@
+test_cross_company_rejected (__main__.T.test_cross_company_rejected) ... ok
+test_hard_constraint_option_excluded (__main__.T.test_hard_constraint_option_excluded) ... ok
+test_no_authority_grant (__main__.T.test_no_authority_grant) ... ok
+test_objective_change_can_change_order (__main__.T.test_objective_change_can_change_order) ... ok
+test_prediction_confidence_and_assumptions_flow (__main__.T.test_prediction_confidence_and_assumptions_flow) ... ok
+test_sensitivity_is_inspectable (__main__.T.test_sensitivity_is_inspectable) ... ok
+test_ties_are_deterministic (__main__.T.test_ties_are_deterministic) ... ok
+test_transparent_factors_and_rank (__main__.T.test_transparent_factors_and_rank) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.002s
+
+OK

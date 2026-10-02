@@ -1,0 +1,43 @@
+{
+  "contract": "TitanOptionDiscovery",
+  "version": "1.0.0",
+  "company_boundary": "company_id",
+  "authority_semantics": "discovery_only_no_ranking_no_recommendation_no_execution_authority",
+  "option_kinds": [
+    "action",
+    "resource",
+    "supplier",
+    "assignment",
+    "intervention",
+    "schedule",
+    "strategy",
+    "tool",
+    "resolution"
+  ],
+  "source_classes": [
+    "internal_catalog",
+    "provider",
+    "knowledge",
+    "historical",
+    "generated",
+    "policy",
+    "browser_context",
+    "system_context"
+  ],
+  "guarantees": [
+    "company_id is mandatory and candidate discovery never crosses company boundaries",
+    "discovery generates feasible candidates and alternatives but does not rank, recommend, approve or execute them",
+    "each option has provenance, discovery rationale, confidence, feasibility state and constraint/evidence references",
+    "canonical entity references remain references; option discovery does not rewrite entity identity",
+    "duplicate candidates from different providers are consolidated without deleting source provenance",
+    "hard-constraint failures remain inspectable and are excluded from eligible options by default",
+    "do_nothing, investigate, escalate and defer may be represented as ordinary action/resolution options when meaningful",
+    "unknown feasibility stays explicit rather than being treated as feasible",
+    "option generation may use contextual enrichment but cannot infer execution authority from provider data"
+  ],
+  "outputs": [
+    "OptionCandidate",
+    "OptionSet",
+    "DiscoveryReceipt"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "step": 17,
+  "status": "implemented",
+  "requirements": [
+    "company_id sole boundary",
+    "actor preferences are company-scoped",
+    "durable provenance and temporal validity",
+    "explicit/inferred precedence",
+    "authority-like keys rejected",
+    "preferences cannot weaken constraints or grant authority"
+  ]
+}

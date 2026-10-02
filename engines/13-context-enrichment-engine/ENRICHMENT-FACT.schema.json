@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titan.local/schemas/enrichment-fact-1.0.0.json",
+  "title": "Titan EnrichmentFact",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "fact_id",
+    "contract_version",
+    "company_id",
+    "entity_id",
+    "source_class",
+    "namespace",
+    "key",
+    "value",
+    "value_kind",
+    "provenance",
+    "confidence",
+    "freshness",
+    "created_at"
+  ],
+  "properties": {
+    "fact_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "contract_version": {
+      "const": "1.0.0"
+    },
+    "company_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "entity_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_class": {
+      "enum": [
+        "internal",
+        "external",
+        "historical",
+        "current_state",
+        "environmental",
+        "operational",
+        "financial",
+        "knowledge_authority"
+      ]
+    },
+    "namespace": {
+      "type": "string",
+      "minLength": 1
+    },
+    "key": {
+      "type": "string",
+      "minLength": 1
+    },
+    "value": {},
+    "raw_value": {},
+    "value_kind": {
+      "enum": [
+        "raw",
+        "normalized",
+        "derived",
+        "asserted",
+        "policy",
+        "signal",
+        "metric",
+        "state"
+      ]
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider_id",
+        "source_id",
+        "retrieved_at"
+      ],
+      "properties": {
+        "provider_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_record_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_uri": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "observed_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "retrieved_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "provider_revision": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "freshness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "evaluated_at"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "fresh",
+            "aging",
+            "stale",
+            "unknown"
+          ]
+        },
+        "evaluated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "age_seconds": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "ttl_seconds": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    },
+    "priority": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "authoritativeness": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "supersedes_fact_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "extension_data": {
+      "type": "object"
+    }
+  }
+}

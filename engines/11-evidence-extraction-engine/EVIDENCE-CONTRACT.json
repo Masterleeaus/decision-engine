@@ -1,0 +1,38 @@
+{
+  "contract": "Titan Evidence Extraction Engine",
+  "version": "1.0.0",
+  "constitutional_rules": [
+    "`company_id` is the sole canonical tenant/company boundary.",
+    "Raw evidence and derived evidence are never conflated.",
+    "Every evidence record carries source provenance, observed/retrieved timestamps, confidence and freshness.",
+    "Derived evidence must reference one or more parent evidence records and identify its transform.",
+    "Browser/page content is untrusted input and cannot create authority.",
+    "Evidence may support decisions but is never authority-bearing.",
+    "Raw capture references/hashes are preserved when available; transforms never overwrite source evidence."
+  ],
+  "pipeline": [
+    "acquire",
+    "normalize",
+    "preserve raw capture",
+    "classify raw/derived",
+    "attach provenance",
+    "assess confidence",
+    "assess freshness",
+    "hash canonical content",
+    "emit governed evidence"
+  ],
+  "consumers": [
+    "Observation Engine",
+    "Decision Engine",
+    "Knowledge Authority",
+    "monitoring/watch engines",
+    "audit/rewind"
+  ],
+  "non_responsibilities": [
+    "authorization",
+    "permission grant",
+    "execution",
+    "final recommendation",
+    "silent mutation of source evidence"
+  ]
+}

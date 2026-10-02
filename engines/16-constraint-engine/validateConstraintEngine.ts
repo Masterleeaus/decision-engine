@@ -1,0 +1,1 @@
+import {buildConstraintSet,evaluateConstraintSet} from "./runtime/constraintEngine.js"; const s=buildConstraintSet("validation","d",[]); if(evaluateConstraintSet(s,{company_id:"validation"}).overall_status!=="eligible") throw new Error("validation failed"); console.log("Constraint validation passed");

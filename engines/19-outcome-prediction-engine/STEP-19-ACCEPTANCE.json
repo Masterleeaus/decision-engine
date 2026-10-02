@@ -1,0 +1,7 @@
+{
+  "authority_effect": "none",
+  "company_id_only": true,
+  "notes": "Minimal prerequisite because no shared completed Step19 artifact was found.",
+  "status": "passed",
+  "tests": 4
+}

@@ -1,0 +1,23 @@
+{
+  "step": "09",
+  "codee_step": "3f8fffac-07d9-413f-b0b2-100f7d0fa1d5|run-1788359991344-80b410c98cb94|step-09|s9-mtk7d4q8-gbw5xtrl",
+  "contract_version": "1.0.0",
+  "domains_covered": [
+    "operations",
+    "finance",
+    "workforce",
+    "environment",
+    "crm",
+    "assets",
+    "procurement",
+    "marketing",
+    "scheduling",
+    "other"
+  ],
+  "fixtures": 10,
+  "semantic_validation_pass": true,
+  "structural_validation_pass": true,
+  "step08_preserved": true,
+  "authority_separation": true,
+  "company_id_only_boundary": true
+}

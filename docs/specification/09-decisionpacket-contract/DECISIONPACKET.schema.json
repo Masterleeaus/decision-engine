@@ -1,0 +1,1064 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titan.local/schemas/decision-packet/1.0.0",
+  "title": "Titan DecisionPacket",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "packet_id",
+    "contract_version",
+    "company_id",
+    "domain",
+    "subject",
+    "objectives",
+    "options",
+    "evidence",
+    "constraints",
+    "preferences",
+    "predicted_outcomes",
+    "trade_offs",
+    "ranking",
+    "recommendation",
+    "confidence",
+    "authority_requirements",
+    "provenance",
+    "lifecycle"
+  ],
+  "properties": {
+    "packet_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "contract_version": {
+      "const": "1.0.0"
+    },
+    "company_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "domain": {
+      "type": "string",
+      "enum": [
+        "operations",
+        "finance",
+        "workforce",
+        "environment",
+        "crm",
+        "assets",
+        "procurement",
+        "marketing",
+        "scheduling",
+        "other"
+      ]
+    },
+    "domain_extension": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "subject": {
+      "$ref": "#/$defs/subject"
+    },
+    "objectives": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/objective"
+      }
+    },
+    "options": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/option"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidence"
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/constraint"
+      }
+    },
+    "preferences": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/preference"
+      }
+    },
+    "predicted_outcomes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/outcome"
+      }
+    },
+    "trade_offs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/tradeoff"
+      }
+    },
+    "ranking": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ranking"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "recommendation": {
+      "$ref": "#/$defs/recommendation"
+    },
+    "confidence": {
+      "$ref": "#/$defs/confidence"
+    },
+    "authority_requirements": {
+      "$ref": "#/$defs/authority"
+    },
+    "provenance": {
+      "$ref": "#/$defs/provenance"
+    },
+    "lifecycle": {
+      "$ref": "#/$defs/lifecycle"
+    },
+    "extension_data": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "external_refs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ref"
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ref_type",
+        "ref_id"
+      ],
+      "properties": {
+        "ref_type": {
+          "type": "string"
+        },
+        "ref_id": {
+          "type": "string"
+        },
+        "uri": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "subject_id",
+        "subject_type",
+        "title"
+      ],
+      "properties": {
+        "subject_id": {
+          "type": "string"
+        },
+        "subject_type": {
+          "type": "string"
+        },
+        "subject_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "current_state": {},
+        "observed_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "objective": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "objective_id",
+        "name",
+        "priority"
+      ],
+      "properties": {
+        "objective_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "priority": {
+          "type": "number"
+        },
+        "target_metric": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "target_direction": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "target_value": {},
+        "time_horizon": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "hard_or_soft": {
+          "enum": [
+            "hard",
+            "soft"
+          ]
+        },
+        "source": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "confidence": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "option": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "option_id",
+        "label",
+        "option_type",
+        "status"
+      ],
+      "properties": {
+        "option_id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "option_type": {
+          "type": "string"
+        },
+        "source": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "feasibility": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "preconditions": {
+          "type": "array"
+        },
+        "dependencies": {
+          "type": "array"
+        },
+        "estimated_start": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "estimated_duration": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reversibility": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "evidence_id",
+        "kind",
+        "claim",
+        "source_type",
+        "confidence"
+      ],
+      "properties": {
+        "evidence_id": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "claim": {
+          "type": "string"
+        },
+        "value": {},
+        "unit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_type": {
+          "type": "string"
+        },
+        "source_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "observed_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "valid_from": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "valid_until": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "freshness": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "provenance": {},
+        "integrity_hash": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "conflicts_with": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "supports": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "opposes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "constraint": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "constraint_id",
+        "kind",
+        "description",
+        "hard_or_soft"
+      ],
+      "properties": {
+        "constraint_id": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "severity": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "hard_or_soft": {
+          "enum": [
+            "hard",
+            "soft"
+          ]
+        },
+        "applies_to": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "source": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "jurisdiction": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "policy_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "threshold": {},
+        "satisfied": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "violation_effect": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "preference": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "preference_id",
+        "dimension",
+        "weight"
+      ],
+      "properties": {
+        "preference_id": {
+          "type": "string"
+        },
+        "owner_type": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "owner_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "dimension": {
+          "type": "string"
+        },
+        "weight": {
+          "type": "number"
+        },
+        "direction": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "scope": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "explicit": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "last_confirmed_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "expires_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "outcome": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "outcome_id",
+        "option_id",
+        "dimension",
+        "prediction",
+        "confidence"
+      ],
+      "properties": {
+        "outcome_id": {
+          "type": "string"
+        },
+        "option_id": {
+          "type": "string"
+        },
+        "dimension": {
+          "type": "string"
+        },
+        "prediction": {},
+        "unit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "time_horizon": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "best_case": {},
+        "expected_case": {},
+        "worst_case": {},
+        "probability": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "model_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "assumptions": {
+          "type": "array"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "side_effects": {
+          "type": "array"
+        }
+      }
+    },
+    "tradeoff": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "tradeoff_id",
+        "option_id",
+        "description"
+      ],
+      "properties": {
+        "tradeoff_id": {
+          "type": "string"
+        },
+        "option_id": {
+          "type": "string"
+        },
+        "benefit_dimension": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "cost_dimension": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": "string"
+        },
+        "magnitude": {},
+        "confidence": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ranking": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "ranking_id",
+        "method",
+        "rank_order",
+        "option_scores",
+        "generated_at"
+      ],
+      "properties": {
+        "ranking_id": {
+          "type": "string"
+        },
+        "method": {
+          "type": "string"
+        },
+        "model_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "scoring_dimensions": {
+          "type": "array"
+        },
+        "weights": {
+          "type": "array"
+        },
+        "normalization": {},
+        "option_scores": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "option_id",
+              "score"
+            ],
+            "properties": {
+              "option_id": {
+                "type": "string"
+              },
+              "score": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "rank_order": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sensitivity": {
+          "type": "array"
+        },
+        "dominance_notes": {
+          "type": "array"
+        },
+        "excluded_options": {
+          "type": "array"
+        },
+        "generated_at": {
+          "type": "string"
+        }
+      }
+    },
+    "recommendation": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "recommendation_id",
+        "recommendation_type",
+        "summary",
+        "generated_at"
+      ],
+      "properties": {
+        "recommendation_id": {
+          "type": "string"
+        },
+        "recommended_option_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "recommendation_type": {
+          "enum": [
+            "best_action",
+            "investigate",
+            "defer",
+            "escalate",
+            "request_approval",
+            "no_safe_action",
+            "insufficient_evidence"
+          ]
+        },
+        "summary": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "why_not_others": {
+          "type": "array"
+        },
+        "expected_effects": {
+          "type": "array"
+        },
+        "conditions": {
+          "type": "array"
+        },
+        "valid_until": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "generated_at": {
+          "type": "string"
+        }
+      }
+    },
+    "confidence": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "overall",
+        "confidence_band",
+        "uncertainty_reasons",
+        "missing_information"
+      ],
+      "properties": {
+        "overall": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "evidence_quality": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "evidence_coverage": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "model_confidence": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "conflict_level": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "freshness": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "uncertainty_reasons": {
+          "type": "array"
+        },
+        "missing_information": {
+          "type": "array"
+        },
+        "confidence_band": {
+          "enum": [
+            "very_low",
+            "low",
+            "medium",
+            "high",
+            "very_high"
+          ]
+        }
+      }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "required",
+        "governed_execution_required"
+      ],
+      "properties": {
+        "required": {
+          "type": "boolean"
+        },
+        "authority_class": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "actor_requirements": {
+          "type": "array"
+        },
+        "permission_requirements": {
+          "type": "array"
+        },
+        "entitlement_requirements": {
+          "type": "array"
+        },
+        "approval_requirements": {
+          "type": "array"
+        },
+        "capability_required": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "risk_class": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "cost_class": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "privacy_class": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "policy_checks": {
+          "type": "array"
+        },
+        "execution_owner": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "governed_execution_required": {
+          "type": "boolean"
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "created_at",
+        "producer",
+        "input_refs"
+      ],
+      "properties": {
+        "created_at": {
+          "type": "string"
+        },
+        "producer": {
+          "type": "string"
+        },
+        "producer_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "input_refs": {
+          "type": "array"
+        },
+        "model_refs": {
+          "type": "array"
+        },
+        "policy_refs": {
+          "type": "array"
+        },
+        "parent_packet_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "supersedes_packet_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "integrity_hash": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "lifecycle": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "state",
+        "revision",
+        "generated_at"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "observed",
+            "framed",
+            "options_discovered",
+            "evidence_enriched",
+            "constrained",
+            "predicted",
+            "compared",
+            "ranked",
+            "recommended",
+            "awaiting_authority",
+            "approved",
+            "rejected",
+            "modified",
+            "executed_external",
+            "outcome_observed",
+            "superseded",
+            "expired"
+          ]
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "generated_at": {
+          "type": "string"
+        },
+        "expires_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "superseded_by": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

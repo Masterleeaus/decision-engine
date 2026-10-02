@@ -1,0 +1,13 @@
+object,cardinality,plane,outcome,authority_rule
+subject,required,decision core,entity/situation being evaluated,no authority
+objective,"required, 1..n",decision core,success criteria,priority is not permission
+options,"required, 0..n",decision core,candidate actions/choices,option existence is not authorization
+evidence,0..n,evidence plane,traceable support/opposition,retain provenance/confidence
+constraints,0..n,governance input,hard/soft limits,hard constraints cannot be overridden by preference
+preferences,0..n,preference plane,weights/priorities,never authority
+predicted_outcomes,0..n per option,prediction plane,consequences/uncertainty,record assumptions/model
+trade_offs,0..n,comparison plane,benefit/cost conflicts,"explicit, inspectable"
+ranking,0..1,decision plane,ordered viable options,reproducible method/version
+recommendation,0..1,decision plane,proposed next-best action,advisory only
+confidence,required,assurance plane,trust/uncertainty state,cannot replace missing authority
+authority_requirements,required,governance boundary,requirements before execution,describes authority; does not grant it

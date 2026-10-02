@@ -1,0 +1,429 @@
+[
+  {
+    "observation_id": "obs_8fcd47919de76243362b",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "entity",
+    "domain": "operations",
+    "subject": {
+      "subject_type": "job",
+      "subject_key": "job-7",
+      "label": "job: Site inspection",
+      "external_ref": "job-7"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "ops-core",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.467967Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_b0fdcabef8f5a7f3bba5",
+        "evidence_type": "raw",
+        "field": "name",
+        "value": "Site inspection",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "ops-core",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_449196e29c051d39ff67",
+        "evidence_type": "raw",
+        "field": "status",
+        "value": "open",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "ops-core",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_e97231f2c4b6ac1c5685",
+        "evidence_type": "raw",
+        "field": "days_overdue",
+        "value": 3,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "ops-core",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_355ced43299c79be30c2",
+        "evidence_type": "raw",
+        "field": "requires_decision",
+        "value": true,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "ops-core",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_b4663ca2643b8cef430c",
+        "evidence_type": "derived",
+        "field": "entity_type",
+        "value": "job",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "ops-core",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_8ec5bc330f14a1e06ed2",
+        "evidence_type": "derived",
+        "field": "entity_id",
+        "value": "job-7",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "ops-core",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "name": "Site inspection",
+      "status": "open",
+      "days_overdue": 3,
+      "requires_decision": true,
+      "entity_type": "job",
+      "entity_id": "job-7"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.86,
+      "level": "high",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": false,
+      "question": null,
+      "urgency": "none",
+      "candidate_dimensions": []
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_39cf03f3fc1dd3f2470f",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "problem",
+    "domain": "operations",
+    "subject": {
+      "subject_type": "work_item",
+      "subject_key": "job-7",
+      "label": "Overdue work item job-7",
+      "external_ref": "job-7"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "ops-core",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.468045Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_e97231f2c4b6ac1c5685",
+        "evidence_type": "raw",
+        "field": "days_overdue",
+        "value": 3,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "ops-core",
+          "rule_id": "threshold.overdue"
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "name": "Site inspection",
+      "status": "open",
+      "days_overdue": 3,
+      "requires_decision": true,
+      "entity_type": "job",
+      "entity_id": "job-7"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.9,
+      "level": "high",
+      "basis": [
+        "source context",
+        "rule match"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": true,
+      "question": "What is the best response to the overdue item?",
+      "urgency": "high",
+      "candidate_dimensions": [
+        "time",
+        "customer_impact",
+        "risk",
+        "cost"
+      ]
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_0a0051506c3e5af98819",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "decision_subject",
+    "domain": "operations",
+    "subject": {
+      "subject_type": "decision_subject",
+      "subject_key": "job-7",
+      "label": "Decision subject job-7",
+      "external_ref": "job-7"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "ops-core",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.468064Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_355ced43299c79be30c2",
+        "evidence_type": "raw",
+        "field": "requires_decision",
+        "value": true,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "ops-core",
+          "rule_id": "decision.explicit"
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "name": "Site inspection",
+      "status": "open",
+      "days_overdue": 3,
+      "requires_decision": true,
+      "entity_type": "job",
+      "entity_id": "job-7"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.95,
+      "level": "high",
+      "basis": [
+        "source context",
+        "rule match"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": true,
+      "question": "What is the best action?",
+      "urgency": "medium",
+      "candidate_dimensions": [
+        "cost",
+        "time",
+        "risk",
+        "quality",
+        "impact"
+      ]
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_0736e91160f2cedfe6ec",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "state",
+    "domain": "operations",
+    "subject": {
+      "subject_type": "job",
+      "subject_key": "job-7",
+      "label": "job status: open",
+      "external_ref": "job-7"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "ops-core",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.468078Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_449196e29c051d39ff67",
+        "evidence_type": "raw",
+        "field": "status",
+        "value": "open",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "ops-core",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "status": "open"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.9,
+      "level": "high",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": false,
+      "question": null,
+      "urgency": "none",
+      "candidate_dimensions": []
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_2de182aaec6a426c4e57",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "decision_subject",
+    "domain": "operations",
+    "subject": {
+      "subject_type": "job",
+      "subject_key": "job-7",
+      "label": "Decision required for job",
+      "external_ref": "job-7"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "ops-core",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.468094Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_621c5fd7ff6a8a69e048",
+        "evidence_type": "derived",
+        "field": "decision_needed",
+        "value": true,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "ops-core",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "decision_needed": true
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.85,
+      "level": "high",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": true,
+      "question": "What is the best action for job job-7?",
+      "urgency": "medium",
+      "candidate_dimensions": [
+        "cost",
+        "time",
+        "risk",
+        "quality",
+        "impact"
+      ]
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  }
+]

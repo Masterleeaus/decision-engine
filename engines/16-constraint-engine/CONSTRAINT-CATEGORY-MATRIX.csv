@@ -1,0 +1,13 @@
+category,default_fail_closed,examples,authority_note
+permission,yes,actor permission / role grants,Decision Engine may inspect permission evidence but never grant permission.
+budget,no,spend cap / cash limit / approved envelope,Budget owner or governed finance authority may relax where policy permits.
+deadline,no,due time / SLA / completion window,Deadline changes require owning task/workflow authority.
+availability,no,staff / asset / supplier / slot availability,Unknown availability remains unresolved; it is not invented.
+jurisdiction,yes,country/state/local regulatory applicability,"Jurisdiction constraints are authoritative inputs, not recommendations."
+policy,yes,company/platform/vertical policies,Downstream layers may tighten but cannot silently weaken upstream policy.
+environmental,no,water / energy / emissions / waste thresholds,Can be hard when law/policy requires; soft when objective preference.
+safety,yes,hazard controls / qualifications / safe method,Critical safety constraints cannot be traded for utility.
+privacy,yes,data class / purpose / minimisation / residency,Privacy restrictions fail closed when required context is unknown.
+capability,yes,provider installed / operation supported,Discovery does not create capability truth.
+entitlement,yes,plan / licence / feature entitlement,Entitlement must come from owning registry.
+company_boundary,yes,trusted company_id equality,"Always hard, critical, non-relaxable, non-overridable."

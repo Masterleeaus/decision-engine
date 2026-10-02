@@ -1,0 +1,60 @@
+{
+  "contract": "Titan Entity Normalization Engine",
+  "version": "1.0.0",
+  "purpose": "Recognize records from different sources as the same underlying real-world entity without losing provenance or crossing company boundaries.",
+  "canonical_entity_types": [
+    "person",
+    "item",
+    "asset",
+    "supplier",
+    "job",
+    "company",
+    "opportunity",
+    "intervention",
+    "resource",
+    "customer",
+    "worker",
+    "location",
+    "document",
+    "other"
+  ],
+  "constitutional_rules": [
+    "`company_id` is the sole canonical tenant/company boundary; entity matching never crosses it.",
+    "Source identifiers remain provenance-bearing aliases; normalization never destroys source identity.",
+    "Strong identifiers may resolve identity automatically only when non-conflicting and entity-type compatible.",
+    "Names, labels, URLs and descriptive similarity alone are insufficient for irreversible automatic merges.",
+    "Ambiguous or conflicting candidates remain unresolved and are surfaced explicitly.",
+    "Merge and split operations preserve lineage; canonical history is append-oriented, not destructive.",
+    "Entity normalization identifies sameness; it grants no permission, authority, ownership or execution rights.",
+    "Evidence references can support matching but the resolver must not rewrite source evidence."
+  ],
+  "pipeline": [
+    "ingest source record",
+    "normalize identifiers/aliases/attributes",
+    "enforce company/type boundary",
+    "score candidate identities",
+    "detect conflicts/ambiguity",
+    "resolve or create provisional canonical entity",
+    "preserve source links and match evidence",
+    "emit canonical entity + resolution result"
+  ],
+  "consumers": [
+    "Observation Engine",
+    "Evidence Extraction Engine",
+    "Decision Engine",
+    "CRM",
+    "Workforce",
+    "Assets",
+    "Operations",
+    "Procurement",
+    "Knowledge Authority"
+  ],
+  "non_responsibilities": [
+    "authorization",
+    "access control",
+    "record deletion",
+    "source-system mutation",
+    "business authority",
+    "automatic cross-company deduplication"
+  ]
+}

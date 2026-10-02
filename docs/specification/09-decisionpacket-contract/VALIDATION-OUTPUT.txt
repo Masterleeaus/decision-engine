@@ -1,0 +1,10 @@
+/mnt/data/Titan-Decision-Engine-Research-Step09-DecisionPacket-Contract/09-decisionpacket-contract/examples/assets.decisionpacket.json PASS
+/mnt/data/Titan-Decision-Engine-Research-Step09-DecisionPacket-Contract/09-decisionpacket-contract/examples/crm.decisionpacket.json PASS
+/mnt/data/Titan-Decision-Engine-Research-Step09-DecisionPacket-Contract/09-decisionpacket-contract/examples/environment.decisionpacket.json PASS
+/mnt/data/Titan-Decision-Engine-Research-Step09-DecisionPacket-Contract/09-decisionpacket-contract/examples/finance.decisionpacket.json PASS
+/mnt/data/Titan-Decision-Engine-Research-Step09-DecisionPacket-Contract/09-decisionpacket-contract/examples/marketing.decisionpacket.json PASS
+/mnt/data/Titan-Decision-Engine-Research-Step09-DecisionPacket-Contract/09-decisionpacket-contract/examples/operations.decisionpacket.json PASS
+/mnt/data/Titan-Decision-Engine-Research-Step09-DecisionPacket-Contract/09-decisionpacket-contract/examples/other.decisionpacket.json PASS
+/mnt/data/Titan-Decision-Engine-Research-Step09-DecisionPacket-Contract/09-decisionpacket-contract/examples/procurement.decisionpacket.json PASS
+/mnt/data/Titan-Decision-Engine-Research-Step09-DecisionPacket-Contract/09-decisionpacket-contract/examples/scheduling.decisionpacket.json PASS
+/mnt/data/Titan-Decision-Engine-Research-Step09-DecisionPacket-Contract/09-decisionpacket-contract/examples/workforce.decisionpacket.json PASS

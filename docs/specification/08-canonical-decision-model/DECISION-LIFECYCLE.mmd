@@ -1,0 +1,21 @@
+flowchart LR
+  S[Subject] --> O[Objectives]
+  S --> OP[Options]
+  E[Evidence] --> P[Predicted outcomes]
+  O --> P
+  OP --> P
+  C[Constraints] --> V[Viability filter]
+  PR[Preferences] --> T[Trade-offs]
+  P --> T
+  V --> R[Ranking]
+  T --> R
+  R --> REC[Recommendation]
+  E --> CONF[Confidence]
+  P --> CONF
+  REC --> A[Authority requirements]
+  CONF --> A
+  A --> G[Titan governed execution]
+  G -->|receipt/outcome only| H[Decision history]
+  REC --> H
+  E --> H
+  style G stroke-width:3px

@@ -1,0 +1,13 @@
+test_all_kinds (test_option_discovery_engine.Tests.test_all_kinds) ... ok
+test_cross_company_not_emitted (test_option_discovery_engine.Tests.test_cross_company_not_emitted) ... ok
+test_duplicate_consolidation_preserves_provenance (test_option_discovery_engine.Tests.test_duplicate_consolidation_preserves_provenance) ... ok
+test_filter_ineligible (test_option_discovery_engine.Tests.test_filter_ineligible) ... ok
+test_hard_failure_ineligible (test_option_discovery_engine.Tests.test_hard_failure_ineligible) ... ok
+test_malicious_provider_cross_company_rejected_and_receipted (test_option_discovery_engine.Tests.test_malicious_provider_cross_company_rejected_and_receipted) ... ok
+test_no_ranking_or_recommendation_fields (test_option_discovery_engine.Tests.test_no_ranking_or_recommendation_fields) ... ok
+test_unknown_not_silently_eligible (test_option_discovery_engine.Tests.test_unknown_not_silently_eligible) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.001s
+
+OK

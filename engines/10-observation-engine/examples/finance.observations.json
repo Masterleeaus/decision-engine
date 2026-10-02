@@ -1,0 +1,413 @@
+[
+  {
+    "observation_id": "obs_6e0f82f907f58a061aef",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "entity",
+    "domain": "finance",
+    "subject": {
+      "subject_type": "invoice",
+      "subject_key": "inv-2",
+      "label": "invoice: inv-2",
+      "external_ref": "inv-2"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "ledger",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.469071Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_2b95c6c7f00851db0fab",
+        "evidence_type": "raw",
+        "field": "status",
+        "value": "overdue",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "ledger",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_072293b103f187982844",
+        "evidence_type": "raw",
+        "field": "days_overdue",
+        "value": 10,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "ledger",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_84bf69fc5a6895de3960",
+        "evidence_type": "raw",
+        "field": "requires_decision",
+        "value": true,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "ledger",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_770478cf020475081876",
+        "evidence_type": "derived",
+        "field": "entity_type",
+        "value": "invoice",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "ledger",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_ce4201c1d11fb8f957de",
+        "evidence_type": "derived",
+        "field": "entity_id",
+        "value": "inv-2",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "ledger",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "status": "overdue",
+      "days_overdue": 10,
+      "requires_decision": true,
+      "entity_type": "invoice",
+      "entity_id": "inv-2"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.86,
+      "level": "high",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": false,
+      "question": null,
+      "urgency": "none",
+      "candidate_dimensions": []
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_a23c3b448f35f19f234a",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "problem",
+    "domain": "finance",
+    "subject": {
+      "subject_type": "work_item",
+      "subject_key": "inv-2",
+      "label": "Overdue work item inv-2",
+      "external_ref": "inv-2"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "ledger",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.469109Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_072293b103f187982844",
+        "evidence_type": "raw",
+        "field": "days_overdue",
+        "value": 10,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "ledger",
+          "rule_id": "threshold.overdue"
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "status": "overdue",
+      "days_overdue": 10,
+      "requires_decision": true,
+      "entity_type": "invoice",
+      "entity_id": "inv-2"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.9,
+      "level": "high",
+      "basis": [
+        "source context",
+        "rule match"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": true,
+      "question": "What is the best response to the overdue item?",
+      "urgency": "high",
+      "candidate_dimensions": [
+        "time",
+        "customer_impact",
+        "risk",
+        "cost"
+      ]
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_2af21627e64ed19a2259",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "decision_subject",
+    "domain": "finance",
+    "subject": {
+      "subject_type": "decision_subject",
+      "subject_key": "inv-2",
+      "label": "Decision subject inv-2",
+      "external_ref": "inv-2"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "ledger",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.469122Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_84bf69fc5a6895de3960",
+        "evidence_type": "raw",
+        "field": "requires_decision",
+        "value": true,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "ledger",
+          "rule_id": "decision.explicit"
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "status": "overdue",
+      "days_overdue": 10,
+      "requires_decision": true,
+      "entity_type": "invoice",
+      "entity_id": "inv-2"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.95,
+      "level": "high",
+      "basis": [
+        "source context",
+        "rule match"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": true,
+      "question": "What is the best action?",
+      "urgency": "medium",
+      "candidate_dimensions": [
+        "cost",
+        "time",
+        "risk",
+        "quality",
+        "impact"
+      ]
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_1611e9f7a769629e13a6",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "state",
+    "domain": "finance",
+    "subject": {
+      "subject_type": "invoice",
+      "subject_key": "inv-2",
+      "label": "invoice status: overdue",
+      "external_ref": "inv-2"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "ledger",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.469132Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_2b95c6c7f00851db0fab",
+        "evidence_type": "raw",
+        "field": "status",
+        "value": "overdue",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "ledger",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "status": "overdue"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.9,
+      "level": "high",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": false,
+      "question": null,
+      "urgency": "none",
+      "candidate_dimensions": []
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_64804c4d33c9096dc2b9",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "decision_subject",
+    "domain": "finance",
+    "subject": {
+      "subject_type": "invoice",
+      "subject_key": "inv-2",
+      "label": "Decision required for invoice",
+      "external_ref": "inv-2"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "ledger",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.469145Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_8a3b24e5c6f4da1f8a65",
+        "evidence_type": "derived",
+        "field": "decision_needed",
+        "value": true,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "ledger",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "decision_needed": true
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.85,
+      "level": "high",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": true,
+      "question": "What is the best action for invoice inv-2?",
+      "urgency": "medium",
+      "candidate_dimensions": [
+        "cost",
+        "time",
+        "risk",
+        "quality",
+        "impact"
+      ]
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  }
+]

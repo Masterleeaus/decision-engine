@@ -1,0 +1,15 @@
+flowchart LR
+  A[Browser / System / Provider / Database / Document] --> B[Source Record Adapter]
+  B --> C[Identifier + Alias Normalization]
+  C --> D{company_id + type compatible?}
+  D -- No --> X[Reject candidate]
+  D -- Yes --> E[Candidate Retrieval]
+  E --> F[Weighted Match + Conflict Detection]
+  F --> G{Strong / clear match?}
+  G -- Yes --> H[Attach source record to canonical entity]
+  G -- Ambiguous --> I[Emit unresolved candidates]
+  G -- No candidate --> J[Create provisional canonical entity]
+  H --> K[Canonical Entity + Resolution Lineage]
+  I --> K
+  J --> K
+  K -. no authority .-> L[Decision / Domain Consumers]

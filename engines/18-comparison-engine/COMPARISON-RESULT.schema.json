@@ -1,0 +1,265 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Titan Comparison Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "comparison_id",
+    "contract_version",
+    "company_id",
+    "decision_subject_id",
+    "dimensions",
+    "alternatives",
+    "pairwise",
+    "pareto_frontier_option_ids",
+    "created_at",
+    "authority_effect"
+  ],
+  "properties": {
+    "comparison_id": {
+      "type": "string"
+    },
+    "contract_version": {
+      "const": "1.0.0"
+    },
+    "company_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "decision_subject_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "dimensions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/dimension"
+      }
+    },
+    "alternatives": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "$ref": "#/$defs/alternative"
+      }
+    },
+    "pairwise": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "pareto_frontier_option_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "authority_effect": {
+      "const": "none"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  },
+  "$defs": {
+    "dimension": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dimension_id",
+        "name",
+        "direction",
+        "weight",
+        "normalization",
+        "missing_policy"
+      ],
+      "properties": {
+        "dimension_id": {
+          "type": "string"
+        },
+        "name": {
+          "enum": [
+            "cost",
+            "time",
+            "quality",
+            "risk",
+            "benefit",
+            "sustainability",
+            "reversibility",
+            "confidence",
+            "reliability",
+            "strategic_value"
+          ]
+        },
+        "direction": {
+          "enum": [
+            "maximize",
+            "minimize"
+          ]
+        },
+        "weight": {
+          "type": "number",
+          "minimum": 0
+        },
+        "normalization": {
+          "enum": [
+            "minmax",
+            "bounded",
+            "boolean",
+            "ordinal"
+          ]
+        },
+        "bounds": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "missing_policy": {
+          "enum": [
+            "unknown",
+            "neutral",
+            "worst"
+          ]
+        },
+        "unit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "objective_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "preference_key": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "measurement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dimension_id",
+        "raw_value",
+        "normalized_score",
+        "confidence",
+        "evidence_refs",
+        "status"
+      ],
+      "properties": {
+        "dimension_id": {
+          "type": "string"
+        },
+        "raw_value": {},
+        "unit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "normalized_score": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "enum": [
+            "measured",
+            "estimated",
+            "unknown",
+            "not_applicable"
+          ]
+        },
+        "assumptions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "alternative": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "option_id",
+        "kind",
+        "title",
+        "eligible",
+        "measurements",
+        "coverage",
+        "comparison_confidence",
+        "weighted_profile",
+        "dominance"
+      ],
+      "properties": {
+        "option_id": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "eligible": {
+          "type": "boolean"
+        },
+        "measurements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/measurement"
+          }
+        },
+        "coverage": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "comparison_confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "weighted_profile": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        },
+        "dominance": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

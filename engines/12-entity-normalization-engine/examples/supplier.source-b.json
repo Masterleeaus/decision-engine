@@ -1,0 +1,25 @@
+{
+  "company_id": "company-demo",
+  "entity_type": "supplier",
+  "label": "ACME Industrial",
+  "source_kind": "provider",
+  "source_id": "procurement-provider",
+  "record_id": "vendor-448",
+  "observed_at": "2026-09-03T00:05:00Z",
+  "identifiers": [
+    {
+      "scheme": "abn",
+      "value": "12345678901"
+    },
+    {
+      "scheme": "supplier_id",
+      "value": "vendor-448"
+    }
+  ],
+  "aliases": [
+    "Acme Industrial Pty Limited"
+  ],
+  "attributes": {
+    "address": "10 Example Road, Melbourne"
+  }
+}

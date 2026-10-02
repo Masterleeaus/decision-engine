@@ -1,0 +1,98 @@
+[
+  {
+    "provider_id": "ops_catalog",
+    "source": "internal_catalog",
+    "candidate": {
+      "kind": "resource",
+      "title": "Use high-efficiency rinse unit",
+      "intent": "reduce_water_use_and_cost",
+      "target_refs": [
+        {
+          "entity_id": "asset_rinse_02",
+          "entity_type": "asset",
+          "role": "replacement_resource"
+        }
+      ],
+      "parameters": {
+        "mode": "substitute"
+      },
+      "confidence": 0.88,
+      "evidence_refs": [
+        "ev_asset_efficiency"
+      ],
+      "context_fact_ids": [
+        "fact_water_use"
+      ],
+      "discovery_rationale": [
+        "Available internal resource with lower measured water use"
+      ]
+    }
+  },
+  {
+    "provider_id": "knowledge_env",
+    "source": "knowledge",
+    "candidate": {
+      "kind": "intervention",
+      "title": "Install recirculation stage",
+      "intent": "reduce_water_use_and_cost",
+      "target_refs": [
+        {
+          "entity_id": "facility_north",
+          "entity_type": "resource",
+          "role": "intervention_target"
+        }
+      ],
+      "parameters": {
+        "intervention": "water_recirculation"
+      },
+      "confidence": 0.82,
+      "evidence_refs": [
+        "ev_water_audit"
+      ],
+      "constraint_refs": [
+        "constraint_budget"
+      ],
+      "soft_constraints": [
+        "capital expenditure review"
+      ],
+      "discovery_rationale": [
+        "Knowledge pattern applicable to repeated rinse-water demand"
+      ]
+    }
+  },
+  {
+    "provider_id": "scheduler",
+    "source": "system_context",
+    "candidate": {
+      "kind": "schedule",
+      "title": "Batch rinse-intensive work",
+      "intent": "reduce_water_use_and_cost",
+      "parameters": {
+        "batch_window": "late_shift"
+      },
+      "confidence": 0.72,
+      "unknowns": [
+        "late_shift_capacity_confirmation"
+      ],
+      "discovery_rationale": [
+        "Potential reduction in repeated startup/flush cycles"
+      ]
+    }
+  },
+  {
+    "provider_id": "policy",
+    "source": "policy",
+    "candidate": {
+      "kind": "action",
+      "title": "Do nothing until evidence improves",
+      "intent": "reduce_water_use_and_cost",
+      "parameters": {
+        "action": "defer"
+      },
+      "confidence": 0.65,
+      "discovery_rationale": [
+        "Valid baseline alternative when change risk exceeds evidence confidence"
+      ]
+    }
+  }
+]

@@ -1,0 +1,15 @@
+graph TD
+  A[Option candidates] --> B[Constraint eligibility]
+  O[Objectives] --> D[Dimension definitions]
+  P[Advisory preferences] --> D
+  E[Evidence/context/predictions] --> M[Measurements]
+  A --> M
+  D --> N[Normalize per dimension]
+  M --> N
+  N --> C[Coverage + confidence]
+  N --> T[Pairwise trade-offs]
+  N --> F[Pareto frontier]
+  C --> R[ComparisonResult]
+  T --> R
+  F --> R
+  R -. no rank/recommend/execute .-> X[Later engines]

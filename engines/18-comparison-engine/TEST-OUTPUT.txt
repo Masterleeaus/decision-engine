@@ -1,0 +1,15 @@
+test_confidence_bounded_and_evidence_preserved (__main__.T.test_confidence_bounded_and_evidence_preserved) ... ok
+test_constraint_ineligible_stays_ineligible (__main__.T.test_constraint_ineligible_stays_ineligible) ... ok
+test_cross_company_rejected (__main__.T.test_cross_company_rejected) ... ok
+test_minimize_cost_normalizes_lower_as_better (__main__.T.test_minimize_cost_normalizes_lower_as_better) ... ok
+test_missing_reduces_coverage_not_silent_fill (__main__.T.test_missing_reduces_coverage_not_silent_fill) ... ok
+test_no_rank_or_recommendation_fields (__main__.T.test_no_rank_or_recommendation_fields) ... ok
+test_pairwise_tradeoffs (__main__.T.test_pairwise_tradeoffs) ... ok
+test_pareto_dominance_descriptive (__main__.T.test_pareto_dominance_descriptive) ... ok
+test_preferences_adjust_weight_not_authority (__main__.T.test_preferences_adjust_weight_not_authority) ... ok
+test_unlike_alternatives_supported (__main__.T.test_unlike_alternatives_supported) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.001s
+
+OK

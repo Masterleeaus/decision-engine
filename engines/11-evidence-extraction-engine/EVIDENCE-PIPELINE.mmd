@@ -1,0 +1,12 @@
+flowchart LR
+  A[Browser / System / Provider / Sensor / Document / User] --> B[Acquisition Adapter]
+  B --> C[Raw Capture + Locator]
+  C --> D[Normalization]
+  D --> E[Raw Evidence Record]
+  E --> F[Confidence + Freshness]
+  E --> G[Governed Transform]
+  G --> H[Derived Evidence Record]
+  H --> F
+  F --> I[Integrity Hash]
+  I --> J[Observation / Decision Consumers]
+  J -. no authority .-> K[Governed Execution Boundary]

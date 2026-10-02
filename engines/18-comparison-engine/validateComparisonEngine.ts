@@ -1,0 +1,1 @@
+import {compare} from "./runtime/comparisonEngine.js"; compare("validation","d",[{company_id:"validation",decision_subject_id:"d",option_id:"a"},{company_id:"validation",decision_subject_id:"d",option_id:"b"}],[{name:"cost"}],{a:{cost:{raw_value:1}},b:{cost:{raw_value:2}}}); console.log("Comparison validation passed");

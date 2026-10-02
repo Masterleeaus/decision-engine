@@ -1,0 +1,413 @@
+[
+  {
+    "observation_id": "obs_3a960371c2bb77a956f1",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "entity",
+    "domain": "procurement",
+    "subject": {
+      "subject_type": "inventory_item",
+      "subject_key": "part-3",
+      "label": "inventory_item: part-3",
+      "external_ref": "part-3"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "inventory",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.469598Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_f5fea3f9562cdf8eb693",
+        "evidence_type": "raw",
+        "field": "stock_ratio",
+        "value": 0.1,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "inventory",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_63dad8b9ae6b280ced19",
+        "evidence_type": "raw",
+        "field": "availability",
+        "value": "low",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "inventory",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_509ea90723552f9f4e70",
+        "evidence_type": "raw",
+        "field": "requires_decision",
+        "value": true,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "inventory",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_3630a2eda0ba7310418d",
+        "evidence_type": "derived",
+        "field": "entity_type",
+        "value": "inventory_item",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "inventory",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_07dfbfa7137e2487c33c",
+        "evidence_type": "derived",
+        "field": "entity_id",
+        "value": "part-3",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "inventory",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "stock_ratio": 0.1,
+      "availability": "low",
+      "requires_decision": true,
+      "entity_type": "inventory_item",
+      "entity_id": "part-3"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.86,
+      "level": "high",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": false,
+      "question": null,
+      "urgency": "none",
+      "candidate_dimensions": []
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_a495233d8a00ea0843bd",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "opportunity",
+    "domain": "procurement",
+    "subject": {
+      "subject_type": "inventory_item",
+      "subject_key": "part-3",
+      "label": "Low availability for part-3",
+      "external_ref": "part-3"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "inventory",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.469632Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_f5fea3f9562cdf8eb693",
+        "evidence_type": "raw",
+        "field": "stock_ratio",
+        "value": 0.1,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "inventory",
+          "rule_id": "threshold.low_stock"
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "stock_ratio": 0.1,
+      "availability": "low",
+      "requires_decision": true,
+      "entity_type": "inventory_item",
+      "entity_id": "part-3"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.75,
+      "level": "medium",
+      "basis": [
+        "source context",
+        "rule match"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": true,
+      "question": "Should capacity or supply be replenished?",
+      "urgency": "medium",
+      "candidate_dimensions": [
+        "availability",
+        "cost",
+        "risk",
+        "lead_time"
+      ]
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_904a994aeebff779ad72",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "decision_subject",
+    "domain": "procurement",
+    "subject": {
+      "subject_type": "decision_subject",
+      "subject_key": "part-3",
+      "label": "Decision subject part-3",
+      "external_ref": "part-3"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "inventory",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.469644Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_509ea90723552f9f4e70",
+        "evidence_type": "raw",
+        "field": "requires_decision",
+        "value": true,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "inventory",
+          "rule_id": "decision.explicit"
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "stock_ratio": 0.1,
+      "availability": "low",
+      "requires_decision": true,
+      "entity_type": "inventory_item",
+      "entity_id": "part-3"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.95,
+      "level": "high",
+      "basis": [
+        "source context",
+        "rule match"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": true,
+      "question": "What is the best action?",
+      "urgency": "medium",
+      "candidate_dimensions": [
+        "cost",
+        "time",
+        "risk",
+        "quality",
+        "impact"
+      ]
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_99c8b065029116b8c3d2",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "state",
+    "domain": "procurement",
+    "subject": {
+      "subject_type": "inventory_item",
+      "subject_key": "part-3",
+      "label": "inventory_item availability: low",
+      "external_ref": "part-3"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "inventory",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.469655Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_63dad8b9ae6b280ced19",
+        "evidence_type": "raw",
+        "field": "availability",
+        "value": "low",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "inventory",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "availability": "low"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.9,
+      "level": "high",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": false,
+      "question": null,
+      "urgency": "none",
+      "candidate_dimensions": []
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_a105383550d84c853a66",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "decision_subject",
+    "domain": "procurement",
+    "subject": {
+      "subject_type": "inventory_item",
+      "subject_key": "part-3",
+      "label": "Decision required for inventory_item",
+      "external_ref": "part-3"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "inventory",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.469667Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_19bd17f1dd278b73e1bf",
+        "evidence_type": "derived",
+        "field": "decision_needed",
+        "value": true,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "inventory",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "decision_needed": true
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.85,
+      "level": "high",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": true,
+      "question": "What is the best action for inventory_item part-3?",
+      "urgency": "medium",
+      "candidate_dimensions": [
+        "cost",
+        "time",
+        "risk",
+        "quality",
+        "impact"
+      ]
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  }
+]

@@ -1,0 +1,14 @@
+field,purpose,required
+evidence_id,stable evidence identity,yes
+company_id,sole canonical company boundary,yes
+subject,entity/decision subject evidence concerns,yes
+evidence_class,raw or derived,yes
+claim,typed field/claim/unit,yes
+value,captured or derived value,yes
+source,provenance + observed/retrieved timestamps,yes
+acquisition,method/adapter/parser/capture ref,yes
+confidence,score/level/basis/limitations,yes
+freshness,fresh/stale/expired/unknown + max age,yes
+derivation,parent lineage + transform/assumptions,derived only
+integrity,canonical SHA-256,yes
+governance,non-authority/sensitivity/purpose/retention,yes

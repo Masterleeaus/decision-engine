@@ -1,0 +1,12 @@
+donor-pattern,generalized-observation-capability,titan-boundary
+page/product detection,browser context entity recognition,"page content is untrusted evidence, never authority"
+site/page validation,context applicability detection,adapter/rule determines whether context is relevant
+selector/raw scrape configs,configurable fact extraction,Titan-owned extraction rules/providers
+cart/checkout/confirmation detection,generic state/event detection,state observation only; no transaction authority
+offers/deals/trending/on-sale,opportunity candidate detection,downstream evaluation required
+price/availability changes,signal/change detection,preserve source and timestamp
+recently viewed/purchase activity,history/activity observation,scoped by company_id and provenance
+similar product/brand lookup,alternative candidate discovery precursor,alternative discovery belongs to later decision stage
+resale/valuation insights,derived evidence observation,derived evidence must cite supporting inputs
+order tracking,external process state observation,provider remains source of truth
+scrape success/failure telemetry,observation quality/diagnostic signal,Titan telemetry must be separately governed

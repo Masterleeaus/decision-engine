@@ -1,0 +1,133 @@
+{
+  "decision_id": "dec_example_001",
+  "company_id": "company_example",
+  "subject": {
+    "subject_id": "asset_42",
+    "subject_type": "asset_intervention",
+    "title": "Choose next action for equipment"
+  },
+  "objective": [
+    {
+      "objective_id": "obj_1",
+      "name": "Restore reliable operation",
+      "priority": 1,
+      "hard_or_soft": "hard"
+    },
+    {
+      "objective_id": "obj_2",
+      "name": "Minimise lifecycle cost",
+      "priority": 2,
+      "hard_or_soft": "soft"
+    }
+  ],
+  "options": [
+    {
+      "option_id": "opt_repair",
+      "label": "Repair",
+      "reversibility": "medium"
+    },
+    {
+      "option_id": "opt_replace",
+      "label": "Replace",
+      "reversibility": "low"
+    },
+    {
+      "option_id": "opt_investigate",
+      "label": "Investigate further",
+      "option_type": "investigate",
+      "reversibility": "high"
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "ev_1",
+      "kind": "observation",
+      "claim": "Failure recurrence is increasing",
+      "confidence": 0.86,
+      "provenance": "maintenance_history"
+    }
+  ],
+  "constraints": [
+    {
+      "constraint_id": "con_1",
+      "kind": "budget",
+      "description": "Spend above approval threshold requires approval",
+      "hard_or_soft": "hard",
+      "satisfied": true
+    }
+  ],
+  "preferences": [
+    {
+      "preference_id": "pref_1",
+      "owner_type": "company",
+      "owner_id": "company_example",
+      "dimension": "downtime",
+      "weight": 0.8,
+      "direction": "minimize",
+      "explicit": true
+    }
+  ],
+  "predicted_outcomes": [
+    {
+      "outcome_id": "po_1",
+      "option_id": "opt_repair",
+      "dimension": "cost",
+      "prediction": 1200,
+      "unit": "AUD",
+      "confidence": 0.74
+    },
+    {
+      "outcome_id": "po_2",
+      "option_id": "opt_replace",
+      "dimension": "cost",
+      "prediction": 4800,
+      "unit": "AUD",
+      "confidence": 0.91
+    }
+  ],
+  "trade_offs": [
+    {
+      "tradeoff_id": "tr_1",
+      "option_id": "opt_replace",
+      "benefit_dimension": "reliability",
+      "cost_dimension": "cost",
+      "description": "Higher upfront cost for lower predicted recurrence",
+      "confidence": 0.82
+    }
+  ],
+  "ranking": {
+    "ranking_id": "rank_1",
+    "method": "multi-factor-weighted",
+    "model_version": "research-v1",
+    "rank_order": [
+      "opt_replace",
+      "opt_repair",
+      "opt_investigate"
+    ]
+  },
+  "recommendation": {
+    "recommendation_id": "rec_1",
+    "recommended_option_id": "opt_replace",
+    "recommendation_type": "request_approval",
+    "summary": "Replacement is the best modeled option, subject to spend approval."
+  },
+  "confidence": {
+    "overall": 0.79,
+    "evidence_quality": 0.82,
+    "evidence_coverage": 0.76,
+    "confidence_band": "medium-high",
+    "uncertainty_reasons": [
+      "future repair recurrence uncertain"
+    ]
+  },
+  "authority_requirements": {
+    "required": true,
+    "authority_class": "financial-and-operational",
+    "approval_requirements": [
+      "spend_threshold_approval"
+    ],
+    "capability_required": "asset.replace",
+    "governed_execution_required": true,
+    "execution_owner": "Titan governed execution"
+  }
+}

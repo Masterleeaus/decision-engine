@@ -1,0 +1,1 @@
+import {ContextEnrichmentEngine} from "./runtime/contextEnrichmentEngine.js"; const x=new ContextEnrichmentEngine().enrich({company_id:"validation"}); if(!x.context_envelope_id) throw new Error("validation failed"); console.log("Context validation passed");

@@ -1,0 +1,11 @@
+dimension,default_direction,typical_unit,meaning
+cost,minimize,currency,Lifecycle or relevant economic cost
+time,minimize,seconds/hours/days,"Elapsed, completion or delay time"
+quality,maximize,score,"Fitness, service or output quality"
+risk,minimize,probability/severity score,Expected adverse exposure
+benefit,maximize,score/value,Expected positive outcome
+sustainability,maximize,score,Environmental/resource sustainability
+reversibility,maximize,score,Ease and completeness of rollback
+confidence,maximize,0..1,Confidence in option/measurement evidence
+reliability,maximize,0..1,Expected consistency/dependability
+strategic_value,maximize,score,Longer-term strategic fit/value

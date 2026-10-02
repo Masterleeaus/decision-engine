@@ -1,0 +1,409 @@
+[
+  {
+    "observation_id": "obs_ee204dcdab05ac020162",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "entity",
+    "domain": "workforce",
+    "subject": {
+      "subject_type": "shift",
+      "subject_key": "shift-3",
+      "label": "shift: shift-3",
+      "external_ref": "shift-3"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "workforce",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.468852Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_19dac99ed44371992d02",
+        "evidence_type": "raw",
+        "field": "status",
+        "value": "unfilled",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "workforce",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_fa0e654d6dd60f02c99a",
+        "evidence_type": "raw",
+        "field": "problem",
+        "value": "skills coverage gap",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "workforce",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_49da8c5431432275f4b4",
+        "evidence_type": "raw",
+        "field": "requires_decision",
+        "value": true,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "workforce",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_4982bbe45699dfce5baa",
+        "evidence_type": "derived",
+        "field": "entity_type",
+        "value": "shift",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "workforce",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_80f9cda32ac97a2b5529",
+        "evidence_type": "derived",
+        "field": "entity_id",
+        "value": "shift-3",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "workforce",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "status": "unfilled",
+      "problem": "skills coverage gap",
+      "requires_decision": true,
+      "entity_type": "shift",
+      "entity_id": "shift-3"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.86,
+      "level": "high",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": false,
+      "question": null,
+      "urgency": "none",
+      "candidate_dimensions": []
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_44fdb61bcb00b978b481",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "decision_subject",
+    "domain": "workforce",
+    "subject": {
+      "subject_type": "decision_subject",
+      "subject_key": "shift-3",
+      "label": "Decision subject shift-3",
+      "external_ref": "shift-3"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "workforce",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.468893Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_49da8c5431432275f4b4",
+        "evidence_type": "raw",
+        "field": "requires_decision",
+        "value": true,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "workforce",
+          "rule_id": "decision.explicit"
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "status": "unfilled",
+      "problem": "skills coverage gap",
+      "requires_decision": true,
+      "entity_type": "shift",
+      "entity_id": "shift-3"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.95,
+      "level": "high",
+      "basis": [
+        "source context",
+        "rule match"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": true,
+      "question": "What is the best action?",
+      "urgency": "medium",
+      "candidate_dimensions": [
+        "cost",
+        "time",
+        "risk",
+        "quality",
+        "impact"
+      ]
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_2416e66927da6ea71355",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "state",
+    "domain": "workforce",
+    "subject": {
+      "subject_type": "shift",
+      "subject_key": "shift-3",
+      "label": "shift status: unfilled",
+      "external_ref": "shift-3"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "workforce",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.468907Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_19dac99ed44371992d02",
+        "evidence_type": "raw",
+        "field": "status",
+        "value": "unfilled",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "workforce",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "status": "unfilled"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.9,
+      "level": "high",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": false,
+      "question": null,
+      "urgency": "none",
+      "candidate_dimensions": []
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_be0f8a6727fa1830c59c",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "problem",
+    "domain": "workforce",
+    "subject": {
+      "subject_type": "shift",
+      "subject_key": "shift-3",
+      "label": "Problem candidate for shift",
+      "external_ref": "shift-3"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "workforce",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.468920Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_fa0e654d6dd60f02c99a",
+        "evidence_type": "raw",
+        "field": "problem",
+        "value": "skills coverage gap",
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "workforce",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "problem": "skills coverage gap"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.75,
+      "level": "medium",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": true,
+      "question": "What is the best response to this problem?",
+      "urgency": "medium",
+      "candidate_dimensions": [
+        "risk",
+        "cost",
+        "time",
+        "impact"
+      ]
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  },
+  {
+    "observation_id": "obs_17ddebe3641375dc8bd2",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "decision_subject",
+    "domain": "workforce",
+    "subject": {
+      "subject_type": "shift",
+      "subject_key": "shift-3",
+      "label": "Decision required for shift",
+      "external_ref": "shift-3"
+    },
+    "source": {
+      "source_kind": "system",
+      "source_id": "workforce",
+      "trust_class": "authenticated",
+      "url": null,
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.468932Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_441f608eebab0f1c70f2",
+        "evidence_type": "derived",
+        "field": "decision_needed",
+        "value": true,
+        "unit": null,
+        "provenance": {
+          "source_kind": "system",
+          "source_id": "workforce",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "decision_needed": true
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.85,
+      "level": "high",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": []
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": true,
+      "question": "What is the best action for shift shift-3?",
+      "urgency": "medium",
+      "candidate_dimensions": [
+        "cost",
+        "time",
+        "risk",
+        "quality",
+        "impact"
+      ]
+    },
+    "extension_data": {},
+    "tags": [
+      "source:system"
+    ]
+  }
+]

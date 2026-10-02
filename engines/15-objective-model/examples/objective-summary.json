@@ -1,0 +1,32 @@
+{
+  "company_id": "company_demo",
+  "decision_subject_id": "subject_water_optimization",
+  "hard_objective_ids": [
+    "obj_company",
+    "obj_operational",
+    "obj_regulatory"
+  ],
+  "soft_weights": {
+    "obj_user": 0.17073170731707318,
+    "obj_task": 0.19512195121951223,
+    "obj_environmental": 0.24390243902439027,
+    "obj_financial": 0.24390243902439027,
+    "obj_strategic": 0.14634146341463417
+  },
+  "conflicts": [
+    [
+      "obj_financial",
+      "obj_user"
+    ]
+  ],
+  "scopes": [
+    "company",
+    "environmental",
+    "financial",
+    "operational",
+    "regulatory",
+    "strategic",
+    "task",
+    "user"
+  ]
+}

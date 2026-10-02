@@ -1,0 +1,329 @@
+{
+  "company_id": "company_demo",
+  "decision_subject_id": "subject_water_optimization",
+  "options": [
+    {
+      "option_id": "opt_supplier",
+      "company_id": "company_demo",
+      "decision_subject_id": "subject_water_optimization",
+      "kind": "supplier",
+      "title": "Outsource to specialist supplier"
+    },
+    {
+      "option_id": "opt_intervention",
+      "company_id": "company_demo",
+      "decision_subject_id": "subject_water_optimization",
+      "kind": "intervention",
+      "title": "Install recirculation stage"
+    },
+    {
+      "option_id": "opt_schedule",
+      "company_id": "company_demo",
+      "decision_subject_id": "subject_water_optimization",
+      "kind": "schedule",
+      "title": "Batch rinse-intensive work"
+    }
+  ],
+  "dimensions": [
+    {
+      "name": "cost",
+      "unit": "AUD",
+      "weight": 1
+    },
+    {
+      "name": "time",
+      "unit": "days",
+      "weight": 1
+    },
+    {
+      "name": "quality",
+      "weight": 1
+    },
+    {
+      "name": "risk",
+      "weight": 1
+    },
+    {
+      "name": "benefit",
+      "weight": 1
+    },
+    {
+      "name": "sustainability",
+      "weight": 1.4
+    },
+    {
+      "name": "reversibility",
+      "weight": 1
+    },
+    {
+      "name": "confidence",
+      "normalization": "bounded",
+      "bounds": {
+        "min": 0,
+        "max": 1
+      },
+      "weight": 1
+    },
+    {
+      "name": "reliability",
+      "normalization": "bounded",
+      "bounds": {
+        "min": 0,
+        "max": 1
+      },
+      "weight": 1
+    },
+    {
+      "name": "strategic_value",
+      "weight": 1
+    }
+  ],
+  "measurements_by_option": {
+    "opt_supplier": {
+      "cost": {
+        "raw_value": 42000,
+        "confidence": 0.9,
+        "evidence_refs": [
+          "ev_quote"
+        ],
+        "status": "estimated"
+      },
+      "time": {
+        "raw_value": 14,
+        "confidence": 0.8,
+        "evidence_refs": [
+          "ev_lead"
+        ],
+        "status": "estimated"
+      },
+      "quality": {
+        "raw_value": 8,
+        "confidence": 0.75,
+        "evidence_refs": [
+          "ev_supplier"
+        ],
+        "status": "estimated"
+      },
+      "risk": {
+        "raw_value": 4,
+        "confidence": 0.7,
+        "evidence_refs": [
+          "ev_risk"
+        ],
+        "status": "estimated"
+      },
+      "benefit": {
+        "raw_value": 7,
+        "confidence": 0.75,
+        "evidence_refs": [
+          "ev_benefit"
+        ],
+        "status": "estimated"
+      },
+      "sustainability": {
+        "raw_value": 6,
+        "confidence": 0.7,
+        "evidence_refs": [
+          "ev_env"
+        ],
+        "status": "estimated"
+      },
+      "reversibility": {
+        "raw_value": 8,
+        "confidence": 0.8,
+        "evidence_refs": [
+          "ev_contract"
+        ],
+        "status": "estimated"
+      },
+      "confidence": {
+        "raw_value": 0.74,
+        "confidence": 0.74,
+        "evidence_refs": [
+          "ev_bundle"
+        ],
+        "status": "estimated"
+      },
+      "reliability": {
+        "raw_value": 0.82,
+        "confidence": 0.8,
+        "evidence_refs": [
+          "ev_supplier"
+        ],
+        "status": "estimated"
+      },
+      "strategic_value": {
+        "raw_value": 6,
+        "confidence": 0.7,
+        "evidence_refs": [
+          "ev_strategy"
+        ],
+        "status": "estimated"
+      }
+    },
+    "opt_intervention": {
+      "cost": {
+        "raw_value": 65000,
+        "confidence": 0.88,
+        "evidence_refs": [
+          "ev_capex"
+        ],
+        "status": "estimated"
+      },
+      "time": {
+        "raw_value": 28,
+        "confidence": 0.75,
+        "evidence_refs": [
+          "ev_install"
+        ],
+        "status": "estimated"
+      },
+      "quality": {
+        "raw_value": 9,
+        "confidence": 0.85,
+        "evidence_refs": [
+          "ev_quality"
+        ],
+        "status": "estimated"
+      },
+      "risk": {
+        "raw_value": 3,
+        "confidence": 0.8,
+        "evidence_refs": [
+          "ev_risk"
+        ],
+        "status": "estimated"
+      },
+      "benefit": {
+        "raw_value": 10,
+        "confidence": 0.88,
+        "evidence_refs": [
+          "ev_water_audit"
+        ],
+        "status": "estimated"
+      },
+      "sustainability": {
+        "raw_value": 10,
+        "confidence": 0.9,
+        "evidence_refs": [
+          "ev_env"
+        ],
+        "status": "estimated"
+      },
+      "reversibility": {
+        "raw_value": 4,
+        "confidence": 0.75,
+        "evidence_refs": [
+          "ev_engineering"
+        ],
+        "status": "estimated"
+      },
+      "confidence": {
+        "raw_value": 0.86,
+        "confidence": 0.86,
+        "evidence_refs": [
+          "ev_bundle"
+        ],
+        "status": "estimated"
+      },
+      "reliability": {
+        "raw_value": 0.9,
+        "confidence": 0.88,
+        "evidence_refs": [
+          "ev_asset"
+        ],
+        "status": "estimated"
+      },
+      "strategic_value": {
+        "raw_value": 10,
+        "confidence": 0.86,
+        "evidence_refs": [
+          "ev_strategy"
+        ],
+        "status": "estimated"
+      }
+    },
+    "opt_schedule": {
+      "cost": {
+        "raw_value": 5000,
+        "confidence": 0.75,
+        "evidence_refs": [
+          "ev_ops"
+        ],
+        "status": "estimated"
+      },
+      "time": {
+        "raw_value": 3,
+        "confidence": 0.8,
+        "evidence_refs": [
+          "ev_schedule"
+        ],
+        "status": "estimated"
+      },
+      "quality": {
+        "raw_value": 6,
+        "confidence": 0.7,
+        "evidence_refs": [
+          "ev_quality"
+        ],
+        "status": "estimated"
+      },
+      "risk": {
+        "raw_value": 2,
+        "confidence": 0.75,
+        "evidence_refs": [
+          "ev_risk"
+        ],
+        "status": "estimated"
+      },
+      "benefit": {
+        "raw_value": 5,
+        "confidence": 0.7,
+        "evidence_refs": [
+          "ev_ops"
+        ],
+        "status": "estimated"
+      },
+      "sustainability": {
+        "raw_value": 5,
+        "confidence": 0.65,
+        "evidence_refs": [
+          "ev_env"
+        ],
+        "status": "estimated"
+      },
+      "reversibility": {
+        "raw_value": 10,
+        "confidence": 0.9,
+        "evidence_refs": [
+          "ev_schedule"
+        ],
+        "status": "estimated"
+      },
+      "confidence": {
+        "raw_value": 0.68,
+        "confidence": 0.68,
+        "evidence_refs": [
+          "ev_bundle"
+        ],
+        "status": "estimated"
+      },
+      "reliability": {
+        "raw_value": 0.72,
+        "confidence": 0.7,
+        "evidence_refs": [
+          "ev_ops"
+        ],
+        "status": "estimated"
+      },
+      "strategic_value": {
+        "raw_value": 4,
+        "confidence": 0.65,
+        "evidence_refs": [
+          "ev_strategy"
+        ],
+        "status": "estimated"
+      }
+    }
+  }
+}

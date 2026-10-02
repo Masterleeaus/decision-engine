@@ -1,0 +1,9 @@
+test_bad_confidence_rejected_not_authorized (__main__.T.test_bad_confidence_rejected_not_authorized) ... ok
+test_builds_traceable_forecasts (__main__.T.test_builds_traceable_forecasts) ... ok
+test_cross_company_rejected (__main__.T.test_cross_company_rejected) ... ok
+test_horizons (__main__.T.test_horizons) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK

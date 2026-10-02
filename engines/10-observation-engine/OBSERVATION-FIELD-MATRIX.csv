@@ -1,0 +1,11 @@
+field,purpose,authority_semantics,stability
+observation_id,stable immutable observation identity,none,canonical
+company_id,sole company boundary,scope only,constitutional
+kind,entity/state/signal/opportunity/problem/decision_subject,classification only,canonical
+subject,thing observed,none,canonical
+source,origin and trust classification,fact provenance only,canonical
+evidence,raw/normalized/derived supporting facts,none,canonical
+confidence,perception quality,not approval/recommendation confidence,canonical
+decision_relevance,whether downstream evaluation is warranted,does not answer decision,canonical
+lifecycle,revision/supersession state,none,canonical
+extension_data,domain-specific observation details,cannot redefine boundary/authority,extensible

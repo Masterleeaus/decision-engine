@@ -1,0 +1,256 @@
+{
+  "evaluation_id": "ceval_195d5f59a7d6a98ea280",
+  "company_id": "company_demo",
+  "decision_subject_id": "subject_schedule_job",
+  "constraint_set_id": "cset_5e21191f4718b9523ecd",
+  "overall_status": "eligible",
+  "hard_gate": "pass",
+  "results": [
+    {
+      "constraint_id": "constraint_company_boundary",
+      "category": "company_boundary",
+      "hardness": "hard",
+      "status": "satisfied",
+      "reason_code": "constraint_satisfied",
+      "actual": "company_demo",
+      "expected": "company_demo",
+      "penalty": 0.0,
+      "details": {
+        "severity": "critical",
+        "authority": {
+          "can_relax": false,
+          "can_override": false,
+          "required_authority_refs": []
+        }
+      }
+    },
+    {
+      "constraint_id": "permission_dispatch",
+      "category": "permission",
+      "hardness": "hard",
+      "status": "satisfied",
+      "reason_code": "constraint_satisfied",
+      "actual": [
+        "jobs.dispatch"
+      ],
+      "expected": "jobs.dispatch",
+      "penalty": 0.0,
+      "details": {
+        "severity": "high",
+        "authority": {
+          "can_relax": false,
+          "can_override": false,
+          "required_authority_refs": [
+            "permission_registry"
+          ]
+        }
+      }
+    },
+    {
+      "constraint_id": "budget_cap",
+      "category": "budget",
+      "hardness": "hard",
+      "status": "satisfied",
+      "reason_code": "constraint_satisfied",
+      "actual": 4500,
+      "expected": 5000,
+      "penalty": 0.0,
+      "details": {
+        "severity": "high",
+        "authority": {
+          "can_relax": true,
+          "can_override": true,
+          "required_authority_refs": [
+            "budget_owner"
+          ]
+        }
+      }
+    },
+    {
+      "constraint_id": "deadline",
+      "category": "deadline",
+      "hardness": "hard",
+      "status": "satisfied",
+      "reason_code": "constraint_satisfied",
+      "actual": "2026-09-08T12:00:00Z",
+      "expected": "2026-09-10T17:00:00Z",
+      "penalty": 0.0,
+      "details": {
+        "severity": "high",
+        "authority": {
+          "can_relax": true,
+          "can_override": true,
+          "required_authority_refs": [
+            "job_owner"
+          ]
+        }
+      }
+    },
+    {
+      "constraint_id": "availability",
+      "category": "availability",
+      "hardness": "hard",
+      "status": "satisfied",
+      "reason_code": "constraint_satisfied",
+      "actual": true,
+      "expected": true,
+      "penalty": 0.0,
+      "details": {
+        "severity": "medium",
+        "authority": {
+          "can_relax": false,
+          "can_override": false,
+          "required_authority_refs": []
+        }
+      }
+    },
+    {
+      "constraint_id": "jurisdiction",
+      "category": "jurisdiction",
+      "hardness": "hard",
+      "status": "satisfied",
+      "reason_code": "constraint_satisfied",
+      "actual": "AU-VIC",
+      "expected": [
+        "AU-VIC"
+      ],
+      "penalty": 0.0,
+      "details": {
+        "severity": "critical",
+        "authority": {
+          "can_relax": false,
+          "can_override": false,
+          "required_authority_refs": [
+            "legal_policy"
+          ]
+        }
+      }
+    },
+    {
+      "constraint_id": "policy_mfa",
+      "category": "policy",
+      "hardness": "hard",
+      "status": "satisfied",
+      "reason_code": "constraint_satisfied",
+      "actual": true,
+      "expected": true,
+      "penalty": 0.0,
+      "details": {
+        "severity": "critical",
+        "authority": {
+          "can_relax": false,
+          "can_override": false,
+          "required_authority_refs": [
+            "policy_owner"
+          ]
+        }
+      }
+    },
+    {
+      "constraint_id": "environment_water",
+      "category": "environmental",
+      "hardness": "soft",
+      "status": "violated",
+      "reason_code": "constraint_violated",
+      "actual": 1200,
+      "expected": 1000,
+      "penalty": 0.8,
+      "details": {
+        "severity": "medium",
+        "authority": {
+          "can_relax": true,
+          "can_override": true,
+          "required_authority_refs": []
+        }
+      }
+    },
+    {
+      "constraint_id": "safety_rating",
+      "category": "safety",
+      "hardness": "hard",
+      "status": "satisfied",
+      "reason_code": "constraint_satisfied",
+      "actual": true,
+      "expected": true,
+      "penalty": 0.0,
+      "details": {
+        "severity": "critical",
+        "authority": {
+          "can_relax": false,
+          "can_override": false,
+          "required_authority_refs": [
+            "safety_authority"
+          ]
+        }
+      }
+    },
+    {
+      "constraint_id": "privacy_minimum",
+      "category": "privacy",
+      "hardness": "hard",
+      "status": "satisfied",
+      "reason_code": "constraint_satisfied",
+      "actual": "internal",
+      "expected": [
+        "public",
+        "internal"
+      ],
+      "penalty": 0.0,
+      "details": {
+        "severity": "critical",
+        "authority": {
+          "can_relax": false,
+          "can_override": false,
+          "required_authority_refs": [
+            "privacy_policy"
+          ]
+        }
+      }
+    },
+    {
+      "constraint_id": "capability",
+      "category": "capability",
+      "hardness": "hard",
+      "status": "satisfied",
+      "reason_code": "constraint_satisfied",
+      "actual": [
+        "work.schedule"
+      ],
+      "expected": "work.schedule",
+      "penalty": 0.0,
+      "details": {
+        "severity": "high",
+        "authority": {
+          "can_relax": false,
+          "can_override": false,
+          "required_authority_refs": [
+            "capability_registry"
+          ]
+        }
+      }
+    },
+    {
+      "constraint_id": "entitlement",
+      "category": "entitlement",
+      "hardness": "hard",
+      "status": "satisfied",
+      "reason_code": "constraint_satisfied",
+      "actual": [
+        "advanced_scheduling"
+      ],
+      "expected": "advanced_scheduling",
+      "penalty": 0.0,
+      "details": {
+        "severity": "high",
+        "authority": {
+          "can_relax": false,
+          "can_override": false,
+          "required_authority_refs": [
+            "entitlement_registry"
+          ]
+        }
+      }
+    }
+  ],
+  "created_at": "2026-09-03T00:00:00Z"
+}

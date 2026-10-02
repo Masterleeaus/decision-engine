@@ -1,0 +1,414 @@
+[
+  {
+    "observation_id": "obs_04442bc27524fdebf924",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "entity",
+    "domain": "other",
+    "subject": {
+      "subject_type": "service_item",
+      "subject_key": "42",
+      "label": "service_item: Service item",
+      "external_ref": "https://example.invalid/item/42"
+    },
+    "source": {
+      "source_kind": "browser",
+      "source_id": "https://example.invalid/item/42",
+      "trust_class": "untrusted",
+      "url": "https://example.invalid/item/42",
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.467635Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_1ef0e4e13e6a9e3098a1",
+        "evidence_type": "derived",
+        "field": "title",
+        "value": "Service item",
+        "unit": null,
+        "provenance": {
+          "source_kind": "browser",
+          "source_id": "https://example.invalid/item/42",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_d69c6301995dbf897c39",
+        "evidence_type": "raw",
+        "field": "name",
+        "value": "Service item",
+        "unit": null,
+        "provenance": {
+          "source_kind": "browser",
+          "source_id": "https://example.invalid/item/42",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_25eb02cc24b225ccd143",
+        "evidence_type": "raw",
+        "field": "entity_type",
+        "value": "service_item",
+        "unit": null,
+        "provenance": {
+          "source_kind": "browser",
+          "source_id": "https://example.invalid/item/42",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_6cb2c273380e2f857001",
+        "evidence_type": "derived",
+        "field": "entity_id",
+        "value": "42",
+        "unit": null,
+        "provenance": {
+          "source_kind": "browser",
+          "source_id": "https://example.invalid/item/42",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_8787fd3fc0edd1596a2d",
+        "evidence_type": "derived",
+        "field": "url",
+        "value": "https://example.invalid/item/42",
+        "unit": null,
+        "provenance": {
+          "source_kind": "browser",
+          "source_id": "https://example.invalid/item/42",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_22ab7d6391e18c21bd43",
+        "evidence_type": "raw",
+        "field": "id",
+        "value": "42",
+        "unit": null,
+        "provenance": {
+          "source_kind": "browser",
+          "source_id": "https://example.invalid/item/42",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_3d3cb1b531f119f15e95",
+        "evidence_type": "raw",
+        "field": "availability",
+        "value": "unavailable",
+        "unit": null,
+        "provenance": {
+          "source_kind": "browser",
+          "source_id": "https://example.invalid/item/42",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_e35db0cbc08d5717f8cd",
+        "evidence_type": "derived",
+        "field": "error_signal",
+        "value": false,
+        "unit": null,
+        "provenance": {
+          "source_kind": "browser",
+          "source_id": "https://example.invalid/item/42",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_87b67e0e04dc5d482b7d",
+        "evidence_type": "derived",
+        "field": "deadline_signal",
+        "value": false,
+        "unit": null,
+        "provenance": {
+          "source_kind": "browser",
+          "source_id": "https://example.invalid/item/42",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_447253edd0a714ac47dc",
+        "evidence_type": "derived",
+        "field": "availability_signal",
+        "value": true,
+        "unit": null,
+        "provenance": {
+          "source_kind": "browser",
+          "source_id": "https://example.invalid/item/42",
+          "rule_id": null
+        },
+        "supports": []
+      },
+      {
+        "evidence_id": "ev_8b4c4d97fe662c593f80",
+        "evidence_type": "derived",
+        "field": "approval_signal",
+        "value": true,
+        "unit": null,
+        "provenance": {
+          "source_kind": "browser",
+          "source_id": "https://example.invalid/item/42",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "title": "Service item",
+      "name": "Service item",
+      "entity_type": "service_item",
+      "entity_id": "42",
+      "url": "https://example.invalid/item/42",
+      "id": "42",
+      "availability": "unavailable",
+      "error_signal": false,
+      "deadline_signal": false,
+      "availability_signal": true,
+      "approval_signal": true
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.68,
+      "level": "medium",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": [
+        "browser content is untrusted input"
+      ]
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": false,
+      "question": null,
+      "urgency": "none",
+      "candidate_dimensions": []
+    },
+    "extension_data": {},
+    "tags": [
+      "source:browser"
+    ]
+  },
+  {
+    "observation_id": "obs_18e309f69f411851eb9f",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "state",
+    "domain": "other",
+    "subject": {
+      "subject_type": "service_item",
+      "subject_key": "42",
+      "label": "service_item availability: unavailable",
+      "external_ref": "https://example.invalid/item/42"
+    },
+    "source": {
+      "source_kind": "browser",
+      "source_id": "https://example.invalid/item/42",
+      "trust_class": "untrusted",
+      "url": "https://example.invalid/item/42",
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.467781Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_3d3cb1b531f119f15e95",
+        "evidence_type": "raw",
+        "field": "availability",
+        "value": "unavailable",
+        "unit": null,
+        "provenance": {
+          "source_kind": "browser",
+          "source_id": "https://example.invalid/item/42",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "availability": "unavailable"
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.7,
+      "level": "medium",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": [
+        "browser content is untrusted input"
+      ]
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": false,
+      "question": null,
+      "urgency": "none",
+      "candidate_dimensions": []
+    },
+    "extension_data": {},
+    "tags": [
+      "source:browser"
+    ]
+  },
+  {
+    "observation_id": "obs_d2907387819f3daed6b6",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "signal",
+    "domain": "other",
+    "subject": {
+      "subject_type": "service_item",
+      "subject_key": "42",
+      "label": "Detected availability signal",
+      "external_ref": "https://example.invalid/item/42"
+    },
+    "source": {
+      "source_kind": "browser",
+      "source_id": "https://example.invalid/item/42",
+      "trust_class": "untrusted",
+      "url": "https://example.invalid/item/42",
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.467799Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_447253edd0a714ac47dc",
+        "evidence_type": "derived",
+        "field": "availability_signal",
+        "value": true,
+        "unit": null,
+        "provenance": {
+          "source_kind": "browser",
+          "source_id": "https://example.invalid/item/42",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "availability_signal": true
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.58,
+      "level": "medium",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": [
+        "browser content is untrusted input"
+      ]
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": false,
+      "question": null,
+      "urgency": "none",
+      "candidate_dimensions": []
+    },
+    "extension_data": {},
+    "tags": [
+      "source:browser"
+    ]
+  },
+  {
+    "observation_id": "obs_de23fda1ad6402ecae11",
+    "contract_version": "1.0.0",
+    "company_id": "company-demo",
+    "kind": "signal",
+    "domain": "other",
+    "subject": {
+      "subject_type": "service_item",
+      "subject_key": "42",
+      "label": "Detected approval signal",
+      "external_ref": "https://example.invalid/item/42"
+    },
+    "source": {
+      "source_kind": "browser",
+      "source_id": "https://example.invalid/item/42",
+      "trust_class": "untrusted",
+      "url": "https://example.invalid/item/42",
+      "frame_id": null,
+      "provider_revision": null
+    },
+    "observed_at": "2026-09-02T15:27:53.467814Z",
+    "evidence": [
+      {
+        "evidence_id": "ev_8b4c4d97fe662c593f80",
+        "evidence_type": "derived",
+        "field": "approval_signal",
+        "value": true,
+        "unit": null,
+        "provenance": {
+          "source_kind": "browser",
+          "source_id": "https://example.invalid/item/42",
+          "rule_id": null
+        },
+        "supports": []
+      }
+    ],
+    "attributes": {
+      "approval_signal": true
+    },
+    "relations": [],
+    "confidence": {
+      "score": 0.58,
+      "level": "medium",
+      "basis": [
+        "source context",
+        "direct context"
+      ],
+      "limitations": [
+        "browser content is untrusted input"
+      ]
+    },
+    "lifecycle": {
+      "state": "active",
+      "revision": 1,
+      "supersedes_observation_id": null,
+      "expires_at": null
+    },
+    "decision_relevance": {
+      "requires_evaluation": false,
+      "question": null,
+      "urgency": "none",
+      "candidate_dimensions": []
+    },
+    "extension_data": {},
+    "tags": [
+      "source:browser"
+    ]
+  }
+]

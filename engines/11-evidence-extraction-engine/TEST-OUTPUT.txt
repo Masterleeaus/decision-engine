@@ -1,0 +1,12 @@
+test_browser_untrusted_no_authority (test_evidence_engine.EvidenceTests.test_browser_untrusted_no_authority) ... ok
+test_company_boundary (test_evidence_engine.EvidenceTests.test_company_boundary) ... ok
+test_derived_confidence_does_not_exceed_parent_default (test_evidence_engine.EvidenceTests.test_derived_confidence_does_not_exceed_parent_default) ... ok
+test_freshness (test_evidence_engine.EvidenceTests.test_freshness) ... ok
+test_integrity (test_evidence_engine.EvidenceTests.test_integrity) ... ok
+test_provenance_timestamps (test_evidence_engine.EvidenceTests.test_provenance_timestamps) ... ok
+test_raw_and_derived_are_separate (test_evidence_engine.EvidenceTests.test_raw_and_derived_are_separate) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.001s
+
+OK

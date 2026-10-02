@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titan.local/schemas/decision/canonical-decision-v1.schema.json",
+  "title": "Titan Canonical Decision",
+  "type": "object",
+  "required": [
+    "decision_id",
+    "company_id",
+    "subject",
+    "objective",
+    "options",
+    "confidence",
+    "authority_requirements"
+  ],
+  "properties": {
+    "decision_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "company_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject": {
+      "type": "object",
+      "required": [
+        "subject_id",
+        "subject_type"
+      ],
+      "properties": {
+        "subject_id": {
+          "type": "string"
+        },
+        "subject_type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "objective": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "objective_id",
+          "name"
+        ],
+        "additionalProperties": true
+      }
+    },
+    "options": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "option_id",
+          "label"
+        ],
+        "additionalProperties": true
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "evidence_id",
+          "kind"
+        ],
+        "additionalProperties": true
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "constraint_id",
+          "kind",
+          "hard_or_soft"
+        ],
+        "additionalProperties": true
+      }
+    },
+    "preferences": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "preference_id",
+          "dimension"
+        ],
+        "additionalProperties": true
+      }
+    },
+    "predicted_outcomes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "outcome_id",
+          "option_id",
+          "dimension"
+        ],
+        "additionalProperties": true
+      }
+    },
+    "trade_offs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "tradeoff_id",
+          "option_id"
+        ],
+        "additionalProperties": true
+      }
+    },
+    "ranking": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": true
+    },
+    "recommendation": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": true
+    },
+    "confidence": {
+      "type": "object",
+      "required": [
+        "overall"
+      ],
+      "additionalProperties": true
+    },
+    "authority_requirements": {
+      "type": "object",
+      "required": [
+        "required",
+        "governed_execution_required"
+      ],
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
