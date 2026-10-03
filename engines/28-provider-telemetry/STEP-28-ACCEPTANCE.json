@@ -1,0 +1,32 @@
+{
+  "step": "28",
+  "name": "Provider Reliability Telemetry",
+  "status": "Integration candidate",
+  "runtime": "runtime/providerTelemetry.ts",
+  "contract": "PROVIDER-TELEMETRY-CONTRACT.json",
+  "observation_schema": "PROVIDER-OBSERVATION.schema.json",
+  "snapshot_schema": "PROVIDER-RELIABILITY.schema.json",
+  "acceptance_criteria": [
+    "captures success and failure outcomes without copying payloads or exception messages into observations",
+    "supports both asynchronous provider calls and synchronous Step 13 style enrichment providers",
+    "supports bounded failure classes and host-supplied result summaries",
+    "aggregates only one company and provider per reliability snapshot",
+    "deduplicates identical invocations and rejects conflicting invocation records",
+    "reports sample counts, rates, latency percentiles, freshness counts, and health state",
+    "low sample counts produce insufficient_data",
+    "provider health does not change decision eligibility, ranking, confidence, authorization, or routing",
+    "all outputs carry authority_effect none"
+  ],
+  "verification": {
+    "test_file": "tests/providerTelemetry.test.mjs",
+    "tests_run": false,
+    "note": "Tests intentionally deferred until the broader archive integration pass is complete."
+  },
+  "host_owned_components": [
+    "provider call adapters",
+    "privacy policy and identifier selection",
+    "durable telemetry storage and retention",
+    "alerting, retries, and routing policy",
+    "telemetry vendor or destination"
+  ]
+}

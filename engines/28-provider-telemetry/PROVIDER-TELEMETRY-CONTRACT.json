@@ -1,0 +1,50 @@
+{
+  "contract_version": "1.0.0",
+  "step": 28,
+  "name": "Provider Reliability Telemetry",
+  "purpose": "Measure provider invocation outcomes, latency, freshness, and record counts without retaining provider payloads or raw error messages.",
+  "inputs": [
+    "provider invocation metadata and a host-supplied invocation function",
+    "privacy-minimized provider observations for a company/provider/window"
+  ],
+  "outputs": [
+    "one provider execution observation per invocation",
+    "a scoped reliability snapshot with sample counts, rates, latency percentiles, freshness counts, and failure classes"
+  ],
+  "health_states": {
+    "healthy": "Sufficient samples and all configured reliability thresholds pass.",
+    "degraded": "Sufficient samples exist and at least one configured threshold is crossed.",
+    "unavailable": "Sufficient samples exist and every invocation failed in the window.",
+    "insufficient_data": "The window contains fewer than the configured minimum samples."
+  },
+  "metric_definitions": {
+    "window_membership": "An observation is included when completed_at falls in the selected window.",
+    "success_rate": "(success_count + partial_count) / sample_count; null when sample_count is zero.",
+    "failure_rate": "failure_count / sample_count; null when sample_count is zero.",
+    "latency_percentiles": "Nearest-rank p50 and p95 over duration_ms values in the window."
+  },
+  "default_policy": {
+    "window_seconds": 3600,
+    "minimum_samples": 5,
+    "degraded_failure_rate": 0.2,
+    "minimum_success_rate": 0.8,
+    "maximum_p95_latency_ms": 5000,
+    "maximum_stale_rate": 0.5
+  },
+  "invariants": [
+    "company_id and provider_id scope cannot be mixed in one reliability snapshot",
+    "duplicate invocation observations do not inflate sample counts",
+    "conflicting observations for one invocation fail closed",
+    "raw provider values, URLs, actor identifiers, and error messages are not copied into telemetry observations",
+    "failure classes use a bounded vocabulary and do not contain exception text",
+    "provider health is diagnostic metadata and does not change constraints, ranking, confidence, authorization, or routing",
+    "all observations and snapshots have authority_effect none"
+  ],
+  "host_responsibilities": [
+    "choose provider and operation identifiers",
+    "supply privacy-reviewed record and freshness summaries",
+    "persist observations with company-scoped retention and access controls",
+    "define alerts and provider routing policy",
+    "avoid storing raw provider errors alongside telemetry"
+  ]
+}

@@ -15,9 +15,9 @@
   </defs>
   <rect width="1500" height="740" rx="28" fill="url(#bg)"/>
   <circle cx="1280" cy="95" r="190" fill="#15304A" opacity=".35"/><circle cx="140" cy="650" r="230" fill="#102943" opacity=".4"/>
-  <text x="64" y="65" class="group">TITAN DECISION ENGINE · STEPS 26–27 WORKFLOW</text>
+  <text x="64" y="65" class="group">TITAN DECISION ENGINE · STEPS 26–28 WORKFLOW</text>
   <text x="64" y="112" class="title">A monitored decision workflow with clear authority boundaries</text>
-  <text x="64" y="140" class="sub">Stages share one run context. Watches request re-evaluation; Step 27 prepares host requests without dispatch.</text>
+  <text x="64" y="140" class="sub">Stages share one run context. Watches request re-evaluation; Step 27 prepares host requests; Step 28 measures provider reliability.</text>
 
   <text x="66" y="194" class="group">OBSERVE &amp; DEFINE</text>
   <text x="430" y="194" class="group">EVALUATE</text>
@@ -40,9 +40,9 @@
   <path d="M364 443H424M648 443H708M932 443H992" class="accent" marker-end="url(#arrow)"/>
 
   <rect x="64" y="566" width="650" height="112" rx="18" fill="#10263C" stroke="#2A4965"/>
-  <text x="92" y="603" class="group">WORKFLOW · WATCHES · ACTION HANDOFF</text>
-  <text x="92" y="635" class="ntext">Run stages · monitor evidence · prepare host action requests</text>
-  <text x="92" y="659" class="small">Company-scoped · handoffs expire and remain undispatched</text>
+  <text x="92" y="603" class="group">WORKFLOW · WATCHES · ACTION HANDOFF · PROVIDER RELIABILITY</text>
+  <text x="92" y="635" class="ntext">Run stages · watch evidence · prepare actions · measure providers</text>
+  <text x="92" y="659" class="small">Company-scoped · handoffs expire · telemetry omits source payloads</text>
   <rect x="786" y="566" width="650" height="112" rx="18" fill="#231F1A" stroke="#8B6330"/>
   <text x="814" y="603" class="group" style="fill:#D9A85E">GOVERNED AUTHORITY · SEPARATE BOUNDARY</text>
   <text x="814" y="635" class="ntext">Permission · approval · execution</text>

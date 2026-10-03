@@ -1,0 +1,23 @@
+{
+  "snapshot_id": "provider_health_example_1",
+  "company_id": "company-1",
+  "provider_id": "environmental-data-v2",
+  "window_start": "2026-10-03T03:15:00.000Z",
+  "window_end": "2026-10-03T04:15:00.000Z",
+  "generated_at": "2026-10-03T04:15:00.000Z",
+  "health": "healthy",
+  "sample_count": 24,
+  "success_count": 23,
+  "partial_count": 1,
+  "failure_count": 0,
+  "success_rate": 1,
+  "failure_rate": 0,
+  "stale_count": 1,
+  "mixed_freshness_count": 2,
+  "unknown_freshness_count": 0,
+  "stale_rate": 0.0416666667,
+  "latency_p50_ms": 310,
+  "latency_p95_ms": 780,
+  "failure_class_counts": {},
+  "authority_effect": "none"
+}

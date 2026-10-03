@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titan.example/schemas/provider-execution-observation.schema.json",
+  "title": "Provider Execution Observation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "observation_id",
+    "invocation_id",
+    "company_id",
+    "provider_id",
+    "operation_id",
+    "started_at",
+    "completed_at",
+    "duration_ms",
+    "outcome",
+    "record_count",
+    "freshness_state",
+    "authority_effect"
+  ],
+  "properties": {
+    "observation_id": { "type": "string", "minLength": 1 },
+    "invocation_id": { "type": "string", "minLength": 1 },
+    "company_id": { "type": "string", "minLength": 1 },
+    "provider_id": { "type": "string", "minLength": 1 },
+    "operation_id": { "type": "string", "minLength": 1 },
+    "started_at": { "type": "string", "format": "date-time" },
+    "completed_at": { "type": "string", "format": "date-time" },
+    "duration_ms": { "type": "integer", "minimum": 0 },
+    "outcome": { "enum": ["success", "partial", "failure"] },
+    "record_count": { "type": "integer", "minimum": 0 },
+    "freshness_state": { "enum": ["fresh", "mixed", "stale", "unknown"] },
+    "failure_class": {
+      "enum": ["timeout", "rate_limited", "unavailable", "invalid_response", "contract_violation", "unknown"]
+    },
+    "authority_effect": { "const": "none" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "outcome": { "const": "failure" } } },
+      "then": { "required": ["failure_class"] },
+      "else": { "not": { "required": ["failure_class"] } }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "observation_id": "provider_obs_example_1",
+  "invocation_id": "invocation_23",
+  "company_id": "company-1",
+  "provider_id": "environmental-data-v2",
+  "operation_id": "fetch-site-context",
+  "started_at": "2026-10-03T04:15:00.000Z",
+  "completed_at": "2026-10-03T04:15:00.240Z",
+  "duration_ms": 240,
+  "outcome": "success",
+  "record_count": 4,
+  "freshness_state": "fresh",
+  "authority_effect": "none"
+}

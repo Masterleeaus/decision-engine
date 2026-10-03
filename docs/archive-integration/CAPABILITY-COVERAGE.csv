@@ -33,7 +33,7 @@ RECOMMEND-02,Surface curated or editorial suggestions,domain_provider,Step 14 Op
 RECOMMEND-03,Surface offer opportunities,domain_provider,Steps 14 and 20,Offer providers may contribute options; coupon and affiliate behavior remains outside.
 MONITOR-01,Monitor price or value changes,core_pattern,Step 26 Decision Watch,Generic field conditions support thresholds; price observations and scheduling are host-provided.
 MONITOR-02,Monitor post-purchase order progress,domain_adapter,Step 26 Decision Watch and host order provider,Generic state changes can trigger reruns; no order tracking service is included.
-MONITOR-03,Monitor runtime health and failures,partial_pattern,Step 26 Workflow Events and host diagnostics,Stage start/failure events exist; provider-health aggregation and telemetry sinks remain host-owned.
+MONITOR-03,Monitor runtime health and failures,core_pattern_plus_host,Steps 26 and 28 Workflow Events and Provider Telemetry,Stage events and scoped provider reliability snapshots exist; durable telemetry and alerting remain host-owned.
 MONITOR-04,Monitor page or navigation lifecycle,host_adapter,Interaction or browser adapter,The engine can react to supplied events but does not observe browser lifecycle itself.
 TRIGGER-01,Trigger extraction,host_adapter,Host observation/extraction integration,Source events and permissions determine when the host invokes collection.
 TRIGGER-02,Trigger contextual user interface,host_product_ui,Host application UI,Presentation and surface projection are not part of the engine.
