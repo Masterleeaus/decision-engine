@@ -32,10 +32,10 @@ The engine can analyze and recommend. It does not authorize or execute the recom
 ## Architecture
 
 <p align="center">
-  <img src="assets/decision-engine-architecture.svg" alt="Titan Decision Engine stages from observation and evidence to options, constraints, comparison, recommendation, explanation, and verified learning" width="100%" />
+  <img src="assets/decision-engine-architecture.svg" alt="Titan Decision Engine stages from observation and evidence through recommendation and verified learning to an undispatched host action request" width="100%" />
 </p>
 
-The repository preserves a 25-step research bundle and extends its TypeScript reference engines through Step 26. The public source tree contains the canonical decision model and packet contract, Steps 10–25, and a workflow coordinator that composes those engines.
+The repository preserves a 25-step research bundle and extends its TypeScript reference engines through Step 27. The public source tree contains the canonical decision model and packet contract, Steps 10–25, a workflow coordinator, and a capability-gated action handoff.
 
 | Decision stage | Steps | Responsibility |
 |---|---:|---|
@@ -44,7 +44,7 @@ The repository preserves a 25-step research bundle and extends its TypeScript re
 | **Compare and rank** | 18–20 | Compare unlike options, preserve missing data and trade-offs, attach provider-supplied forecasts, and calculate transparent rankings with sensitivity scenarios. |
 | **Recommend and explain** | 21–23 | Recommend or abstain against configured thresholds, explain the result from explicit inputs, and apply observed-outcome confidence calibration. |
 | **Preserve and learn** | 24–25 | Create hash-bound decision-history revisions and derive future calibration updates from verified outcomes. |
-| **Orchestrate and monitor** | 26 | Run the stages in order, stop when constraints are unresolved, and request evidence-backed re-evaluation from event or scheduled watches. |
+| **Orchestrate and monitor** | 26–27 | Run the stages in order, stop when constraints are unresolved, request evidence-backed re-evaluation, and prepare an expiring host action request after the hard gate. |
 
 Steps 08 and 09 define the shared meaning and transport format for the pipeline:
 
@@ -98,6 +98,7 @@ The engine can describe prerequisites for action, but it does not create identit
 | **24** | Decision history | Creates snapshot-hashed revisions and verifies supersession chains without editing earlier snapshots. |
 | **25** | Learning loop | Uses verified outcomes to calculate forecast error, assumption reliability, recommendation performance, and confidence calibration updates. |
 | **26** | Decision workflow | Composes Steps 10–25, emits hash-linked stage events, checks company scope, applies a fail-closed constraint gate, evaluates watches, and accepts learning updates only after external outcome verification. |
+| **27** | Action handoff | Prepares an expiring, idempotent request only for a constraint-eligible recommendation and a fresh host capability assessment; approvals and dispatch remain with the host. |
 
 ## Domain-neutral by design
 
@@ -129,7 +130,7 @@ These are decision-support boundaries. They do not replace authentication, autho
 
 ## Integration pattern
 
-Step 26 provides the reference coordinator for a host application:
+Steps 26–27 provide reference workflow and action-handoff layers for a host application:
 
 1. Adapt source systems into observations, evidence, canonical entities, and context.
 2. Supply domain-specific providers for options and forecasts.
@@ -137,6 +138,7 @@ Step 26 provides the reference coordinator for a host application:
 4. Run the ordered workflow; its constraint gate stops on missing, unknown, or ineligible hard requirements before scoring.
 5. Use event or scheduled watch checks to request a new run when fresh evidence meets a condition.
 6. Pass the resulting DecisionPacket to the host product, where its governance decides whether a recommended action may proceed.
+7. When action preparation is useful, call Step 27 with the eligible recommendation, host option-to-capability binding, and fresh host assessment; the host handles approval, rechecks authority, and dispatches.
 
 The coordinator sequences injected stage adapters. Durable storage, cross-run idempotency, providers, scheduling, notifications, and governed execution remain host responsibilities.
 
@@ -150,6 +152,7 @@ This repository is a **research-backed architecture package with modular TypeScr
 - JSON Schema Draft 2020-12 definitions
 - TypeScript runtime modules for Steps 10–25
 - Step 26 workflow coordination, evidence-backed watch evaluation, and verified-outcome gating
+- Step 27 capability-gated action request preparation without approval or dispatch
 - Per-stage contracts, validators, tests, examples, and acceptance artifacts where provided
 - Architecture assets and the original cumulative Step 25 research bundle
 
@@ -160,7 +163,7 @@ This repository is a **research-backed architecture package with modular TypeScr
 - Production adapters for business systems and forecasting providers
 - Authentication, authorization, approval, and governed execution integrations
 
-The Step 26 workflow boundary is a reference composition layer; it does not provide production connectors, a durable store, a scheduler, or action execution. The checked-in acceptance and test-output files record staged development history. Some early step documents and logs refer to the pre-convergence Python implementation; `README-TYPESCRIPT-CONVERGENCE.md` describes the current TypeScript direction. Treat those records as historical artifacts and verify the current source and integration in the target application before relying on them as a release gate.
+Steps 26–27 are reference composition layers; they do not provide production connectors, durable workflow/action stores, a scheduler, approval service, or action execution. The checked-in acceptance and test-output files record staged development history. Some early step documents and logs refer to the pre-convergence Python implementation; `README-TYPESCRIPT-CONVERGENCE.md` describes the current TypeScript direction. Treat those records as historical artifacts and verify the current source and integration in the target application before relying on them as a release gate.
 
 ## Repository guide
 
@@ -168,7 +171,9 @@ The Step 26 workflow boundary is a reference composition layer; it does not prov
 |---|---|
 | [`docs/specification/08-canonical-decision-model/`](docs/specification/08-canonical-decision-model/) | Shared decision semantics, schema, example, and field matrix |
 | [`docs/specification/09-decisionpacket-contract/`](docs/specification/09-decisionpacket-contract/) | Versioned packet contract, JSON Schema, domain profiles, and ten example packets |
-| [`engines/10-observation-engine/`](engines/10-observation-engine/) – [`engines/26-decision-workflow/`](engines/26-decision-workflow/) | TypeScript reference engines, workflow coordination, contracts, schemas, tests, and validation material |
+| [`engines/10-observation-engine/`](engines/10-observation-engine/) – [`engines/27-action-handoff/`](engines/27-action-handoff/) | TypeScript reference engines, workflow coordination, action handoff, contracts, schemas, tests, and validation material |
+| [`docs/archive-integration/REUSABLE-PATTERN-COVERAGE.md`](docs/archive-integration/REUSABLE-PATTERN-COVERAGE.md) | Deep-scan mapping from archive patterns to engine capabilities and host boundaries |
+| [`docs/archive-integration/CAPABILITY-COVERAGE.csv`](docs/archive-integration/CAPABILITY-COVERAGE.csv) | Row-by-row disposition of all 44 archive-observed capabilities |
 | [`README-TYPESCRIPT-CONVERGENCE.md`](README-TYPESCRIPT-CONVERGENCE.md) | Current runtime-language and convergence notes |
 | [`archive/Titan Decision Engine Master Step 25.zip`](archive/Titan%20Decision%20Engine%20Master%20Step%2025.zip) | Original cumulative research and implementation bundle |
 | [`docs/DEEP-SCAN-PROMPT.md`](docs/DEEP-SCAN-PROMPT.md) | Reusable repository-audit prompt |

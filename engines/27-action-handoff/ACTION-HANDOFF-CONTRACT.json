@@ -1,0 +1,40 @@
+{
+  "contract_version": "1.0.0",
+  "step": 27,
+  "name": "Capability-Gated Action Handoff",
+  "purpose": "Prepare an idempotent, expiring action request for a host-owned capability after a recommendation and hard-constraint gate pass.",
+  "inputs": [
+    "company-scoped recommendation or abstention",
+    "constraint-gate result",
+    "host-provided option-to-capability binding",
+    "fresh host capability and authorization assessment"
+  ],
+  "outputs": [
+    "prepared host action request, approval-required request, abstention, block, or review-required result"
+  ],
+  "invariants": [
+    "company_id is the sole canonical company boundary",
+    "only a recommended option that passed the ready constraint gate can produce a request",
+    "unknown or expired host capability assessments fail closed",
+    "the host remains authoritative for identity, permission, approval, policy, storage, and execution",
+    "the request is not dispatched by this engine",
+    "every result and prepared request has authority_effect none",
+    "same decision and action payload produce a stable idempotency key",
+    "prepared requests expire no later than the host assessment or configured request lifetime"
+  ],
+  "statuses": {
+    "prepared": "A fresh host assessment reports available and allowed; the request is still undispatched and the host must revalidate before dispatch.",
+    "approval_required": "A fresh host assessment says approval is needed; the request is prepared for the host approval flow and cannot be dispatched by this engine.",
+    "abstained": "The recommendation or constraint gate did not select an executable option.",
+    "blocked": "The selected option is ineligible, the binding does not match it, the capability is disabled, or the host denies authorization.",
+    "review_required": "The recommendation, hard-constraint gate, action binding, capability availability, or authorization evidence is unresolved."
+  },
+  "host_responsibilities": [
+    "map recommended options to capability/action bindings",
+    "issue the current capability assessment",
+    "persist requests and enforce idempotency",
+    "collect approvals when required",
+    "recheck policy and expiry before dispatch",
+    "execute through the authoritative capability owner and record a receipt"
+  ]
+}

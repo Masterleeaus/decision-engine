@@ -1,0 +1,45 @@
+capability_id,archive_observed_outcome,coverage,engine_or_boundary,implementation_scope
+OBSERVE-01,Observe current page context,host_adapter,Step 10 Observation,Host supplies URL/page lifecycle context; engine consumes source observations.
+OBSERVE-02,Observe DOM evidence,host_adapter,Steps 10-11 Observation and Evidence,DOM capture and selector execution remain in a browser adapter.
+OBSERVE-03,Observe page network responses,host_adapter,Interaction or browser adapter,Page-world hooks and network interception are not embedded in the engine.
+OBSERVE-04,Observe transactional page state,domain_adapter,Step 10 Observation,Generic process states may be observations; commerce checkout detectors are excluded.
+OBSERVE-05,Observe financial totals,provider_adapter,Steps 11 and 13 Evidence and Context,Host supplies sourced values; no commerce checkout total parser is included.
+OBSERVE-06,Observe interaction or activity signals,host_adapter,Step 10 Observation,Activity data requires host collection policy and a source adapter.
+RECOGNISE-01,Recognise relevant or eligible pages,host_adapter,Host page validation,Activation and allowlisting depend on the host surface and permissions.
+RECOGNISE-02,Recognise a structured object,core_pattern,Step 12 Entity Normalization,Generic entity records and identifiers are normalized across sources.
+RECOGNISE-03,Recognise seller or brand context,domain_provider,Step 13 Context Enrichment,Provider-supplied domain context may be added without seller-specific engine logic.
+RECOGNISE-04,Recognise coupon surfaces,excluded_domain,Host commerce adapter,Shopping coupon detection and interaction are outside the domain-neutral engine.
+RECOGNISE-05,Recognise purchase confirmation,excluded_domain,Host commerce adapter,Purchase-confirmation detectors and retailer-specific page rules are outside the core.
+EXTRACT-01,Extract configured fields,core_pattern,Steps 10-11 Observation and Evidence,The engine processes supplied observations/evidence; host owns source configuration and collection.
+EXTRACT-02,Extract structured metadata,core_pattern,Steps 11-12 Evidence and Entity Normalization,Structured records can enter the evidence and canonical entity pipeline.
+EXTRACT-03,Extract data from intercepted responses,host_adapter,Interaction or browser adapter,Network capture and transport are not part of the decision runtime.
+EXTRACT-04,Extract transaction values,provider_adapter,Steps 11 and 13 Evidence and Context,Host supplies typed values with provenance; donor checkout parsers are excluded.
+EXTRACT-05,Extract ingredient or sustainability attributes,domain_provider,Step 13 Context Enrichment,Domain metadata can come from an approved provider; donor beauty rules are not core.
+COMPARE-01,Construct comparable alternatives,core_pattern,Steps 14 and 18 Option Discovery and Comparison,Provider candidates become a comparable option set with explicit trade-offs.
+COMPARE-02,Compare seller or offer context,domain_provider,Steps 13-14 and 18,Generic comparisons can use host-supplied offer records; seller integrations stay external.
+COMPARE-03,Compare current value with resale context,domain_provider,Steps 13 and 19,Forecast and context interfaces accept provider records; no donor resale source is used.
+REMEMBER-01,Remember recently viewed entities,host_product_state,Host application storage,Recent browsing history is not decision history and remains a host-product feature.
+REMEMBER-02,Remember user-curated collections,host_product_state,Host application storage,Collections are product-specific state and are not part of the decision model.
+REMEMBER-03,Remember watch conditions,core_pattern,Step 26 Decision Watch,Generic company-scoped watch definitions can request re-evaluation from fresh evidence.
+REMEMBER-04,Remember purchase activity,excluded_domain,Host commerce system,Commerce activity records remain outside the domain-neutral engine.
+REMEMBER-05,Remember tracked orders,domain_adapter,Host business system and Step 26 Watch,Order data and lifecycle are host-owned; a generic watch can observe supplied state.
+REMEMBER-06,Remember runtime configuration or preferences,split_boundary,Step 17 Preference Model and host configuration,Decision preferences are modeled; browser/runtime feature configuration stays with the host.
+PREDICT-01,Produce forward-looking value or resale insight,provider_adapter,Step 19 Outcome Prediction,Step 19 validates provider-supplied forecasts without embedding a donor prediction service.
+PREDICT-02,Predict whether page extraction should activate,host_adapter,Host page validation and extraction,Surface activation depends on host policy and page context.
+RANK-01,Order alternative candidates,core_pattern,Step 20 Ranking,Eligible options receive transparent rank scores and sensitivity analysis.
+RANK-02,Order seller-context offers or trends,domain_provider,Steps 14 and 20 Option Discovery and Ranking,Host supplies candidate offers; ranking behavior is generic.
+RECOMMEND-01,Assemble recommendation-ready context,core_pattern,Steps 21-23 Recommendation Explanation and Confidence,Recommendation or abstention is linked to reasons, confidence, and evidence context.
+RECOMMEND-02,Surface curated or editorial suggestions,domain_provider,Step 14 Option Discovery,Host-owned providers can supply curated candidates; donor editorial APIs are excluded.
+RECOMMEND-03,Surface offer opportunities,domain_provider,Steps 14 and 20,Offer providers may contribute options; coupon and affiliate behavior remains outside.
+MONITOR-01,Monitor price or value changes,core_pattern,Step 26 Decision Watch,Generic field conditions support thresholds; price observations and scheduling are host-provided.
+MONITOR-02,Monitor post-purchase order progress,domain_adapter,Step 26 Decision Watch and host order provider,Generic state changes can trigger reruns; no order tracking service is included.
+MONITOR-03,Monitor runtime health and failures,partial_pattern,Step 26 Workflow Events and host diagnostics,Stage start/failure events exist; provider-health aggregation and telemetry sinks remain host-owned.
+MONITOR-04,Monitor page or navigation lifecycle,host_adapter,Interaction or browser adapter,The engine can react to supplied events but does not observe browser lifecycle itself.
+TRIGGER-01,Trigger extraction,host_adapter,Host observation/extraction integration,Source events and permissions determine when the host invokes collection.
+TRIGGER-02,Trigger contextual user interface,host_product_ui,Host application UI,Presentation and surface projection are not part of the engine.
+TRIGGER-03,Trigger offer-code interaction,excluded_domain,Host commerce adapter,Donor-specific coupon application behavior is excluded.
+TRIGGER-04,Trigger persistent watch creation or update,core_pattern,Step 26 Decision Watch,Watch evaluation returns an idempotent rerun request for host storage/outbox commit.
+TRIGGER-05,Trigger purchase activity recording,excluded_domain,Host commerce system,Purchase event creation is outside the domain-neutral decision engine.
+TRIGGER-06,Trigger order tracking,domain_adapter,Host commerce or operations system,Order tracking remains an external domain capability.
+TRIGGER-07,Trigger transformed affiliate navigation,excluded_domain,Host commerce adapter,Affiliate link transformation and monetization are excluded.
+TRIGGER-08,Trigger offscreen scrape runtime,excluded_domain,Host browser adapter,Donor remote scrape runtime and offscreen frame behavior are not imported.

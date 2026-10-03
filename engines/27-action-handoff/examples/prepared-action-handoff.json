@@ -1,0 +1,38 @@
+{
+  "handoff_id": "handoff_example_01",
+  "company_id": "company-1",
+  "decision_subject_id": "maintenance-plan-2026-q4",
+  "decision_id": "decision-1042",
+  "status": "prepared",
+  "reason_codes": [],
+  "prepared_request": {
+    "request_id": "request_example_01",
+    "idempotency_key": "action_example_01",
+    "company_id": "company-1",
+    "decision_subject_id": "maintenance-plan-2026-q4",
+    "decision_id": "decision-1042",
+    "option_id": "schedule-preventive-service",
+    "action_id": "create-maintenance-work-order",
+    "capability_id": "work_orders.create",
+    "capability_version": "2",
+    "actor_id": "actor-18",
+    "target_ref": "asset-583",
+    "parameters": {
+      "asset_id": "asset-583",
+      "work_type": "preventive-maintenance",
+      "company_id": "company-1"
+    },
+    "evidence_refs": ["evidence-maintenance-interval", "evidence-usage-hours"],
+    "created_at": "2026-10-02T12:00:00.000Z",
+    "expires_at": "2026-10-02T12:05:00.000Z",
+    "host_assessment": {
+      "authorization": "allowed",
+      "policy_version": "operations-policy-4",
+      "assessed_at": "2026-10-02T11:59:52.000Z",
+      "expires_at": "2026-10-02T12:10:00.000Z"
+    },
+    "dispatch_state": "not_dispatched",
+    "authority_effect": "none"
+  },
+  "authority_effect": "none"
+}

@@ -1,0 +1,35 @@
+{
+  "step": "27",
+  "name": "Capability-Gated Action Handoff",
+  "status": "Integration candidate",
+  "runtime": "runtime/decisionActionHandoff.ts",
+  "contract": "ACTION-HANDOFF-CONTRACT.json",
+  "schema": "ACTION-HANDOFF.schema.json",
+  "acceptance_criteria": [
+    "eligible recommendation plus fresh host allow assessment creates a stable undispatched request",
+    "approval-required host assessment produces a request marked approval_required and not_dispatched",
+    "abstention and non-ready constraint gates produce no request",
+    "hard-constraint ineligible recommendations are blocked",
+    "disabled, denied, unknown, expired, or mismatched capability inputs fail closed",
+    "company scope and legacy boundary aliases are enforced",
+    "request expiry is capped by host assessment and configured request lifetime",
+    "request idempotency key is stable for equal action payloads and changes with payload",
+    "no provider, storage, approval, notification, or execution side effect is introduced"
+  ],
+  "verification": {
+    "test_file": "tests/actionHandoff.test.mjs",
+    "tests_run": true,
+    "result": "PASS",
+    "test_command": "node --experimental-strip-types tests/actionHandoff.test.mjs",
+    "json_artifacts_parsed": 6,
+    "note": "Step 26 workflow tests also passed (7/7). TypeScript static compilation was not available in the workspace."
+  },
+  "host_owned_components": [
+    "capability registry",
+    "identity and authorization",
+    "approval workflow",
+    "durable idempotent request storage",
+    "dispatch and execution",
+    "execution receipts"
+  ]
+}
