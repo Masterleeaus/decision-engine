@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "step": 29,
+  "title": "Decision Signal Router",
+  "purpose": "Map host-validated normalized field-change signals to the active decision watches whose condition paths are affected.",
+  "input": "DECISION-SIGNAL.schema.json",
+  "output": "SIGNAL-ROUTING-RESULT.schema.json",
+  "matching": {
+    "scope": ["company_id", "decision_subject_id"],
+    "eligible_watch_status": "active",
+    "field_path_rule": "A signal matches a watch when a changed field equals, is an ancestor of, or is a descendant of the watch condition field, using dot-separated path boundaries.",
+    "empty_changed_fields": "review_required",
+    "request_order": "watch_id ascending"
+  },
+  "idempotency": {
+    "key_components": ["company_id", "signal_id", "watch_id"],
+    "key_is_hint_only": true,
+    "durable_deduplication_owner": "host"
+  },
+  "host_flow": [
+    "Authenticate and validate the source event in the host adapter.",
+    "Map it to a payload-free DecisionSignal with canonical field paths.",
+    "Load candidate watches within the signal company and decision subject.",
+    "Route the signal, then let the host persist and deduplicate returned cycle requests.",
+    "Invoke Step 26 runDecisionWatchCycle for each accepted event request."
+  ],
+  "invariants": [
+    "The router does not consume raw event payloads or browser transport messages.",
+    "The router never evaluates a watch condition or loads decision evidence.",
+    "Only active watches within the exact company and decision-subject scope can be routed.",
+    "Missing changed-field metadata cannot fan out across every watch.",
+    "The router does not enqueue, persist, notify, authorize, approve, or dispatch.",
+    "Every output carries authority_effect none."
+  ],
+  "host_owned_components": [
+    "source authentication, bridge transport, and event normalization",
+    "watch index and durable storage",
+    "cross-run idempotency and queue/outbox processing",
+    "scheduling, notifications, approvals, and execution"
+  ],
+  "archive_evidence": [
+    "03-runtime-dependency-mapping/COMMUNICATION-PROTOCOL-CATALOG.md",
+    "07-donor-boundary-isolation/REUSABLE-ARCHITECTURAL-PATTERNS.csv"
+  ]
+}

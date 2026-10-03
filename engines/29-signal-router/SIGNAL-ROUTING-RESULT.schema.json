@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titan.example/schemas/signal-routing-result.schema.json",
+  "title": "Decision Signal Routing Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["state", "signal_id", "requests", "authority_effect"],
+  "properties": {
+    "state": { "enum": ["routed", "no_match", "review_required"] },
+    "signal_id": { "type": "string", "minLength": 1 },
+    "reason_code": { "enum": ["changed_fields_required"] },
+    "authority_effect": { "const": "none" },
+    "requests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["company_id", "watch_id", "trigger", "source_signal_id", "source_occurred_at", "idempotency_key", "authority_effect"],
+        "properties": {
+          "company_id": { "type": "string", "minLength": 1 },
+          "watch_id": { "type": "string", "minLength": 1 },
+          "trigger": { "const": "event" },
+          "source_signal_id": { "type": "string", "minLength": 1 },
+          "source_occurred_at": { "type": "string", "format": "date-time" },
+          "idempotency_key": { "type": "string", "pattern": "^signal_watch_[a-f0-9]{32}$" },
+          "authority_effect": { "const": "none" }
+        }
+      }
+    }
+  }
+}

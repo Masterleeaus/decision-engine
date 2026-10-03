@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titan.example/schemas/decision-signal.schema.json",
+  "title": "Decision Signal",
+  "description": "A host-validated, payload-free description of changed fields for routing to decision watches.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["signal_id", "company_id", "decision_subject_id", "occurred_at", "changed_fields"],
+  "properties": {
+    "signal_id": { "type": "string", "minLength": 1 },
+    "company_id": { "type": "string", "minLength": 1 },
+    "decision_subject_id": { "type": "string", "minLength": 1 },
+    "occurred_at": { "type": "string", "format": "date-time" },
+    "changed_fields": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "signal": {
+    "signal_id": "source-change-784",
+    "company_id": "company-41",
+    "decision_subject_id": "supply-plan-8",
+    "occurred_at": "2026-10-03T09:00:00.000Z",
+    "changed_fields": ["inventory.available"]
+  },
+  "watch_targets": [
+    {
+      "watch_id": "watch-stock-threshold",
+      "company_id": "company-41",
+      "decision_subject_id": "supply-plan-8",
+      "status": "active",
+      "condition": { "field": "inventory.available" }
+    },
+    {
+      "watch_id": "watch-cost-threshold",
+      "company_id": "company-41",
+      "decision_subject_id": "supply-plan-8",
+      "status": "active",
+      "condition": { "field": "cost.total" }
+    }
+  ],
+  "routing_result": {
+    "state": "routed",
+    "signal_id": "source-change-784",
+    "requests": [
+      {
+        "company_id": "company-41",
+        "watch_id": "watch-stock-threshold",
+        "trigger": "event",
+        "source_signal_id": "source-change-784",
+        "source_occurred_at": "2026-10-03T09:00:00.000Z",
+        "idempotency_key": "signal_watch_a2e798e4d5c0436564a7aa90eef6f83f",
+        "authority_effect": "none"
+      }
+    ],
+    "authority_effect": "none"
+  }
+}

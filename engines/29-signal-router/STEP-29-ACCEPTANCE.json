@@ -1,0 +1,30 @@
+{
+  "step": "29",
+  "name": "Decision Signal Router",
+  "status": "Integration candidate",
+  "runtime": "runtime/decisionSignalRouter.ts",
+  "contract": "SIGNAL-ROUTING-CONTRACT.json",
+  "signal_schema": "DECISION-SIGNAL.schema.json",
+  "result_schema": "SIGNAL-ROUTING-RESULT.schema.json",
+  "acceptance_criteria": [
+    "routes a validated change signal only to active watches in the exact company and decision-subject scope",
+    "matches equal field paths and parent/child dot-path changes without substring collisions",
+    "returns review_required and no requests when changed-field metadata is missing",
+    "deduplicates repeated identical watch-index rows and rejects conflicting duplicate rows",
+    "returns deterministic watch ordering and stable per-signal/per-watch idempotency hints",
+    "returns only Step 26 event-cycle request fields plus source correlation metadata",
+    "does not load evidence, evaluate conditions, persist, enqueue, notify, or execute",
+    "all outputs carry authority_effect none"
+  ],
+  "verification": {
+    "test_file": "tests/signalRouter.test.mjs",
+    "tests_run": false,
+    "note": "Tests remain deferred until the broader archive integration pass is complete."
+  },
+  "host_owned_components": [
+    "transport bridge, source validation, and field normalization",
+    "watch storage and candidate lookup",
+    "durable deduplication, queue, and outbox",
+    "event worker and Step 26 invocation"
+  ]
+}

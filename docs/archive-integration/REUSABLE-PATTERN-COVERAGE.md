@@ -7,14 +7,15 @@
 | Archive pattern | Decision-engine coverage | Boundary / remaining work |
 |---|---|---|
 | Browser observation adapter | Step 10 accepts browser or system observations as source inputs. | **Host adapter:** browser integration, source allowlists, page lifecycle, and collection permissions. |
-| Page extension bridge | No extension message bridge is embedded in the engine. | **Host adapter:** validate origins and transport messages in the Interaction or browser layer. |
+| Page extension bridge | Step 29 accepts normalized host-validated signals, but embeds no extension message bridge. | **Host adapter:** validate origins, transport messages, and collection permissions in the Interaction or browser layer. |
+| Event-to-watch routing | Step 29 maps changed field paths to active, in-scope Step 26 watches and returns event-cycle requests. | The host authenticates and normalizes source events, loads watch candidates, and owns durable deduplication and queue/outbox processing. |
 | Configurable extraction | Steps 10–11 turn supplied observations into evidence and preserve provenance. | **Host provider:** supply selectors, parsers, source configuration, and privacy rules. |
 | Offscreen processing | No offscreen runtime is included. | **Out of core scope:** browser-specific runtime belongs to the host adapter. |
 | Entity normalization | Step 12 normalizes source records and records evidence-linked resolution. | Provider adapters supply source identifiers and records. |
 | Context enrichment | Step 13 accepts provider records with confidence, freshness, source class, and receipts. | Providers and their credentials/endpoints stay host-owned. |
 | Alternative discovery | Step 14 accepts provider-neutral option candidates and preserves feasibility/provenance. | Domain providers discover candidate options. |
 | Persistent memory | Steps 24–25 provide immutable decision history and verified-outcome learning revisions; Step 26 defines the watch-cycle store boundary. | **Host storage:** durable, encrypted, company-scoped retention and cross-run idempotency. |
-| Watch condition | Step 26 evaluates fresh evidence and returns a stable rerun request; watch update and outbox commit are delegated to a host store. | Scheduler, store, outbox worker, and notification delivery remain host-owned. |
+| Watch condition | Step 29 routes relevant source changes to Step 26; Step 26 evaluates fresh evidence and returns a stable rerun request. | Scheduler, store, outbox worker, and notification delivery remain host-owned. |
 | Transaction-state observation | Step 10 can carry generic process-state evidence. | Donor shopping checkout and purchase detectors are not copied; domain detectors belong in adapters. |
 | Evidence reliability telemetry | Step 26 emits ordered lifecycle events and hashes; Step 28 captures provider outcomes, latency, freshness summaries, and privacy-minimized reliability snapshots. | **Host diagnostics:** persist observations, set alert thresholds, and own retention/access policy. |
 | Capability gating | Step 16 evaluates hard decision constraints; Step 27 checks the host's current capability assessment before preparing a request. | Capability registry, identity, authorization, entitlements, and policy enforcement remain authoritative in the host. |
@@ -30,4 +31,4 @@ Commerce outcomes such as retailer-specific page detection, coupon entry, affili
 
 ## Remaining host integration
 
-The repository provides reference engines and contracts. A host application still needs to supply providers, capability assessments, durable repositories, cross-run deduplication, scheduling, authorization, approvals, action dispatch, execution receipts, and operational telemetry. No capability assessment or prepared action request from this repository substitutes for those host authorities.
+The repository provides reference engines and contracts. A host application still needs to supply providers, capability assessments, source-event authentication and normalization, durable repositories, cross-run deduplication, scheduling, authorization, approvals, action dispatch, execution receipts, and operational telemetry. No capability assessment or prepared action request from this repository substitutes for those host authorities.

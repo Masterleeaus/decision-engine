@@ -35,10 +35,10 @@ MONITOR-01,Monitor price or value changes,core_pattern,Step 26 Decision Watch,Ge
 MONITOR-02,Monitor post-purchase order progress,domain_adapter,Step 26 Decision Watch and host order provider,Generic state changes can trigger reruns; no order tracking service is included.
 MONITOR-03,Monitor runtime health and failures,core_pattern_plus_host,Steps 26 and 28 Workflow Events and Provider Telemetry,Stage events and scoped provider reliability snapshots exist; durable telemetry and alerting remain host-owned.
 MONITOR-04,Monitor page or navigation lifecycle,host_adapter,Interaction or browser adapter,The engine can react to supplied events but does not observe browser lifecycle itself.
-TRIGGER-01,Trigger extraction,host_adapter,Host observation/extraction integration,Source events and permissions determine when the host invokes collection.
+TRIGGER-01,Trigger extraction,host_adapter,Host observation/extraction integration and Step 29 signal routing,Host authenticates and normalizes source events; the router returns scoped event-cycle requests after evidence updates and the host worker invokes them.
 TRIGGER-02,Trigger contextual user interface,host_product_ui,Host application UI,Presentation and surface projection are not part of the engine.
 TRIGGER-03,Trigger offer-code interaction,excluded_domain,Host commerce adapter,Donor-specific coupon application behavior is excluded.
-TRIGGER-04,Trigger persistent watch creation or update,core_pattern,Step 26 Decision Watch,Watch evaluation returns an idempotent rerun request for host storage/outbox commit.
+TRIGGER-04,Trigger persistent watch creation or update,core_pattern,Step 29 Decision Signal Router and Step 26 Decision Watch,Step 29 routes changed fields to matching active watches; Step 26 evaluates evidence and returns a rerun request for host storage/outbox commit.
 TRIGGER-05,Trigger purchase activity recording,excluded_domain,Host commerce system,Purchase event creation is outside the domain-neutral decision engine.
 TRIGGER-06,Trigger order tracking,domain_adapter,Host commerce or operations system,Order tracking remains an external domain capability.
 TRIGGER-07,Trigger transformed affiliate navigation,excluded_domain,Host commerce adapter,Affiliate link transformation and monetization are excluded.
