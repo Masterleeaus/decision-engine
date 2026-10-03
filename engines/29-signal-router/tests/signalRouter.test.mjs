@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { routeDecisionSignal } from "../dist/runtime/decisionSignalRouter.js";
+import { routeDecisionSignal } from "../runtime/decisionSignalRouter.ts";
 
 const signal = (overrides = {}) => ({
   signal_id: "event-42",

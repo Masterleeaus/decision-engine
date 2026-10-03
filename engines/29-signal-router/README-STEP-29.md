@@ -31,4 +31,4 @@ Routing does not evaluate watch conditions, read evidence, start workflows, pers
 
 ## Status
 
-Status: **Integration candidate**. Runtime, schemas, contract, example, and acceptance scenarios are staged. Tests remain deferred until the broader archive integration pass ends.
+Status: **Integration candidate**. Runtime, schemas, contract, example, and acceptance scenarios are staged. Final verification ran with Node.js 24.19.0: `node --experimental-strip-types tests/signalRouter.test.mjs` — 7 passed, 0 failed. TypeScript static compilation was unavailable in the workspace.

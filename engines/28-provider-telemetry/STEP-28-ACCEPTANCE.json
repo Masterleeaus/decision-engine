@@ -19,8 +19,12 @@
   ],
   "verification": {
     "test_file": "tests/providerTelemetry.test.mjs",
-    "tests_run": false,
-    "note": "Tests intentionally deferred until the broader archive integration pass is complete."
+    "tests_run": true,
+    "tests_passed": 8,
+    "tests_failed": 0,
+    "test_command": "node --experimental-strip-types tests/providerTelemetry.test.mjs",
+    "runtime": "Node.js 24.19.0",
+    "note": "Provider telemetry acceptance tests passed after the archive integration pass."
   },
   "host_owned_components": [
     "provider call adapters",

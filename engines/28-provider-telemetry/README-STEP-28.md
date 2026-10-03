@@ -46,7 +46,7 @@ The health label is diagnostic. It does not alter the decision workflow, ranking
 - **Proposed:** Step 28 provides a capture wrapper and bounded-window reliability summary without sending data to a telemetry vendor or steering recommendations.
 - **Missing:** No durable diagnostics store, alerting policy, production provider adapter, or privacy-retention service is included.
 
-Status: **Integration candidate**. Runtime, schema, examples, and acceptance scenarios are staged. Tests are deferred until the broader integration pass ends.
+Status: **Integration candidate**. Runtime, schema, examples, and acceptance scenarios are staged. Final verification ran with Node.js 24.19.0: `node --experimental-strip-types tests/providerTelemetry.test.mjs` — 8 passed, 0 failed. TypeScript static compilation was unavailable in the workspace.
 
 ## Boundary
 
