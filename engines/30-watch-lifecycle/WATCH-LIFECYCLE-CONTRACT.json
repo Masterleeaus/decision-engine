@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "step": 30,
+  "title": "Decision Watch Lifecycle",
+  "purpose": "Create, update, pause, resume, and close company-scoped decision watches with an explicit revision and event contract.",
+  "command_schema": "WATCH-LIFECYCLE-COMMAND.schema.json",
+  "plan_schema": "WATCH-LIFECYCLE-PLAN.schema.json",
+  "operations": {
+    "create": "Creates an active watch at revision 0 when the company/watch key is unused.",
+    "update": "Changes the condition or lifecycle timing fields of an active or paused watch.",
+    "pause": "Moves an active watch to paused and clears its scheduled evaluation timestamp.",
+    "resume": "Moves a non-expired paused watch to active and clears its scheduled evaluation timestamp.",
+    "close": "Soft-closes an active or paused watch; closed watches are terminal."
+  },
+  "transition_policy": {
+    "company_id": "Immutable scope key and the only company boundary.",
+    "decision_subject_id": "Set at creation and remains immutable.",
+    "revision": "Every changing command carries expected_revision; a host compare-and-swap commits expected_revision + 1.",
+    "create_revision": 0,
+    "condition_update": "Clears last_triggered_at and next_evaluation_at when the condition changes.",
+    "interval_update": "Clears next_evaluation_at so the host scheduler can recalculate its schedule.",
+    "remove": "Represented by close; preserve the watch record for audit and history."
+  },
+  "persistence_contract": {
+    "command_id": "Stable host-generated idempotency identifier; retries must reuse the same identifier and payload.",
+    "fingerprint": "The engine hashes a canonical JSON representation of the complete command. The host checks the company-scoped command receipt before loading mutable watch state and checks again atomically during commit.",
+    "transaction": "Atomically check the command receipt and expected revision, write the watch revision and lifecycle event, then store the command fingerprint and result receipt.",
+    "retry": "The same command ID and fingerprint returns the stored result as duplicate; reusing an ID with a different fingerprint returns conflict.",
+    "create_conflict": "expected_revision null requires that the watch key is absent.",
+    "update_conflict": "A revision mismatch returns conflict without writing the proposed watch or event.",
+    "unchanged": "Same-state transitions and equal-value updates may record a command receipt without increasing the watch revision."
+  },
+  "invariants": [
+    "The lifecycle engine proposes watch state; it does not own durable storage or list queries.",
+    "The host authorizes who may create or change a watch before calling the engine.",
+    "The engine never sends notifications, starts decision runs, or executes recommended actions.",
+    "Lifecycle events include changed field names but omit condition expected values and source payloads.",
+    "Every plan and event carries authority_effect none."
+  ],
+  "host_owned_components": [
+    "watch listing and durable company-scoped storage",
+    "authorization, user identity, and command receipt retention",
+    "transactional revision compare-and-swap and event persistence",
+    "scheduler updates, signal routing, notifications, and execution"
+  ],
+  "archive_evidence": [
+    "04-capability-deobfuscation/CAPABILITY-RUNTIME-CONTRACTS.csv#price_drop_watch",
+    "05-behavioural-capability-inventory/CANONICAL-BEHAVIOURAL-CAPABILITY-INVENTORY.csv#REMEMBER-03",
+    "05-behavioural-capability-inventory/CANONICAL-BEHAVIOURAL-CAPABILITY-INVENTORY.csv#TRIGGER-04",
+    "07-donor-boundary-isolation/REUSABLE-ARCHITECTURAL-PATTERNS.csv#persistent_memory"
+  ]
+}

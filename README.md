@@ -35,7 +35,7 @@ The engine can analyze and recommend. It does not authorize or execute the recom
   <img src="assets/decision-engine-architecture.svg" alt="Titan Decision Engine stages from evidence through verified learning, with event signal routing, provider reliability monitoring, and host action handoff" width="100%" />
 </p>
 
-The repository preserves a 25-step research bundle and extends its TypeScript reference engines through Step 29. The public source tree contains the canonical decision model and packet contract, Steps 10–25, workflow coordination, event-to-watch signal routing, capability-gated action handoff, and provider reliability telemetry.
+The repository preserves a 25-step research bundle and extends its TypeScript reference engines through Step 30. The public source tree contains the canonical decision model and packet contract, Steps 10–25, workflow coordination, watch lifecycle management, event-to-watch signal routing, capability-gated action handoff, and provider reliability telemetry.
 
 | Decision stage | Steps | Responsibility |
 |---|---:|---|
@@ -44,7 +44,7 @@ The repository preserves a 25-step research bundle and extends its TypeScript re
 | **Compare and rank** | 18–20 | Compare unlike options, preserve missing data and trade-offs, attach provider-supplied forecasts, and calculate transparent rankings with sensitivity scenarios. |
 | **Recommend and explain** | 21–23 | Recommend or abstain against configured thresholds, explain the result from explicit inputs, and apply observed-outcome confidence calibration. |
 | **Preserve and learn** | 24–25 | Create hash-bound decision-history revisions and derive future calibration updates from verified outcomes. |
-| **Orchestrate, route, hand off, and monitor** | 26–29 | Run ordered stages, route validated source changes to matching watches, request evidence-backed re-evaluation, prepare an expiring host request after the hard gate, and measure provider reliability without changing recommendations. |
+| **Orchestrate, manage watches, route, hand off, and monitor** | 26–30 | Coordinate ordered stages, manage watch lifecycle, route validated source changes to matching watches, request evidence-backed re-evaluation, prepare expiring host requests, and measure provider reliability. |
 
 Steps 08 and 09 define the shared meaning and transport format for the pipeline:
 
@@ -101,6 +101,7 @@ The engine can describe prerequisites for action, but it does not create identit
 | **27** | Action handoff | Prepares an expiring, idempotent request only for a constraint-eligible recommendation and a fresh host capability assessment; approvals and dispatch remain with the host. |
 | **28** | Provider reliability | Captures privacy-minimized provider outcomes, latency, freshness summaries, and reliability snapshots; health is diagnostic only. |
 | **29** | Decision signal router | Maps host-validated field-change signals to active watches within the exact company and decision-subject scope; returns event-cycle requests without queueing or evaluating them. |
+| **30** | Watch lifecycle | Plans watch creation, definition changes, pause, resume, and soft close with revision and event contracts; host authorization, listing, and atomic persistence remain external. |
 
 ## Domain-neutral by design
 
@@ -133,17 +134,18 @@ These are decision-support boundaries. They do not replace authentication, autho
 
 ## Integration pattern
 
-Steps 26–29 provide reference workflow, signal-routing, monitoring, and action-handoff layers for a host application:
+Steps 26–30 provide reference workflow, watch lifecycle, signal routing, monitoring, and action-handoff layers for a host application:
 
 1. Adapt source systems into observations, evidence, canonical entities, and context.
 2. Supply domain-specific providers for options and forecasts.
 3. Provide objectives, constraints, and scoped preferences for the decision subject.
 4. Run the ordered workflow; its constraint gate stops on missing, unknown, or ineligible hard requirements before scoring.
-5. For event-driven reevaluation, map authenticated source changes to canonical field paths and pass the host-validated signal and scoped watch candidates to Step 29. A host worker invokes Step 26 for each returned event-cycle request.
-6. Keep scheduled watch checks in the host scheduler and use Step 26 to evaluate each due watch.
-7. Pass the resulting DecisionPacket to the host product, where its governance decides whether a recommended action may proceed.
-8. When action preparation is useful, call Step 27 with the eligible recommendation, host option-to-capability binding, and fresh host assessment; the host handles approval, rechecks authority, and dispatches.
-9. Wrap provider calls with Step 28 to collect privacy-minimized reliability observations; the host stores them and defines alerting or routing policy.
+5. Use Step 30 to create, update, pause, resume, or close a watch. The host authorizes each command and atomically persists its revision and lifecycle event; watch-list queries remain host store operations.
+6. For event-driven reevaluation, map authenticated source changes to canonical field paths and pass the host-validated signal and scoped watch candidates to Step 29. A host worker invokes Step 26 for each returned event-cycle request.
+7. Keep scheduled watch checks in the host scheduler and use Step 26 to evaluate each due watch.
+8. Pass the resulting DecisionPacket to the host product, where its governance decides whether a recommended action may proceed.
+9. When action preparation is useful, call Step 27 with the eligible recommendation, host option-to-capability binding, and fresh host assessment; the host handles approval, rechecks authority, and dispatches.
+10. Wrap provider calls with Step 28 to collect privacy-minimized reliability observations; the host stores them and defines alerting or routing policy.
 The coordinator sequences injected stage adapters. Durable storage, cross-run idempotency, providers, scheduling, notifications, and governed execution remain host responsibilities.
 
 ## Implementation status
@@ -154,11 +156,12 @@ This repository is a **research-backed architecture package with modular TypeScr
 
 - Canonical Decision Model and versioned DecisionPacket contract
 - JSON Schema Draft 2020-12 definitions
-- TypeScript runtime modules for Steps 10–29
+- TypeScript runtime modules for Steps 10–30
 - Step 26 workflow coordination, evidence-backed watch evaluation, and verified-outcome gating
 - Step 27 capability-gated action request preparation without approval or dispatch
 - Step 28 provider call capture and reliability aggregation without vendor telemetry
 - Step 29 event-to-watch routing for host-validated normalized signals
+- Step 30 revision-checked watch lifecycle planning and minimized transition events
 - Per-stage contracts, validators, tests, examples, and acceptance artifacts where provided
 - Architecture assets and the original cumulative Step 25 research bundle
 
@@ -169,7 +172,7 @@ This repository is a **research-backed architecture package with modular TypeScr
 - Production adapters for business systems and forecasting providers
 - Authentication, authorization, approval, and governed execution integrations
 
-Steps 26–29 are reference composition, routing, and monitoring layers; they do not provide production connectors, durable watch indexes or queues, cross-run deduplication, workflow/action/telemetry stores, a scheduler, approval service, alert delivery, or action execution. The checked-in acceptance and test-output files record staged development history. Some early step documents and logs refer to the pre-convergence Python implementation; `README-TYPESCRIPT-CONVERGENCE.md` describes the current TypeScript direction. Treat those records as historical artifacts and verify the current source and integration in the target application before relying on them as a release gate.
+Steps 26–30 are reference composition, lifecycle, routing, and monitoring layers; they do not provide production connectors, durable watch listing or storage, command receipt retention, atomic persistence, cross-run queue deduplication, workflow/action/telemetry stores, a scheduler, approval service, alert delivery, or action execution. The checked-in acceptance and test-output files record staged development history. Some early step documents and logs refer to the pre-convergence Python implementation; `README-TYPESCRIPT-CONVERGENCE.md` describes the current TypeScript direction. Treat those records as historical artifacts and verify the current source and integration in the target application before relying on them as a release gate.
 
 ## Repository guide
 
@@ -177,7 +180,7 @@ Steps 26–29 are reference composition, routing, and monitoring layers; they do
 |---|---|
 | [`docs/specification/08-canonical-decision-model/`](docs/specification/08-canonical-decision-model/) | Shared decision semantics, schema, example, and field matrix |
 | [`docs/specification/09-decisionpacket-contract/`](docs/specification/09-decisionpacket-contract/) | Versioned packet contract, JSON Schema, domain profiles, and ten example packets |
-| [`engines/10-observation-engine/`](engines/10-observation-engine/) – [`engines/29-signal-router/`](engines/29-signal-router/) | TypeScript reference engines, workflow coordination, signal routing, action handoff, provider reliability telemetry, contracts, schemas, tests, and examples |
+| [`engines/10-observation-engine/`](engines/10-observation-engine/) – [`engines/30-watch-lifecycle/`](engines/30-watch-lifecycle/) | TypeScript reference engines, workflow coordination, watch lifecycle, signal routing, action handoff, provider reliability telemetry, contracts, schemas, tests, and examples |
 | [`docs/archive-integration/REUSABLE-PATTERN-COVERAGE.md`](docs/archive-integration/REUSABLE-PATTERN-COVERAGE.md) | Deep-scan mapping from archive patterns to engine capabilities and host boundaries |
 | [`docs/archive-integration/CAPABILITY-COVERAGE.csv`](docs/archive-integration/CAPABILITY-COVERAGE.csv) | Row-by-row disposition of all 44 archive-observed capabilities |
 | [`README-TYPESCRIPT-CONVERGENCE.md`](README-TYPESCRIPT-CONVERGENCE.md) | Current runtime-language and convergence notes |

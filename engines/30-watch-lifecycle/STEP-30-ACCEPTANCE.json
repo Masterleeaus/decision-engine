@@ -1,0 +1,31 @@
+{
+  "step": "30",
+  "name": "Decision Watch Lifecycle",
+  "status": "Integration candidate",
+  "runtime": "runtime/watchLifecycle.ts",
+  "contract": "WATCH-LIFECYCLE-CONTRACT.json",
+  "command_schema": "WATCH-LIFECYCLE-COMMAND.schema.json",
+  "plan_schema": "WATCH-LIFECYCLE-PLAN.schema.json",
+  "acceptance_criteria": [
+    "creates active watches with validated company and decision-subject scope at revision zero",
+    "updates conditions and timing fields without allowing identity or scope changes",
+    "pauses, resumes, and soft-closes watches through an explicit state transition policy",
+    "treats closed watches as terminal and rejects resume of expired watches",
+    "clears stale evaluation timing when condition or interval changes",
+    "emits minimized lifecycle events without expected values or source payloads",
+    "uses expected revisions and stable command IDs for host atomic compare-and-swap and idempotency",
+    "does not provide storage, listing, authorization, scheduling, notifications, or action execution",
+    "all plans and events carry authority_effect none"
+  ],
+  "verification": {
+    "test_file": "tests/watchLifecycle.test.mjs",
+    "tests_run": false,
+    "note": "Tests are deferred until the broader archive integration pass ends."
+  },
+  "host_owned_components": [
+    "watch listing and company-scoped durable storage",
+    "authorization, command receipt retention, and atomic revision compare-and-swap",
+    "lifecycle event persistence and scheduler updates",
+    "signal routing, notifications, and execution"
+  ]
+}

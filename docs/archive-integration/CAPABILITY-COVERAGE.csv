@@ -20,7 +20,7 @@ COMPARE-02,Compare seller or offer context,domain_provider,Steps 13-14 and 18,Ge
 COMPARE-03,Compare current value with resale context,domain_provider,Steps 13 and 19,Forecast and context interfaces accept provider records; no donor resale source is used.
 REMEMBER-01,Remember recently viewed entities,host_product_state,Host application storage,Recent browsing history is not decision history and remains a host-product feature.
 REMEMBER-02,Remember user-curated collections,host_product_state,Host application storage,Collections are product-specific state and are not part of the decision model.
-REMEMBER-03,Remember watch conditions,core_pattern,Step 26 Decision Watch,Generic company-scoped watch definitions can request re-evaluation from fresh evidence.
+REMEMBER-03,Remember watch conditions,core_pattern,Step 30 Watch Lifecycle and Step 26 Decision Watch,Generic watch definitions support create/update/pause/resume/close transitions; host storage retains them and Step 26 reevaluates against fresh evidence.
 REMEMBER-04,Remember purchase activity,excluded_domain,Host commerce system,Commerce activity records remain outside the domain-neutral engine.
 REMEMBER-05,Remember tracked orders,domain_adapter,Host business system and Step 26 Watch,Order data and lifecycle are host-owned; a generic watch can observe supplied state.
 REMEMBER-06,Remember runtime configuration or preferences,split_boundary,Step 17 Preference Model and host configuration,Decision preferences are modeled; browser/runtime feature configuration stays with the host.
@@ -31,14 +31,14 @@ RANK-02,Order seller-context offers or trends,domain_provider,Steps 14 and 20 Op
 RECOMMEND-01,Assemble recommendation-ready context,core_pattern,Steps 21-23 Recommendation Explanation and Confidence,Recommendation or abstention is linked to reasons, confidence, and evidence context.
 RECOMMEND-02,Surface curated or editorial suggestions,domain_provider,Step 14 Option Discovery,Host-owned providers can supply curated candidates; donor editorial APIs are excluded.
 RECOMMEND-03,Surface offer opportunities,domain_provider,Steps 14 and 20,Offer providers may contribute options; coupon and affiliate behavior remains outside.
-MONITOR-01,Monitor price or value changes,core_pattern,Step 26 Decision Watch,Generic field conditions support thresholds; price observations and scheduling are host-provided.
+MONITOR-01,Monitor price or value changes,core_pattern,Steps 30 Watch Lifecycle + 29 Signal Router + 26 Decision Watch,Watch lifecycle manages definitions; host source adapters and schedules supply observations; Step 29 routes field changes and Step 26 evaluates fresh evidence.
 MONITOR-02,Monitor post-purchase order progress,domain_adapter,Step 26 Decision Watch and host order provider,Generic state changes can trigger reruns; no order tracking service is included.
 MONITOR-03,Monitor runtime health and failures,core_pattern_plus_host,Steps 26 and 28 Workflow Events and Provider Telemetry,Stage events and scoped provider reliability snapshots exist; durable telemetry and alerting remain host-owned.
 MONITOR-04,Monitor page or navigation lifecycle,host_adapter,Interaction or browser adapter,The engine can react to supplied events but does not observe browser lifecycle itself.
 TRIGGER-01,Trigger extraction,host_adapter,Host observation/extraction integration and Step 29 signal routing,Host authenticates and normalizes source events; the router returns scoped event-cycle requests after evidence updates and the host worker invokes them.
 TRIGGER-02,Trigger contextual user interface,host_product_ui,Host application UI,Presentation and surface projection are not part of the engine.
 TRIGGER-03,Trigger offer-code interaction,excluded_domain,Host commerce adapter,Donor-specific coupon application behavior is excluded.
-TRIGGER-04,Trigger persistent watch creation or update,core_pattern,Step 29 Decision Signal Router and Step 26 Decision Watch,Step 29 routes changed fields to matching active watches; Step 26 evaluates evidence and returns a rerun request for host storage/outbox commit.
+TRIGGER-04,Trigger persistent watch creation/update/removal,core_pattern,Steps 30 Watch Lifecycle + 29 Decision Signal Router + 26 Decision Watch,Step 30 plans create/update/pause/resume/close; the host authorizes and persists changes; Step 29 routes changed fields and Step 26 evaluates evidence for rerun requests.
 TRIGGER-05,Trigger purchase activity recording,excluded_domain,Host commerce system,Purchase event creation is outside the domain-neutral decision engine.
 TRIGGER-06,Trigger order tracking,domain_adapter,Host commerce or operations system,Order tracking remains an external domain capability.
 TRIGGER-07,Trigger transformed affiliate navigation,excluded_domain,Host commerce adapter,Affiliate link transformation and monetization are excluded.

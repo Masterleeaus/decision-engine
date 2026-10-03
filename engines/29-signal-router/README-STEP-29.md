@@ -1,6 +1,6 @@
 # Step 29 — Decision Signal Router
 
-Step 29 fills the gap between an external source change and Step 26's watch evaluator. A host maps an authenticated event into a small, payload-free `DecisionSignal`; this router finds active watches in the same company and decision-subject scope whose condition field overlaps a changed field path, then returns event-cycle requests for the host to process.
+Step 29 fills the gap between an external source change and Step 26's watch evaluator. Step 30 manages watch definitions and their lifecycle. A host maps an authenticated event into a small, payload-free `DecisionSignal`; this router finds active watches in the same company and decision-subject scope whose condition field overlaps a changed field path, then returns event-cycle requests for the host to process.
 
 ## Route flow
 

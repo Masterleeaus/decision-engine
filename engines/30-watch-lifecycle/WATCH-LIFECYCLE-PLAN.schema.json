@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titan.example/schemas/watch-lifecycle-plan.schema.json",
+  "title": "Decision Watch Lifecycle Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["state", "command_id", "company_id", "watch_id", "expected_revision", "resulting_revision", "watch", "event", "authority_effect"],
+  "properties": {
+    "state": { "enum": ["planned", "unchanged"] },
+    "command_id": { "type": "string", "minLength": 1 },
+    "company_id": { "type": "string", "minLength": 1 },
+    "watch_id": { "type": "string", "minLength": 1 },
+    "expected_revision": { "type": ["integer", "null"], "minimum": 0 },
+    "resulting_revision": { "type": "integer", "minimum": 0 },
+    "authority_effect": { "const": "none" },
+    "watch": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["watch_id", "company_id", "decision_subject_id", "status", "condition", "created_at"],
+      "properties": {
+        "watch_id": { "type": "string", "minLength": 1 },
+        "company_id": { "type": "string", "minLength": 1 },
+        "decision_subject_id": { "type": "string", "minLength": 1 },
+        "status": { "enum": ["active", "paused", "closed"] },
+        "condition": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["field", "operator"],
+          "properties": {
+            "field": { "type": "string", "minLength": 1 },
+            "operator": { "enum": ["changed", "eq", "neq", "gt", "gte", "lt", "lte", "contains", "not_contains", "exists", "not_exists"] },
+            "expected": {},
+            "max_age_seconds": { "type": "number", "minimum": 0 }
+          }
+        },
+        "created_at": { "type": "string", "format": "date-time" },
+        "expires_at": { "type": ["string", "null"], "format": "date-time" },
+        "last_triggered_at": { "type": ["string", "null"], "format": "date-time" },
+        "next_evaluation_at": { "type": ["string", "null"], "format": "date-time" },
+        "interval_seconds": { "type": ["number", "null"], "exclusiveMinimum": 0 },
+        "cooldown_seconds": { "type": "number", "minimum": 0 }
+      }
+    },
+    "event": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["event_id", "command_id", "company_id", "decision_subject_id", "watch_id", "transition", "occurred_at", "from_revision", "to_revision", "from_status", "to_status", "changed_fields", "authority_effect"],
+      "properties": {
+        "event_id": { "type": "string", "minLength": 1 },
+        "command_id": { "type": "string", "minLength": 1 },
+        "company_id": { "type": "string", "minLength": 1 },
+        "decision_subject_id": { "type": "string", "minLength": 1 },
+        "watch_id": { "type": "string", "minLength": 1 },
+        "transition": { "enum": ["created", "updated", "paused", "resumed", "closed"] },
+        "occurred_at": { "type": "string", "format": "date-time" },
+        "from_revision": { "type": ["integer", "null"], "minimum": 0 },
+        "to_revision": { "type": "integer", "minimum": 0 },
+        "from_status": { "type": ["string", "null"], "enum": ["active", "paused", "closed", null] },
+        "to_status": { "enum": ["active", "paused", "closed"] },
+        "changed_fields": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+        "authority_effect": { "const": "none" }
+      }
+    }
+  }
+}

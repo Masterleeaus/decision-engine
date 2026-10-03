@@ -29,9 +29,9 @@ A ready gate with no eligible options becomes review_required. This keeps unknow
 
 ## Watch and re-evaluation
 
-DecisionWatch supports changed, equality, numeric threshold, containment, and existence conditions. Each evaluation requires fresh evidence for the watched field and verifies the company and decision-subject scope. Expired, stale, missing, or ambiguous inputs return unknown and do not request a run.
+DecisionWatch supports changed, equality, numeric threshold, containment, and existence conditions. Step 30 creates, updates, pauses, resumes, and closes watch definitions through a revision-checked host store contract. Step 29 routes validated source signals to relevant active watches. Each Step 26 evaluation still requires fresh evidence for the watched field and verifies the company and decision-subject scope. Expired, stale, missing, or ambiguous inputs return unknown and do not request a run.
 
-A satisfied condition returns a rerun_decision request with evidence references and a stable trigger identifier. The watch-cycle adapter contract commits the watch update and rerun request to an idempotent outbox in one transaction. A host scheduler or event adapter owns the store and outbox worker; the worker can start a new workflow run. The watch engine never sends notifications, applies changes, or executes the recommended action. After a workflow recommendation, the host may call Step 27 to prepare a capability-gated request; Step 27 also leaves approval and dispatch with the host.
+A satisfied condition returns a rerun_decision request with evidence references and a stable trigger identifier. The watch-cycle adapter contract commits the watch update and rerun request to an idempotent outbox in one transaction. A host scheduler or event adapter owns the store and outbox worker; the worker can start a new workflow run. The watch engine never sends notifications, applies changes, or executes the recommended action.
 
 ## Verified-outcome learning
 

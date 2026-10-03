@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titan.example/schemas/watch-lifecycle-command.schema.json",
+  "title": "Decision Watch Lifecycle Command",
+  "oneOf": [
+    { "$ref": "#/$defs/create" },
+    { "$ref": "#/$defs/update" },
+    { "$ref": "#/$defs/status_change" }
+  ],
+  "$defs": {
+    "base": {
+      "type": "object",
+      "properties": {
+        "command_id": { "type": "string", "minLength": 1 },
+        "company_id": { "type": "string", "minLength": 1 },
+        "watch_id": { "type": "string", "minLength": 1 },
+        "now": { "type": "string", "format": "date-time" }
+      }
+    },
+    "condition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field", "operator"],
+      "properties": {
+        "field": { "type": "string", "minLength": 1 },
+        "operator": {
+          "enum": ["changed", "eq", "neq", "gt", "gte", "lt", "lte", "contains", "not_contains", "exists", "not_exists"]
+        },
+        "expected": {},
+        "max_age_seconds": { "type": "number", "minimum": 0 }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "operator": { "enum": ["eq", "neq", "gt", "gte", "lt", "lte", "contains", "not_contains"] }
+            },
+            "required": ["operator"]
+          },
+          "then": { "required": ["expected"] }
+        }
+      ]
+    },
+    "revision": { "type": "integer", "minimum": 0 },
+    "create": {
+      "allOf": [
+        { "$ref": "#/$defs/base" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["operation", "command_id", "company_id", "watch_id", "decision_subject_id", "condition", "now"],
+          "properties": {
+            "operation": { "const": "create" },
+            "command_id": { "type": "string", "minLength": 1 },
+            "company_id": { "type": "string", "minLength": 1 },
+            "watch_id": { "type": "string", "minLength": 1 },
+            "decision_subject_id": { "type": "string", "minLength": 1 },
+            "condition": { "$ref": "#/$defs/condition" },
+            "now": { "type": "string", "format": "date-time" },
+            "expires_at": { "type": ["string", "null"], "format": "date-time" },
+            "interval_seconds": { "type": ["number", "null"], "exclusiveMinimum": 0 },
+            "cooldown_seconds": { "type": "number", "minimum": 0 }
+          }
+        }
+      ]
+    },
+    "update": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["operation", "command_id", "company_id", "watch_id", "expected_revision", "patch", "now"],
+      "properties": {
+        "operation": { "const": "update" },
+        "command_id": { "type": "string", "minLength": 1 },
+        "company_id": { "type": "string", "minLength": 1 },
+        "watch_id": { "type": "string", "minLength": 1 },
+        "expected_revision": { "$ref": "#/$defs/revision" },
+        "now": { "type": "string", "format": "date-time" },
+        "patch": {
+          "type": "object",
+          "additionalProperties": false,
+          "minProperties": 1,
+          "properties": {
+            "condition": { "$ref": "#/$defs/condition" },
+            "expires_at": { "type": ["string", "null"], "format": "date-time" },
+            "interval_seconds": { "type": ["number", "null"], "exclusiveMinimum": 0 },
+            "cooldown_seconds": { "type": "number", "minimum": 0 }
+          }
+        }
+      }
+    },
+    "status_change": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["operation", "command_id", "company_id", "watch_id", "expected_revision", "now"],
+      "properties": {
+        "operation": { "enum": ["pause", "resume", "close"] },
+        "command_id": { "type": "string", "minLength": 1 },
+        "company_id": { "type": "string", "minLength": 1 },
+        "watch_id": { "type": "string", "minLength": 1 },
+        "expected_revision": { "$ref": "#/$defs/revision" },
+        "now": { "type": "string", "format": "date-time" }
+      }
+    }
+  }
+}
