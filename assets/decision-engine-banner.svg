@@ -13,7 +13,7 @@
   <rect width="1200" height="360" rx="22" fill="url(#bg)"/><rect width="1200" height="360" rx="22" fill="url(#grid)"/>
   <circle cx="1100" cy="-10" r="230" fill="#2b6386" opacity=".18"/><circle cx="900" cy="390" r="190" fill="#0b9f9a" opacity=".12"/>
   <text x="70" y="66" class="eyebrow">TITAN � DECISION SUPPORT � STEPS 10-30</text>
-  <text x="70" y="125" class="title">Titan Decision Engine</text>
+  <text x="70" y="125" class="title">DecisionEngine</text>
   <text x="72" y="160" class="sub">EVIDENCE    CONSTRAINTS    RANKING    GOVERNED HANDOFF</text>
   <path d="M80 246H1110" stroke="#416783" stroke-width="2" opacity=".8"/>
   <path d="M126 246H1080" stroke="url(#trace)" stroke-width="3" marker-end="url(#arrow)"/>
