@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/decision-engine-banner.jpg" alt="Titan Decision Engine — evidence-led, transparent decision support" width="100%" />
+  <img src="assets/decision-engine-banner.svg" alt="Titan Decision Engine — evidence-led, transparent decision support" width="100%" />
 </p>
 
 <h1 align="center">Titan Decision Engine</h1>
