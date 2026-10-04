@@ -151,10 +151,10 @@ The runner evaluates 20 labelled scenarios with fixed timestamp 2026-10-04T00:00
 
 | Measure | Recommendation-only illustrative baseline | Step 27 |
 | --- | ---: | ---: |
-| Blocked or unresolved cases that would proceed to action / become a ready handoff | 15 / 17 | 0 / 17 ready handoffs |
+| Blocked or unresolved scenarios accepted as actionable / emitted as ready handoffs | 15 / 17 | 0 / 17 |
 | Valid eligible cases wrongly blocked | 0 / 3 | 0 / 3 |
 | Wrong-company attempts producing a request | 2 / 2 | 0 / 2 |
-| Outputs violating the undispatched-request contract | Not applicable | 0 / 20 |
+| Scenario-level violations of the undispatched-request contract | Not applicable | 0 / 20 |
 
 The baseline is a deliberately simple rule that would dispatch any non-empty recommendation while ignoring constraints and host authorization. It is a no-gate comparator, not a competing product. The approval-required case returns a request for the host approval flow; it remains undispatched and is not counted as a ready handoff.
 
