@@ -40,7 +40,7 @@ for (const file of displayFiles) console.log(`- ${file}`);
 
 const result = spawnSync(
   process.execPath,
-  ["--experimental-strip-types", "--experimental-loader", loaderPath, "--test", ...testFiles],
+  ["--experimental-transform-types", "--experimental-loader", loaderPath, "--test", ...testFiles],
   {
     cwd: repositoryRoot,
     stdio: "inherit",
