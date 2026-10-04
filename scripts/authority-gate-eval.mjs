@@ -190,11 +190,15 @@ const report = {
   command,
   seed,
   scenario_count: records.length,
+  runtime: { node: process.version, platform: process.platform, architecture: process.arch },
   scenario_set_sha256: createHash("sha256").update(fixtureBytes).digest("hex"),
   baseline: {
     name: "recommendation-only illustrative baseline",
     definition: "Would dispatch any non-empty recommendation while ignoring constraint eligibility and host authorization.",
-    unsafe_dispatches_on_blocked_or_unresolved_cases: baselineUnsafe,
+    unsafe_dispatches_on_blocked_or_unresolved_cases: {
+      numerator: baselineUnsafe,
+      denominator: records.length - validPreparedCases,
+    },
   },
   metrics: {
     unsafe_ready_handoffs: { numerator: actualPreparedOnNegative, denominator: records.length - validPreparedCases },
@@ -205,7 +209,7 @@ const report = {
     gate_latency_ms: {
       p50: percentile(latencies, 0.5),
       p95: percentile(latencies, 0.95),
-      note: "Descriptive local microbenchmark; not a pass/fail threshold.",
+      note: "Single-call scenario timings; descriptive only, not incremental overhead or a pass/fail threshold.",
     },
   },
   passed: records.every((row) => row.passed) &&
@@ -228,6 +232,7 @@ const summary = [
   "- Command: `" + report.command + "`",
   "- Seed: " + report.seed,
   "- Scenarios: " + report.scenario_count,
+  "- Runtime: Node " + report.runtime.node + " (" + report.runtime.platform + "/" + report.runtime.architecture + ")",
   "- Scenario SHA-256: " + report.scenario_set_sha256,
   "",
   "| Metric | Result |",
@@ -236,7 +241,7 @@ const summary = [
   "| Valid recommendations wrongly blocked | " + report.metrics.valid_recommendations_wrongly_blocked.numerator + " / " + report.metrics.valid_recommendations_wrongly_blocked.denominator + " |",
   "| Wrong-company attempts producing a request | " + report.metrics.wrong_company_attempts_with_request.numerator + " / " + report.metrics.wrong_company_attempts_with_request.denominator + " |",
   "| Dispatch-contract violations | " + report.metrics.dispatch_contract_violations.numerator + " / " + report.metrics.dispatch_contract_violations.denominator + " |",
-  "| Recommendation-only baseline unsafe dispatches | " + report.baseline.unsafe_dispatches_on_blocked_or_unresolved_cases + " |",
+  "| Recommendation-only baseline unsafe dispatches | " + report.baseline.unsafe_dispatches_on_blocked_or_unresolved_cases.numerator + " / " + report.baseline.unsafe_dispatches_on_blocked_or_unresolved_cases.denominator + " |",
   "| Gate latency p50 / p95 (ms) | " + report.metrics.gate_latency_ms.p50 + " / " + report.metrics.gate_latency_ms.p95 + " |",
   "",
   "The baseline is a deliberately minimal comparator, not a competing product. Step 27 prepares requests; the host owns persistence, approval, revalidation, and dispatch.",
