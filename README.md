@@ -31,6 +31,8 @@ Teams make consequential choices with evidence scattered across systems, objecti
 
 > **Value proposition:** turn complex evidence into constraint-aware recommendations with a clear boundary between analysis, host approval, and execution.
 
+**Proof:** The [deterministic authority-gate demo](docs/authority-gate-demo.md) exercises eligible, blocked, and approval-required handoffs and verifies that prepared requests remain undispatched.
+
 The engine can analyze and recommend. It does not authorize or execute the recommendation.
 
 ## Run it
