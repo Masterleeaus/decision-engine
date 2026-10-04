@@ -139,7 +139,7 @@ These are decision-support boundaries. They do not replace authentication, autho
 
 ## Quickstart and verification
 
-Node.js 22 or newer is required for the checked-in TypeScript reference runners (`--experimental-strip-types`). The repository intentionally has no root package manifest or dependency-install step: the runnable repository-level smoke test is the deterministic authority-gate evaluation.
+Node.js 22 or newer is required for the checked-in TypeScript reference runners (`--experimental-transform-types`). The repository intentionally has no root package manifest or dependency-install step: the runnable repository-level smoke test is the deterministic authority-gate evaluation.
 
 Run the reproducible authority-gate evaluation documented below from the repository root. To run every reference-engine test without shell-specific globbing, use the portable entrypoint:
 
@@ -147,7 +147,7 @@ Run the reproducible authority-gate evaluation documented below from the reposit
 node scripts/reference-tests.mjs
 ```
 
-The test entrypoint discovers `*.test.ts` and `*.test.mjs` files under `engines/*/tests/` and invokes Node's test runner with the same Node.js 22 strip-types flag used by CI.
+The test entrypoint discovers `*.test.ts` and `*.test.mjs` files under `engines/*/tests/` and invokes Node's test runner with the same Node.js 22 transform-types flag used by CI.
 
 ## Reproducible authority handoff evaluation
 
