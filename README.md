@@ -24,13 +24,13 @@
 
 ---
 
-## Make the path to a decision visible
+## Decision intelligence that stays explainable
 
-A single score can hide missing evidence, policy limits, competing objectives, or fragile assumptions. Titan separates those concerns into explicit stages so a reviewer can see what is known, what remains uncertain, which options are eligible, why one leads, and what approval is still required.
+Teams make consequential choices with evidence scattered across systems, objectives pulling in different directions, and policy or approval requirements that are easy to lose in a score. Titan Decision Engine turns those inputs into a decision path that a reviewer can inspect from source evidence to recommendation.
 
-**Titan Decision Engine** is a modular decision-support layer for AI-assisted and human-reviewed systems. It is designed for business, operational, workforce, environmental, financial, procurement, scheduling, and other decision domains.
+**For product and platform teams**, it is a modular TypeScript decision layer for operational, workforce, financial, procurement, scheduling, environmental, and other AI-assisted workflows. It preserves evidence, uncertainty, constraints, trade-offs, provenance, and confidence so the next action is easier to evaluate and govern.
 
-> **Decision model:** subject + objectives + options + evidence + constraints + preferences → predicted outcomes and trade-offs → ranking → recommendation + confidence + authority requirements.
+> **Value proposition:** turn complex evidence into constraint-aware recommendations with a clear boundary between analysis, host approval, and execution.
 
 The engine can analyze and recommend. It does not authorize or execute the recommendation.
 
