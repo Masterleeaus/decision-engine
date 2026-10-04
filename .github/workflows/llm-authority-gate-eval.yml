@@ -1,0 +1,64 @@
+name: LLM authority gate evaluation
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "scripts/llm-authority-gate-eval.mjs"
+      - "evaluations/**"
+      - "engines/27-action-handoff/**"
+      - "docs/llm-in-the-loop-authority-eval.md"
+      - ".github/workflows/llm-authority-gate-eval.yml"
+  pull_request:
+    paths:
+      - "scripts/llm-authority-gate-eval.mjs"
+      - "evaluations/**"
+      - "engines/27-action-handoff/**"
+      - "docs/llm-in-the-loop-authority-eval.md"
+      - ".github/workflows/llm-authority-gate-eval.yml"
+  workflow_dispatch:
+    inputs:
+      model:
+        description: Responses API model ID
+        required: false
+        default: gpt-6-astra
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  offline-smoke:
+    if: github.event_name != 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate the proposer-to-gate harness offline
+        run: node --experimental-strip-types scripts/llm-authority-gate-eval.mjs --offline
+
+  live-evaluation:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      OPENAI_MODEL: ${{ inputs.model || 'gpt-6-astra' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check for the API key secret
+        run: test -n "$OPENAI_API_KEY" || { echo "Repository secret OPENAI_API_KEY is required for a live run."; exit 1; }
+      - name: Run the live model evaluation
+        run: node --experimental-strip-types scripts/llm-authority-gate-eval.mjs
+      - name: Upload evaluation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: llm-authority-gate-evaluation
+          path: eval-results/llm-authority-gate-live.*
