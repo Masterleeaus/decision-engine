@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "seed": 20261004,
+  "fixed_as_of": "2026-10-04T00:00:00.000Z",
+  "scenarios": [
+    {"id":"valid-allowed","label":"Eligible recommendation with fresh allowed capability","expected":{"status":"prepared","request":true},"risk_tags":[]},
+    {"id":"valid-near-expiry","label":"Allowed assessment remains valid for 30 seconds","expected":{"status":"prepared","request":true},"risk_tags":[],"overrides":{"capability_assessment":{"expires_at":"2026-10-04T00:00:30.000Z"}}},
+    {"id":"valid-repeat","label":"Identical valid request is stable on replay","expected":{"status":"prepared","request":true},"risk_tags":[],"replay_of":"valid-allowed"},
+    {"id":"approval-required","label":"Host requires approval before dispatch","expected":{"status":"approval_required","request":true},"risk_tags":["approval"],"overrides":{"capability_assessment":{"authorization":"approval_required"}}},
+    {"id":"recommendation-abstains","label":"Recommendation abstains","expected":{"status":"abstained","request":false},"risk_tags":["recommendation"],"overrides":{"recommendation":{"status":"abstain","recommended_option_id":null}}},
+    {"id":"recommendation-review","label":"Recommendation requires review","expected":{"status":"review_required","request":false},"risk_tags":["recommendation"],"overrides":{"recommendation":{"status":"review_required"}}},
+    {"id":"constraint-abstains","label":"Hard-constraint gate abstains","expected":{"status":"abstained","request":false},"risk_tags":["constraint"],"overrides":{"constraint_gate":{"state":"abstain"}}},
+    {"id":"constraint-review","label":"Hard-constraint gate requires review","expected":{"status":"review_required","request":false},"risk_tags":["constraint"],"overrides":{"constraint_gate":{"state":"review_required"}}},
+    {"id":"empty-eligible-options","label":"Ready gate has no eligible options","expected":{"status":"review_required","request":false},"risk_tags":["constraint"],"overrides":{"constraint_gate":{"eligible_option_ids":[]}}},
+    {"id":"recommended-option-ineligible","label":"Recommended option is absent from eligible options","expected":{"status":"blocked","request":false},"risk_tags":["constraint"],"overrides":{"constraint_gate":{"eligible_option_ids":["option-2"]}}},
+    {"id":"binding-option-mismatch","label":"Action binding targets a different option","expected":{"status":"blocked","request":false},"risk_tags":["binding"],"overrides":{"binding":{"option_id":"option-2"}}},
+    {"id":"host-denies-authorization","label":"Fresh host assessment explicitly denies authorization","expected":{"status":"blocked","request":false},"risk_tags":["authorization"],"overrides":{"capability_assessment":{"authorization":"denied"}}},
+    {"id":"host-authorization-unknown","label":"Host authorization is unknown","expected":{"status":"review_required","request":false},"risk_tags":["authorization"],"overrides":{"capability_assessment":{"authorization":"unknown"}}},
+    {"id":"capability-disabled","label":"Host capability is disabled","expected":{"status":"blocked","request":false},"risk_tags":["capability"],"overrides":{"capability_assessment":{"availability":"disabled"}}},
+    {"id":"capability-availability-unknown","label":"Host capability availability is unknown","expected":{"status":"review_required","request":false},"risk_tags":["capability"],"overrides":{"capability_assessment":{"availability":"unknown"}}},
+    {"id":"assessment-expired","label":"Host assessment expired before evaluation","expected":{"status":"review_required","request":false},"risk_tags":["freshness"],"overrides":{"capability_assessment":{"expires_at":"2026-10-03T23:59:59.999Z"}}},
+    {"id":"assessment-future-dated","label":"Host assessment timestamp is in the future","expected":{"status":"review_required","request":false},"risk_tags":["freshness"],"overrides":{"capability_assessment":{"assessed_at":"2026-10-04T00:00:01.000Z"}}},
+    {"id":"assessment-incomplete","label":"Host assessment has no actor identity","expected":{"status":"review_required","request":false},"risk_tags":["authorization"],"overrides":{"capability_assessment":{"actor_id":""}}},
+    {"id":"wrong-company-assessment","label":"Capability assessment belongs to another company","expected":{"error_code":"capability_assessment_scope_mismatch","request":false},"risk_tags":["company_scope"],"wrong_company":true,"overrides":{"capability_assessment":{"company_id":"company-b"}}},
+    {"id":"cross-company-parameters","label":"Nested action parameters target another company","expected":{"error_code":"cross_company_action_parameters","request":false},"risk_tags":["company_scope"],"wrong_company":true,"overrides":{"binding":{"parameters":{"related":{"company_id":"company-b"}}}}}
+  ]
+}
