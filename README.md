@@ -6,6 +6,8 @@
 
 <p align="center"><strong>Decision intelligence you can inspect, challenge, and govern.</strong></p>
 
+<p align="center"><a href="https://github.com/Masterleeaus/decision-engine/actions/workflows/authority-gate-eval.yml"><img src="https://github.com/Masterleeaus/decision-engine/actions/workflows/authority-gate-eval.yml/badge.svg" alt="Authority gate evaluation"></a></p>
+
 <p align="center">
   A domain-neutral architecture for turning evidence into constraint-aware recommendations—with uncertainty, provenance, and authority boundaries made explicit.
 </p>
@@ -14,6 +16,7 @@
   <a href="#architecture">Architecture</a> ·
   <a href="#capabilities">Capabilities</a> ·
   <a href="#trust-boundaries">Trust boundaries</a> ·
+  <a href="#reproducible-authority-handoff-evaluation">Authority eval</a> ·
   <a href="#implementation-status">Implementation status</a>
 </p>
 
@@ -131,6 +134,31 @@ A domain supplies its own entities, evidence, objectives, alternatives, and cons
 - **Provider health is diagnostic:** operational telemetry does not change recommendation ranking, confidence, constraint eligibility, authorization, or routing.
 
 These are decision-support boundaries. They do not replace authentication, authorization, policy enforcement, or a governed execution service in the integrating application.
+
+## Reproducible authority handoff evaluation
+
+**Claim tested:** Step 27 prepares a ready handoff only when the recommendation is constraint-eligible, the action binding matches, and the host capability assessment is fresh, available, and authorized. Requests remain undispatched; the host retains approval, persistence, revalidation, and execution.
+
+Run from the repository root:
+
+```bash
+node --experimental-strip-types scripts/authority-gate-eval.mjs
+```
+
+The runner evaluates 20 labelled scenarios with fixed timestamp 2026-10-04T00:00:00.000Z and seed 20261004. It writes the full per-case report to [JSON](eval-results/authority-gate-latest.json) and [Markdown](eval-results/authority-gate-latest.md). CI runs on pushes and pull requests and uploads both files as an artifact.
+
+**Measured 4 October 2026** against commit [7c05ddceaa818cf2bb87b7be7f1fe3f7468dac28](https://github.com/Masterleeaus/decision-engine/commit/7c05ddceaa818cf2bb87b7be7f1fe3f7468dac28); scenario SHA-256: 8e8516d4d2224ba2c5c2a240e084188d1620428ff1c0e8a5be42680eadd0afd6. The [GitHub Actions run](https://github.com/Masterleeaus/decision-engine/actions/runs/37170763045) passed.
+
+| Measure | Recommendation-only illustrative baseline | Step 27 |
+| --- | ---: | ---: |
+| Blocked or unresolved cases that would proceed to action / become a ready handoff | 15 / 17 | 0 / 17 ready handoffs |
+| Valid eligible cases wrongly blocked | 0 / 3 | 0 / 3 |
+| Wrong-company attempts producing a request | 2 / 2 | 0 / 2 |
+| Outputs violating the undispatched-request contract | Not applicable | 0 / 20 |
+
+The baseline is a deliberately simple rule that would dispatch any non-empty recommendation while ignoring constraints and host authorization. It is a no-gate comparator, not a competing product. The approval-required case returns a request for the host approval flow; it remains undispatched and is not counted as a ready handoff.
+
+Single-call timings are recorded in the JSON report for context only; they are not an incremental latency comparison. This evaluation tests the Step 27 reference function, not a deployed host's storage, approval, or dispatch integration.
 
 ## Integration pattern
 
