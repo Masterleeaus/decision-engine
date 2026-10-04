@@ -1,0 +1,127 @@
+{
+  "name": "titan-decision-engine",
+  "version": "0.1.0",
+  "description": "Inspectable, constraint-aware decision support with explicit evidence, uncertainty, and authority boundaries.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.6.0"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./observation": {
+      "types": "./dist/engines/10-observation-engine/runtime/observationEngine.d.ts",
+      "import": "./dist/engines/10-observation-engine/runtime/observationEngine.js"
+    },
+    "./evidence": {
+      "types": "./dist/engines/11-evidence-extraction-engine/runtime/evidenceEngine.d.ts",
+      "import": "./dist/engines/11-evidence-extraction-engine/runtime/evidenceEngine.js"
+    },
+    "./entities": {
+      "types": "./dist/engines/12-entity-normalization-engine/runtime/entityNormalizationEngine.d.ts",
+      "import": "./dist/engines/12-entity-normalization-engine/runtime/entityNormalizationEngine.js"
+    },
+    "./context": {
+      "types": "./dist/engines/13-context-enrichment-engine/runtime/contextEnrichmentEngine.d.ts",
+      "import": "./dist/engines/13-context-enrichment-engine/runtime/contextEnrichmentEngine.js"
+    },
+    "./options": {
+      "types": "./dist/engines/14-option-discovery-engine/runtime/optionDiscoveryEngine.d.ts",
+      "import": "./dist/engines/14-option-discovery-engine/runtime/optionDiscoveryEngine.js"
+    },
+    "./objectives": {
+      "types": "./dist/engines/15-objective-model/runtime/objectiveModel.d.ts",
+      "import": "./dist/engines/15-objective-model/runtime/objectiveModel.js"
+    },
+    "./constraints": {
+      "types": "./dist/engines/16-constraint-engine/runtime/constraintEngine.d.ts",
+      "import": "./dist/engines/16-constraint-engine/runtime/constraintEngine.js"
+    },
+    "./preferences": {
+      "types": "./dist/engines/17-preference-model/runtime/preferenceModel.d.ts",
+      "import": "./dist/engines/17-preference-model/runtime/preferenceModel.js"
+    },
+    "./comparison": {
+      "types": "./dist/engines/18-comparison-engine/runtime/comparisonEngine.d.ts",
+      "import": "./dist/engines/18-comparison-engine/runtime/comparisonEngine.js"
+    },
+    "./predictions": {
+      "types": "./dist/engines/19-outcome-prediction-engine/runtime/outcomePredictionEngine.d.ts",
+      "import": "./dist/engines/19-outcome-prediction-engine/runtime/outcomePredictionEngine.js"
+    },
+    "./ranking": {
+      "types": "./dist/engines/20-ranking-engine/runtime/rankingEngine.d.ts",
+      "import": "./dist/engines/20-ranking-engine/runtime/rankingEngine.js"
+    },
+    "./best-action": {
+      "types": "./dist/engines/21-best-action-engine/runtime/bestActionEngine.d.ts",
+      "import": "./dist/engines/21-best-action-engine/runtime/bestActionEngine.js"
+    },
+    "./explanation": {
+      "types": "./dist/engines/22-explanation-engine/runtime/explanationEngine.d.ts",
+      "import": "./dist/engines/22-explanation-engine/runtime/explanationEngine.js"
+    },
+    "./confidence": {
+      "types": "./dist/engines/23-confidence-engine/runtime/confidenceEngine.d.ts",
+      "import": "./dist/engines/23-confidence-engine/runtime/confidenceEngine.js"
+    },
+    "./history": {
+      "types": "./dist/engines/24-decision-history/runtime/decisionHistory.d.ts",
+      "import": "./dist/engines/24-decision-history/runtime/decisionHistory.js"
+    },
+    "./learning": {
+      "types": "./dist/engines/25-learning-loop/runtime/learningLoop.d.ts",
+      "import": "./dist/engines/25-learning-loop/runtime/learningLoop.js"
+    },
+    "./workflow": {
+      "types": "./dist/engines/26-decision-workflow/runtime/decisionWorkflow.d.ts",
+      "import": "./dist/engines/26-decision-workflow/runtime/decisionWorkflow.js"
+    },
+    "./decision-watch": {
+      "types": "./dist/engines/26-decision-workflow/runtime/decisionWatch.d.ts",
+      "import": "./dist/engines/26-decision-workflow/runtime/decisionWatch.js"
+    },
+    "./watch": {
+      "types": "./dist/engines/30-watch-lifecycle/runtime/watchLifecycle.d.ts",
+      "import": "./dist/engines/30-watch-lifecycle/runtime/watchLifecycle.js"
+    },
+    "./action-handoff": {
+      "types": "./dist/engines/27-action-handoff/runtime/decisionActionHandoff.d.ts",
+      "import": "./dist/engines/27-action-handoff/runtime/decisionActionHandoff.js"
+    },
+    "./provider-telemetry": {
+      "types": "./dist/engines/28-provider-telemetry/runtime/providerTelemetry.d.ts",
+      "import": "./dist/engines/28-provider-telemetry/runtime/providerTelemetry.js"
+    },
+    "./signal-router": {
+      "types": "./dist/engines/29-signal-router/runtime/decisionSignalRouter.d.ts",
+      "import": "./dist/engines/29-signal-router/runtime/decisionSignalRouter.js"
+    }
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE",
+    "assets/",
+    "docs/specification/08-canonical-decision-model/",
+    "docs/specification/09-decisionpacket-contract/"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "npm run build && node scripts/test.mjs",
+    "eval": "node --experimental-strip-types scripts/authority-gate-eval.mjs",
+    "validate:math": "node --experimental-strip-types scripts/math-validation.mjs",
+    "example:environment": "node --experimental-strip-types examples/environmental-remediation.mjs",
+    "coverage": "npm run build && c8 --all --include 'engines/1[0-9]-*/dist/runtime/**/*.js' --include 'engines/2[0-5]-*/dist/runtime/**/*.js' --include 'engines/2[6-9]-*/runtime/**/*.ts' --include 'engines/30-*/runtime/**/*.ts' --reporter=text --reporter=lcov node scripts/test.mjs",
+    "pack:check": "npm run build && npm pack --dry-run"
+  },
+  "devDependencies": {
+    "c8": "12.0.0",
+    "typescript": "7.0.2"
+  }
+}

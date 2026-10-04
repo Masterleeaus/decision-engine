@@ -1,2 +1,0 @@
-TypeScript compile: PASS
-confidence-engine tests passed: 5

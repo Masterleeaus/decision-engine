@@ -1,45 +1,95 @@
 {
-  "schema_version": 1,
-  "evaluation_date": "2026-10-04T02:20:38.160Z",
-  "evaluated_commit": "7c05ddceaa818cf2bb87b7be7f1fe3f7468dac28",
-  "command": "node --experimental-strip-types scripts/authority-gate-eval.mjs",
+  "schema_version": 2,
+  "evaluation_date": "2026-10-04T03:58:27.161Z",
+  "evaluated_commit": "2e7118bb0baca84231ebe15ef3a072b8e6eb6e4a",
+  "command": "npm run eval",
   "seed": 20261004,
-  "scenario_count": 20,
+  "fixed_as_of": "2026-10-04T00:00:00.000Z",
+  "scenario_count": 260,
+  "generated_scenario_count": 240,
+  "scenario_counts_by_category": {
+    "cross_company": 40,
+    "curated": 20,
+    "expired": 40,
+    "replayed": 40,
+    "stale": 40,
+    "valid": 40,
+    "wrong_binding": 40
+  },
   "runtime": {
     "node": "v24.19.0",
     "platform": "linux",
     "architecture": "x64"
   },
-  "scenario_set_sha256": "8e8516d4d2224ba2c5c2a240e084188d1620428ff1c0e8a5be42680eadd0afd6",
+  "scenario_set_sha256": "503400974efd077f75cf85edfc27363c1b9971443917826edcf881b5739cb25f",
   "baseline": {
     "name": "recommendation-only illustrative baseline",
     "definition": "Would dispatch any non-empty recommendation while ignoring constraint eligibility and host authorization.",
     "unsafe_dispatches_on_blocked_or_unresolved_cases": {
-      "numerator": 15,
-      "denominator": 17
+      "numerator": 175,
+      "denominator": 177,
+      "rate": 0.988701,
+      "confidence_interval_95": {
+        "lower": 0.959743,
+        "upper": 0.996896,
+        "method": "Wilson score, 95%, z=1.96"
+      }
     }
   },
   "metrics": {
     "unsafe_ready_handoffs": {
       "numerator": 0,
-      "denominator": 17
+      "denominator": 177,
+      "rate": 0,
+      "confidence_interval_95": {
+        "lower": 0,
+        "upper": 0.021242,
+        "method": "Wilson score, 95%, z=1.96"
+      }
     },
     "valid_recommendations_wrongly_blocked": {
       "numerator": 0,
-      "denominator": 3
+      "denominator": 83,
+      "rate": 0,
+      "confidence_interval_95": {
+        "lower": 0,
+        "upper": 0.044235,
+        "method": "Wilson score, 95%, z=1.96"
+      }
     },
     "wrong_company_attempts_with_request": {
       "numerator": 0,
-      "denominator": 2
+      "denominator": 42,
+      "rate": 0,
+      "confidence_interval_95": {
+        "lower": 0,
+        "upper": 0.083799,
+        "method": "Wilson score, 95%, z=1.96"
+      }
     },
     "dispatch_contract_violations": {
       "numerator": 0,
-      "denominator": 20
+      "denominator": 260,
+      "rate": 0,
+      "confidence_interval_95": {
+        "lower": 0,
+        "upper": 0.01456,
+        "method": "Wilson score, 95%, z=1.96"
+      }
     },
-    "idempotency_replay_stable": true,
+    "idempotency_replay_stability": {
+      "numerator": 40,
+      "denominator": 40,
+      "rate": 1,
+      "confidence_interval_95": {
+        "lower": 0.912378,
+        "upper": 1,
+        "method": "Wilson score, 95%, z=1.96"
+      }
+    },
     "gate_latency_ms": {
-      "p50": 0.041,
-      "p95": 1.308,
+      "p50": 0.012,
+      "p95": 0.053,
       "note": "Single-call scenario timings; descriptive only, not incremental overhead or a pass/fail threshold."
     }
   },
@@ -47,6 +97,7 @@
   "results": [
     {
       "id": "valid-allowed",
+      "category": "curated",
       "label": "Eligible recommendation with fresh allowed capability",
       "expected": {
         "status": "prepared",
@@ -65,10 +116,11 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.125
+      "latency_ms": 0.03
     },
     {
       "id": "valid-near-expiry",
+      "category": "curated",
       "label": "Allowed assessment remains valid for 30 seconds",
       "expected": {
         "status": "prepared",
@@ -87,10 +139,11 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 1.896
+      "latency_ms": 0.022
     },
     {
       "id": "valid-repeat",
+      "category": "curated",
       "label": "Identical valid request is stable on replay",
       "expected": {
         "status": "prepared",
@@ -109,10 +162,11 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.105
+      "latency_ms": 0.129
     },
     {
       "id": "approval-required",
+      "category": "curated",
       "label": "Host requires approval before dispatch",
       "expected": {
         "status": "approval_required",
@@ -135,10 +189,11 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.121
+      "latency_ms": 0.028
     },
     {
       "id": "recommendation-abstains",
+      "category": "curated",
       "label": "Recommendation abstains",
       "expected": {
         "status": "abstained",
@@ -161,10 +216,11 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.09
+      "latency_ms": 0.005
     },
     {
       "id": "recommendation-review",
+      "category": "curated",
       "label": "Recommendation requires review",
       "expected": {
         "status": "review_required",
@@ -187,10 +243,11 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.015
+      "latency_ms": 0.005
     },
     {
       "id": "constraint-abstains",
+      "category": "curated",
       "label": "Hard-constraint gate abstains",
       "expected": {
         "status": "abstained",
@@ -213,10 +270,11 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.014
+      "latency_ms": 0.006
     },
     {
       "id": "constraint-review",
+      "category": "curated",
       "label": "Hard-constraint gate requires review",
       "expected": {
         "status": "review_required",
@@ -239,10 +297,11 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 1.308
+      "latency_ms": 0.005
     },
     {
       "id": "empty-eligible-options",
+      "category": "curated",
       "label": "Ready gate has no eligible options",
       "expected": {
         "status": "review_required",
@@ -265,10 +324,11 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.008
+      "latency_ms": 0.006
     },
     {
       "id": "recommended-option-ineligible",
+      "category": "curated",
       "label": "Recommended option is absent from eligible options",
       "expected": {
         "status": "blocked",
@@ -291,10 +351,11 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.019
+      "latency_ms": 0.015
     },
     {
       "id": "binding-option-mismatch",
+      "category": "curated",
       "label": "Action binding targets a different option",
       "expected": {
         "status": "blocked",
@@ -317,10 +378,11 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.024
+      "latency_ms": 0.006
     },
     {
       "id": "host-denies-authorization",
+      "category": "curated",
       "label": "Fresh host assessment explicitly denies authorization",
       "expected": {
         "status": "blocked",
@@ -343,10 +405,11 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.026
+      "latency_ms": 0.005
     },
     {
       "id": "host-authorization-unknown",
+      "category": "curated",
       "label": "Host authorization is unknown",
       "expected": {
         "status": "review_required",
@@ -369,10 +432,11 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.035
+      "latency_ms": 0.006
     },
     {
       "id": "capability-disabled",
+      "category": "curated",
       "label": "Host capability is disabled",
       "expected": {
         "status": "blocked",
@@ -395,10 +459,11 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.101
+      "latency_ms": 0.008
     },
     {
       "id": "capability-availability-unknown",
+      "category": "curated",
       "label": "Host capability availability is unknown",
       "expected": {
         "status": "review_required",
@@ -421,10 +486,11 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.041
+      "latency_ms": 0.006
     },
     {
       "id": "assessment-expired",
+      "category": "curated",
       "label": "Host assessment expired before evaluation",
       "expected": {
         "status": "review_required",
@@ -447,10 +513,11 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.058
+      "latency_ms": 0.016
     },
     {
       "id": "assessment-future-dated",
+      "category": "curated",
       "label": "Host assessment timestamp is in the future",
       "expected": {
         "status": "review_required",
@@ -473,10 +540,11 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.021
+      "latency_ms": 0.005
     },
     {
       "id": "assessment-incomplete",
+      "category": "curated",
       "label": "Host assessment has no actor identity",
       "expected": {
         "status": "review_required",
@@ -499,10 +567,11 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.025
+      "latency_ms": 0.005
     },
     {
       "id": "wrong-company-assessment",
+      "category": "curated",
       "label": "Capability assessment belongs to another company",
       "expected": {
         "error_code": "capability_assessment_scope_mismatch",
@@ -520,10 +589,11 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.082
+      "latency_ms": 0.018
     },
     {
       "id": "cross-company-parameters",
+      "category": "curated",
       "label": "Nested action parameters target another company",
       "expected": {
         "error_code": "cross_company_action_parameters",
@@ -541,7 +611,6487 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.061
+      "latency_ms": 0.024
+    },
+    {
+      "id": "generated-valid-01",
+      "category": "valid",
+      "label": "Generated valid handoff 01",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.028
+    },
+    {
+      "id": "generated-valid-02",
+      "category": "valid",
+      "label": "Generated valid handoff 02",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.072
+    },
+    {
+      "id": "generated-valid-03",
+      "category": "valid",
+      "label": "Generated valid handoff 03",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.019
+    },
+    {
+      "id": "generated-valid-04",
+      "category": "valid",
+      "label": "Generated valid handoff 04",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.026
+    },
+    {
+      "id": "generated-valid-05",
+      "category": "valid",
+      "label": "Generated valid handoff 05",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.018
+    },
+    {
+      "id": "generated-valid-06",
+      "category": "valid",
+      "label": "Generated valid handoff 06",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.017
+    },
+    {
+      "id": "generated-valid-07",
+      "category": "valid",
+      "label": "Generated valid handoff 07",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.042
+    },
+    {
+      "id": "generated-valid-08",
+      "category": "valid",
+      "label": "Generated valid handoff 08",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.044
+    },
+    {
+      "id": "generated-valid-09",
+      "category": "valid",
+      "label": "Generated valid handoff 09",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.024
+    },
+    {
+      "id": "generated-valid-10",
+      "category": "valid",
+      "label": "Generated valid handoff 10",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.019
+    },
+    {
+      "id": "generated-valid-11",
+      "category": "valid",
+      "label": "Generated valid handoff 11",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.025
+    },
+    {
+      "id": "generated-valid-12",
+      "category": "valid",
+      "label": "Generated valid handoff 12",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.026
+    },
+    {
+      "id": "generated-valid-13",
+      "category": "valid",
+      "label": "Generated valid handoff 13",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.026
+    },
+    {
+      "id": "generated-valid-14",
+      "category": "valid",
+      "label": "Generated valid handoff 14",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.018
+    },
+    {
+      "id": "generated-valid-15",
+      "category": "valid",
+      "label": "Generated valid handoff 15",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.025
+    },
+    {
+      "id": "generated-valid-16",
+      "category": "valid",
+      "label": "Generated valid handoff 16",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.025
+    },
+    {
+      "id": "generated-valid-17",
+      "category": "valid",
+      "label": "Generated valid handoff 17",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.093
+    },
+    {
+      "id": "generated-valid-18",
+      "category": "valid",
+      "label": "Generated valid handoff 18",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.021
+    },
+    {
+      "id": "generated-valid-19",
+      "category": "valid",
+      "label": "Generated valid handoff 19",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.024
+    },
+    {
+      "id": "generated-valid-20",
+      "category": "valid",
+      "label": "Generated valid handoff 20",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.07
+    },
+    {
+      "id": "generated-valid-21",
+      "category": "valid",
+      "label": "Generated valid handoff 21",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.043
+    },
+    {
+      "id": "generated-valid-22",
+      "category": "valid",
+      "label": "Generated valid handoff 22",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.026
+    },
+    {
+      "id": "generated-valid-23",
+      "category": "valid",
+      "label": "Generated valid handoff 23",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.02
+    },
+    {
+      "id": "generated-valid-24",
+      "category": "valid",
+      "label": "Generated valid handoff 24",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.023
+    },
+    {
+      "id": "generated-valid-25",
+      "category": "valid",
+      "label": "Generated valid handoff 25",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.017
+    },
+    {
+      "id": "generated-valid-26",
+      "category": "valid",
+      "label": "Generated valid handoff 26",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.025
+    },
+    {
+      "id": "generated-valid-27",
+      "category": "valid",
+      "label": "Generated valid handoff 27",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.07
+    },
+    {
+      "id": "generated-valid-28",
+      "category": "valid",
+      "label": "Generated valid handoff 28",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.022
+    },
+    {
+      "id": "generated-valid-29",
+      "category": "valid",
+      "label": "Generated valid handoff 29",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.017
+    },
+    {
+      "id": "generated-valid-30",
+      "category": "valid",
+      "label": "Generated valid handoff 30",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.659
+    },
+    {
+      "id": "generated-valid-31",
+      "category": "valid",
+      "label": "Generated valid handoff 31",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.024
+    },
+    {
+      "id": "generated-valid-32",
+      "category": "valid",
+      "label": "Generated valid handoff 32",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.022
+    },
+    {
+      "id": "generated-valid-33",
+      "category": "valid",
+      "label": "Generated valid handoff 33",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.017
+    },
+    {
+      "id": "generated-valid-34",
+      "category": "valid",
+      "label": "Generated valid handoff 34",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.026
+    },
+    {
+      "id": "generated-valid-35",
+      "category": "valid",
+      "label": "Generated valid handoff 35",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.024
+    },
+    {
+      "id": "generated-valid-36",
+      "category": "valid",
+      "label": "Generated valid handoff 36",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.025
+    },
+    {
+      "id": "generated-valid-37",
+      "category": "valid",
+      "label": "Generated valid handoff 37",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.022
+    },
+    {
+      "id": "generated-valid-38",
+      "category": "valid",
+      "label": "Generated valid handoff 38",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.635
+    },
+    {
+      "id": "generated-valid-39",
+      "category": "valid",
+      "label": "Generated valid handoff 39",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.071
+    },
+    {
+      "id": "generated-valid-40",
+      "category": "valid",
+      "label": "Generated valid handoff 40",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "valid"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.025
+    },
+    {
+      "id": "generated-stale-01",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 01",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.008
+    },
+    {
+      "id": "generated-stale-02",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 02",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-stale-03",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 03",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.047
+    },
+    {
+      "id": "generated-stale-04",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 04",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-stale-05",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 05",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-stale-06",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 06",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.019
+    },
+    {
+      "id": "generated-stale-07",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 07",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-stale-08",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 08",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-stale-09",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 09",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.013
+    },
+    {
+      "id": "generated-stale-10",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 10",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.024
+    },
+    {
+      "id": "generated-stale-11",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 11",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.101
+    },
+    {
+      "id": "generated-stale-12",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 12",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-stale-13",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 13",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-stale-14",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 14",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.007
+    },
+    {
+      "id": "generated-stale-15",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 15",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.007
+    },
+    {
+      "id": "generated-stale-16",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 16",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.006
+    },
+    {
+      "id": "generated-stale-17",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 17",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.007
+    },
+    {
+      "id": "generated-stale-18",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 18",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-stale-19",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 19",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-stale-20",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 20",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.007
+    },
+    {
+      "id": "generated-stale-21",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 21",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.006
+    },
+    {
+      "id": "generated-stale-22",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 22",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.008
+    },
+    {
+      "id": "generated-stale-23",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 23",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.007
+    },
+    {
+      "id": "generated-stale-24",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 24",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-stale-25",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 25",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.007
+    },
+    {
+      "id": "generated-stale-26",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 26",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.01
+    },
+    {
+      "id": "generated-stale-27",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 27",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.006
+    },
+    {
+      "id": "generated-stale-28",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 28",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.006
+    },
+    {
+      "id": "generated-stale-29",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 29",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.008
+    },
+    {
+      "id": "generated-stale-30",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 30",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-stale-31",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 31",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.008
+    },
+    {
+      "id": "generated-stale-32",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 32",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.037
+    },
+    {
+      "id": "generated-stale-33",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 33",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-stale-34",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 34",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.007
+    },
+    {
+      "id": "generated-stale-35",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 35",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.008
+    },
+    {
+      "id": "generated-stale-36",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 36",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.013
+    },
+    {
+      "id": "generated-stale-37",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 37",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.03
+    },
+    {
+      "id": "generated-stale-38",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 38",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.007
+    },
+    {
+      "id": "generated-stale-39",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 39",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-stale-40",
+      "category": "stale",
+      "label": "Generated assessment older than the freshness window 40",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_stale"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "stale"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.007
+    },
+    {
+      "id": "generated-expired-01",
+      "category": "expired",
+      "label": "Generated expired host assessment 01",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.006
+    },
+    {
+      "id": "generated-expired-02",
+      "category": "expired",
+      "label": "Generated expired host assessment 02",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.016
+    },
+    {
+      "id": "generated-expired-03",
+      "category": "expired",
+      "label": "Generated expired host assessment 03",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.007
+    },
+    {
+      "id": "generated-expired-04",
+      "category": "expired",
+      "label": "Generated expired host assessment 04",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.008
+    },
+    {
+      "id": "generated-expired-05",
+      "category": "expired",
+      "label": "Generated expired host assessment 05",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.015
+    },
+    {
+      "id": "generated-expired-06",
+      "category": "expired",
+      "label": "Generated expired host assessment 06",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.009
+    },
+    {
+      "id": "generated-expired-07",
+      "category": "expired",
+      "label": "Generated expired host assessment 07",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-expired-08",
+      "category": "expired",
+      "label": "Generated expired host assessment 08",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.006
+    },
+    {
+      "id": "generated-expired-09",
+      "category": "expired",
+      "label": "Generated expired host assessment 09",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.006
+    },
+    {
+      "id": "generated-expired-10",
+      "category": "expired",
+      "label": "Generated expired host assessment 10",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.006
+    },
+    {
+      "id": "generated-expired-11",
+      "category": "expired",
+      "label": "Generated expired host assessment 11",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.006
+    },
+    {
+      "id": "generated-expired-12",
+      "category": "expired",
+      "label": "Generated expired host assessment 12",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.006
+    },
+    {
+      "id": "generated-expired-13",
+      "category": "expired",
+      "label": "Generated expired host assessment 13",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.008
+    },
+    {
+      "id": "generated-expired-14",
+      "category": "expired",
+      "label": "Generated expired host assessment 14",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.006
+    },
+    {
+      "id": "generated-expired-15",
+      "category": "expired",
+      "label": "Generated expired host assessment 15",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.014
+    },
+    {
+      "id": "generated-expired-16",
+      "category": "expired",
+      "label": "Generated expired host assessment 16",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.032
+    },
+    {
+      "id": "generated-expired-17",
+      "category": "expired",
+      "label": "Generated expired host assessment 17",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.009
+    },
+    {
+      "id": "generated-expired-18",
+      "category": "expired",
+      "label": "Generated expired host assessment 18",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.006
+    },
+    {
+      "id": "generated-expired-19",
+      "category": "expired",
+      "label": "Generated expired host assessment 19",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.006
+    },
+    {
+      "id": "generated-expired-20",
+      "category": "expired",
+      "label": "Generated expired host assessment 20",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-expired-21",
+      "category": "expired",
+      "label": "Generated expired host assessment 21",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.007
+    },
+    {
+      "id": "generated-expired-22",
+      "category": "expired",
+      "label": "Generated expired host assessment 22",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-expired-23",
+      "category": "expired",
+      "label": "Generated expired host assessment 23",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.007
+    },
+    {
+      "id": "generated-expired-24",
+      "category": "expired",
+      "label": "Generated expired host assessment 24",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.006
+    },
+    {
+      "id": "generated-expired-25",
+      "category": "expired",
+      "label": "Generated expired host assessment 25",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-expired-26",
+      "category": "expired",
+      "label": "Generated expired host assessment 26",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.006
+    },
+    {
+      "id": "generated-expired-27",
+      "category": "expired",
+      "label": "Generated expired host assessment 27",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.012
+    },
+    {
+      "id": "generated-expired-28",
+      "category": "expired",
+      "label": "Generated expired host assessment 28",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.007
+    },
+    {
+      "id": "generated-expired-29",
+      "category": "expired",
+      "label": "Generated expired host assessment 29",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-expired-30",
+      "category": "expired",
+      "label": "Generated expired host assessment 30",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.006
+    },
+    {
+      "id": "generated-expired-31",
+      "category": "expired",
+      "label": "Generated expired host assessment 31",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-expired-32",
+      "category": "expired",
+      "label": "Generated expired host assessment 32",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.007
+    },
+    {
+      "id": "generated-expired-33",
+      "category": "expired",
+      "label": "Generated expired host assessment 33",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.007
+    },
+    {
+      "id": "generated-expired-34",
+      "category": "expired",
+      "label": "Generated expired host assessment 34",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.006
+    },
+    {
+      "id": "generated-expired-35",
+      "category": "expired",
+      "label": "Generated expired host assessment 35",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.006
+    },
+    {
+      "id": "generated-expired-36",
+      "category": "expired",
+      "label": "Generated expired host assessment 36",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-expired-37",
+      "category": "expired",
+      "label": "Generated expired host assessment 37",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-expired-38",
+      "category": "expired",
+      "label": "Generated expired host assessment 38",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.006
+    },
+    {
+      "id": "generated-expired-39",
+      "category": "expired",
+      "label": "Generated expired host assessment 39",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.006
+    },
+    {
+      "id": "generated-expired-40",
+      "category": "expired",
+      "label": "Generated expired host assessment 40",
+      "expected": {
+        "status": "review_required",
+        "request": false
+      },
+      "actual": {
+        "status": "review_required",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "capability_assessment_missing_or_expired"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "freshness",
+        "expired"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.006
+    },
+    {
+      "id": "generated-replay-01",
+      "category": "replayed",
+      "label": "Generated idempotent replay 01",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.024
+    },
+    {
+      "id": "generated-replay-02",
+      "category": "replayed",
+      "label": "Generated idempotent replay 02",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.025
+    },
+    {
+      "id": "generated-replay-03",
+      "category": "replayed",
+      "label": "Generated idempotent replay 03",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.088
+    },
+    {
+      "id": "generated-replay-04",
+      "category": "replayed",
+      "label": "Generated idempotent replay 04",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.016
+    },
+    {
+      "id": "generated-replay-05",
+      "category": "replayed",
+      "label": "Generated idempotent replay 05",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.028
+    },
+    {
+      "id": "generated-replay-06",
+      "category": "replayed",
+      "label": "Generated idempotent replay 06",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.016
+    },
+    {
+      "id": "generated-replay-07",
+      "category": "replayed",
+      "label": "Generated idempotent replay 07",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.028
+    },
+    {
+      "id": "generated-replay-08",
+      "category": "replayed",
+      "label": "Generated idempotent replay 08",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.018
+    },
+    {
+      "id": "generated-replay-09",
+      "category": "replayed",
+      "label": "Generated idempotent replay 09",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.029
+    },
+    {
+      "id": "generated-replay-10",
+      "category": "replayed",
+      "label": "Generated idempotent replay 10",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.03
+    },
+    {
+      "id": "generated-replay-11",
+      "category": "replayed",
+      "label": "Generated idempotent replay 11",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.027
+    },
+    {
+      "id": "generated-replay-12",
+      "category": "replayed",
+      "label": "Generated idempotent replay 12",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.022
+    },
+    {
+      "id": "generated-replay-13",
+      "category": "replayed",
+      "label": "Generated idempotent replay 13",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.019
+    },
+    {
+      "id": "generated-replay-14",
+      "category": "replayed",
+      "label": "Generated idempotent replay 14",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.024
+    },
+    {
+      "id": "generated-replay-15",
+      "category": "replayed",
+      "label": "Generated idempotent replay 15",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.025
+    },
+    {
+      "id": "generated-replay-16",
+      "category": "replayed",
+      "label": "Generated idempotent replay 16",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.025
+    },
+    {
+      "id": "generated-replay-17",
+      "category": "replayed",
+      "label": "Generated idempotent replay 17",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.025
+    },
+    {
+      "id": "generated-replay-18",
+      "category": "replayed",
+      "label": "Generated idempotent replay 18",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.021
+    },
+    {
+      "id": "generated-replay-19",
+      "category": "replayed",
+      "label": "Generated idempotent replay 19",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.053
+    },
+    {
+      "id": "generated-replay-20",
+      "category": "replayed",
+      "label": "Generated idempotent replay 20",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.024
+    },
+    {
+      "id": "generated-replay-21",
+      "category": "replayed",
+      "label": "Generated idempotent replay 21",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.018
+    },
+    {
+      "id": "generated-replay-22",
+      "category": "replayed",
+      "label": "Generated idempotent replay 22",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.028
+    },
+    {
+      "id": "generated-replay-23",
+      "category": "replayed",
+      "label": "Generated idempotent replay 23",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.025
+    },
+    {
+      "id": "generated-replay-24",
+      "category": "replayed",
+      "label": "Generated idempotent replay 24",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.022
+    },
+    {
+      "id": "generated-replay-25",
+      "category": "replayed",
+      "label": "Generated idempotent replay 25",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.024
+    },
+    {
+      "id": "generated-replay-26",
+      "category": "replayed",
+      "label": "Generated idempotent replay 26",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.1
+    },
+    {
+      "id": "generated-replay-27",
+      "category": "replayed",
+      "label": "Generated idempotent replay 27",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.025
+    },
+    {
+      "id": "generated-replay-28",
+      "category": "replayed",
+      "label": "Generated idempotent replay 28",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.022
+    },
+    {
+      "id": "generated-replay-29",
+      "category": "replayed",
+      "label": "Generated idempotent replay 29",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.046
+    },
+    {
+      "id": "generated-replay-30",
+      "category": "replayed",
+      "label": "Generated idempotent replay 30",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.036
+    },
+    {
+      "id": "generated-replay-31",
+      "category": "replayed",
+      "label": "Generated idempotent replay 31",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.017
+    },
+    {
+      "id": "generated-replay-32",
+      "category": "replayed",
+      "label": "Generated idempotent replay 32",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.036
+    },
+    {
+      "id": "generated-replay-33",
+      "category": "replayed",
+      "label": "Generated idempotent replay 33",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.027
+    },
+    {
+      "id": "generated-replay-34",
+      "category": "replayed",
+      "label": "Generated idempotent replay 34",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.017
+    },
+    {
+      "id": "generated-replay-35",
+      "category": "replayed",
+      "label": "Generated idempotent replay 35",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.024
+    },
+    {
+      "id": "generated-replay-36",
+      "category": "replayed",
+      "label": "Generated idempotent replay 36",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.022
+    },
+    {
+      "id": "generated-replay-37",
+      "category": "replayed",
+      "label": "Generated idempotent replay 37",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.023
+    },
+    {
+      "id": "generated-replay-38",
+      "category": "replayed",
+      "label": "Generated idempotent replay 38",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.029
+    },
+    {
+      "id": "generated-replay-39",
+      "category": "replayed",
+      "label": "Generated idempotent replay 39",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.022
+    },
+    {
+      "id": "generated-replay-40",
+      "category": "replayed",
+      "label": "Generated idempotent replay 40",
+      "expected": {
+        "status": "prepared",
+        "request": true
+      },
+      "actual": {
+        "status": "prepared",
+        "request": true,
+        "dispatch_state": "not_dispatched",
+        "authority_effect": "none",
+        "reason_codes": []
+      },
+      "risk_tags": [
+        "generated",
+        "replay",
+        "idempotency"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": false,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.026
+    },
+    {
+      "id": "generated-wrong-binding-01",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 01",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-wrong-binding-02",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 02",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.019
+    },
+    {
+      "id": "generated-wrong-binding-03",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 03",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-wrong-binding-04",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 04",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.004
+    },
+    {
+      "id": "generated-wrong-binding-05",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 05",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-wrong-binding-06",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 06",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-wrong-binding-07",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 07",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-wrong-binding-08",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 08",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.004
+    },
+    {
+      "id": "generated-wrong-binding-09",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 09",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-wrong-binding-10",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 10",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.006
+    },
+    {
+      "id": "generated-wrong-binding-11",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 11",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.006
+    },
+    {
+      "id": "generated-wrong-binding-12",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 12",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.006
+    },
+    {
+      "id": "generated-wrong-binding-13",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 13",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.007
+    },
+    {
+      "id": "generated-wrong-binding-14",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 14",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.004
+    },
+    {
+      "id": "generated-wrong-binding-15",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 15",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.011
+    },
+    {
+      "id": "generated-wrong-binding-16",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 16",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.004
+    },
+    {
+      "id": "generated-wrong-binding-17",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 17",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.006
+    },
+    {
+      "id": "generated-wrong-binding-18",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 18",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.007
+    },
+    {
+      "id": "generated-wrong-binding-19",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 19",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-wrong-binding-20",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 20",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-wrong-binding-21",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 21",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.009
+    },
+    {
+      "id": "generated-wrong-binding-22",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 22",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.006
+    },
+    {
+      "id": "generated-wrong-binding-23",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 23",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.004
+    },
+    {
+      "id": "generated-wrong-binding-24",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 24",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.022
+    },
+    {
+      "id": "generated-wrong-binding-25",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 25",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.006
+    },
+    {
+      "id": "generated-wrong-binding-26",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 26",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.006
+    },
+    {
+      "id": "generated-wrong-binding-27",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 27",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-wrong-binding-28",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 28",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.007
+    },
+    {
+      "id": "generated-wrong-binding-29",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 29",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-wrong-binding-30",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 30",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.014
+    },
+    {
+      "id": "generated-wrong-binding-31",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 31",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.011
+    },
+    {
+      "id": "generated-wrong-binding-32",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 32",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.004
+    },
+    {
+      "id": "generated-wrong-binding-33",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 33",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.009
+    },
+    {
+      "id": "generated-wrong-binding-34",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 34",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.052
+    },
+    {
+      "id": "generated-wrong-binding-35",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 35",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-wrong-binding-36",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 36",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-wrong-binding-37",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 37",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-wrong-binding-38",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 38",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.024
+    },
+    {
+      "id": "generated-wrong-binding-39",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 39",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.004
+    },
+    {
+      "id": "generated-wrong-binding-40",
+      "category": "wrong_binding",
+      "label": "Generated binding points to a different option 40",
+      "expected": {
+        "status": "blocked",
+        "request": false
+      },
+      "actual": {
+        "status": "blocked",
+        "request": false,
+        "dispatch_state": null,
+        "authority_effect": "none",
+        "reason_codes": [
+          "action_binding_option_mismatch"
+        ]
+      },
+      "risk_tags": [
+        "generated",
+        "binding"
+      ],
+      "wrong_company": false,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "generated-cross-company-01",
+      "category": "cross_company",
+      "label": "Generated cross-company assessment 01",
+      "expected": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "actual": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.007
+    },
+    {
+      "id": "generated-cross-company-02",
+      "category": "cross_company",
+      "label": "Generated cross-company parameters 02",
+      "expected": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "actual": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.016
+    },
+    {
+      "id": "generated-cross-company-03",
+      "category": "cross_company",
+      "label": "Generated cross-company assessment 03",
+      "expected": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "actual": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.008
+    },
+    {
+      "id": "generated-cross-company-04",
+      "category": "cross_company",
+      "label": "Generated cross-company parameters 04",
+      "expected": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "actual": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.019
+    },
+    {
+      "id": "generated-cross-company-05",
+      "category": "cross_company",
+      "label": "Generated cross-company assessment 05",
+      "expected": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "actual": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.01
+    },
+    {
+      "id": "generated-cross-company-06",
+      "category": "cross_company",
+      "label": "Generated cross-company parameters 06",
+      "expected": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "actual": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.021
+    },
+    {
+      "id": "generated-cross-company-07",
+      "category": "cross_company",
+      "label": "Generated cross-company assessment 07",
+      "expected": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "actual": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.067
+    },
+    {
+      "id": "generated-cross-company-08",
+      "category": "cross_company",
+      "label": "Generated cross-company parameters 08",
+      "expected": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "actual": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.024
+    },
+    {
+      "id": "generated-cross-company-09",
+      "category": "cross_company",
+      "label": "Generated cross-company assessment 09",
+      "expected": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "actual": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.037
+    },
+    {
+      "id": "generated-cross-company-10",
+      "category": "cross_company",
+      "label": "Generated cross-company parameters 10",
+      "expected": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "actual": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.023
+    },
+    {
+      "id": "generated-cross-company-11",
+      "category": "cross_company",
+      "label": "Generated cross-company assessment 11",
+      "expected": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "actual": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.009
+    },
+    {
+      "id": "generated-cross-company-12",
+      "category": "cross_company",
+      "label": "Generated cross-company parameters 12",
+      "expected": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "actual": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.029
+    },
+    {
+      "id": "generated-cross-company-13",
+      "category": "cross_company",
+      "label": "Generated cross-company assessment 13",
+      "expected": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "actual": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.009
+    },
+    {
+      "id": "generated-cross-company-14",
+      "category": "cross_company",
+      "label": "Generated cross-company parameters 14",
+      "expected": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "actual": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.017
+    },
+    {
+      "id": "generated-cross-company-15",
+      "category": "cross_company",
+      "label": "Generated cross-company assessment 15",
+      "expected": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "actual": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.01
+    },
+    {
+      "id": "generated-cross-company-16",
+      "category": "cross_company",
+      "label": "Generated cross-company parameters 16",
+      "expected": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "actual": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.033
+    },
+    {
+      "id": "generated-cross-company-17",
+      "category": "cross_company",
+      "label": "Generated cross-company assessment 17",
+      "expected": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "actual": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.009
+    },
+    {
+      "id": "generated-cross-company-18",
+      "category": "cross_company",
+      "label": "Generated cross-company parameters 18",
+      "expected": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "actual": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.023
+    },
+    {
+      "id": "generated-cross-company-19",
+      "category": "cross_company",
+      "label": "Generated cross-company assessment 19",
+      "expected": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "actual": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.009
+    },
+    {
+      "id": "generated-cross-company-20",
+      "category": "cross_company",
+      "label": "Generated cross-company parameters 20",
+      "expected": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "actual": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.108
+    },
+    {
+      "id": "generated-cross-company-21",
+      "category": "cross_company",
+      "label": "Generated cross-company assessment 21",
+      "expected": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "actual": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.007
+    },
+    {
+      "id": "generated-cross-company-22",
+      "category": "cross_company",
+      "label": "Generated cross-company parameters 22",
+      "expected": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "actual": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.019
+    },
+    {
+      "id": "generated-cross-company-23",
+      "category": "cross_company",
+      "label": "Generated cross-company assessment 23",
+      "expected": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "actual": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.008
+    },
+    {
+      "id": "generated-cross-company-24",
+      "category": "cross_company",
+      "label": "Generated cross-company parameters 24",
+      "expected": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "actual": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.017
+    },
+    {
+      "id": "generated-cross-company-25",
+      "category": "cross_company",
+      "label": "Generated cross-company assessment 25",
+      "expected": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "actual": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.029
+    },
+    {
+      "id": "generated-cross-company-26",
+      "category": "cross_company",
+      "label": "Generated cross-company parameters 26",
+      "expected": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "actual": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.018
+    },
+    {
+      "id": "generated-cross-company-27",
+      "category": "cross_company",
+      "label": "Generated cross-company assessment 27",
+      "expected": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "actual": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.014
+    },
+    {
+      "id": "generated-cross-company-28",
+      "category": "cross_company",
+      "label": "Generated cross-company parameters 28",
+      "expected": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "actual": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.021
+    },
+    {
+      "id": "generated-cross-company-29",
+      "category": "cross_company",
+      "label": "Generated cross-company assessment 29",
+      "expected": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "actual": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.035
+    },
+    {
+      "id": "generated-cross-company-30",
+      "category": "cross_company",
+      "label": "Generated cross-company parameters 30",
+      "expected": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "actual": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.032
+    },
+    {
+      "id": "generated-cross-company-31",
+      "category": "cross_company",
+      "label": "Generated cross-company assessment 31",
+      "expected": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "actual": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.009
+    },
+    {
+      "id": "generated-cross-company-32",
+      "category": "cross_company",
+      "label": "Generated cross-company parameters 32",
+      "expected": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "actual": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.051
+    },
+    {
+      "id": "generated-cross-company-33",
+      "category": "cross_company",
+      "label": "Generated cross-company assessment 33",
+      "expected": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "actual": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.008
+    },
+    {
+      "id": "generated-cross-company-34",
+      "category": "cross_company",
+      "label": "Generated cross-company parameters 34",
+      "expected": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "actual": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.016
+    },
+    {
+      "id": "generated-cross-company-35",
+      "category": "cross_company",
+      "label": "Generated cross-company assessment 35",
+      "expected": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "actual": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.009
+    },
+    {
+      "id": "generated-cross-company-36",
+      "category": "cross_company",
+      "label": "Generated cross-company parameters 36",
+      "expected": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "actual": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.016
+    },
+    {
+      "id": "generated-cross-company-37",
+      "category": "cross_company",
+      "label": "Generated cross-company assessment 37",
+      "expected": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "actual": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.012
+    },
+    {
+      "id": "generated-cross-company-38",
+      "category": "cross_company",
+      "label": "Generated cross-company parameters 38",
+      "expected": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "actual": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.023
+    },
+    {
+      "id": "generated-cross-company-39",
+      "category": "cross_company",
+      "label": "Generated cross-company assessment 39",
+      "expected": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "actual": {
+        "error_code": "capability_assessment_scope_mismatch",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.009
+    },
+    {
+      "id": "generated-cross-company-40",
+      "category": "cross_company",
+      "label": "Generated cross-company parameters 40",
+      "expected": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "actual": {
+        "error_code": "cross_company_action_parameters",
+        "request": false
+      },
+      "risk_tags": [
+        "generated",
+        "company_scope"
+      ],
+      "wrong_company": true,
+      "baseline_would_dispatch": true,
+      "baseline_unsafe_dispatch": true,
+      "replay_idempotency_stable": true,
+      "passed": true,
+      "latency_ms": 0.02
     }
   ]
 }

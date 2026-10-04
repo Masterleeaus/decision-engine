@@ -1,1 +1,17 @@
-{"compilerOptions":{"target":"ES2022","module":"NodeNext","moduleResolution":"NodeNext","strict":true,"esModuleInterop":true,"skipLibCheck":true,"outDir":"dist"},"include":["runtime/**/*.ts","tests/**/*.ts","node-shim.d.ts"]}
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "rootDir": ".",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "outDir": "dist"
+  },
+  "include": [
+    "runtime/**/*.ts",
+    "tests/**/*.ts",
+    "node-shim.d.ts"
+  ]
+}

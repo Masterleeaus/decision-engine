@@ -6,7 +6,7 @@
 
 <p align="center"><strong>Decision intelligence you can inspect, challenge, and govern.</strong></p>
 
-<p align="center"><a href="https://github.com/Masterleeaus/decision-engine/actions/workflows/authority-gate-eval.yml"><img src="https://github.com/Masterleeaus/decision-engine/actions/workflows/authority-gate-eval.yml/badge.svg" alt="Authority gate evaluation"></a></p>
+<p align="center"><a href="https://github.com/Masterleeaus/decision-engine/actions/workflows/authority-gate-eval.yml"><img src="https://github.com/Masterleeaus/decision-engine/actions/workflows/authority-gate-eval.yml/badge.svg" alt="Decision Engine CI"></a></p>
 
 <p align="center">
   A domain-neutral architecture for turning evidence into constraint-aware recommendations—with uncertainty, provenance, and authority boundaries made explicit.
@@ -17,8 +17,6 @@
   <a href="#capabilities">Capabilities</a> ·
   <a href="#trust-boundaries">Trust boundaries</a> ·
   <a href="#reproducible-authority-handoff-evaluation">Authority eval</a> ·
-  <a href="#llm-in-the-loop-authority-gate-evaluation">LLM-in-loop eval</a> ·
-  <a href="#quickstart-and-verification">Quickstart</a> ·
   <a href="#implementation-status">Implementation status</a>
 </p>
 
@@ -33,6 +31,20 @@ A single score can hide missing evidence, policy limits, competing objectives, o
 > **Decision model:** subject + objectives + options + evidence + constraints + preferences → predicted outcomes and trade-offs → ranking → recommendation + confidence + authority requirements.
 
 The engine can analyze and recommend. It does not authorize or execute the recommendation.
+
+## Run it
+
+Node.js 22.6 or newer is required.
+
+```bash
+npm ci
+npm test
+npm run eval
+npm run validate:math
+npm run example:environment
+```
+
+`npm test` builds the package entry point and all 21 engine projects, then runs the 16 compiled TypeScript suites and five JavaScript suites. `npm run build` builds without running tests. `npm run coverage` runs the same tests through c8. The package exposes the engines through named namespaces at its root and stable subpath exports.
 
 ## Architecture
 
@@ -103,7 +115,7 @@ The engine can describe prerequisites for action, but it does not create identit
 | **24** | Decision history | Creates snapshot-hashed revisions and verifies supersession chains without editing earlier snapshots. |
 | **25** | Learning loop | Uses verified outcomes to calculate forecast error, assumption reliability, recommendation performance, and confidence calibration updates. |
 | **26** | Decision workflow | Composes Steps 10–25, emits hash-linked stage events, checks company scope, applies a fail-closed constraint gate, evaluates watches, and accepts learning updates only after external outcome verification. |
-| **27** | Action handoff | Prepares an expiring, idempotent request only for a constraint-eligible recommendation and a fresh host capability assessment; approvals and dispatch remain with the host. |
+| **27** | Action handoff | Prepares an expiring, idempotent request only for a constraint-eligible recommendation and a fresh host capability assessment (five-minute default, configurable from one to 60 minutes); approvals and dispatch remain with the host. |
 | **28** | Provider reliability | Captures privacy-minimized provider outcomes, latency, freshness summaries, and reliability snapshots; health is diagnostic only. |
 | **29** | Decision signal router | Maps host-validated field-change signals to active watches within the exact company and decision-subject scope; returns event-cycle requests without queueing or evaluating them. |
 | **30** | Watch lifecycle | Plans watch creation, definition changes, pause, resume, and soft close with revision and event contracts; host authorization, listing, and atomic persistence remain external. |
@@ -137,49 +149,51 @@ A domain supplies its own entities, evidence, objectives, alternatives, and cons
 
 These are decision-support boundaries. They do not replace authentication, authorization, policy enforcement, or a governed execution service in the integrating application.
 
-## Quickstart and verification
-
-Node.js 22 or newer is required for the checked-in TypeScript reference runners (`--experimental-transform-types`). The repository intentionally has no root package manifest or dependency-install step: the runnable repository-level smoke test is the deterministic authority-gate evaluation.
-
-Run the reproducible authority-gate evaluation documented below from the repository root. To run every reference-engine test without shell-specific globbing, use the portable entrypoint:
-
-```bash
-node scripts/reference-tests.mjs
-```
-
-The test entrypoint discovers `*.test.ts` and `*.test.mjs` files under `engines/*/tests/` and invokes Node's test runner with the same Node.js 22 transform-types flag used by CI.
-
 ## Reproducible authority handoff evaluation
 
-**Claim tested:** Step 27 prepares a ready handoff only when the recommendation is constraint-eligible, the action binding matches, and the host capability assessment is fresh, available, and authorized. Requests remain undispatched; the host retains approval, persistence, revalidation, and execution.
+**Claim tested:** Step 27 prepares a ready handoff only when the recommendation is constraint-eligible, the action binding matches, and the host capability assessment is fresh, available, and authorized. Assessment freshness defaults to five minutes and can be configured from one to 60 minutes. Requests remain undispatched; the host retains approval, persistence, revalidation, and execution.
 
 Run from the repository root:
 
 ```bash
-node --experimental-strip-types scripts/authority-gate-eval.mjs
+npm run eval
 ```
 
-The runner evaluates 20 labelled scenarios with fixed timestamp 2026-10-04T00:00:00.000Z and seed 20261004. It writes the full per-case report to [JSON](eval-results/authority-gate-latest.json) and [Markdown](eval-results/authority-gate-latest.md). CI runs on pushes and pull requests and uploads both files as an artifact.
+The runner combines 20 curated cases with 240 deterministic generated cases, using fixed as-of time 2026-10-04T00:00:00.000Z and seed 20261004. Generated cases cover valid requests, stale and expired assessments, idempotent replays, mismatched bindings, and cross-company inputs. The report includes 95% Wilson intervals and every scenario's expected and actual result. CI builds and tests all 21 engine projects, runs the eval and math checks, and uploads the reports.
 
-**Measured 4 October 2026** against commit [7c05ddceaa818cf2bb87b7be7f1fe3f7468dac28](https://github.com/Masterleeaus/decision-engine/commit/7c05ddceaa818cf2bb87b7be7f1fe3f7468dac28); scenario SHA-256: 8e8516d4d2224ba2c5c2a240e084188d1620428ff1c0e8a5be42680eadd0afd6. The [GitHub Actions run](https://github.com/Masterleeaus/decision-engine/actions/runs/37170763045) passed.
+**Measured 4 October 2026** against commit [2e7118b](https://github.com/Masterleeaus/decision-engine/commit/2e7118bb0baca84231ebe15ef3a072b8e6eb6e4a); scenario SHA-256: `503400974efd077f75cf85edfc27363c1b9971443917826edcf881b5739cb25f`. The current JSON and Markdown reports are linked below.
 
-| Measure | Recommendation-only illustrative baseline | Step 27 |
+| Measure | Result | 95% Wilson interval |
 | --- | ---: | ---: |
-| Blocked or unresolved scenarios accepted as actionable / emitted as ready handoffs | 15 / 17 | 0 / 17 |
-| Valid eligible cases wrongly blocked | 0 / 3 | 0 / 3 |
-| Wrong-company attempts producing a request | 2 / 2 | 0 / 2 |
-| Scenario-level violations of the undispatched-request contract | Not applicable | 0 / 20 |
+| Unsafe ready handoffs on blocked or unresolved cases | 0 / 177 | 0.0%–2.1% |
+| Valid recommendations wrongly blocked | 0 / 83 | 0.0%–4.4% |
+| Wrong-company attempts producing a request | 0 / 42 | 0.0%–8.4% |
+| Dispatch-contract violations | 0 / 260 | 0.0%–1.5% |
+| Recommendation-only baseline unsafe dispatches | 175 / 177 | 96.0%–99.7% |
+| Idempotent replays retaining the same key | 40 / 40 | 91.2%–100.0% |
 
-The baseline is a deliberately simple rule that would dispatch any non-empty recommendation while ignoring constraints and host authorization. It is a no-gate comparator, not a competing product. The approval-required case returns a request for the host approval flow; it remains undispatched and is not counted as a ready handoff.
+The baseline is a deliberately simple rule that would dispatch any non-empty recommendation while ignoring constraints and host authorization. It is a no-gate comparator, not a competing product. The approval-required case returns a request for the host approval flow; it remains undispatched and is not counted as a ready handoff. These intervals describe this synthetic test set; they are not estimates of real-world production failure rates.
 
-Single-call timings are recorded in the JSON report for context only; they are not an incremental latency comparison. This evaluation tests the Step 27 reference function, not a deployed host's storage, approval, or dispatch integration.
+Single-call timings are recorded in the JSON report for context only; they are not an incremental latency comparison. This evaluation tests the Step 27 reference function, not a deployed host's storage, approval, or dispatch integration. See the current [JSON report](eval-results/authority-gate-latest.json) and [Markdown summary](eval-results/authority-gate-latest.md).
 
+### Optional live LLM proposal run
 
-## LLM-in-the-loop authority gate evaluation
+The repository's 200-case runner sends synthetic user requests to an OpenAI Responses API model. It keeps company scope, option eligibility, action binding, capability state, and authorization under host control, then evaluates each model proposal with Step 27 and counts prepared and approval-required handoffs. A prepared request remains undispatched. The existing workflow also runs an offline smoke check without an API request.
 
-A separate 200-case harness feeds untrusted model proposals to the Step 27 gate while keeping company identity, eligibility, authorization, capability state, and freshness host-owned. The model cannot call tools, and the harness never persists, approves, or executes a request.
+```bash
+node --experimental-strip-types scripts/llm-authority-gate-eval.mjs --offline
+OPENAI_API_KEY="$OPENAI_API_KEY" OPENAI_MODEL="your-enabled-model" node --experimental-strip-types scripts/llm-authority-gate-eval.mjs
+```
 
-Pushes and pull requests run a deterministic offline smoke check; they do not call a model. Run the workflow manually with `workflow_dispatch` for a live Responses API evaluation. The offline proposer fixture validates only the harness-to-gate wiring and is not an LLM test result. See the [evaluation method and run instructions](docs/llm-in-the-loop-authority-eval.md).
+Set the repository variable `RUN_LLM_EVAL=true`, secret `OPENAI_API_KEY`, and variable `OPENAI_MODEL` to opt into the live run from the main CI workflow. The separate LLM workflow also supports manual `workflow_dispatch`. No live model result is claimed until a live run executes. Reports are written to `eval-results/llm-authority-gate-live.json`; offline reports use `eval-results/llm-authority-gate-offline.json`.
+
+### Math checks
+
+`npm run validate:math` fits confidence bins on 60,000 seeded simulated outcomes and evaluates them on a separate 40,000 outcomes. It reports Brier score and expected calibration error before and after calibration. It also compares this engine's ranking with a reference TOPSIS implementation on a seven-option synthetic fixture. The comparison reports agreement; it does not treat either method as universally correct. See [the math report](eval-results/math-validation-latest.md).
+
+### Worked environmental example
+
+`npm run example:environment` compares excavation, in-situ bioremediation, chemical oxidation, and monitored attenuation. It applies a hard 270-day window, ranks eligible options, creates a DecisionPacket, and prints the structured explanation. All example measurements, costs, and estimates are synthetic and are not field data or remediation advice.
 
 ## Integration pattern
 
@@ -216,12 +230,12 @@ This repository is a **research-backed architecture package with modular TypeScr
 
 **Host-application work still required**
 
-- A root package manifest and supported public SDK/export surface
+- Publishing and maintaining the public SDK release
 - Durable history, learning, watch, and provider-telemetry storage; cross-run idempotency; operational alerting; and a production scheduler
 - Production adapters for business systems and forecasting providers
 - Authentication, authorization, approval, and governed execution integrations
 
-Steps 26–30 are reference composition, lifecycle, routing, and monitoring layers; they do not provide production connectors, durable watch listing or storage, command receipt retention, atomic persistence, cross-run queue deduplication, workflow/action/telemetry stores, a scheduler, approval service, alert delivery, or action execution. The checked-in acceptance and test-output files record staged development history. Some early step documents and logs refer to the pre-convergence Python implementation; `README-TYPESCRIPT-CONVERGENCE.md` describes the current TypeScript direction. Treat those records as historical artifacts and verify the current source and integration in the target application before relying on them as a release gate.
+Steps 26–30 are reference composition, lifecycle, routing, and monitoring layers; they do not provide production connectors, durable watch listing or storage, command receipt retention, atomic persistence, cross-run queue deduplication, workflow/action/telemetry stores, a scheduler, approval service, alert delivery, or action execution. Per-engine acceptance artifacts remain as development records; executable TypeScript and JavaScript suites are the source of truth for current behavior. Some early step documents refer to the pre-convergence Python implementation; the [convergence notes](docs/development/README-TYPESCRIPT-CONVERGENCE.md) describe the current TypeScript direction.
 
 ## Repository guide
 
@@ -232,7 +246,7 @@ Steps 26–30 are reference composition, lifecycle, routing, and monitoring laye
 | [`engines/10-observation-engine/`](engines/10-observation-engine/) – [`engines/30-watch-lifecycle/`](engines/30-watch-lifecycle/) | TypeScript reference engines, workflow coordination, watch lifecycle, signal routing, action handoff, provider reliability telemetry, contracts, schemas, tests, and examples |
 | [`docs/archive-integration/REUSABLE-PATTERN-COVERAGE.md`](docs/archive-integration/REUSABLE-PATTERN-COVERAGE.md) | Deep-scan mapping from archive patterns to engine capabilities and host boundaries |
 | [`docs/archive-integration/CAPABILITY-COVERAGE.csv`](docs/archive-integration/CAPABILITY-COVERAGE.csv) | Row-by-row disposition of all 44 archive-observed capabilities |
-| [`README-TYPESCRIPT-CONVERGENCE.md`](README-TYPESCRIPT-CONVERGENCE.md) | Current runtime-language and convergence notes |
+| [`docs/development/README-TYPESCRIPT-CONVERGENCE.md`](docs/development/README-TYPESCRIPT-CONVERGENCE.md) | Current runtime-language and convergence notes |
 | [`archive/Titan Decision Engine Master Step 25.zip`](archive/Titan%20Decision%20Engine%20Master%20Step%2025.zip) | Original cumulative research and implementation bundle |
 | [`docs/DEEP-SCAN-PROMPT.md`](docs/DEEP-SCAN-PROMPT.md) | Reusable repository-audit prompt |
 
@@ -241,7 +255,7 @@ Steps 26–30 are reference composition, lifecycle, routing, and monitoring laye
 - [Canonical Decision Model](docs/specification/08-canonical-decision-model/README-STEP-08-CANONICAL-DECISION-MODEL.md)
 - [DecisionPacket contract](docs/specification/09-decisionpacket-contract/README-STEP-09-DECISIONPACKET-CONTRACT.md)
 - [DecisionPacket examples](docs/specification/09-decisionpacket-contract/examples/)
-- [TypeScript convergence notes](README-TYPESCRIPT-CONVERGENCE.md)
+- [TypeScript convergence notes](docs/development/README-TYPESCRIPT-CONVERGENCE.md)
 - [Step 25 Learning Loop](engines/25-learning-loop/README-STEP-25.md)
 
 ---
