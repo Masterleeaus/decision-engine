@@ -140,13 +140,7 @@ These are decision-support boundaries. They do not replace authentication, autho
 
 Node.js 22 or newer is required for the checked-in TypeScript reference runners (`--experimental-strip-types`). The repository intentionally has no root package manifest or dependency-install step: the runnable repository-level smoke test is the deterministic authority-gate evaluation.
 
-From the repository root:
-
-```bash
-node --experimental-strip-types scripts/authority-gate-eval.mjs
-```
-
-The command evaluates the 20 fixed scenarios in `evaluations/authority-gate/scenarios.json` and rewrites the JSON and Markdown reports under `eval-results/`. Individual engine tests live beside their runtimes under `engines/*/tests/`; the CI workflow runs the same authority-gate command on every push and pull request.
+The reproducible authority-gate evaluation below is the repository-level smoke test and requires no install step. Individual engine tests live beside their runtimes under `engines/*/tests/`; the CI workflow runs the same authority-gate command on every push and pull request.
 
 ## Reproducible authority handoff evaluation
 
