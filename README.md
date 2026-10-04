@@ -146,7 +146,7 @@ Run the reproducible authority-gate evaluation documented below from the reposit
 node scripts/reference-tests.mjs
 ```
 
-The test entrypoint discovers `*.test.ts` and `*.test.mjs` files under `engines/*/tests/` and invokes Node's test runner with the same Node.js 22 strip-types flag used by CI.
+The test entrypoint discovers `*.test.ts` and `*.test.mjs` files under `engines/*/tests/` and invokes Node's test runner with the Node.js 22 transform-types flag used by CI.
 
 ## Reproducible authority handoff evaluation
 
