@@ -23,7 +23,7 @@
 
 ---
 
-## Decision intelligence that stays explainable
+## Overview
 
 Teams make consequential choices with evidence scattered across systems, objectives pulling in different directions, and policy or approval requirements that are easy to lose in a score. Decision Engine turns those inputs into a decision path that a reviewer can inspect from source evidence to recommendation.
 
@@ -35,7 +35,48 @@ Teams make consequential choices with evidence scattered across systems, objecti
 
 The engine can analyze and recommend. It does not authorize or execute the recommendation.
 
-## Run it
+
+## Measured evidence
+
+The strongest claim in this repository is tested as code: **a recommendation does not become an executable handoff unless constraint eligibility, action binding, company scope, and a fresh host capability assessment all agree.**
+
+The current deterministic evaluation combines 20 curated cases with 240 seeded generated cases.
+
+| Measured property | Current result | Reproduce |
+| --- | ---: | --- |
+| Unsafe ready handoffs on blocked or unresolved cases | **0 / 177** | `npm run eval` |
+| Valid recommendations wrongly blocked | **0 / 83** | `npm run eval` |
+| Wrong-company attempts producing a request | **0 / 42** | `npm run eval` |
+| Dispatch-contract violations | **0 / 260** | `npm run eval` |
+| Idempotent replays retaining the same key | **40 / 40** | `npm run eval` |
+| Recommendation-only baseline unsafe dispatches | **175 / 177** | `npm run eval` |
+
+**Evaluated:** 4 October 2026 · **Seed:** `20261004` · **Scenarios:** 260 · **Scenario SHA-256:** `503400974efd077f75cf85edfc27363c1b9971443917826edcf881b5739cb25f`
+
+These are synthetic reference-engine results, not production failure-rate estimates. The detailed methodology, Wilson intervals, scenario corpus, and limits are documented in [Reproducible authority handoff evaluation](#reproducible-authority-handoff-evaluation).
+
+## What is new
+
+The technical signature is not a generic LLM wrapper. It is the combination of an inspectable decision model with explicit hard constraints, uncertainty, revision-preserving learning, and a host-governed action boundary.
+
+| Mechanism | Engineering distinction | Primary implementation |
+| --- | --- | --- |
+| **Constraint-first eligibility** | Hard requirements are resolved before weighted ranking; unknown hard requirements fail closed instead of being averaged away. | `engines/16-constraint-engine/` |
+| **Inspectable ranking and abstention** | Scores expose factor contributions and sensitivity; the engine can choose not to recommend when confidence, coverage, or margin is insufficient. | `engines/20-ranking-engine/`, `engines/21-best-action-engine/` |
+| **Revision-preserving learning** | Verified outcomes produce new calibration and learning records without rewriting historical decision snapshots. | `engines/24-decision-history/`, `engines/25-learning-loop/` |
+| **Governed action handoff** | Step 27 may prepare an expiring idempotent request, but authorization, approval, persistence, revalidation, and dispatch remain external host responsibilities. | `engines/27-action-handoff/` |
+| **Scoped watch + signal path** | Validated field-change signals can be routed to matching watches without granting the router execution authority. | `engines/29-signal-router/`, `engines/30-watch-lifecycle/` |
+
+### Evidence status
+
+- **Implemented:** Steps 10–30 reference engines and shared decision contracts.
+- **Tested:** build/test suites for the packaged TypeScript implementation.
+- **Evaluated:** deterministic Step 27 authority-handoff scenarios and separate mathematical validation.
+- **Experimental / optional:** live LLM proposal evaluation.
+- **Not claimed:** turnkey production deployment, universal optimality, or host-system authorization.
+
+
+## Quick start
 
 Node.js 22.6 or newer is required.
 
