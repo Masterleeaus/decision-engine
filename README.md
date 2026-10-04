@@ -17,6 +17,7 @@
   <a href="#capabilities">Capabilities</a> ·
   <a href="#trust-boundaries">Trust boundaries</a> ·
   <a href="#reproducible-authority-handoff-evaluation">Authority eval</a> ·
+  <a href="#llm-in-the-loop-authority-gate-evaluation">LLM-in-loop eval</a> ·
   <a href="#quickstart-and-verification">Quickstart</a> ·
   <a href="#implementation-status">Implementation status</a>
 </p>
@@ -166,6 +167,13 @@ The runner evaluates 20 labelled scenarios with fixed timestamp 2026-10-04T00:00
 The baseline is a deliberately simple rule that would dispatch any non-empty recommendation while ignoring constraints and host authorization. It is a no-gate comparator, not a competing product. The approval-required case returns a request for the host approval flow; it remains undispatched and is not counted as a ready handoff.
 
 Single-call timings are recorded in the JSON report for context only; they are not an incremental latency comparison. This evaluation tests the Step 27 reference function, not a deployed host's storage, approval, or dispatch integration.
+
+
+## LLM-in-the-loop authority gate evaluation
+
+A separate 200-case harness feeds untrusted model proposals to the Step 27 gate while keeping company identity, eligibility, authorization, capability state, and freshness host-owned. The model cannot call tools, and the harness never persists, approves, or executes a request.
+
+Pushes and pull requests run a deterministic offline smoke check; they do not call a model. Run the workflow manually with `workflow_dispatch` for a live Responses API evaluation. The offline proposer fixture validates only the harness-to-gate wiring and is not an LLM test result. See the [evaluation method and run instructions](docs/llm-in-the-loop-authority-eval.md).
 
 ## Integration pattern
 
