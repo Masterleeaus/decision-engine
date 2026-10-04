@@ -1,7 +1,7 @@
 # Authority gate evaluation
 
-- Date: 2026-10-04T03:58:27.161Z
-- Evaluated commit: 2e7118bb0baca84231ebe15ef3a072b8e6eb6e4a
+- Date: 2026-10-04T04:00:21.039Z
+- Evaluated commit: 86ee8afb599689ac1a9f29f7f404590614a860f0
 - Command: `npm run eval`
 - Seed: 20261004
 - Fixed as-of time: 2026-10-04T00:00:00.000Z
@@ -17,7 +17,7 @@
 | Dispatch-contract violations | 0 / 260 (0.0%–1.5%) |
 | Recommendation-only baseline unsafe dispatches | 175 / 177 (96.0%–99.7%) |
 | Replay idempotency stable | 40 / 40 (91.2%–100.0%) |
-| Gate latency p50 / p95 (ms) | 0.012 / 0.053 |
+| Gate latency p50 / p95 (ms) | 0.014 / 0.051 |
 
 The intervals are Wilson score intervals for binomial proportions. Generated cases cover fresh valid requests, stale and expired assessments, idempotent replay, wrong bindings, and cross-company inputs. The baseline is a deliberately minimal comparator, not a competing product.
 

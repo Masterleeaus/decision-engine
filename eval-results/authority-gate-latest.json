@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
-  "evaluation_date": "2026-10-04T03:58:27.161Z",
-  "evaluated_commit": "2e7118bb0baca84231ebe15ef3a072b8e6eb6e4a",
+  "evaluation_date": "2026-10-04T04:00:21.039Z",
+  "evaluated_commit": "86ee8afb599689ac1a9f29f7f404590614a860f0",
   "command": "npm run eval",
   "seed": 20261004,
   "fixed_as_of": "2026-10-04T00:00:00.000Z",
@@ -88,8 +88,8 @@
       }
     },
     "gate_latency_ms": {
-      "p50": 0.012,
-      "p95": 0.053,
+      "p50": 0.014,
+      "p95": 0.051,
       "note": "Single-call scenario timings; descriptive only, not incremental overhead or a pass/fail threshold."
     }
   },
@@ -116,7 +116,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.03
+      "latency_ms": 0.102
     },
     {
       "id": "valid-near-expiry",
@@ -139,7 +139,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.022
+      "latency_ms": 0.027
     },
     {
       "id": "valid-repeat",
@@ -162,7 +162,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.129
+      "latency_ms": 0.06
     },
     {
       "id": "approval-required",
@@ -189,7 +189,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.028
+      "latency_ms": 0.029
     },
     {
       "id": "recommendation-abstains",
@@ -216,7 +216,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.005
+      "latency_ms": 0.004
     },
     {
       "id": "recommendation-review",
@@ -243,7 +243,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.005
+      "latency_ms": 0.006
     },
     {
       "id": "constraint-abstains",
@@ -351,7 +351,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.015
+      "latency_ms": 0.02
     },
     {
       "id": "binding-option-mismatch",
@@ -405,7 +405,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.005
+      "latency_ms": 0.006
     },
     {
       "id": "host-authorization-unknown",
@@ -432,7 +432,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.006
+      "latency_ms": 0.007
     },
     {
       "id": "capability-disabled",
@@ -513,7 +513,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.016
+      "latency_ms": 0.013
     },
     {
       "id": "assessment-future-dated",
@@ -540,7 +540,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.005
+      "latency_ms": 0.007
     },
     {
       "id": "assessment-incomplete",
@@ -567,7 +567,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.005
+      "latency_ms": 0.006
     },
     {
       "id": "wrong-company-assessment",
@@ -589,7 +589,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.018
+      "latency_ms": 0.024
     },
     {
       "id": "cross-company-parameters",
@@ -637,7 +637,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.028
+      "latency_ms": 0.026
     },
     {
       "id": "generated-valid-02",
@@ -663,7 +663,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.072
+      "latency_ms": 0.023
     },
     {
       "id": "generated-valid-03",
@@ -689,7 +689,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.019
+      "latency_ms": 0.023
     },
     {
       "id": "generated-valid-04",
@@ -715,7 +715,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.026
+      "latency_ms": 0.025
     },
     {
       "id": "generated-valid-05",
@@ -741,7 +741,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.018
+      "latency_ms": 0.017
     },
     {
       "id": "generated-valid-06",
@@ -767,7 +767,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.017
+      "latency_ms": 0.025
     },
     {
       "id": "generated-valid-07",
@@ -793,7 +793,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.042
+      "latency_ms": 0.022
     },
     {
       "id": "generated-valid-08",
@@ -819,7 +819,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.044
+      "latency_ms": 0.046
     },
     {
       "id": "generated-valid-09",
@@ -845,7 +845,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.024
+      "latency_ms": 0.023
     },
     {
       "id": "generated-valid-10",
@@ -871,7 +871,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.019
+      "latency_ms": 0.023
     },
     {
       "id": "generated-valid-11",
@@ -897,7 +897,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.025
+      "latency_ms": 0.021
     },
     {
       "id": "generated-valid-12",
@@ -923,7 +923,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.026
+      "latency_ms": 0.046
     },
     {
       "id": "generated-valid-13",
@@ -949,7 +949,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.026
+      "latency_ms": 0.025
     },
     {
       "id": "generated-valid-14",
@@ -975,7 +975,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.018
+      "latency_ms": 0.017
     },
     {
       "id": "generated-valid-15",
@@ -1001,7 +1001,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.025
+      "latency_ms": 0.044
     },
     {
       "id": "generated-valid-16",
@@ -1027,7 +1027,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.025
+      "latency_ms": 0.026
     },
     {
       "id": "generated-valid-17",
@@ -1053,7 +1053,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.093
+      "latency_ms": 0.033
     },
     {
       "id": "generated-valid-18",
@@ -1105,7 +1105,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.024
+      "latency_ms": 0.02
     },
     {
       "id": "generated-valid-20",
@@ -1131,7 +1131,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.07
+      "latency_ms": 0.068
     },
     {
       "id": "generated-valid-21",
@@ -1157,7 +1157,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.043
+      "latency_ms": 0.041
     },
     {
       "id": "generated-valid-22",
@@ -1183,7 +1183,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.026
+      "latency_ms": 0.051
     },
     {
       "id": "generated-valid-23",
@@ -1209,7 +1209,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.02
+      "latency_ms": 0.022
     },
     {
       "id": "generated-valid-24",
@@ -1235,7 +1235,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.023
+      "latency_ms": 0.04
     },
     {
       "id": "generated-valid-25",
@@ -1261,7 +1261,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.017
+      "latency_ms": 0.022
     },
     {
       "id": "generated-valid-26",
@@ -1287,7 +1287,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.025
+      "latency_ms": 0.026
     },
     {
       "id": "generated-valid-27",
@@ -1313,7 +1313,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.07
+      "latency_ms": 0.046
     },
     {
       "id": "generated-valid-28",
@@ -1365,7 +1365,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.017
+      "latency_ms": 0.018
     },
     {
       "id": "generated-valid-30",
@@ -1391,7 +1391,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.659
+      "latency_ms": 0.047
     },
     {
       "id": "generated-valid-31",
@@ -1417,7 +1417,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.024
+      "latency_ms": 0.025
     },
     {
       "id": "generated-valid-32",
@@ -1469,7 +1469,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.017
+      "latency_ms": 0.025
     },
     {
       "id": "generated-valid-34",
@@ -1495,7 +1495,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.026
+      "latency_ms": 0.024
     },
     {
       "id": "generated-valid-35",
@@ -1521,7 +1521,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.024
+      "latency_ms": 0.025
     },
     {
       "id": "generated-valid-36",
@@ -1547,7 +1547,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.025
+      "latency_ms": 0.026
     },
     {
       "id": "generated-valid-37",
@@ -1573,7 +1573,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.022
+      "latency_ms": 0.021
     },
     {
       "id": "generated-valid-38",
@@ -1599,7 +1599,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.635
+      "latency_ms": 0.548
     },
     {
       "id": "generated-valid-39",
@@ -1625,7 +1625,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.071
+      "latency_ms": 0.022
     },
     {
       "id": "generated-valid-40",
@@ -1651,7 +1651,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.025
+      "latency_ms": 0.031
     },
     {
       "id": "generated-stale-01",
@@ -1680,7 +1680,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.008
+      "latency_ms": 0.007
     },
     {
       "id": "generated-stale-02",
@@ -1709,7 +1709,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.005
+      "latency_ms": 0.006
     },
     {
       "id": "generated-stale-03",
@@ -1738,7 +1738,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.047
+      "latency_ms": 0.061
     },
     {
       "id": "generated-stale-04",
@@ -1767,7 +1767,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.005
+      "latency_ms": 0.006
     },
     {
       "id": "generated-stale-05",
@@ -1796,7 +1796,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.005
+      "latency_ms": 0.006
     },
     {
       "id": "generated-stale-06",
@@ -1825,7 +1825,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.019
+      "latency_ms": 0.007
     },
     {
       "id": "generated-stale-07",
@@ -1854,7 +1854,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.005
+      "latency_ms": 0.533
     },
     {
       "id": "generated-stale-08",
@@ -1883,7 +1883,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.005
+      "latency_ms": 0.006
     },
     {
       "id": "generated-stale-09",
@@ -1912,7 +1912,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.013
+      "latency_ms": 0.01
     },
     {
       "id": "generated-stale-10",
@@ -1941,7 +1941,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.024
+      "latency_ms": 0.006
     },
     {
       "id": "generated-stale-11",
@@ -1970,7 +1970,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.101
+      "latency_ms": 0.068
     },
     {
       "id": "generated-stale-12",
@@ -2028,7 +2028,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.005
+      "latency_ms": 0.047
     },
     {
       "id": "generated-stale-14",
@@ -2086,7 +2086,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.007
+      "latency_ms": 0.011
     },
     {
       "id": "generated-stale-16",
@@ -2144,7 +2144,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.007
+      "latency_ms": 0.013
     },
     {
       "id": "generated-stale-18",
@@ -2173,7 +2173,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.005
+      "latency_ms": 0.006
     },
     {
       "id": "generated-stale-19",
@@ -2202,7 +2202,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.005
+      "latency_ms": 0.014
     },
     {
       "id": "generated-stale-20",
@@ -2260,7 +2260,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.006
+      "latency_ms": 0.008
     },
     {
       "id": "generated-stale-22",
@@ -2347,7 +2347,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.005
+      "latency_ms": 0.006
     },
     {
       "id": "generated-stale-25",
@@ -2376,7 +2376,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.007
+      "latency_ms": 0.008
     },
     {
       "id": "generated-stale-26",
@@ -2405,7 +2405,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.01
+      "latency_ms": 0.019
     },
     {
       "id": "generated-stale-27",
@@ -2463,7 +2463,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.006
+      "latency_ms": 0.014
     },
     {
       "id": "generated-stale-29",
@@ -2492,7 +2492,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.008
+      "latency_ms": 0.005
     },
     {
       "id": "generated-stale-30",
@@ -2550,7 +2550,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.008
+      "latency_ms": 0.006
     },
     {
       "id": "generated-stale-32",
@@ -2579,7 +2579,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.037
+      "latency_ms": 0.039
     },
     {
       "id": "generated-stale-33",
@@ -2608,7 +2608,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.005
+      "latency_ms": 0.013
     },
     {
       "id": "generated-stale-34",
@@ -2637,7 +2637,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.007
+      "latency_ms": 0.005
     },
     {
       "id": "generated-stale-35",
@@ -2666,7 +2666,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.008
+      "latency_ms": 0.005
     },
     {
       "id": "generated-stale-36",
@@ -2695,7 +2695,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.013
+      "latency_ms": 0.017
     },
     {
       "id": "generated-stale-37",
@@ -2724,7 +2724,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.03
+      "latency_ms": 0.006
     },
     {
       "id": "generated-stale-38",
@@ -2782,7 +2782,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.005
+      "latency_ms": 0.007
     },
     {
       "id": "generated-stale-40",
@@ -2811,7 +2811,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.007
+      "latency_ms": 0.014
     },
     {
       "id": "generated-expired-01",
@@ -2840,7 +2840,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.006
+      "latency_ms": 0.05
     },
     {
       "id": "generated-expired-02",
@@ -2869,7 +2869,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.016
+      "latency_ms": 0.008
     },
     {
       "id": "generated-expired-03",
@@ -2898,7 +2898,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.007
+      "latency_ms": 0.02
     },
     {
       "id": "generated-expired-04",
@@ -2927,7 +2927,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.008
+      "latency_ms": 0.017
     },
     {
       "id": "generated-expired-05",
@@ -3072,7 +3072,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.006
+      "latency_ms": 0.008
     },
     {
       "id": "generated-expired-10",
@@ -3246,7 +3246,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.014
+      "latency_ms": 0.008
     },
     {
       "id": "generated-expired-16",
@@ -3275,7 +3275,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.032
+      "latency_ms": 0.029
     },
     {
       "id": "generated-expired-17",
@@ -3304,7 +3304,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.009
+      "latency_ms": 0.007
     },
     {
       "id": "generated-expired-18",
@@ -3391,7 +3391,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.005
+      "latency_ms": 0.006
     },
     {
       "id": "generated-expired-21",
@@ -3507,7 +3507,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.006
+      "latency_ms": 0.008
     },
     {
       "id": "generated-expired-25",
@@ -3536,7 +3536,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.005
+      "latency_ms": 0.019
     },
     {
       "id": "generated-expired-26",
@@ -3594,7 +3594,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.012
+      "latency_ms": 0.025
     },
     {
       "id": "generated-expired-28",
@@ -3623,7 +3623,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.007
+      "latency_ms": 0.039
     },
     {
       "id": "generated-expired-29",
@@ -3652,7 +3652,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.005
+      "latency_ms": 0.006
     },
     {
       "id": "generated-expired-30",
@@ -3710,7 +3710,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.005
+      "latency_ms": 0.006
     },
     {
       "id": "generated-expired-32",
@@ -3768,7 +3768,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.007
+      "latency_ms": 0.006
     },
     {
       "id": "generated-expired-34",
@@ -3855,7 +3855,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.005
+      "latency_ms": 0.007
     },
     {
       "id": "generated-expired-37",
@@ -3913,7 +3913,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.006
+      "latency_ms": 0.009
     },
     {
       "id": "generated-expired-39",
@@ -3998,7 +3998,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.024
+      "latency_ms": 0.023
     },
     {
       "id": "generated-replay-02",
@@ -4052,7 +4052,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.088
+      "latency_ms": 0.046
     },
     {
       "id": "generated-replay-04",
@@ -4079,7 +4079,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.016
+      "latency_ms": 0.022
     },
     {
       "id": "generated-replay-05",
@@ -4106,7 +4106,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.028
+      "latency_ms": 0.049
     },
     {
       "id": "generated-replay-06",
@@ -4133,7 +4133,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.016
+      "latency_ms": 0.025
     },
     {
       "id": "generated-replay-07",
@@ -4160,7 +4160,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.028
+      "latency_ms": 0.026
     },
     {
       "id": "generated-replay-08",
@@ -4187,7 +4187,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.018
+      "latency_ms": 0.017
     },
     {
       "id": "generated-replay-09",
@@ -4214,7 +4214,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.029
+      "latency_ms": 0.032
     },
     {
       "id": "generated-replay-10",
@@ -4241,7 +4241,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.03
+      "latency_ms": 0.027
     },
     {
       "id": "generated-replay-11",
@@ -4268,7 +4268,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.027
+      "latency_ms": 0.024
     },
     {
       "id": "generated-replay-12",
@@ -4295,7 +4295,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.022
+      "latency_ms": 0.06
     },
     {
       "id": "generated-replay-13",
@@ -4322,7 +4322,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.019
+      "latency_ms": 0.051
     },
     {
       "id": "generated-replay-14",
@@ -4403,7 +4403,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.025
+      "latency_ms": 0.022
     },
     {
       "id": "generated-replay-17",
@@ -4430,7 +4430,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.025
+      "latency_ms": 0.024
     },
     {
       "id": "generated-replay-18",
@@ -4484,7 +4484,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.053
+      "latency_ms": 0.056
     },
     {
       "id": "generated-replay-20",
@@ -4511,7 +4511,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.024
+      "latency_ms": 0.03
     },
     {
       "id": "generated-replay-21",
@@ -4538,7 +4538,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.018
+      "latency_ms": 0.026
     },
     {
       "id": "generated-replay-22",
@@ -4565,7 +4565,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.028
+      "latency_ms": 0.083
     },
     {
       "id": "generated-replay-23",
@@ -4592,7 +4592,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.025
+      "latency_ms": 0.021
     },
     {
       "id": "generated-replay-24",
@@ -4619,7 +4619,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.022
+      "latency_ms": 0.023
     },
     {
       "id": "generated-replay-25",
@@ -4646,7 +4646,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.024
+      "latency_ms": 0.054
     },
     {
       "id": "generated-replay-26",
@@ -4673,7 +4673,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.1
+      "latency_ms": 0.144
     },
     {
       "id": "generated-replay-27",
@@ -4700,7 +4700,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.025
+      "latency_ms": 0.026
     },
     {
       "id": "generated-replay-28",
@@ -4727,7 +4727,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.022
+      "latency_ms": 0.029
     },
     {
       "id": "generated-replay-29",
@@ -4754,7 +4754,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.046
+      "latency_ms": 0.048
     },
     {
       "id": "generated-replay-30",
@@ -4781,7 +4781,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.036
+      "latency_ms": 0.022
     },
     {
       "id": "generated-replay-31",
@@ -4808,7 +4808,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.017
+      "latency_ms": 0.019
     },
     {
       "id": "generated-replay-32",
@@ -4835,7 +4835,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.036
+      "latency_ms": 0.045
     },
     {
       "id": "generated-replay-33",
@@ -4916,7 +4916,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.024
+      "latency_ms": 0.023
     },
     {
       "id": "generated-replay-36",
@@ -4943,7 +4943,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.022
+      "latency_ms": 0.023
     },
     {
       "id": "generated-replay-37",
@@ -4970,7 +4970,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.023
+      "latency_ms": 0.041
     },
     {
       "id": "generated-replay-38",
@@ -4997,7 +4997,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.029
+      "latency_ms": 0.023
     },
     {
       "id": "generated-replay-39",
@@ -5024,7 +5024,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.022
+      "latency_ms": 0.021
     },
     {
       "id": "generated-replay-40",
@@ -5051,7 +5051,7 @@
       "baseline_unsafe_dispatch": false,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.026
+      "latency_ms": 0.018
     },
     {
       "id": "generated-wrong-binding-01",
@@ -5107,7 +5107,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.019
+      "latency_ms": 0.023
     },
     {
       "id": "generated-wrong-binding-03",
@@ -5163,7 +5163,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.004
+      "latency_ms": 0.005
     },
     {
       "id": "generated-wrong-binding-05",
@@ -5219,7 +5219,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.005
+      "latency_ms": 0.006
     },
     {
       "id": "generated-wrong-binding-07",
@@ -5331,7 +5331,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.006
+      "latency_ms": 0.005
     },
     {
       "id": "generated-wrong-binding-11",
@@ -5359,7 +5359,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.006
+      "latency_ms": 0.004
     },
     {
       "id": "generated-wrong-binding-12",
@@ -5415,7 +5415,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.007
+      "latency_ms": 0.012
     },
     {
       "id": "generated-wrong-binding-14",
@@ -5471,7 +5471,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.011
+      "latency_ms": 0.014
     },
     {
       "id": "generated-wrong-binding-16",
@@ -5527,7 +5527,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.006
+      "latency_ms": 0.011
     },
     {
       "id": "generated-wrong-binding-18",
@@ -5723,7 +5723,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.022
+      "latency_ms": 0.004
     },
     {
       "id": "generated-wrong-binding-25",
@@ -5751,7 +5751,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.006
+      "latency_ms": 0.005
     },
     {
       "id": "generated-wrong-binding-26",
@@ -5779,7 +5779,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.006
+      "latency_ms": 0.009
     },
     {
       "id": "generated-wrong-binding-27",
@@ -5807,7 +5807,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.005
+      "latency_ms": 0.004
     },
     {
       "id": "generated-wrong-binding-28",
@@ -5835,7 +5835,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.007
+      "latency_ms": 0.006
     },
     {
       "id": "generated-wrong-binding-29",
@@ -5891,7 +5891,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.014
+      "latency_ms": 0.022
     },
     {
       "id": "generated-wrong-binding-31",
@@ -5919,7 +5919,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.011
+      "latency_ms": 0.012
     },
     {
       "id": "generated-wrong-binding-32",
@@ -5947,7 +5947,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.004
+      "latency_ms": 0.005
     },
     {
       "id": "generated-wrong-binding-33",
@@ -6003,7 +6003,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.052
+      "latency_ms": 0.004
     },
     {
       "id": "generated-wrong-binding-35",
@@ -6031,7 +6031,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.005
+      "latency_ms": 0.01
     },
     {
       "id": "generated-wrong-binding-36",
@@ -6115,7 +6115,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.024
+      "latency_ms": 0.017
     },
     {
       "id": "generated-wrong-binding-39",
@@ -6143,7 +6143,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.004
+      "latency_ms": 0.005
     },
     {
       "id": "generated-wrong-binding-40",
@@ -6194,7 +6194,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.007
+      "latency_ms": 0.012
     },
     {
       "id": "generated-cross-company-02",
@@ -6217,7 +6217,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.016
+      "latency_ms": 0.033
     },
     {
       "id": "generated-cross-company-03",
@@ -6240,7 +6240,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.008
+      "latency_ms": 0.006
     },
     {
       "id": "generated-cross-company-04",
@@ -6263,7 +6263,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.019
+      "latency_ms": 0.017
     },
     {
       "id": "generated-cross-company-05",
@@ -6286,7 +6286,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.01
+      "latency_ms": 0.019
     },
     {
       "id": "generated-cross-company-06",
@@ -6309,7 +6309,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.021
+      "latency_ms": 0.022
     },
     {
       "id": "generated-cross-company-07",
@@ -6332,7 +6332,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.067
+      "latency_ms": 0.066
     },
     {
       "id": "generated-cross-company-08",
@@ -6355,7 +6355,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.024
+      "latency_ms": 0.026
     },
     {
       "id": "generated-cross-company-09",
@@ -6378,7 +6378,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.037
+      "latency_ms": 0.011
     },
     {
       "id": "generated-cross-company-10",
@@ -6401,7 +6401,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.023
+      "latency_ms": 0.019
     },
     {
       "id": "generated-cross-company-11",
@@ -6424,7 +6424,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.009
+      "latency_ms": 0.008
     },
     {
       "id": "generated-cross-company-12",
@@ -6470,7 +6470,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.009
+      "latency_ms": 0.008
     },
     {
       "id": "generated-cross-company-14",
@@ -6493,7 +6493,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.017
+      "latency_ms": 0.022
     },
     {
       "id": "generated-cross-company-15",
@@ -6516,7 +6516,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.01
+      "latency_ms": 0.009
     },
     {
       "id": "generated-cross-company-16",
@@ -6539,7 +6539,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.033
+      "latency_ms": 0.027
     },
     {
       "id": "generated-cross-company-17",
@@ -6608,7 +6608,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.009
+      "latency_ms": 0.007
     },
     {
       "id": "generated-cross-company-20",
@@ -6631,7 +6631,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.108
+      "latency_ms": 0.024
     },
     {
       "id": "generated-cross-company-21",
@@ -6677,7 +6677,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.019
+      "latency_ms": 0.037
     },
     {
       "id": "generated-cross-company-23",
@@ -6746,7 +6746,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.029
+      "latency_ms": 0.025
     },
     {
       "id": "generated-cross-company-26",
@@ -6769,7 +6769,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.018
+      "latency_ms": 0.019
     },
     {
       "id": "generated-cross-company-27",
@@ -6792,7 +6792,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.014
+      "latency_ms": 0.024
     },
     {
       "id": "generated-cross-company-28",
@@ -6815,7 +6815,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.021
+      "latency_ms": 0.028
     },
     {
       "id": "generated-cross-company-29",
@@ -6838,7 +6838,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.035
+      "latency_ms": 0.009
     },
     {
       "id": "generated-cross-company-30",
@@ -6861,7 +6861,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.032
+      "latency_ms": 0.016
     },
     {
       "id": "generated-cross-company-31",
@@ -6907,7 +6907,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.051
+      "latency_ms": 0.017
     },
     {
       "id": "generated-cross-company-33",
@@ -6930,7 +6930,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.008
+      "latency_ms": 0.012
     },
     {
       "id": "generated-cross-company-34",
@@ -6953,7 +6953,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.016
+      "latency_ms": 0.017
     },
     {
       "id": "generated-cross-company-35",
@@ -6976,7 +6976,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.009
+      "latency_ms": 0.008
     },
     {
       "id": "generated-cross-company-36",
@@ -7022,7 +7022,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.012
+      "latency_ms": 0.013
     },
     {
       "id": "generated-cross-company-38",
@@ -7045,7 +7045,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.023
+      "latency_ms": 0.022
     },
     {
       "id": "generated-cross-company-39",
@@ -7068,7 +7068,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.009
+      "latency_ms": 0.01
     },
     {
       "id": "generated-cross-company-40",
@@ -7091,7 +7091,7 @@
       "baseline_unsafe_dispatch": true,
       "replay_idempotency_stable": true,
       "passed": true,
-      "latency_ms": 0.02
+      "latency_ms": 0.019
     }
   ]
 }

@@ -161,7 +161,7 @@ npm run eval
 
 The runner combines 20 curated cases with 240 deterministic generated cases, using fixed as-of time 2026-10-04T00:00:00.000Z and seed 20261004. Generated cases cover valid requests, stale and expired assessments, idempotent replays, mismatched bindings, and cross-company inputs. The report includes 95% Wilson intervals and every scenario's expected and actual result. CI builds and tests all 21 engine projects, runs the eval and math checks, and uploads the reports.
 
-**Measured 4 October 2026** against commit [2e7118b](https://github.com/Masterleeaus/decision-engine/commit/2e7118bb0baca84231ebe15ef3a072b8e6eb6e4a); scenario SHA-256: `503400974efd077f75cf85edfc27363c1b9971443917826edcf881b5739cb25f`. The current JSON and Markdown reports are linked below.
+**Measured 4 October 2026** against commit [86ee8af](https://github.com/Masterleeaus/decision-engine/commit/86ee8afb599689ac1a9f29f7f404590614a860f0); scenario SHA-256: `503400974efd077f75cf85edfc27363c1b9971443917826edcf881b5739cb25f`. The current JSON and Markdown reports are linked below.
 
 | Measure | Result | 95% Wilson interval |
 | --- | ---: | ---: |
