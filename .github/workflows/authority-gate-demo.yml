@@ -1,0 +1,21 @@
+name: Authority gate demo
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  authority-gate-demo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Run deterministic authority-gate demo
+        run: node --experimental-strip-types examples/authority-gate-demo.mjs
