@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 
 const repositoryRoot = resolve(fileURLToPath(new URL(".", import.meta.url)), "..");
 const enginesRoot = resolve(repositoryRoot, "engines");
+const loaderPath = resolve(repositoryRoot, "scripts/reference-tests-loader.mjs");
 const testFilePattern = /\.test\.(?:mjs|ts)$/;
 
 function collectFiles(directory) {
@@ -39,7 +40,7 @@ for (const file of displayFiles) console.log(`- ${file}`);
 
 const result = spawnSync(
   process.execPath,
-  ["--experimental-strip-types", "--test", ...testFiles],
+  ["--experimental-strip-types", "--experimental-loader", loaderPath, "--test", ...testFiles],
   {
     cwd: repositoryRoot,
     stdio: "inherit",
