@@ -2,7 +2,7 @@
   <img src="assets/decision-engine-banner.jpg" alt="Titan Decision Engine — evidence-led, transparent decision support" width="100%" />
 </p>
 
-<h1 align="center">Titan Decision Engine</h1>
+<h1 align="center">Decision Engine</h1>
 
 <p align="center"><strong>Decision intelligence you can inspect, challenge, and govern.</strong></p>
 
@@ -25,7 +25,7 @@
 
 ## Decision intelligence that stays explainable
 
-Teams make consequential choices with evidence scattered across systems, objectives pulling in different directions, and policy or approval requirements that are easy to lose in a score. Titan Decision Engine turns those inputs into a decision path that a reviewer can inspect from source evidence to recommendation.
+Teams make consequential choices with evidence scattered across systems, objectives pulling in different directions, and policy or approval requirements that are easy to lose in a score. Decision Engine turns those inputs into a decision path that a reviewer can inspect from source evidence to recommendation.
 
 **For product and platform teams**, it is a modular TypeScript decision layer for operational, workforce, financial, procurement, scheduling, environmental, and other AI-assisted workflows. It preserves evidence, uncertainty, constraints, trade-offs, provenance, and confidence so the next action is easier to evaluate and govern.
 
@@ -265,4 +265,4 @@ Steps 26–30 are reference composition, lifecycle, routing, and monitoring laye
 
 ---
 
-**Titan Decision Engine is the decision-intelligence layer of the Titan architecture:** it makes reasoning inspectable and recommendations explainable while leaving real-world authority with the systems designed to govern action.
+**Decision Engine is the decision-intelligence layer of the Titan architecture:** it makes reasoning inspectable and recommendations explainable while leaving real-world authority with the systems designed to govern action.
