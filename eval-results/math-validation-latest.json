@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "evaluated_at": "2026-10-04T03:49:19.703Z",
+  "seed": 20261004,
+  "training_count": 60000,
+  "evaluation_count": 40000,
+  "calibration_simulation": {
+    "generator": "seeded Bernoulli outcomes with fixed per-bin true success probabilities",
+    "training_per_probability_bin": 12000,
+    "evaluation_per_probability_bin": 8000,
+    "training_buckets": [
+      {
+        "predicted": 0.1,
+        "true_probability": 0.04,
+        "successes": 470,
+        "sample_count": 12000,
+        "observed_success": 0.03916666666666667
+      },
+      {
+        "predicted": 0.3,
+        "true_probability": 0.16,
+        "successes": 1947,
+        "sample_count": 12000,
+        "observed_success": 0.16225
+      },
+      {
+        "predicted": 0.5,
+        "true_probability": 0.38,
+        "successes": 4519,
+        "sample_count": 12000,
+        "observed_success": 0.3765833333333333
+      },
+      {
+        "predicted": 0.7,
+        "true_probability": 0.68,
+        "successes": 8161,
+        "sample_count": 12000,
+        "observed_success": 0.6800833333333334
+      },
+      {
+        "predicted": 0.9,
+        "true_probability": 0.91,
+        "successes": 10961,
+        "sample_count": 12000,
+        "observed_success": 0.9134166666666667
+      }
+    ],
+    "evaluation_buckets": [
+      {
+        "prediction": 0.1,
+        "calibrated_prediction": 0.03916666666666667,
+        "observed_rate": 0.03875,
+        "sample_count": 8000
+      },
+      {
+        "prediction": 0.3,
+        "calibrated_prediction": 0.16225,
+        "observed_rate": 0.14975,
+        "sample_count": 8000
+      },
+      {
+        "prediction": 0.5,
+        "calibrated_prediction": 0.3765833333333333,
+        "observed_rate": 0.392375,
+        "sample_count": 8000
+      },
+      {
+        "prediction": 0.7,
+        "calibrated_prediction": 0.6800833333333334,
+        "observed_rate": 0.685,
+        "sample_count": 8000
+      },
+      {
+        "prediction": 0.9,
+        "calibrated_prediction": 0.9134166666666667,
+        "observed_rate": 0.914625,
+        "sample_count": 8000
+      }
+    ],
+    "metrics": {
+      "brier_score": {
+        "raw": 0.14704,
+        "calibrated": 0.13945656,
+        "improvement": 0.00758344
+      },
+      "expected_calibration_error": {
+        "raw": 0.06975,
+        "calibrated": 0.00696667,
+        "improvement": 0.06278333,
+        "bins": 5
+      }
+    },
+    "passed": true
+  },
+  "ranking_comparison": {
+    "fixture": "seven synthetic alternatives across five benefit-oriented normalized dimensions",
+    "engine_method": "confidence-adjusted weighted arithmetic ranking",
+    "reference_method": "TOPSIS with vector normalization and weighted Euclidean distances",
+    "engine_order": [
+      "option-c",
+      "option-b",
+      "option-f",
+      "option-e",
+      "option-d",
+      "option-g",
+      "option-a"
+    ],
+    "topsis_order": [
+      "option-c",
+      "option-b",
+      "option-f",
+      "option-e",
+      "option-d",
+      "option-g",
+      "option-a"
+    ],
+    "engine_top": "option-c",
+    "topsis_top": "option-c",
+    "top_choice_agrees": true,
+    "kendall_tau": 1,
+    "interpretation": "Method comparison only; differing rankings are reported and are not treated as a defect."
+  },
+  "passed": true
+}

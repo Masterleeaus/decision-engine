@@ -1,4 +1,4 @@
-name: Authority gate evaluation
+name: Decision Engine CI
 
 on:
   push:
@@ -9,19 +9,39 @@ permissions:
   contents: read
 
 jobs:
-  authority-gate-eval:
+  decision-engine-ci:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
-      - name: Run authority gate evaluation
-        run: node --experimental-strip-types scripts/authority-gate-eval.mjs
-      - name: Upload evaluation report
+          node-version: 24
+      - name: Install package dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Build and run all engine suites
+        run: npm test
+      - name: Measure engine test coverage
+        run: npm run coverage
+      - name: Run generated authority handoff evaluation
+        run: npm run eval
+      - name: Validate confidence calibration and compare TOPSIS
+        run: npm run validate:math
+      - name: Run environmental remediation example
+        run: npm run example:environment
+      - name: Check published package contents
+        run: npm run pack:check
+      - name: Optional live LLM proposed-action evaluation
+        if: ${{ vars.RUN_LLM_EVAL == 'true' }}
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+        run: node --experimental-strip-types scripts/llm-authority-gate-eval.mjs
+      - name: Upload evaluation and coverage reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: authority-gate-evaluation
-          path: eval-results/
+          name: decision-engine-reports
+          path: |
+            eval-results/
+            coverage/lcov.info

@@ -94,6 +94,7 @@ export interface DecisionActionHandoffResult {
 export interface DecisionActionHandoffOptions {
   clock?: () => string;
   max_request_age_seconds?: number;
+  max_assessment_age_seconds?: number;
 }
 
 export class DecisionActionHandoffError extends Error {
@@ -301,6 +302,10 @@ export function prepareDecisionActionHandoff(
   const now = options.clock?.() ?? input.as_of ?? DEFAULT_CLOCK();
   const nowMs = validTime(now);
   if (nowMs === null) throw new DecisionActionHandoffError("invalid_as_of_time");
+  const maxAssessmentAge = options.max_assessment_age_seconds ?? 300;
+  if (!Number.isInteger(maxAssessmentAge) || maxAssessmentAge < 1 || maxAssessmentAge > 3600) {
+    throw new DecisionActionHandoffError("invalid_max_assessment_age");
+  }
   const assessedMs = validTime(input.capability_assessment.assessed_at);
   const assessmentExpiryMs = validTime(input.capability_assessment.expires_at);
   if (
@@ -311,6 +316,9 @@ export function prepareDecisionActionHandoff(
     assessmentExpiryMs <= nowMs
   ) {
     return noRequest(input, "review_required", "capability_assessment_missing_or_expired");
+  }
+  if (nowMs - assessedMs > maxAssessmentAge * 1000) {
+    return noRequest(input, "review_required", "capability_assessment_stale");
   }
   if (!input.capability_assessment.actor_id || !input.capability_assessment.policy_version) {
     return noRequest(input, "review_required", "capability_assessment_incomplete");

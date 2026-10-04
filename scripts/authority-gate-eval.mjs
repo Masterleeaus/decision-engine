@@ -6,11 +6,12 @@ import { resolve } from "node:path";
 
 import { prepareDecisionActionHandoff } from "../engines/27-action-handoff/runtime/decisionActionHandoff.ts";
 
-const command = "node --experimental-strip-types scripts/authority-gate-eval.mjs";
+const command = "npm run eval";
 const fixtureBytes = readFileSync(new URL("../evaluations/authority-gate/scenarios.json", import.meta.url));
 const fixture = JSON.parse(fixtureBytes.toString("utf8"));
 const fixedNow = fixture.fixed_as_of;
 const seed = Number(process.env.AUTHORITY_EVAL_SEED ?? fixture.seed);
+const random = randomGenerator(seed);
 
 const baseInput = {
   company_id: "company-a",
@@ -51,6 +52,129 @@ const baseInput = {
   },
 };
 
+function randomGenerator(initialSeed) {
+  let state = initialSeed >>> 0;
+  return () => {
+    state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
+    return state / 0x100000000;
+  };
+}
+
+function integer(maxExclusive) {
+  return Math.floor(random() * maxExclusive);
+}
+
+function generatedScenarios() {
+  const scenarios = [];
+  const assessmentAsOf = Date.parse(fixedNow);
+  const priorities = ["low", "normal", "high"];
+
+  for (let index = 0; index < 40; index += 1) {
+    const suffix = String(index + 1).padStart(2, "0");
+    const target = "work-item-valid-" + suffix;
+    scenarios.push({
+      id: "generated-valid-" + suffix,
+      category: "valid",
+      label: "Generated valid handoff " + suffix,
+      expected: { status: "prepared", request: true },
+      risk_tags: ["generated", "valid"],
+      overrides: {
+        binding: {
+          action_id: "apply-option-" + suffix,
+          target_ref: target,
+          parameters: { priority: priorities[integer(priorities.length)], work_item_id: target },
+          evidence_refs: ["evidence-" + suffix],
+        },
+      },
+    });
+  }
+
+  for (let index = 0; index < 40; index += 1) {
+    const suffix = String(index + 1).padStart(2, "0");
+    const ageSeconds = 301 + integer(3600);
+    scenarios.push({
+      id: "generated-stale-" + suffix,
+      category: "stale",
+      label: "Generated assessment older than the freshness window " + suffix,
+      expected: { status: "review_required", request: false },
+      risk_tags: ["generated", "freshness", "stale"],
+      overrides: {
+        capability_assessment: {
+          assessed_at: new Date(assessmentAsOf - ageSeconds * 1000).toISOString(),
+          expires_at: new Date(assessmentAsOf + 3600 * 1000).toISOString(),
+        },
+      },
+    });
+  }
+
+  for (let index = 0; index < 40; index += 1) {
+    const suffix = String(index + 1).padStart(2, "0");
+    const expiredSeconds = 1 + integer(600);
+    scenarios.push({
+      id: "generated-expired-" + suffix,
+      category: "expired",
+      label: "Generated expired host assessment " + suffix,
+      expected: { status: "review_required", request: false },
+      risk_tags: ["generated", "freshness", "expired"],
+      overrides: {
+        capability_assessment: {
+          assessed_at: new Date(assessmentAsOf - 60 * 1000).toISOString(),
+          expires_at: new Date(assessmentAsOf - expiredSeconds * 1000).toISOString(),
+        },
+      },
+    });
+  }
+
+  for (let index = 0; index < 40; index += 1) {
+    const suffix = String(index + 1).padStart(2, "0");
+    scenarios.push({
+      id: "generated-replay-" + suffix,
+      category: "replayed",
+      label: "Generated idempotent replay " + suffix,
+      expected: { status: "prepared", request: true },
+      risk_tags: ["generated", "replay", "idempotency"],
+      replay_of: "valid-allowed",
+    });
+  }
+
+  for (let index = 0; index < 40; index += 1) {
+    const suffix = String(index + 1).padStart(2, "0");
+    scenarios.push({
+      id: "generated-wrong-binding-" + suffix,
+      category: "wrong_binding",
+      label: "Generated binding points to a different option " + suffix,
+      expected: { status: "blocked", request: false },
+      risk_tags: ["generated", "binding"],
+      overrides: {
+        binding: { option_id: "wrong-option-" + suffix },
+      },
+    });
+  }
+
+  for (let index = 0; index < 40; index += 1) {
+    const suffix = String(index + 1).padStart(2, "0");
+    const wrongAssessmentCompany = index % 2 === 0;
+    scenarios.push({
+      id: "generated-cross-company-" + suffix,
+      category: "cross_company",
+      label: "Generated cross-company " + (wrongAssessmentCompany ? "assessment" : "parameters") + " " + suffix,
+      expected: {
+        error_code: wrongAssessmentCompany
+          ? "capability_assessment_scope_mismatch"
+          : "cross_company_action_parameters",
+        request: false,
+      },
+      risk_tags: ["generated", "company_scope"],
+      wrong_company: true,
+      overrides: wrongAssessmentCompany
+        ? { capability_assessment: { company_id: "company-other-" + suffix } }
+        : { binding: { parameters: { metadata: { company_id: "company-other-" + suffix } } } },
+    });
+  }
+
+  return scenarios;
+}
+
 function merge(base, override) {
   if (!override || typeof override !== "object" || Array.isArray(override)) return override;
   const output = { ...base };
@@ -62,19 +186,11 @@ function merge(base, override) {
   return output;
 }
 
-function randomGenerator(initialSeed) {
-  let state = initialSeed >>> 0;
-  return () => {
-    state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
-    return state / 0x100000000;
-  };
-}
-
 function seededOrder(items, initialSeed) {
   const result = [...items];
-  const random = randomGenerator(initialSeed);
+  const orderRandom = randomGenerator(initialSeed);
   for (let index = result.length - 1; index > 0; index -= 1) {
-    const swapWith = Math.floor(random() * (index + 1));
+    const swapWith = Math.floor(orderRandom() * (index + 1));
     [result[index], result[swapWith]] = [result[swapWith], result[index]];
   }
   return result;
@@ -101,17 +217,43 @@ function percentile(values, fraction) {
   return Number(sorted[index].toFixed(3));
 }
 
+function wilsonInterval(successes, total) {
+  if (total === 0) return { lower: null, upper: null, method: "Wilson score, 95%, z=1.96" };
+  const z = 1.959963984540054;
+  const observed = successes / total;
+  const divisor = 1 + (z * z) / total;
+  const center = (observed + (z * z) / (2 * total)) / divisor;
+  const margin = (z * Math.sqrt((observed * (1 - observed)) / total + (z * z) / (4 * total * total))) / divisor;
+  return {
+    lower: Number(Math.max(0, center - margin).toFixed(6)),
+    upper: Number(Math.min(1, center + margin).toFixed(6)),
+    method: "Wilson score, 95%, z=1.96",
+  };
+}
+
+function metric(successes, total) {
+  return {
+    numerator: successes,
+    denominator: total,
+    rate: total ? Number((successes / total).toFixed(6)) : null,
+    confidence_interval_95: wilsonInterval(successes, total),
+  };
+}
+
+const scenarios = [...fixture.scenarios, ...generatedScenarios()];
+const scenarioBytes = JSON.stringify({ seed, fixed_as_of: fixedNow, scenarios }, null, 2) + "\n";
+const scenarioHash = createHash("sha256").update(scenarioBytes).digest("hex");
 const outcomes = new Map();
 const elapsedById = new Map();
 
-for (const scenario of seededOrder(fixture.scenarios, seed)) {
+for (const scenario of seededOrder(scenarios, seed)) {
   const input = merge(baseInput, scenario.overrides ?? {});
   const started = performance.now();
   outcomes.set(scenario.id, { output: attempt(input), input });
   elapsedById.set(scenario.id, performance.now() - started);
 }
 
-const records = fixture.scenarios.map((scenario) => {
+const records = scenarios.map((scenario) => {
   const { output, input } = outcomes.get(scenario.id);
   const actualStatus = output.result?.status ?? null;
   const actualRequest = Boolean(output.result?.prepared_request);
@@ -138,6 +280,7 @@ const records = fixture.scenarios.map((scenario) => {
 
   return {
     id: scenario.id,
+    category: scenario.category ?? "curated",
     label: scenario.label,
     expected: scenario.expected,
     actual: output.result
@@ -159,13 +302,11 @@ const records = fixture.scenarios.map((scenario) => {
   };
 });
 
-const actualPreparedOnNegative = records.filter((row) =>
-  row.expected.status !== "prepared" && row.actual.status === "prepared",
-).length;
-const validPreparedCases = records.filter((row) => row.expected.status === "prepared").length;
-const falseBlocks = records.filter((row) =>
-  row.expected.status === "prepared" &&
-  (row.actual.status !== "prepared" || !row.actual.request),
+const negativeRows = records.filter((row) => row.expected.status !== "prepared");
+const preparedRows = records.filter((row) => row.expected.status === "prepared");
+const actualPreparedOnNegative = negativeRows.filter((row) => row.actual.status === "prepared").length;
+const falseBlocks = preparedRows.filter((row) =>
+  row.actual.status !== "prepared" || !row.actual.request,
 ).length;
 const wrongCompanyAttempts = records.filter((row) => row.wrong_company);
 const wrongCompanyRequests = wrongCompanyAttempts.filter((row) => row.actual.request);
@@ -174,9 +315,16 @@ const contractViolations = records.filter((row) =>
   (row.actual.authority_effect && row.actual.authority_effect !== "none") ||
   (row.actual.request && row.actual.dispatch_state !== "not_dispatched"),
 ).length;
+const replayRows = records.filter((row) => row.category === "replayed");
 const latencies = records.map((row) => row.latency_ms);
-let evaluatedCommit = process.env.EVAL_COMMIT_SHA ?? process.env.GITHUB_SHA ?? "unknown";
+const countsByCategory = Object.fromEntries(
+  [...new Set(records.map((row) => row.category))].sort().map((category) => [
+    category,
+    records.filter((row) => row.category === category).length,
+  ]),
+);
 
+let evaluatedCommit = process.env.EVAL_COMMIT_SHA ?? process.env.GITHUB_SHA ?? "unknown";
 if (evaluatedCommit === "unknown") {
   try {
     evaluatedCommit = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }).trim();
@@ -184,28 +332,31 @@ if (evaluatedCommit === "unknown") {
 }
 
 const report = {
-  schema_version: 1,
+  schema_version: 2,
   evaluation_date: new Date().toISOString(),
   evaluated_commit: evaluatedCommit,
   command,
   seed,
+  fixed_as_of: fixedNow,
   scenario_count: records.length,
+  generated_scenario_count: records.length - fixture.scenarios.length,
+  scenario_counts_by_category: countsByCategory,
   runtime: { node: process.version, platform: process.platform, architecture: process.arch },
-  scenario_set_sha256: createHash("sha256").update(fixtureBytes).digest("hex"),
+  scenario_set_sha256: scenarioHash,
   baseline: {
     name: "recommendation-only illustrative baseline",
     definition: "Would dispatch any non-empty recommendation while ignoring constraint eligibility and host authorization.",
-    unsafe_dispatches_on_blocked_or_unresolved_cases: {
-      numerator: baselineUnsafe,
-      denominator: records.length - validPreparedCases,
-    },
+    unsafe_dispatches_on_blocked_or_unresolved_cases: metric(baselineUnsafe, negativeRows.length),
   },
   metrics: {
-    unsafe_ready_handoffs: { numerator: actualPreparedOnNegative, denominator: records.length - validPreparedCases },
-    valid_recommendations_wrongly_blocked: { numerator: falseBlocks, denominator: validPreparedCases },
-    wrong_company_attempts_with_request: { numerator: wrongCompanyRequests.length, denominator: wrongCompanyAttempts.length },
-    dispatch_contract_violations: { numerator: contractViolations, denominator: records.length },
-    idempotency_replay_stable: records.every((row) => row.replay_idempotency_stable),
+    unsafe_ready_handoffs: metric(actualPreparedOnNegative, negativeRows.length),
+    valid_recommendations_wrongly_blocked: metric(falseBlocks, preparedRows.length),
+    wrong_company_attempts_with_request: metric(wrongCompanyRequests.length, wrongCompanyAttempts.length),
+    dispatch_contract_violations: metric(contractViolations, records.length),
+    idempotency_replay_stability: metric(
+      replayRows.filter((row) => row.replay_idempotency_stable).length,
+      replayRows.length,
+    ),
     gate_latency_ms: {
       p50: percentile(latencies, 0.5),
       p95: percentile(latencies, 0.95),
@@ -224,6 +375,12 @@ const resultsDirectory = resolve(process.cwd(), "eval-results");
 mkdirSync(resultsDirectory, { recursive: true });
 writeFileSync(resolve(resultsDirectory, "authority-gate-latest.json"), JSON.stringify(report, null, 2) + "\n");
 
+function showMetric(value) {
+  const interval = value.confidence_interval_95;
+  const range = interval.lower === null ? "n/a" : (interval.lower * 100).toFixed(1) + "%–" + (interval.upper * 100).toFixed(1) + "%";
+  return value.numerator + " / " + value.denominator + " (" + range + ")";
+}
+
 const summary = [
   "# Authority gate evaluation",
   "",
@@ -231,20 +388,24 @@ const summary = [
   "- Evaluated commit: " + report.evaluated_commit,
   "- Command: `" + report.command + "`",
   "- Seed: " + report.seed,
-  "- Scenarios: " + report.scenario_count,
+  "- Fixed as-of time: " + report.fixed_as_of,
+  "- Scenarios: " + report.scenario_count + " (" + report.generated_scenario_count + " generated)",
   "- Runtime: Node " + report.runtime.node + " (" + report.runtime.platform + "/" + report.runtime.architecture + ")",
   "- Scenario SHA-256: " + report.scenario_set_sha256,
   "",
-  "| Metric | Result |",
+  "| Metric | Result (95% Wilson interval) |",
   "| --- | ---: |",
-  "| Unsafe ready handoffs | " + report.metrics.unsafe_ready_handoffs.numerator + " / " + report.metrics.unsafe_ready_handoffs.denominator + " |",
-  "| Valid recommendations wrongly blocked | " + report.metrics.valid_recommendations_wrongly_blocked.numerator + " / " + report.metrics.valid_recommendations_wrongly_blocked.denominator + " |",
-  "| Wrong-company attempts producing a request | " + report.metrics.wrong_company_attempts_with_request.numerator + " / " + report.metrics.wrong_company_attempts_with_request.denominator + " |",
-  "| Dispatch-contract violations | " + report.metrics.dispatch_contract_violations.numerator + " / " + report.metrics.dispatch_contract_violations.denominator + " |",
-  "| Recommendation-only baseline unsafe dispatches | " + report.baseline.unsafe_dispatches_on_blocked_or_unresolved_cases.numerator + " / " + report.baseline.unsafe_dispatches_on_blocked_or_unresolved_cases.denominator + " |",
+  "| Unsafe ready handoffs on blocked or unresolved cases | " + showMetric(report.metrics.unsafe_ready_handoffs) + " |",
+  "| Valid recommendations wrongly blocked | " + showMetric(report.metrics.valid_recommendations_wrongly_blocked) + " |",
+  "| Wrong-company attempts producing a request | " + showMetric(report.metrics.wrong_company_attempts_with_request) + " |",
+  "| Dispatch-contract violations | " + showMetric(report.metrics.dispatch_contract_violations) + " |",
+  "| Recommendation-only baseline unsafe dispatches | " + showMetric(report.baseline.unsafe_dispatches_on_blocked_or_unresolved_cases) + " |",
+  "| Replay idempotency stable | " + showMetric(report.metrics.idempotency_replay_stability) + " |",
   "| Gate latency p50 / p95 (ms) | " + report.metrics.gate_latency_ms.p50 + " / " + report.metrics.gate_latency_ms.p95 + " |",
   "",
-  "The baseline is a deliberately minimal comparator, not a competing product. Step 27 prepares requests; the host owns persistence, approval, revalidation, and dispatch.",
+  "The intervals are Wilson score intervals for binomial proportions. Generated cases cover fresh valid requests, stale and expired assessments, idempotent replay, wrong bindings, and cross-company inputs. The baseline is a deliberately minimal comparator, not a competing product.",
+  "",
+  "Step 27 prepares requests; the host owns persistence, approval, revalidation, and dispatch.",
   "",
   "Scenario details: `eval-results/authority-gate-latest.json`.",
   "",

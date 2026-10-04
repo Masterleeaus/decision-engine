@@ -1,2 +1,0 @@
-TypeScript compile: PASS
-decision-history tests passed: 6
