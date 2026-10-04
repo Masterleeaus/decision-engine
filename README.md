@@ -17,6 +17,7 @@
   <a href="#capabilities">Capabilities</a> ·
   <a href="#trust-boundaries">Trust boundaries</a> ·
   <a href="#reproducible-authority-handoff-evaluation">Authority eval</a> ·
+  <a href="#quickstart-and-verification">Quickstart</a> ·
   <a href="#implementation-status">Implementation status</a>
 </p>
 
@@ -134,6 +135,18 @@ A domain supplies its own entities, evidence, objectives, alternatives, and cons
 - **Provider health is diagnostic:** operational telemetry does not change recommendation ranking, confidence, constraint eligibility, authorization, or routing.
 
 These are decision-support boundaries. They do not replace authentication, authorization, policy enforcement, or a governed execution service in the integrating application.
+
+## Quickstart and verification
+
+Node.js 22 or newer is required for the checked-in TypeScript reference runners (`--experimental-strip-types`). The repository intentionally has no root package manifest or dependency-install step: the runnable repository-level smoke test is the deterministic authority-gate evaluation.
+
+From the repository root:
+
+```bash
+node --experimental-strip-types scripts/authority-gate-eval.mjs
+```
+
+The command evaluates the 20 fixed scenarios in `evaluations/authority-gate/scenarios.json` and rewrites the JSON and Markdown reports under `eval-results/`. Individual engine tests live beside their runtimes under `engines/*/tests/`; the CI workflow runs the same authority-gate command on every push and pull request.
 
 ## Reproducible authority handoff evaluation
 
